@@ -5,14 +5,43 @@ import { CompanyLogo } from "@/components/ui/CompanyLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 import { Briefcase, ChevronDown, Lightbulb } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ExperienceSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollLockRef = useRef<number | null>(null);
 
   const toggleResponsibilities = (index: number) => {
-    setOpenIndex((current) => (current === index ? null : index));
+    if (openIndex === index) {
+      setOpenIndex(null);
+      return;
+    }
+
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      scrollLockRef.current = window.scrollY;
+    }
+
+    setOpenIndex(index);
   };
+
+  useEffect(() => {
+    if (openIndex === null) return;
+
+    const panel = panelRefs.current[openIndex];
+    if (panel) {
+      panel.scrollTop = 0;
+    }
+
+    if (scrollLockRef.current === null) return;
+
+    const lockedScrollY = scrollLockRef.current;
+    scrollLockRef.current = null;
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: lockedScrollY, left: 0, behavior: "auto" });
+    });
+  }, [openIndex]);
 
   return (
     <section id="experience" className="section-experience scroll-section py-12 sm:py-20 md:py-24">
@@ -43,7 +72,7 @@ export function ExperienceSection() {
                       />
 
                       <div className="experience-job-header min-w-0 flex-1">
-                        <h3 className="text-lg font-semibold leading-snug text-foreground sm:text-xl">
+                        <h3 className="text-base font-semibold leading-snug text-foreground sm:text-lg md:text-xl">
                           {job.role}
                         </h3>
 
@@ -97,6 +126,9 @@ export function ExperienceSection() {
                   </div>
 
                   <div
+                    ref={(node) => {
+                      panelRefs.current[i] = node;
+                    }}
                     id={panelId}
                     role="region"
                     aria-labelledby={`${panelId}-toggle`}
@@ -104,6 +136,8 @@ export function ExperienceSection() {
                     className={cn(
                       "experience-responsibilities-panel",
                       isOpen ? "mt-3 md:mt-4" : "hidden md:mt-4 md:grid md:grid-rows-[0fr] md:opacity-0",
+                      isOpen &&
+                        "max-md:max-h-[min(50vh,26rem)] max-md:overflow-y-auto max-md:overscroll-y-contain max-md:[overflow-anchor:none]",
                       isOpen && "md:grid md:grid-rows-[1fr] md:opacity-100",
                       "md:transition-[grid-template-rows,opacity] md:duration-300 md:ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:md:transition-none"
                     )}

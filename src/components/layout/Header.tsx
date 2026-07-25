@@ -82,7 +82,7 @@ export function Header() {
   const navLinkClass = (href: string, mobile = false) =>
     cn(
       mobile
-        ? "flex min-h-[40px] items-center rounded-[var(--radius-md)] px-3 text-sm font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
+        ? "flex min-h-[36px] items-center rounded-[var(--radius-md)] px-3 text-[0.8125rem] font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
         : "tap-link rounded-full px-3 py-2.5 text-label transition-md hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:px-4",
       activeSection === href
         ? "bg-primary/8 text-primary font-medium"
@@ -105,7 +105,7 @@ export function Header() {
         <Link
           href="/"
           onClick={closeMenu}
-          className="min-w-0 flex-1 truncate font-heading text-[0.9375rem] font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full py-1.5 pr-2 sm:text-base md:text-lg"
+          className="min-w-0 flex-1 truncate font-heading text-sm font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full py-1 pr-2 sm:text-[0.9375rem] md:text-lg"
         >
           {profile.name}
         </Link>
@@ -122,7 +122,7 @@ export function Header() {
           <a
             href={profile.resumeUrl}
             download="Urmi-Shah-Resume.pdf"
-            className="btn-primary hidden gap-1.5 px-5 text-sm md:inline-flex"
+            className="btn-primary hidden shrink-0 gap-1 md:inline-flex md:min-h-9 md:px-3 md:py-2 md:text-xs lg:min-h-[44px] lg:gap-1.5 lg:px-5 lg:py-2.5 lg:text-sm"
           >
             Download resume
           </a>
