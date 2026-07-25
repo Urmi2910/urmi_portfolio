@@ -7,6 +7,7 @@ type SectionHeadingProps = {
   title: string;
   description?: string;
   tone?: "surface" | "background";
+  sticky?: boolean;
   className?: string;
 };
 
@@ -15,10 +16,19 @@ export function SectionHeading({
   title,
   description,
   tone = "background",
+  sticky = true,
   className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("flex gap-3 sm:gap-4", className)}>
+    <div
+      className={cn(
+        "flex gap-3 sm:gap-4",
+        sticky && "section-heading-sticky",
+        sticky && tone === "surface" && "section-heading-sticky-surface",
+        sticky && tone === "background" && "section-heading-sticky-background",
+        className
+      )}
+    >
       <IconBadge icon={icon} tone={tone} className="icon-align-headline shrink-0" />
       <div className="min-w-0 flex-1">
         <h2 className="text-headline font-heading leading-[1.2]">{title}</h2>

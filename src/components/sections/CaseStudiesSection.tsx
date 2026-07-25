@@ -10,7 +10,7 @@ export function CaseStudiesSection() {
       className="section-flow-child scroll-section pb-10 pt-2 sm:pb-14 sm:pt-4 md:pb-20"
     >
       <div className="container-page">
-        <SectionHeading icon={LayoutGrid} title="Portfolio" tone="surface" />
+        <SectionHeading icon={LayoutGrid} title="Portfolio" tone="background" />
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 md:grid-cols-2 md:gap-5 lg:gap-6">
           {caseStudies.map((study, index) => (

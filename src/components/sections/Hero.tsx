@@ -33,7 +33,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="section-flow-child scroll-section pb-2 pt-[calc(4.5rem+env(safe-area-inset-top,0px))] sm:pb-4 md:pt-24"
+      className="section-flow-child scroll-section pb-2 pt-[calc(3.25rem+env(safe-area-inset-top,0px))] sm:pb-4 sm:pt-[calc(4.5rem+env(safe-area-inset-top,0px))] md:pt-24"
     >
       <div className="container-page py-3 sm:py-4">
         <div className="about-hero-card">

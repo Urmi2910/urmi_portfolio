@@ -19,14 +19,14 @@ const contactLinks = [
   {
     href: `mailto:${profile.email}`,
     label: profile.email,
-    shortLabel: "Email",
+    mobileLabel: profile.email,
     icon: "mail" as const,
     external: false,
   },
   {
     href: profile.linkedin,
     label: profile.linkedin.replace(/^https?:\/\/(www\.)?/, ""),
-    shortLabel: "LinkedIn",
+    mobileLabel: "LinkedIn",
     icon: "linkedin" as const,
     external: true,
   },
@@ -34,23 +34,26 @@ const contactLinks = [
 
 export function ContactLinks({ className }: { className?: string }) {
   return (
-    <div className={cn("flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2", className)}>
-      {contactLinks.map(({ href, label, shortLabel, icon, external }) => (
-        <a
-          key={label}
-          href={href}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className="inline-flex min-h-[44px] min-w-0 items-center gap-1.5 text-sm text-muted-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm touch-manipulation"
-        >
-          {icon === "mail" ? (
-            <Mail className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden="true" />
-          ) : (
-            <LinkedInFilled className="h-4 w-4 shrink-0" />
-          )}
-          <span className="break-anywhere sm:hidden">{shortLabel}</span>
-          <span className="hidden break-anywhere sm:inline">{label}</span>
-        </a>
-      ))}
-    </div>
+    <nav aria-label="Contact links" className={cn("w-full min-w-0", className)}>
+      <ul className="flex min-w-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2">
+        {contactLinks.map(({ href, label, mobileLabel, icon, external }) => (
+          <li key={label} className="min-w-0">
+            <a
+              href={href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="inline-flex min-h-[36px] w-full min-w-0 items-center gap-1.5 rounded-[var(--radius-sm)] text-xs font-medium text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation sm:min-h-[44px] sm:gap-2 sm:text-sm sm:w-auto"
+            >
+              {icon === "mail" ? (
+                <Mail className="h-3.5 w-3.5 shrink-0 text-primary sm:h-4 sm:w-4" strokeWidth={2.5} aria-hidden="true" />
+              ) : (
+                <LinkedInFilled className="h-3.5 w-3.5 shrink-0 text-primary sm:h-4 sm:w-4" />
+              )}
+              <span className="min-w-0 break-all sm:hidden">{mobileLabel}</span>
+              <span className="hidden min-w-0 break-all sm:inline">{label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

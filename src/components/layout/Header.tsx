@@ -13,7 +13,7 @@ const navLinks = [
   { href: "#learning", label: "Learning" },
 ] as const;
 
-const headerHeight = "calc(3.5rem + env(safe-area-inset-top, 0px))";
+const headerHeight = "calc(3rem + env(safe-area-inset-top, 0px))";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -82,7 +82,7 @@ export function Header() {
   const navLinkClass = (href: string, mobile = false) =>
     cn(
       mobile
-        ? "flex min-h-[48px] items-center rounded-[var(--radius-md)] px-4 text-base font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
+        ? "flex min-h-[40px] items-center rounded-[var(--radius-md)] px-3 text-sm font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
         : "tap-link rounded-full px-3 py-2.5 text-label transition-md hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:px-4",
       activeSection === href
         ? "bg-primary/8 text-primary font-medium"
@@ -101,11 +101,11 @@ export function Header() {
           : "border-border/20"
       )}
     >
-      <div className="mx-auto flex h-14 min-h-[3.5rem] max-w-6xl items-center justify-between gap-2 px-[max(1rem,env(safe-area-inset-left))] sm:gap-3 sm:px-6 sm:h-16">
+      <div className="container-page flex h-12 min-h-[3rem] items-center justify-between gap-2 sm:h-14 sm:min-h-[3.5rem] sm:gap-3 md:h-16">
         <Link
           href="/"
           onClick={closeMenu}
-          className="min-w-0 max-w-[45%] truncate font-heading text-base font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full px-2 py-2 sm:max-w-none sm:text-lg"
+          className="min-w-0 flex-1 truncate font-heading text-[0.9375rem] font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full py-1.5 pr-2 sm:text-base md:text-lg"
         >
           {profile.name}
         </Link>
@@ -118,29 +118,28 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-1 sm:gap-1.5">
+        <div className="flex shrink-0 items-center gap-2">
           <a
             href={profile.resumeUrl}
             download="Urmi-Shah-Resume.pdf"
-            className="btn-primary hidden px-3 text-xs sm:inline-flex sm:px-5 sm:text-sm"
+            className="btn-primary hidden gap-1.5 px-5 text-sm md:inline-flex"
           >
-            <span className="md:hidden">Resume</span>
-            <span className="hidden md:inline">Download resume</span>
+            Download resume
           </a>
 
           <button
             ref={menuButtonRef}
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full text-foreground transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation md:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? (
-              <X className="h-5 w-5" strokeWidth={2.5} />
+              <X className="h-4 w-4" strokeWidth={2.5} />
             ) : (
-              <Menu className="h-5 w-5" strokeWidth={2.5} />
+              <Menu className="h-4 w-4" strokeWidth={2.5} />
             )}
           </button>
         </div>
@@ -161,7 +160,10 @@ export function Header() {
         }}
         aria-hidden={!menuOpen}
       >
-        <nav className="mx-auto max-w-6xl px-4 py-4 sm:px-6" aria-label="Mobile navigation">
+        <nav
+          className="container-page py-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))]"
+          aria-label="Mobile navigation"
+        >
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -170,16 +172,6 @@ export function Header() {
                 </Link>
               </li>
             ))}
-            <li className="mt-2 border-t border-border/40 pt-3">
-              <a
-                href={profile.resumeUrl}
-                download="Urmi-Shah-Resume.pdf"
-                onClick={closeMenu}
-                className="btn-primary w-full"
-              >
-                Download resume
-              </a>
-            </li>
           </ul>
         </nav>
       </div>
