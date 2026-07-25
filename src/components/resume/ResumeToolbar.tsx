@@ -1,7 +1,8 @@
 "use client";
 
+import { profile } from "@/data/portfolio";
 import Link from "next/link";
-import { ArrowLeft, Printer } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 
 export function ResumeToolbar() {
   return (
@@ -14,14 +15,14 @@ export function ResumeToolbar() {
           <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
           Back to site
         </Link>
-        <button
-          type="button"
-          onClick={() => window.print()}
+        <a
+          href={profile.resumeDownloadUrl}
+          download={profile.resumeFilename}
           className="btn-primary px-4 text-sm"
         >
-          <Printer className="h-4 w-4" strokeWidth={2.5} />
-          Save as PDF
-        </button>
+          <Download className="h-4 w-4" strokeWidth={2.5} />
+          Download resume
+        </a>
       </div>
     </div>
   );

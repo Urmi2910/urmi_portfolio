@@ -43,6 +43,8 @@ export const profile = {
   phone: "(+91) 9426804388",
   linkedin: "https://www.linkedin.com/in/urmi-shah/",
   resumeUrl: "/resume.pdf",
+  resumeDownloadUrl: "/api/resume/download",
+  resumeFilename: "Urmi-Shah-Resume.pdf",
   workSamples: "",
 
   skills: [
@@ -191,7 +193,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["Content Systems", "AI", "Governance"],
+    tags: ["System Design", "AI", "Governance"],
     featured: true,
     accentColor: "warm",
     metrics: [],
@@ -241,7 +243,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["Technical Writing", "Workshop"],
+    tags: ["Technical Writing", "Workshop", "AI Experiments"],
     featured: false,
     accentColor: "tertiary",
     metrics: [],
