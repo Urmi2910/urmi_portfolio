@@ -42,8 +42,8 @@ export const profile = {
   email: "shah.urmi2910@gmail.com",
   phone: "(+91) 9426804388",
   linkedin: "https://www.linkedin.com/in/urmi-shah/",
-  resumeUrl: "/resume.pdf",
-  resumeDownloadUrl: "/api/resume/download",
+  resumeUrl: "/Urmi-Shah-Resume.pdf",
+  resumeDownloadUrl: "/Urmi-Shah-Resume.pdf",
   resumeFilename: "Urmi-Shah-Resume.pdf",
   workSamples: "",
 

@@ -4,11 +4,15 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const source = join(root, "Urmi-Shah-Resume.pdf");
-const target = join(root, "public", "resume.pdf");
+const publicDir = join(root, "public");
+const targets = [
+  join(publicDir, "Urmi-Shah-Resume.pdf"),
+  join(publicDir, "resume.pdf"),
+];
 
 if (!existsSync(source)) {
-  if (existsSync(target)) {
-    console.log("Using existing public/resume.pdf");
+  if (targets.some((target) => existsSync(target))) {
+    console.log("Using existing public resume PDF");
     process.exit(0);
   }
 
@@ -16,5 +20,8 @@ if (!existsSync(source)) {
   process.exit(1);
 }
 
-copyFileSync(source, target);
-console.log("Synced Urmi-Shah-Resume.pdf → public/resume.pdf");
+for (const target of targets) {
+  copyFileSync(source, target);
+}
+
+console.log("Synced Urmi-Shah-Resume.pdf → public/");
