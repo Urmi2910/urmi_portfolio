@@ -5,42 +5,57 @@ import { CompanyLogo } from "@/components/ui/CompanyLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 import { Briefcase, ChevronDown, Lightbulb } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 export function ExperienceSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const scrollLockRef = useRef<number | null>(null);
+  const toggleRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const toggleViewportTopRef = useRef<number | null>(null);
 
-  const toggleResponsibilities = (index: number) => {
-    if (openIndex === index) {
-      setOpenIndex(null);
-      return;
-    }
+  const toggleResponsibilities = useCallback((index: number) => {
+    setOpenIndex((current) => {
+      if (current === index) {
+        return null;
+      }
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      scrollLockRef.current = window.scrollY;
-    }
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        const toggle = toggleRefs.current[index];
+        toggleViewportTopRef.current = toggle?.getBoundingClientRect().top ?? null;
+      }
 
-    setOpenIndex(index);
-  };
+      return index;
+    });
+  }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (openIndex === null) return;
 
-    const panel = panelRefs.current[openIndex];
-    if (panel) {
-      panel.scrollTop = 0;
-    }
+    const targetTop = toggleViewportTopRef.current;
+    if (targetTop === null) return;
 
-    if (scrollLockRef.current === null) return;
+    toggleViewportTopRef.current = null;
 
-    const lockedScrollY = scrollLockRef.current;
-    scrollLockRef.current = null;
+    const toggle = toggleRefs.current[openIndex];
+    if (!toggle) return;
 
+    const fixScroll = () => {
+      const delta = toggle.getBoundingClientRect().top - targetTop;
+      if (Math.abs(delta) > 0.5) {
+        window.scrollBy({ top: delta, left: 0, behavior: "auto" });
+      }
+    };
+
+    fixScroll();
     requestAnimationFrame(() => {
-      window.scrollTo({ top: lockedScrollY, left: 0, behavior: "auto" });
+      fixScroll();
+      requestAnimationFrame(fixScroll);
     });
+
+    const timeoutId = window.setTimeout(fixScroll, 60);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
   }, [openIndex]);
 
   return (
@@ -48,7 +63,7 @@ export function ExperienceSection() {
       <div className="container-page">
         <SectionHeading icon={Briefcase} title="Experience" tone="surface" />
 
-        <ol className="mt-8 flex flex-col gap-5 sm:mt-12 sm:gap-6">
+        <ol className="experience-list mt-8 flex flex-col gap-5 sm:mt-12 sm:gap-6">
           {profile.experience.map((job, i) => {
             const isOpen = openIndex === i;
             const panelId = `experience-responsibilities-${i}`;
@@ -61,7 +76,7 @@ export function ExperienceSection() {
               >
                 <div className="experience-card-layout">
                   <div className="experience-card-top">
-                    <div className="experience-job-sticky">
+                    <div className="experience-job-header-row">
                       <CompanyLogo
                         company={job.company}
                         logoSrc={job.logoSrc}
@@ -99,6 +114,9 @@ export function ExperienceSection() {
                       <button
                         type="button"
                         id={`${panelId}-toggle`}
+                        ref={(node) => {
+                          toggleRefs.current[i] = node;
+                        }}
                         onClick={() => toggleResponsibilities(i)}
                         aria-expanded={isOpen}
                         aria-controls={panelId}
@@ -109,8 +127,12 @@ export function ExperienceSection() {
                           isOpen && "border-primary/30 bg-primary/[0.09] md:border-0 md:bg-transparent"
                         )}
                       >
-                      <span className="inline-flex min-w-0 items-center gap-1.5 text-[0.8125rem] font-medium sm:text-sm md:gap-2 md:text-base">
-                        <Lightbulb className="h-3.5 w-3.5 shrink-0 md:h-4 md:w-4" strokeWidth={2.5} aria-hidden="true" />
+                        <span className="inline-flex min-w-0 items-center gap-1.5 text-[0.8125rem] font-medium sm:text-sm md:gap-2 md:text-base">
+                          <Lightbulb
+                            className="h-3.5 w-3.5 shrink-0 md:h-4 md:w-4"
+                            strokeWidth={2.5}
+                            aria-hidden="true"
+                          />
                           <span>Responsibilities</span>
                         </span>
                         <ChevronDown
@@ -126,24 +148,21 @@ export function ExperienceSection() {
                   </div>
 
                   <div
-                    ref={(node) => {
-                      panelRefs.current[i] = node;
-                    }}
                     id={panelId}
                     role="region"
                     aria-labelledby={`${panelId}-toggle`}
                     aria-hidden={!isOpen}
                     className={cn(
                       "experience-responsibilities-panel",
-                      isOpen ? "mt-3 md:mt-4" : "hidden md:mt-4 md:grid md:grid-rows-[0fr] md:opacity-0",
-                      isOpen &&
-                        "max-md:max-h-[min(50vh,26rem)] max-md:overflow-y-auto max-md:overscroll-y-contain max-md:[overflow-anchor:none]",
-                      isOpen && "md:grid md:grid-rows-[1fr] md:opacity-100",
-                      "md:transition-[grid-template-rows,opacity] md:duration-300 md:ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:md:transition-none"
+                      isOpen ? "mt-3 max-md:block md:mt-4" : "max-md:hidden md:mt-4",
+                      "max-md:overflow-visible md:grid md:transition-[grid-template-rows,opacity] md:duration-300 md:ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:md:transition-none",
+                      isOpen
+                        ? "md:grid-rows-[1fr] md:opacity-100"
+                        : "md:grid-rows-[0fr] md:opacity-0"
                     )}
                   >
-                    <div className="min-h-0 overflow-hidden">
-                      <div className="rounded-[var(--radius-md)] border border-outline/10 bg-surface/70 p-4 md:border-0 md:bg-transparent md:p-0">
+                    <div className="experience-panel-inner max-md:overflow-visible md:min-h-0 md:overflow-hidden">
+                      <div className="experience-panel-content rounded-[var(--radius-md)] border border-outline/10 bg-surface/70 p-4 md:border-0 md:bg-transparent md:p-0">
                         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/75 md:sr-only">
                           Key responsibilities
                         </p>

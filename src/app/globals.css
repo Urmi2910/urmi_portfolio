@@ -335,7 +335,6 @@
   /* Experience: solid surface with a light top wash — reads clearly vs Learning below */
   .section-experience {
     position: relative;
-    overflow-x: clip;
     background-color: var(--color-surface);
     overflow-anchor: none;
   }
@@ -431,10 +430,21 @@
   }
 
   @media (max-width: 767px) {
+    .experience-list,
+    .experience-card-layout,
+    .card-experience,
+    .experience-card-body,
+    .experience-responsibilities-panel,
+    .experience-responsibilities-panel .experience-panel-inner,
+    .experience-responsibilities-panel .experience-panel-content {
+      overflow: visible;
+      max-height: none;
+      overflow-anchor: none;
+    }
+
     .card-experience {
       @apply p-4;
       transition: box-shadow 300ms var(--ease-md);
-      overflow-anchor: none;
     }
 
     .card-learning,
@@ -442,12 +452,7 @@
       @apply p-4;
     }
 
-    .experience-card-body,
-    .experience-responsibilities-panel {
-      overflow-anchor: none;
-    }
-
-    .experience-job-sticky {
+    .experience-job-header-row {
       display: flex;
       gap: 0.75rem;
       margin-inline: -0.25rem;
@@ -458,21 +463,11 @@
       margin-inline: -0.25rem;
     }
 
-    .card-experience[data-open="true"] .experience-card-top {
-      position: sticky;
-      top: calc(6.5rem + env(safe-area-inset-top, 0px));
-      z-index: 25;
-      padding: 0.375rem 0.25rem 0.625rem;
-      background: color-mix(in srgb, var(--color-background) 98%, transparent);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
-    }
-
     .experience-responsibilities-toggle {
       position: relative;
-      z-index: 1;
-      scroll-margin-top: 0;
+      z-index: 20;
+      pointer-events: auto;
+      overflow-anchor: none;
     }
   }
 
@@ -494,7 +489,7 @@
       display: contents;
     }
 
-    .experience-job-sticky {
+    .experience-job-header-row {
       display: contents;
     }
 
@@ -514,7 +509,7 @@
       grid-row: 3;
     }
 
-    .experience-card-layout > .experience-card-top > .experience-job-sticky > *:first-child,
+    .experience-card-layout > .experience-card-top > .experience-job-header-row > *:first-child,
     .experience-card-logo {
       grid-column: 1;
       grid-row: 1 / -1;
@@ -531,6 +526,7 @@
       padding: 0.625rem clamp(1rem, 4vw, 1.5rem) 0.75rem;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      pointer-events: none;
     }
 
     .section-heading-sticky-surface {
