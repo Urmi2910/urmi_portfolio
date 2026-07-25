@@ -11,7 +11,6 @@ const navLinks = [
   { href: "#case-studies", label: "Portfolio" },
   { href: "#experience", label: "Experience" },
   { href: "#learning", label: "Learning" },
-  { href: "#contact", label: "Contact" },
 ] as const;
 
 const headerHeight = "calc(3.5rem + env(safe-area-inset-top, 0px))";
