@@ -1,4 +1,5 @@
 import type { WritingExample } from "@/data/product-content-design";
+import { CaseStudyBottomNav } from "@/components/case-studies/shared/CaseStudyBottomNav";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -17,11 +18,7 @@ export function WritingExampleSampleNav({
   total: number;
 }) {
   return (
-    <nav
-      aria-label="Example navigation"
-      className="writing-sample-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 backdrop-blur-md"
-      style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
-    >
+    <CaseStudyBottomNav aria-label="Example navigation" className="writing-sample-nav">
       <div className="mx-auto flex max-w-2xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
         {prev ? (
           <Link
@@ -82,6 +79,6 @@ export function WritingExampleSampleNav({
         )}
       </div>
       <p className="sr-only">Currently reading: {current.title}</p>
-    </nav>
+    </CaseStudyBottomNav>
   );
 }

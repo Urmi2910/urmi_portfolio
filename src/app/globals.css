@@ -1253,12 +1253,16 @@
     user-select: none;
   }
 
+  .case-study-bottom-nav {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
   .case-study-footer-offset {
     margin-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
     padding-bottom: 0;
   }
 
   .case-study-main-with-nav {
-    padding-bottom: 0;
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
   }
 }

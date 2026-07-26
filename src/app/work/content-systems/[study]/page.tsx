@@ -40,13 +40,6 @@ export default async function SystemStudyPage({ params }: PageProps) {
   return (
     <>
       <Header />
-      <SystemStudyNav
-        current={study}
-        prev={prev}
-        next={next}
-        index={index}
-        total={systemStudies.length}
-      />
       <main className="content-systems-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="relative border-b border-border/50 pb-8 sm:pb-10">
           <GeometricDecor variant="section" />
@@ -57,7 +50,14 @@ export default async function SystemStudyPage({ params }: PageProps) {
           </div>
         </section>
       </main>
-      <Footer aboveBottomNav />
+      <SystemStudyNav
+        current={study}
+        prev={prev}
+        next={next}
+        index={index}
+        total={systemStudies.length}
+      />
+      <Footer />
     </>
   );
 }

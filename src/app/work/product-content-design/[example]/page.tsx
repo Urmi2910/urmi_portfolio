@@ -44,13 +44,6 @@ export default async function WritingExamplePage({ params }: PageProps) {
   return (
     <>
       <Header />
-      <WritingExampleSampleNav
-        current={example}
-        prev={prev}
-        next={next}
-        index={index}
-        total={writingExamples.length}
-      />
       <main className="writing-case-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="relative border-b border-border/50 pb-8 sm:pb-10">
           <GeometricDecor variant="section" />
@@ -61,7 +54,14 @@ export default async function WritingExamplePage({ params }: PageProps) {
           </div>
         </section>
       </main>
-      <Footer aboveBottomNav />
+      <WritingExampleSampleNav
+        current={example}
+        prev={prev}
+        next={next}
+        index={index}
+        total={writingExamples.length}
+      />
+      <Footer />
     </>
   );
 }

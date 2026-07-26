@@ -1,6 +1,7 @@
 "use client";
 
 import type { SystemStudy } from "@/data/content-systems";
+import { CaseStudyBottomNav } from "@/components/case-studies/shared/CaseStudyBottomNav";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -19,11 +20,7 @@ export function SystemStudyNav({
   total: number;
 }) {
   return (
-    <nav
-      aria-label="System study navigation"
-      className="system-study-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 backdrop-blur-md"
-      style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
-    >
+    <CaseStudyBottomNav aria-label="System study navigation" className="system-study-nav">
       <div className="mx-auto flex max-w-5xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
         {prev ? (
           <Link
@@ -71,6 +68,6 @@ export function SystemStudyNav({
         )}
       </div>
       <p className="sr-only">Currently viewing: {current.title}</p>
-    </nav>
+    </CaseStudyBottomNav>
   );
 }
