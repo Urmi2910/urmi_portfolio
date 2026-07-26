@@ -7,20 +7,12 @@ import {
   StorySection,
 } from "@/components/case-studies/shared/StoryComponents";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { ImageGallery } from "./ImageGallery";
 
-export function WritingExampleDetail({
-  example,
-  prev,
-  next,
-}: {
-  example: WritingExample;
-  prev?: WritingExample;
-  next?: WritingExample;
-}) {
+export function WritingExampleDetail({ example }: { example: WritingExample }) {
   return (
     <div className="writing-example-detail mx-auto max-w-2xl pb-6">
       <Link
@@ -89,35 +81,6 @@ export function WritingExampleDetail({
           <StoryList items={example.impact} />
         </StoryChapter>
       </div>
-
-      <footer className="mt-12 flex flex-col gap-4 border-t border-border/60 pt-8 sm:mt-16 sm:flex-row sm:items-stretch sm:justify-between">
-        {prev ? (
-          <Link
-            href={`/work/product-content-design/${prev.slug}`}
-            className="group flex min-h-[44px] flex-1 flex-col rounded-[var(--radius-md)] border border-outline/10 bg-surface/40 p-4 transition-md hover:border-primary/20 hover:bg-surface"
-          >
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Previous</span>
-            <span className="mt-1 inline-flex items-center gap-1 font-heading text-sm font-semibold text-foreground group-hover:text-primary">
-              <ArrowLeft className="h-3.5 w-3.5" strokeWidth={2.5} />
-              {prev.title}
-            </span>
-          </Link>
-        ) : (
-          <span />
-        )}
-        {next ? (
-          <Link
-            href={`/work/product-content-design/${next.slug}`}
-            className="group flex min-h-[44px] flex-1 flex-col rounded-[var(--radius-md)] border border-outline/10 bg-surface/40 p-4 text-right transition-md hover:border-primary/20 hover:bg-surface sm:items-end"
-          >
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Next</span>
-            <span className="mt-1 inline-flex items-center gap-1 font-heading text-sm font-semibold text-foreground group-hover:text-primary">
-              {next.title}
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-            </span>
-          </Link>
-        ) : null}
-      </footer>
     </div>
   );
 }
