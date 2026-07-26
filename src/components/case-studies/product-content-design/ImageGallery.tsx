@@ -48,6 +48,8 @@ export function ImageGallery({
               label={item.alt}
               caption={item.caption}
               variant={item.id === "final" ? "after" : "default"}
+              src={item.src}
+              mockup={item.mockup}
             />
           ) : null
         )}

@@ -7,10 +7,10 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#case-studies", label: "Portfolio" },
-  { href: "#experience", label: "Experience" },
-  { href: "#learning", label: "Learning" },
+  { href: "/#about", label: "About" },
+  { href: "/#case-studies", label: "Portfolio" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#learning", label: "Learning" },
 ] as const;
 
 const headerHeight = "calc(3rem + env(safe-area-inset-top, 0px))";
@@ -36,7 +36,7 @@ export function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
-    const sectionIds = navLinks.map((link) => link.href.slice(1));
+    const sectionIds = navLinks.map((link) => link.href.split("#")[1] ?? "");
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
@@ -84,7 +84,7 @@ export function Header() {
       mobile
         ? "flex min-h-[36px] items-center rounded-[var(--radius-md)] px-3 text-[0.8125rem] font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
         : "tap-link rounded-full px-3 py-2.5 text-label transition-md hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:px-4",
-      activeSection === href
+      activeSection === href || href.endsWith(activeSection)
         ? "bg-primary/8 text-primary font-medium"
         : mobile
           ? "text-foreground"

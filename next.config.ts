@@ -1,6 +1,30 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/work/product-content-design/dropdown-labels",
+        destination: "/work/product-content-design/ui-components#dropdown-labels",
+        permanent: true,
+      },
+      {
+        source: "/work/product-content-design/snackbars",
+        destination: "/work/product-content-design/ui-components#snackbars",
+        permanent: true,
+      },
+      {
+        source: "/work/product-content-design/call-to-action",
+        destination: "/work/product-content-design/ui-components#call-to-action",
+        permanent: true,
+      },
+      {
+        source: "/work/writing-beyond-products",
+        destination: "/work/ux-writing-practice",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

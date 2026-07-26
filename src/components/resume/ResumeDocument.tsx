@@ -106,6 +106,9 @@ export function ResumeDocument() {
                       <span className="font-medium tabular-nums text-muted-foreground">{job.period}</span>
                     </p>
 
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/90">{job.companyAbout}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{job.summary}</p>
+
                     <ul className="mt-3 space-y-2 border-l-2 border-primary/20 pl-4">
                       {job.learnings.map((item) => (
                         <li

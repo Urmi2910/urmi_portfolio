@@ -1,4 +1,4 @@
-import type { WritingExample } from "@/data/product-content-design";
+import type { ProductContentExampleNavItem } from "@/data/product-content-design-nav";
 import { CaseStudyBottomNav } from "@/components/case-studies/shared/CaseStudyBottomNav";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -11,9 +11,9 @@ export function WritingExampleSampleNav({
   index,
   total,
 }: {
-  current: WritingExample;
-  prev?: WritingExample;
-  next?: WritingExample;
+  current: ProductContentExampleNavItem;
+  prev?: ProductContentExampleNavItem;
+  next?: ProductContentExampleNavItem;
   index: number;
   total: number;
 }) {
@@ -22,7 +22,7 @@ export function WritingExampleSampleNav({
       <div className="mx-auto flex max-w-2xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
         {prev ? (
           <Link
-            href={`/work/product-content-design/${prev.slug}`}
+            href={prev.href}
             scroll
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center gap-2 rounded-[var(--radius-md)] px-3 py-2",
@@ -38,12 +38,12 @@ export function WritingExampleSampleNav({
             href="/work/product-content-design"
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center gap-2 rounded-[var(--radius-md)] px-3 py-2",
-              "text-sm text-muted-foreground transition-md hover:bg-surface hover:text-foreground",
+              "text-xs text-muted-foreground transition-md hover:bg-surface hover:text-foreground",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             )}
           >
-            <ArrowLeft className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden />
-            <span className="font-medium">All Examples</span>
+            <ArrowLeft className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden />
+            <span>All Examples</span>
           </Link>
         )}
 
@@ -53,7 +53,7 @@ export function WritingExampleSampleNav({
 
         {next ? (
           <Link
-            href={`/work/product-content-design/${next.slug}`}
+            href={next.href}
             scroll
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center justify-end gap-2 rounded-[var(--radius-md)] px-3 py-2",
@@ -69,12 +69,12 @@ export function WritingExampleSampleNav({
             href="/work/product-content-design"
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center justify-end gap-2 rounded-[var(--radius-md)] px-3 py-2",
-              "bg-primary/10 text-sm font-medium text-primary transition-md hover:bg-primary/15",
+              "text-xs text-primary transition-md hover:bg-primary/10",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             )}
           >
-            <span className="font-medium">All Examples</span>
-            <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden />
+            <span>All Examples</span>
+            <ArrowRight className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden />
           </Link>
         )}
       </div>

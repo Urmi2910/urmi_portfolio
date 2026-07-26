@@ -25,7 +25,8 @@ export interface Experience {
   company: string;
   role: string;
   period: string;
-  description: string;
+  companyAbout: string;
+  summary: string;
   learnings: string[];
   logoSrc: string;
   logoSrcSet?: string;
@@ -86,14 +87,14 @@ export const profile = {
       logoFit: "cover",
       role: "Content Engineer & Content Designer - III",
       period: "October 2025 to Present",
-      description:
-        "End-to-end product content for DreamStreet, a finance app, including onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
+      companyAbout:
+        "DreamStreet is a personal finance app for managing money, investments, and everyday payments.",
+      summary:
+        "I lead product content and AI conversation design across onboarding, payments, support, and Help Center.",
       learnings: [
-        "Designed product content for DreamStreet, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
-        "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
-        "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
-        "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
-        "Used UX research and content testing to improve clarity, solve user problems, and refine the product experience",
+        "Designed Veda AI — personality, conversation flows, guardrails, and fallbacks",
+        "Built AI content workflows with prompt libraries and templates for faster drafts",
+        "Created voice, tone, and localization guidelines for consistent content across teams",
       ],
     },
     {
@@ -101,15 +102,14 @@ export const profile = {
       logoSrc: "/logos/dream11.png",
       role: "Content Designer - III",
       period: "September 2024 to October 2025",
-      description:
-        "User-first content for Dream11's fantasy sports platform, serving 260M+ users with content systems, localization, and scalable design tooling.",
+      companyAbout:
+        "Dream11 is India's largest fantasy sports platform, serving 260M+ users.",
+      summary:
+        "I led UX writing and built the Dream11 Content Design System so teams could ship clearer content at scale.",
       learnings: [
-        "Led clear, accessible, and user-first content across Dream11 products, improving usability and building customer confidence for 260M+ users",
-        "Partnered with Product and Design from discovery to launch, using content to shape user journeys and product decisions",
-        "Built the Dream11 Content Design System, using systems design that surfaced guidelines, content patterns, past copy, and best practices to help teams create content faster and more consistently",
-        "Helped teams think content-first through workshops, reusable patterns, templates, and writing guidelines",
-        "Organized content with taxonomies, labels, and localization standards to improve consistency and comprehension across products",
-        "Applied accessibility, user research, and data to improve content, reduce friction, and build user trust",
+        "Partnered with Product and Design from discovery through launch",
+        "Organized taxonomies, labels, and localization standards across products",
+        "Ran workshops and reusable patterns to help teams write content-first",
       ],
     },
     {
@@ -117,15 +117,14 @@ export const profile = {
       logoSrc: "/logos/clevertap.png",
       role: "Technical writer & UX Writer",
       period: "January 2023 to August 2024",
-      description:
-        "Product content for CleverTap's B2B marketing automation platform, including dashboards, notifications, and complex workflows, plus mentoring, hiring, and content design system work.",
+      companyAbout:
+        "CleverTap is a B2B marketing automation platform for enterprise customer engagement.",
+      summary:
+        "I wrote UX content for dashboards, notifications, and complex workflows, and contributed to the content design system.",
       learnings: [
-        "Designed product content for a B2B marketing automation platform, including dashboards, notifications, and complex product workflows",
-        "Partnered with Product and Design to simplify technical features and improve usability for enterprise users",
-        "Maintained a consistent voice and tone across the product while balancing user needs and business goals",
-        "Contributed to the Content Design System by documenting writing guidelines, reusable patterns, and best practices",
-        "Tested and refined content with Product, Design, and Research using user feedback",
-        "Onboarded and mentored new team members, created interview assessments, and interviewed candidates",
+        "Simplified technical features for enterprise users with Product and Design",
+        "Documented writing guidelines and reusable patterns in the CDS",
+        "Mentored new writers and built interview assessments for hiring",
       ],
     },
     {
@@ -134,13 +133,14 @@ export const profile = {
       logoSrcSet: "/logos/appitsimple-96.png 2x, /logos/appitsimple.png 1x",
       role: "Sr. Content writer & Copy writer",
       period: "Jun 2021 to Oct 2022",
-      description:
-        "Cross-channel content for Appitsimple's mobile and web software products across product UI, websites, blogs, and marketing, tailored to user intent and measured for performance.",
+      companyAbout:
+        "Appitsimple builds mobile and web software products across multiple industries.",
+      summary:
+        "I wrote product UI, website, blog, and marketing content tailored to user intent and performance.",
       learnings: [
-        "Wrote across channels for product, website, blogs, and marketing, tailoring content to user intent",
-        "Improved content performance by analysing clicks, feedback, and metrics, then iterating for results",
-        "Created reusable templates, contributed to the style guide, and aligned tone across teams",
-        "Guided freelance writers with briefs and reviews to keep blogs clear and consistent",
+        "Improved content using clicks, feedback, and metrics",
+        "Created templates and style guide contributions for cross-team consistency",
+        "Briefed and reviewed freelance writers on blog content",
       ],
     },
     {
@@ -148,12 +148,13 @@ export const profile = {
       logoSrc: "/logos/gateway.png",
       role: "Sr. Content writer",
       period: "Mar 2020 to Mar 2021",
-      description:
-        "Blogs and product content for Gateway's technical software products, simplifying complex ideas for wider business and consumer audiences.",
+      companyAbout:
+        "Gateway Group develops technical software products for business and consumer markets.",
+      summary:
+        "I wrote blogs and product content that simplified complex technical ideas for broader audiences.",
       learnings: [
-        "Wrote blogs and product content for multiple technical products, simplifying complex ideas for wider audiences",
-        "Applied AP style guide, SEO, and user-intent writing to make content clear and discoverable",
-        "Built a foundation in user-friendly writing and consistent brand messaging",
+        "Applied AP style, SEO, and user-intent writing for clarity and discoverability",
+        "Built early foundations in user-friendly writing and brand messaging",
       ],
     },
   ] satisfies Experience[],
@@ -170,7 +171,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "6 months",
-    tags: ["Conversation Design", "AI Governance", "Content Strategy"],
+    tags: ["Conversation Design", "Content Strategy"],
     featured: true,
     accentColor: "accent",
     metrics: [],
@@ -188,7 +189,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "content-systems",
     title: "Content Systems & Content Modeling",
-    subtitle: "Designing systems that help teams create consistent content at scale.",
+    subtitle: "",
     excerpt:
       "From reusable frameworks to governance and localization, these projects focus on building scalable content systems rather than individual screens.",
     company: "Portfolio",
@@ -236,29 +237,29 @@ export const caseStudies: CaseStudy[] = [
       "A repeatable format for presenting UX writing work that shows challenge, reasoning, and outcome, not just polished final copy.",
   },
   {
-    slug: "writing-beyond-products",
-    title: "Writing beyond products",
+    slug: "ux-writing-practice",
+    title: "Building a UX Writing Practice",
     subtitle: "",
     excerpt:
-      "Technical writing, published articles, workshops, and AI experiments that reflect how I think, learn, and share knowledge.",
-    company: "Portfolio",
-    role: "Content Engineer & Content Designer",
-    year: "2024",
-    duration: "Ongoing",
-    tags: ["Technical Writing", "Workshop", "AI Experiments"],
-    featured: false,
+      "Creating and delivering a structured onboarding program to help teams build shared UX writing principles, reusable resources, and collaboration workflows.",
+    company: "CleverTap",
+    role: "Content Designer",
+    year: "2023–2024",
+    duration: "Multi-part program",
+    tags: ["Workshop", "Leadership", "Content Design"],
+    featured: true,
     accentColor: "tertiary",
     metrics: [],
     challenge:
-      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-app copy, but with different formats and audiences.",
+      "As teams grow, content quality depends on shared principles—not just individual writers. New designers, PMs, and writers need a consistent foundation for UX writing, microcopy, and cross-functional collaboration.",
     approach: [
-      "Publish technical writing and articles that explain complex topics in accessible language",
-      "Facilitate workshops that help teams improve how they write and think about content",
-      "Run AI experiments to test new ways of creating, evaluating, and scaling content",
-      "Share learning openly so others can reuse frameworks, not just final outputs",
+      "Design a multi-part onboarding workshop covering principles, UI components, and collaboration workflows",
+      "Create reusable deck content and practical guides teams could apply immediately",
+      "Document end-to-end content design process from PRD to release",
+      "Curate a resource library for continued learning beyond the session",
     ],
     outcome:
-      "A body of work beyond shipped products that shows how I think, learn, and help others grow as content practitioners.",
+      "A repeatable onboarding program that reduced the learning curve for new team members and established shared vocabulary and guidelines across writers, designers, and product managers.",
   },
 ];
 

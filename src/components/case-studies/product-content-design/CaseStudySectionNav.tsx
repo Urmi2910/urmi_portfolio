@@ -68,21 +68,24 @@ export function CaseStudySectionNav({
       className="writing-section-nav hidden md:block md:sticky md:top-24 md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:overscroll-contain"
     >
       <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-        On this page
+        Index
       </p>
       <ol className="space-y-1 border-l border-outline/15 pl-3">
-        {sections.map((section) => (
+        {sections.map((section, index) => (
           <li key={section.id}>
             <a
               href={`#${section.id}`}
               className={cn(
-                "block rounded-r-[var(--radius-sm)] py-1.5 pl-3 text-sm transition-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                "flex items-baseline gap-2 rounded-r-[var(--radius-sm)] py-1.5 pl-3 text-sm transition-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
                 activeId === section.id
                   ? "border-l-2 border-primary bg-primary/5 font-medium text-primary"
                   : "border-l-2 border-transparent text-muted-foreground hover:text-foreground"
               )}
             >
-              {section.label}
+              <span className="shrink-0 text-[11px] font-semibold tabular-nums tracking-wide opacity-60">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>{section.label}</span>
             </a>
           </li>
         ))}

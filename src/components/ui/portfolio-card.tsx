@@ -10,13 +10,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const accentBorder: Record<CaseStudy["accentColor"], string> = {
-  primary: "border-l-primary",
-  accent: "border-l-accent",
-  tertiary: "border-l-tertiary",
-  warm: "border-l-accent-warm",
-};
-
 const accentIcon: Record<CaseStudy["accentColor"], string> = {
   primary: "bg-primary/10 text-primary ring-primary/15",
   accent: "bg-accent/10 text-accent ring-accent/15",
@@ -28,7 +21,7 @@ const studyIcons: Record<string, LucideIcon> = {
   "product-content-design": PenLine,
   "content-systems": Layers,
   "ai-design": Bot,
-  "writing-beyond-products": BookOpen,
+  "ux-writing-practice": BookOpen,
 };
 
 export function PortfolioCard({
@@ -51,9 +44,7 @@ export function PortfolioCard({
         className={cn(
           "flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-xl)] bg-surface shadow-sm ring-1 ring-outline/10 transition-md",
           "hover:-translate-y-1 hover:shadow-md",
-          "motion-reduce:hover:translate-y-0",
-          "border-l-[3px]",
-          accentBorder[study.accentColor]
+          "motion-reduce:hover:translate-y-0"
         )}
       >
         <div className="flex flex-1 flex-col px-[clamp(1.125rem,3.5vw,1.5rem)] py-[clamp(1.125rem,3.5vw,1.5rem)]">

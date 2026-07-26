@@ -32,12 +32,40 @@ export interface WritingExampleComparison {
   after: string;
   beforeLabel?: string;
   afterLabel?: string;
+  beforeImage?: string;
+  afterImage?: string;
+  beforeMockup?: string;
+  afterMockup?: string;
+  showSlider?: boolean;
 }
 
 export interface WritingExampleGalleryItem {
   id: string;
   caption: string;
   alt: string;
+  src?: string;
+  mockup?: string;
+}
+
+export interface WritingExampleOptionRow {
+  label: string;
+  rationale: string;
+  selected?: boolean;
+}
+
+export interface WritingExampleDialogCopy {
+  title: string;
+  body: string;
+  primary: string;
+  secondary: string;
+}
+
+export interface WritingExampleIterationImage {
+  label?: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
 }
 
 export interface WritingExample {
@@ -50,6 +78,11 @@ export interface WritingExample {
   constraints: string[];
   research: string[];
   optionsExplored: { label: string; description: string; rejected?: boolean }[];
+  explorationIntro?: string;
+  optionsComparisonTable?: WritingExampleOptionRow[];
+  dialogExplorations?: WritingExampleDialogCopy[];
+  dialogExplorationPair?: WritingExampleDialogCopy[];
+  collaboration?: { partners: string; quote: string };
   contentDecisions: string[];
   comparison: WritingExampleComparison;
   finalSolution: string;
@@ -57,6 +90,89 @@ export interface WritingExample {
   keyLearnings: string[];
   pullQuote: string;
   gallery: WritingExampleGalleryItem[];
+  chapterTitles?: {
+    moment?: string;
+    approach?: string;
+    findings?: string;
+    solution?: string;
+    outcome?: string;
+  };
+  findings?: string[];
+  findingsIntro?: string;
+  findingsBullets?: string[];
+  findingsClosing?: string;
+  researchLead?: string;
+  approachParagraphs?: string[];
+  solutionParagraphs?: string[];
+  iterationImages?: WritingExampleIterationImage[];
+  additionalComparisons?: WritingExampleComparisonBlock[];
+}
+
+export interface WritingExampleComparisonBlock {
+  label?: string;
+  intro?: string[];
+  before: string;
+  after: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  beforeMockup?: string;
+  afterMockup?: string;
+}
+
+export function toWritingExampleSectionId(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export function getWritingExampleSections(example: WritingExample): WritingExampleSection[] {
+  const sections: WritingExampleSection[] = [
+    {
+      id: "moment",
+      label: example.chapterTitles?.moment ?? "The user moment",
+    },
+    {
+      id: "approach",
+      label: example.chapterTitles?.approach ?? "How I approached it",
+    },
+  ];
+
+  if (
+    (example.findings && example.findings.length > 0) ||
+    example.findingsIntro ||
+    (example.findingsBullets &&
+      example.findingsBullets.length > 0 &&
+      !example.approachParagraphs?.length)
+  ) {
+    sections.push({
+      id: "findings",
+      label: example.chapterTitles?.findings ?? "What I found",
+    });
+  }
+
+  sections.push({
+    id: "solution",
+    label: example.chapterTitles?.solution ?? "What we shipped",
+  });
+
+  example.additionalComparisons?.forEach((block) => {
+    if (block.label) {
+      sections.push({
+        id: toWritingExampleSectionId(block.label),
+        label: block.label,
+      });
+    }
+  });
+
+  if (example.chapterTitles?.outcome || example.impact.length > 0) {
+    sections.push({
+      id: "outcome",
+      label: example.chapterTitles?.outcome ?? "What changed",
+    });
+  }
+
+  return sections;
 }
 
 function example(
@@ -130,24 +246,101 @@ function example(
 }
 
 export const writingExamples: WritingExample[] = [
-  example(
-    "first-run-experience",
-    "First Run Experience",
-    "Onboarding copy that teaches the product by helping users ship something real.",
-    "Shaped first-run copy for a new workspace setup flow.",
-    "The first-run experience listed features instead of outcomes. New admins completed tours but still did not know what to do first.",
-    "Welcome to the platform",
-    "Create your first campaign in three steps"
-  ),
-  example(
-    "one-time-vs-lumpsum",
-    "One-time vs Lumpsum",
-    "Disambiguating financial terms for non-expert business users.",
-    "Clarified copy comparing one-time and recurring payment configurations.",
-    "Users conflated billing frequency with payout timing. Misselections led to reconciliation issues and support escalations.",
-    "One-time vs Lumpsum",
-    "Single payment vs Scheduled payouts"
-  ),
+  {
+    slug: "first-run-experience",
+    title: "First Run Experience",
+    teaser:
+      "Improving the first experience of creating an NPS campaign by simplifying copy and moving channel choice into the action.",
+    chapterTitles: {
+      moment: "Overview",
+      approach: "Thought process",
+      solution: "Explorations",
+    },
+    overview:
+      "This project focused on improving the first experience of creating an NPS campaign. The existing screen felt negative and overloaded users with information before they could even get started.",
+    problem: "",
+    myRole: "",
+    constraints: [],
+    research: [],
+    optionsExplored: [],
+    approachParagraphs: [
+      "The original design tried to explain everything upfront. It introduced campaign channels, explained what users needed to do, and relied heavily on instructional copy.",
+      "Instead of asking how I could rewrite the content, I asked whether users needed this information at all.",
+      "The button already communicated the next step, so the body copy felt repetitive. Explaining different campaign channels before users had taken any action also added unnecessary complexity.",
+      "Rather than writing more content, I explored whether the interaction itself could reduce the need for explanation.",
+    ],
+    contentDecisions: [],
+    comparison: {
+      before: "Existing",
+      after: "Final version",
+      showSlider: false,
+    },
+    finalSolution:
+      "I rewrote the heading to feel more welcoming and simplified the supporting copy. More importantly, I suggested adding a dropdown to the Create Campaign button so users could choose a channel directly from the action. This removed the need to explain every option upfront and made the flow easier to understand.",
+    solutionParagraphs: [
+      "I rewrote the heading to feel more welcoming and simplified the supporting copy.",
+      "More importantly, I suggested adding a dropdown to the Create Campaign button so users could choose a channel directly from the action. This removed the need to explain every option upfront and made the flow easier to understand.",
+    ],
+    impact: [],
+    keyLearnings: [
+      "Content design isn't always about writing better copy",
+      "Changing the interaction can remove the need for copy altogether",
+    ],
+    pullQuote: "Sometimes changing the interaction removes the need for copy altogether.",
+    gallery: [],
+  },
+  {
+    slug: "one-time-vs-lumpsum",
+    title: "One-time vs Lumpsum",
+    teaser:
+      "Choosing familiar language for a mutual fund investment journey built for Tier 2–4 users.",
+    chapterTitles: {
+      moment: "Overview",
+      approach: "My approach",
+      findings: "What I found",
+      solution: "Final decision",
+      outcome: "Key learning",
+    },
+    overview:
+      "While designing the mutual fund investment journey for a fintech app built for Tier 2–4 users, we had to decide whether to call the investment option One-time or Lumpsum.",
+    problem:
+      "Instead of relying on assumptions or industry terminology, I researched how people understood both terms before making a recommendation.",
+    myRole: "To make an informed decision, I:",
+    constraints: [],
+    research: [
+      "Reviewed financial blogs and articles",
+      "Compared how other investment apps named the same investment type",
+      "Discussed the options with my team",
+      "Ran a quick hallway test with our help staff, who had no investing background",
+    ],
+    optionsExplored: [],
+    findings: [
+      "Most investment apps used One-time instead of Lumpsum.",
+      "During hallway testing, people understood One-time immediately. Lumpsum often needed an explanation, even though both meant the same thing.",
+      "This showed that familiar language helped people understand the option faster.",
+    ],
+    contentDecisions: [],
+    comparison: {
+      before: "Lumpsum",
+      after: "One-time",
+      beforeLabel: "Before",
+      afterLabel: "After",
+      beforeImage: "/work/product-content-design/one-time-vs-lumpsum-before.png",
+      afterImage: "/work/product-content-design/one-time-vs-lumpsum-after.png",
+    },
+    finalSolution:
+      "We chose One-time for the investment journey. It used language that people already understood and made the experience easier without changing the financial meaning.",
+    impact: [
+      "This project reinforced that familiar language is often more effective than industry terminology. A small content decision can reduce confusion and help users make decisions with more confidence.",
+    ],
+    keyLearnings: [
+      "Familiar language is often more effective than industry terminology",
+      "A small content decision can reduce confusion and help users make decisions with more confidence",
+    ],
+    pullQuote:
+      "Familiar language is often more effective than industry terminology.",
+    gallery: [],
+  },
   example(
     "trigger-order-vs-gtt",
     "Trigger Order vs GTT",
@@ -157,60 +350,183 @@ export const writingExamples: WritingExample[] = [
     "Trigger order | GTT",
     "Start when price is hit | Stay active until triggered or cancelled"
   ),
-  example(
-    "confirmation-dialog",
-    "Confirmation Dialog",
-    "Making destructive actions feel deliberate without adding friction to safe paths.",
-    "Redesigned confirmation dialog copy for a high-stakes delete action.",
-    "Users paused or cancelled because the dialog sounded alarming but vague. They could not tell what would be deleted or whether the action could be undone.",
-    "Delete item?",
-    "Delete this report? You can restore it from Archive for 30 days."
-  ),
-  example(
-    "search-experience",
-    "Search Experience",
-    "Helping power users scan results fast while guiding first-time users.",
-    "Refined search placeholder, empty, and zero-results states across a data-heavy dashboard.",
-    "Search felt like a generic filter. Users typed internal IDs correctly but missed natural language queries, and empty states offered no recovery path.",
-    "Search",
-    "Search campaigns, segments, or IDs"
-  ),
-  example(
-    "call-to-action",
-    "Call to Action",
-    "Turning a generic upgrade prompt into a value-led invitation.",
-    "Rewrote primary CTA copy on a feature gate for a premium analytics module.",
-    "The CTA described a plan tier, not a user benefit. Trial users hesitated because they did not know what they would unlock.",
-    "Upgrade to Pro",
-    "Unlock advanced reports"
-  ),
-  example(
-    "prerequisites",
-    "Prerequisites",
-    "Explaining setup steps before users hit a dead end.",
-    "Clarified prerequisite messaging before users could publish an automation.",
-    "Users reached a blocked state late in setup. The product listed missing requirements without explaining why they mattered or how long setup would take.",
-    "Complete required fields",
-    "Add a sender profile before you publish. Takes about 2 minutes."
-  ),
-  example(
-    "snackbars",
-    "Snackbars",
-    "Balancing confirmation, next steps, and calm in transient feedback.",
-    "Standardized snackbar patterns for success, failure, and partial completion.",
-    "Snackbars stacked inconsistent verbs and mixed system errors with user mistakes, so people ignored them or opened support tickets unnecessarily.",
-    "Error occurred",
-    "Campaign not saved. Check audience rules and try again."
-  ),
-  example(
-    "dropdown-labels",
-    "Dropdown Labels",
-    "Naming options so teams pick the right configuration the first time.",
-    "Improved dropdown labels for trigger frequency and audience type.",
-    "Similar options used internal jargon. Admins selected the wrong value, causing misconfigured campaigns that were hard to debug.",
-    "Type A / Type B",
-    "One-time send / Recurring schedule"
-  ),
+  {
+    slug: "confirmation-dialog",
+    title: "Confirmation Dialog",
+    teaser:
+      "Rewriting confirmation dialogs to confirm user intent when leaving without saving.",
+    chapterTitles: {
+      moment: "Overview",
+      approach: "How I approached it",
+      solution: "What we shipped",
+      outcome: "What changed",
+    },
+    overview:
+      "While designing a campaign creation flow, I needed to rewrite the confirmation dialog shown when users tried to leave without saving.",
+    problem:
+      "The goal was to help users understand the consequence of their action without influencing their decision.",
+    myRole:
+      "Before writing the copy, I wanted to understand the user's intent rather than the system's action.",
+    constraints: [],
+    research: [
+      "What is the user trying to do?",
+      "Should we confirm leaving the page or saving their work?",
+      "Are we unintentionally encouraging users to save?",
+      "What information do users need before making a decision?",
+    ],
+    collaboration: {
+      partners: "Product Manager",
+      quote:
+        "I spoke with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
+    },
+    optionsExplored: [],
+    explorationIntro:
+      "Each option focused on the system's state rather than the user's action. The more I explored, the more I realised the dialog wasn't asking users to save or discard. It was simply confirming that they wanted to leave the page.",
+    optionsComparisonTable: [
+      {
+        label: "Save progress",
+        rationale: "\"Progress\" can mean different things.",
+      },
+      {
+        label: "Save changes",
+        rationale: "Focuses on the system, not the user's action.",
+      },
+      {
+        label: "Save edits",
+        rationale: "Frames the choice around the system's state, not leaving the page.",
+      },
+      {
+        label: "Discard changes",
+        rationale: "Assumes the user wants to discard.",
+      },
+      {
+        label: "Leave page",
+        rationale: "Confirms exactly what the user is trying to do.",
+        selected: true,
+      },
+    ],
+    dialogExplorations: [
+      {
+        title: "Save changes?",
+        body: "You have unsaved changes. If you leave without saving you might lose those changes.",
+        secondary: "Discard",
+        primary: "Save",
+      },
+      {
+        title: "Leave page?",
+        body: "You will lose unsaved changes on leaving the page.",
+        secondary: "Cancel",
+        primary: "Leave",
+      },
+      {
+        title: "Save changes?",
+        body: "You will lose unsaved changes on leaving the page.",
+        secondary: "Don't Save",
+        primary: "Save and close",
+      },
+      {
+        title: "Save changes?",
+        body: "You will lose unsaved changes on leaving the page.",
+        secondary: "Discard",
+        primary: "Save",
+      },
+      {
+        title: "Save changes?",
+        body: "You will lose unsaved changes on leaving the page.",
+        secondary: "Don't Save",
+        primary: "Save & Close",
+      },
+      {
+        title: "Discard unsaved changes?",
+        body: "You will lose unsaved changes on leaving the page.",
+        secondary: "Cancel",
+        primary: "Discard",
+      },
+    ],
+    dialogExplorationPair: [
+      {
+        title: "Save changes?",
+        body: "Changes will be lost if you leave without saving.",
+        secondary: "Discard",
+        primary: "Save",
+      },
+      {
+        title: "Discard changes?",
+        body: "You will lose changes on leaving the page.",
+        secondary: "Cancel",
+        primary: "Discard",
+      },
+    ],
+    contentDecisions: [],
+    comparison: {
+      before: "Save changes?",
+      after: "Leave page?",
+      beforeLabel: "Before",
+      afterLabel: "After",
+      beforeMockup: "save-changes",
+      afterMockup: "leave-page",
+      showSlider: false,
+    },
+    finalSolution:
+      "I changed the title to Leave page and used Leave anyway as the primary action. This kept the dialog neutral, confirmed the user's intention, and clearly communicated that unsaved changes would be lost without pushing them towards either option.",
+    impact: [
+      "The dialog confirmed what the user was trying to do, not what the system wanted them to do",
+      "Copy stayed neutral instead of nudging users toward saving",
+      "Users could understand the consequence of leaving without extra explanation",
+    ],
+    keyLearnings: [
+      "Confirmation dialogs should confirm the user's action, not influence their decision",
+      "Focusing on user intent instead of system actions made the interaction clearer and more natural",
+    ],
+    pullQuote:
+      "Confirmation dialogs should confirm the user's action, not influence their decision.",
+    gallery: [],
+  },
+  {
+    slug: "prerequisites",
+    title: "Prerequisites",
+    teaser:
+      "Revising WhatsApp onboarding prerequisites with front-loaded, simpler copy and more helpful CTAs.",
+    chapterTitles: {
+      moment: "Overview",
+      approach: "Thought process",
+      solution: "Before & after",
+    },
+    overview:
+      "I revised the prerequisites copy shown before WhatsApp onboarding to help users understand requirements before starting the flow.",
+    problem: "",
+    myRole: "",
+    constraints: [],
+    research: [],
+    optionsExplored: [],
+    approachParagraphs: [
+      "The existing copy was dense, passive, and buried the most important requirements. I revised it with four goals in mind:",
+    ],
+    findingsBullets: [
+      "Front-loading content",
+      "Simpler language",
+      "Clear and concise content",
+      "Helpful CTAs",
+    ],
+    contentDecisions: [],
+    comparison: {
+      before: "Prerequisites",
+      after: "Required to onboard Whatsapp",
+      beforeLabel: "Before",
+      afterLabel: "After",
+      beforeMockup: "prerequisites-before",
+      afterMockup: "prerequisites-after",
+      showSlider: false,
+    },
+    finalSolution: "",
+    impact: [],
+    keyLearnings: [
+      "Front-load the most important requirement so users see it first",
+      "Helpful link text beats generic policy names",
+    ],
+    pullQuote: "Front-load the most important requirement so users see it first.",
+    gallery: [],
+  },
 ];
 
 export function getWritingExample(slug: string): WritingExample | undefined {

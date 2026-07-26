@@ -4,6 +4,7 @@ import { WritingExampleScrollReset } from "@/components/case-studies/product-con
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { GeometricDecor } from "@/components/ui/GeometricDecor";
+import { getProductContentExampleNav } from "@/data/product-content-design-nav";
 import {
   getWritingExample,
   productContentDesignHub,
@@ -11,7 +12,13 @@ import {
 } from "@/data/product-content-design";
 import { profile } from "@/data/portfolio";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+
+const uiComponentRedirects: Record<string, string> = {
+  "dropdown-labels": "/work/product-content-design/ui-components#dropdown-labels",
+  snackbars: "/work/product-content-design/ui-components#snackbars",
+  "call-to-action": "/work/product-content-design/ui-components#call-to-action",
+};
 
 interface PageProps {
   params: Promise<{ example: string }>;
@@ -33,13 +40,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function WritingExamplePage({ params }: PageProps) {
   const { example: slug } = await params;
+
+  if (uiComponentRedirects[slug]) {
+    redirect(uiComponentRedirects[slug]);
+  }
+
   const example = getWritingExample(slug);
 
   if (!example) notFound();
 
-  const index = writingExamples.findIndex((item) => item.slug === slug);
-  const prev = index > 0 ? writingExamples[index - 1] : undefined;
-  const next = index < writingExamples.length - 1 ? writingExamples[index + 1] : undefined;
+  const nav = getProductContentExampleNav(slug);
+
+  if (!nav) notFound();
 
   return (
     <>
@@ -47,7 +59,7 @@ export default async function WritingExamplePage({ params }: PageProps) {
       <main className="writing-case-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="relative border-b border-border/50 pb-8 sm:pb-10">
           <GeometricDecor variant="section" />
-          <div className="relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] py-8 md:py-10">
+          <div className="relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] py-8 md:max-w-5xl md:py-10">
             <WritingExampleScrollReset slug={slug}>
               <WritingExampleDetail example={example} />
             </WritingExampleScrollReset>
@@ -55,11 +67,11 @@ export default async function WritingExamplePage({ params }: PageProps) {
         </section>
       </main>
       <WritingExampleSampleNav
-        current={example}
-        prev={prev}
-        next={next}
-        index={index}
-        total={writingExamples.length}
+        current={nav.current}
+        prev={nav.prev}
+        next={nav.next}
+        index={nav.index}
+        total={nav.total}
       />
       <Footer />
     </>
