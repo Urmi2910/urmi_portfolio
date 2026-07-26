@@ -89,11 +89,11 @@ export const profile = {
       description:
         "End-to-end product content for a new finance app: onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
       learnings: [
-        "Designed end-to-end product content for a new finance app, covering onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2 to 4 users",
-        "Established scalable content governance, creating UX writing guidelines, voice & tone, terminology, and review workflows that enabled cross-functional teams to ship consistent, high-quality content faster",
-        "Designed for finance chatbot Veda AI, defining its personality, conversation design, compliance guardrails, and fallback flows to increase adoption while delivering consistent, trustworthy financial guidance",
-        "Built AI-powered content systems, including prompt libraries, localization workflows, and structured content models, empowering Product, Design, Customer Support, Legal, and Compliance teams to create stronger first drafts and maintain a consistent brand voice",
-        "Applied UX research, content testing, and user insights to validate content decisions, improve comprehension, and continuously refine the product's voice for diverse Indian audiences",
+        "Designed product content for a new finance app, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2–4 users",
+        "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
+        "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
+        "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
+        "Used UX research and content testing to improve clarity, solve user problems, and refine the product experience",
       ],
     },
     {
@@ -104,11 +104,12 @@ export const profile = {
       description:
         "User-first content across Dream11 products for 260M+ users, including content systems, localization, and AI tooling at scale.",
       learnings: [
-        "Led user-first content across Dream11 products, creating clear, accessible experiences for 260M+ users across diverse and multilingual audiences",
-        "Partnered with Product, Design, and Research from discovery through delivery, using content to shape UX flows and simplify complex user journeys",
-        "Built the Dream11 Content Design System, including content patterns, guidelines, AI tools, and reusable templates that enabled teams to create faster, more consistent content at scale",
-        "Defined localization standards, terminology, and content patterns to deliver culturally relevant experiences while maintaining a consistent brand voice across languages",
-        "Translated UX research, usability testing, and product insights into content improvements that reduced friction, increased clarity, and strengthened user trust",
+        "Led clear, accessible, and user-first content across Dream11 products, improving usability and building customer confidence for 260M+ users",
+        "Partnered with Product and Design from discovery to launch, using content to shape user journeys and product decisions",
+        "Built the Dream11 Content Design System, using systems design that surfaced guidelines, content patterns, past copy, and best practices to help teams create content faster and more consistently",
+        "Helped teams think content-first through workshops, reusable patterns, templates, and writing guidelines",
+        "Organized content with taxonomies, labels, and localization standards to improve consistency and comprehension across products",
+        "Applied accessibility, user research, and data to improve content, reduce friction, and build user trust",
       ],
     },
     {
