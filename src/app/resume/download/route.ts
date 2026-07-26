@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { profile } from "@/data/portfolio";
 import { NextResponse } from "next/server";
 
-const pdfPath = join(dirname(fileURLToPath(import.meta.url)), "Urmi-Shah-Resume.pdf");
+const pdfPath = join(dirname(fileURLToPath(import.meta.url)), "resume.pdf");
 
 export async function GET() {
   try {
@@ -14,7 +14,7 @@ export async function GET() {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="${profile.resumeFilename}"`,
+        "Content-Disposition": `attachment; filename="${profile.resumeFilename}"; filename*=UTF-8''${encodeURIComponent(profile.resumeFilename)}`,
         "Content-Length": String(file.byteLength),
         "Cache-Control": "private, no-cache",
       },
