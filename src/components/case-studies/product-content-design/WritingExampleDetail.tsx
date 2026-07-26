@@ -87,9 +87,6 @@ export function WritingExampleDetail({
 
         <StoryChapter id="outcome" title="What changed">
           <StoryList items={example.impact} />
-          <DeepDive title="What I'd repeat">
-            <StoryList items={example.keyLearnings} />
-          </DeepDive>
         </StoryChapter>
       </div>
 

@@ -163,7 +163,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-design",
     title: "Designing trustworthy AI conversations",
-    subtitle: "How content design shaped an AI-powered financial assistant.",
+    subtitle: "",
     excerpt:
       "Conversation design, response frameworks, guardrails, and content modeling for a financial AI assistant users could trust.",
     company: "Veda AI",
@@ -173,10 +173,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Conversation Design", "AI Governance", "Content Strategy"],
     featured: true,
     accentColor: "accent",
-    metrics: [
-      { value: "38%", label: "Fewer support escalations" },
-      { value: "4.6", label: "Post-session trust rating" },
-    ],
+    metrics: [],
     challenge:
       "AI experiences fail when users cannot tell what the system can do, how it will behave, or what happens when it gets something wrong. Without clear personality, guardrails, and fallbacks, even capable models feel unreliable.",
     approach: [

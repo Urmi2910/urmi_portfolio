@@ -1,5 +1,4 @@
 import { WritingExampleDetail } from "@/components/case-studies/product-content-design/WritingExampleDetail";
-import { WritingExampleSampleNav } from "@/components/case-studies/product-content-design/WritingExampleSampleNav";
 import { WritingExampleScrollReset } from "@/components/case-studies/product-content-design/WritingExampleScrollReset";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -44,14 +43,7 @@ export default async function WritingExamplePage({ params }: PageProps) {
   return (
     <>
       <Header />
-      <WritingExampleSampleNav
-        current={example}
-        prev={prev}
-        next={next}
-        index={index}
-        total={writingExamples.length}
-      />
-      <main className="writing-case-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+      <main className="writing-case-study flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="relative border-b border-border/50 pb-8 sm:pb-10">
           <GeometricDecor variant="section" />
           <div className="relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] py-8 md:py-10">
@@ -61,7 +53,7 @@ export default async function WritingExamplePage({ params }: PageProps) {
           </div>
         </section>
       </main>
-      <Footer aboveBottomNav />
+      <Footer />
     </>
   );
 }
