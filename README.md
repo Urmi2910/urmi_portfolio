@@ -1,14 +1,14 @@
-# Urmi Shah — Content Design Portfolio
+# Urmi Shah - Content Design Portfolio
 
 A modern content design portfolio built with Next.js 15, Tailwind CSS 4, and a Material You–inspired design system with subtle playful geometric accents.
 
 ## Features
 
-- **Case-study-first layout** — Work is the focal point for hiring managers
-- **Material You foundation** — Tonal surfaces, pill buttons, organic blur shapes, generous spacing
-- **Playful geometric accents** — Triangles, dots, and squiggles used sparingly for personality
-- **Accessible** — Semantic HTML, focus states, reduced-motion support, strong contrast
-- **Responsive** — Mobile-first layout that scales gracefully
+- **Case-study-first layout** - Work is the focal point for hiring managers
+- **Material You foundation** - Tonal surfaces, pill buttons, organic blur shapes, generous spacing
+- **Playful geometric accents** - Triangles, dots, and squiggles used sparingly for personality
+- **Accessible** - Semantic HTML, focus states, reduced-motion support, strong contrast
+- **Responsive** - Mobile-first layout that scales gracefully
 
 ## Getting Started
 

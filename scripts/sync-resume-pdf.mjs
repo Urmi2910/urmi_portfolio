@@ -18,7 +18,7 @@ if (!existsSync(source)) {
     process.exit(0);
   }
 
-  console.error("Missing Urmi shah_Senior Content Designer.pdf — add your resume PDF to the project root.");
+  console.error("Missing Urmi shah_Senior Content Designer.pdf - add your resume PDF to the project root.");
   process.exit(1);
 }
 

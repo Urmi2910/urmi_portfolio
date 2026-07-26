@@ -8,7 +8,7 @@ type SectionHeadingProps = {
   description?: string;
   tone?: "surface" | "background";
   sticky?: boolean;
-  /** When "title", only the icon + headline stick on mobile — not the description. */
+  /** When "title", only the icon + headline stick on mobile, not the description. */
   stickyScope?: "all" | "title";
   className?: string;
 };

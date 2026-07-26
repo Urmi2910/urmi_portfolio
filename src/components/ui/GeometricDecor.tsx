@@ -5,7 +5,7 @@ interface GeometricDecorProps {
   variant?: "hero" | "section";
 }
 
-/** Soft atmospheric shapes only — no sharp triangles or squiggles */
+/** Soft atmospheric shapes only - no sharp triangles or squiggles */
 export function GeometricDecor({ className, variant = "section" }: GeometricDecorProps) {
   if (variant === "hero") {
     return (

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Material You — seed #6750A4 */
+  /* Material You - seed #6750A4 */
   --color-background: #fffbfe;
   --color-foreground: #1c1b1f;
   --color-muted: #e7e0ec;
@@ -283,7 +283,7 @@
     @apply relative overflow-hidden bg-background;
   }
 
-  /* Section surfaces — MD3 Background ↔ Surface alternation */
+  /* Section surfaces - MD3 Background ↔ Surface alternation */
   .section-background {
     @apply relative bg-background;
   }
@@ -332,7 +332,7 @@
     @apply relative z-[1];
   }
 
-  /* Experience: solid surface with a light top wash — reads clearly vs Learning below */
+  /* Experience: solid surface with a light top wash - reads clearly vs Learning below */
   .section-experience {
     position: relative;
     background-color: var(--color-surface);
@@ -935,7 +935,7 @@
     }
   }
 
-  /* Product Content Design — editorial case study layout */
+  /* Product Content Design - editorial case study layout */
   .writing-case-study-grid {
     display: grid;
     gap: 2rem;
@@ -1073,7 +1073,7 @@
     max-width: 42rem;
   }
 
-  /* Content Systems — design-system style layouts */
+  /* Content Systems - design-system style layouts */
   .system-section-label {
     font-size: 0.6875rem;
     font-weight: 600;
@@ -1116,7 +1116,7 @@
     }
   }
 
-  /* AI Trust — flagship case study */
+  /* AI Trust - flagship case study */
   .ai-trust-section-label {
     font-size: 0.6875rem;
     font-weight: 600;

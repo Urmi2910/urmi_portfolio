@@ -198,28 +198,28 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "content-systems",
-    title: "Content Systems & Content Modeling",
+    title: "System Design for Error Copy",
     subtitle: "",
     excerpt:
-      "From reusable frameworks to governance and localization, these projects focus on building scalable content systems rather than individual screens.",
+      "A reusable content pattern for writing every error, warning, and validation message in the product, including AI feature failures.",
     company: "Portfolio",
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["System Design", "AI", "Governance"],
+    tags: ["Error UX", "Content Systems", "AI Failures"],
     featured: true,
     accentColor: "warm",
     metrics: [],
     challenge:
-      "As products and teams grow, content quality drifts. Without shared governance, AI tooling, and reusable frameworks, every team reinvents voice, terminology, and review workflows from scratch.",
+      "Error copy was written fresh on every screen. Ten different ways to say \"something went wrong,\" none of which told users what to do next.",
     approach: [
-      "Define governance models for voice, terminology, and review across product teams",
-      "Build AI-assisted workflows that improve first drafts without bypassing human judgment",
-      "Design localization standards and content patterns teams can reuse at scale",
-      "Document frameworks so content decisions stay consistent as products evolve",
+      "Built a severity-first taxonomy with four interruption categories and fixed sentence patterns",
+      "Created an approved dictionary of ~50 pre-written messages with structured metadata for engineering",
+      "Designed interactive tooling for classifying scenarios and matching dictionary entries",
+      "Documented AI-specific failure modes so guardrail refusals don't collapse into generic errors",
     ],
     outcome:
-      "Scalable content infrastructure that helps cross-functional teams ship clearer, more consistent product content with less rework.",
+      "A working content system teams can classify against, reuse from, and ship with, separating engineering signals from content problems.",
   },
   {
     slug: "product-content-design",
@@ -267,7 +267,7 @@ export const caseStudies: CaseStudy[] = [
       "Share practical frameworks for evaluating and acting on design feedback",
     ],
     outcome:
-      "Published writing that shows how I think about UX content beyond product screens—and helps other writers move copy forward with clarity.",
+      "Published writing that shows how I think about UX content beyond product screens and helps other writers move copy forward with clarity.",
   },
 ];
 

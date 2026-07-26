@@ -24,7 +24,7 @@ const profile = {
   title: "Content Engineer & Content Designer",
   tagline: "Curious writer and design thinker at large!",
   intro:
-    "I've always loved turning complex ideas into simple ones—from board game rules as a kid to software today. With 7+ years in content design, I make products easier to use by creating content that balances user needs with business goals.",
+    "I've always loved turning complex ideas into simple ones, from board game rules as a kid to software today. With 7+ years in content design, I make products easier to use by creating content that balances user needs with business goals.",
   phone: "(+91) 9426804388",
   email: "shah.urmi2910@gmail.com",
   linkedin: "linkedin.com/in/urmi-shah/",
@@ -253,7 +253,7 @@ function generate() {
     size: "A4",
     margins: { top: PAGE.margin, bottom: PAGE.margin, left: PAGE.margin, right: PAGE.margin },
     info: {
-      Title: `${profile.name} — Resume`,
+      Title: `${profile.name} - Resume`,
       Author: profile.name,
     },
   });

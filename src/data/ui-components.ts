@@ -35,7 +35,7 @@ export const uiComponentsGallery = {
       id: "whatsapp-sample",
       title: "WhatsApp Sample",
       description:
-        "The existing text didn't fit as a confirmation dialogue — it gave instructions instead of asking for confirmation. I revised it to ask a clear question, explain why adding a sample helps, and make the primary button reinforce that question.",
+        "The existing text didn't fit as a confirmation dialogue. It gave instructions instead of asking for confirmation. I revised it to ask a clear question, explain why adding a sample helps, and make the primary button reinforce that question.",
     },
   ] satisfies UiComponentExample[],
 };

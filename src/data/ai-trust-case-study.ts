@@ -146,7 +146,7 @@ export const responseTemplate = {
   slots: ["Context acknowledgment", "Primary answer", "Source attribution", "Next step or confirmation"],
   example: {
     acknowledgment: "Checking payouts for Acme Corp (8–14 Jan).",
-    answer: "3 payouts totaling ₹6,12,000 — 2 completed, 1 processing.",
+    answer: "3 payouts totaling ₹6,12,000: 2 completed, 1 processing.",
     attribution: "Source: Payments API · Updated 2 min ago",
     next: "Would you like details for the processing payout?",
   },
