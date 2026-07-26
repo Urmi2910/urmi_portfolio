@@ -42,9 +42,9 @@ export const profile = {
   email: "shah.urmi2910@gmail.com",
   phone: "(+91) 9426804388",
   linkedin: "https://www.linkedin.com/in/urmi-shah/",
-  resumeUrl: "/Urmi shah_Content Designer.pdf",
-  resumeDownloadUrl: "/Urmi shah_Content Designer.pdf",
-  resumeFilename: "Urmi shah_Content Designer.pdf",
+  resumeUrl: "/Urmi shah_Senior Content Designer.pdf",
+  resumeDownloadUrl: "/Urmi shah_Senior Content Designer.pdf",
+  resumeFilename: "Urmi shah_Senior Content Designer.pdf",
   workSamples: "",
 
   skills: [
@@ -87,7 +87,7 @@ export const profile = {
       role: "Content Engineer & Content Designer - III",
       period: "October 2025 to Present",
       description:
-        "End-to-end product content for a new finance app: onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
+        "End-to-end product content for DreamStreet's finance app—onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
       learnings: [
         "Designed product content for a new finance app, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2–4 users",
         "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
@@ -102,7 +102,7 @@ export const profile = {
       role: "Content Designer - III",
       period: "September 2024 to October 2025",
       description:
-        "User-first content across Dream11 products for 260M+ users, including content systems, localization, and AI tooling at scale.",
+        "User-first content for Dream11's fantasy sports platform, serving 260M+ users with content systems, localization, and scalable design tooling.",
       learnings: [
         "Led clear, accessible, and user-first content across Dream11 products, improving usability and building customer confidence for 260M+ users",
         "Partnered with Product and Design from discovery to launch, using content to shape user journeys and product decisions",
@@ -118,13 +118,14 @@ export const profile = {
       role: "Technical writer & UX Writer",
       period: "January 2023 to August 2024",
       description:
-        "Product copy for dashboards, notifications, and flows, plus hiring, training, and content design system contributions.",
+        "Product content for CleverTap's B2B marketing automation platform—dashboards, notifications, and complex workflows—plus mentoring, hiring, and content design system work.",
       learnings: [
-        "Wrote clear copy for dashboards, notifications, and product flows",
-        "Onboarded and trained new hires, created interview tests, and interviewed candidates",
-        "Maintained a consistent voice and tone across projects while balancing user needs and business goals",
-        "Contributed to the content design system by documenting patterns and principles",
-        "Tested and refined copy with design, product, and research based on user feedback",
+        "Designed product content for a B2B marketing automation platform, including dashboards, notifications, and complex product workflows",
+        "Partnered with Product and Design to simplify technical features and improve usability for enterprise users",
+        "Maintained a consistent voice and tone across the product while balancing user needs and business goals",
+        "Contributed to the Content Design System by documenting writing guidelines, reusable patterns, and best practices",
+        "Tested and refined content with Product, Design, and Research using user feedback",
+        "Onboarded and mentored new team members, created interview assessments, and interviewed candidates",
       ],
     },
     {
@@ -134,7 +135,7 @@ export const profile = {
       role: "Sr. Content writer & Copy writer",
       period: "Jun 2021 to Oct 2022",
       description:
-        "Cross-channel writing for product, web, blogs, and marketing, tailored to user intent and measured for performance.",
+        "Cross-channel content for Appitsimple's mobile and web software products—product UI, websites, blogs, and marketing—tailored to user intent and measured for performance.",
       learnings: [
         "Wrote across channels for product, website, blogs, and marketing, tailoring content to user intent",
         "Improved content performance by analysing clicks, feedback, and metrics, then iterating for results",
@@ -148,7 +149,7 @@ export const profile = {
       role: "Sr. Content writer",
       period: "Mar 2020 to Mar 2021",
       description:
-        "Blogs and product content for multiple technical products, simplifying complex ideas for wider audiences.",
+        "Blogs and product content for Gateway's technical software products, simplifying complex ideas for wider business and consumer audiences.",
       learnings: [
         "Wrote blogs and product content for multiple technical products, simplifying complex ideas for wider audiences",
         "Applied AP style guide, SEO, and user-intent writing to make content clear and discoverable",
