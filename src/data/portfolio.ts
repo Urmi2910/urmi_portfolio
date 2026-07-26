@@ -87,9 +87,9 @@ export const profile = {
       role: "Content Engineer & Content Designer - III",
       period: "October 2025 to Present",
       description:
-        "End-to-end product content for DreamStreet's finance app, including onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
+        "End-to-end product content for DreamStreet, a finance app, including onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
       learnings: [
-        "Designed product content for a new finance app, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
+        "Designed product content for DreamStreet, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
         "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
         "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
         "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
