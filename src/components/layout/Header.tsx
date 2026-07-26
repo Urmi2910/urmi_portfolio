@@ -21,10 +21,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
-  const [aboutVisible, setAboutVisible] = useState(pathname === "/");
+  const [introNameVisible, setIntroNameVisible] = useState(pathname === "/");
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const showName = pathname !== "/" || !aboutVisible;
+  const showName = pathname !== "/" || !introNameVisible;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -34,22 +34,22 @@ export function Header() {
 
   useEffect(() => {
     if (pathname !== "/") {
-      setAboutVisible(false);
+      setIntroNameVisible(false);
       return;
     }
 
-    const about = document.getElementById("about");
-    if (!about) {
-      setAboutVisible(false);
+    const introName = document.getElementById("about-intro-name");
+    if (!introName) {
+      setIntroNameVisible(false);
       return;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => setAboutVisible(entry.isIntersecting),
+      ([entry]) => setIntroNameVisible(entry.isIntersecting),
       { rootMargin: "-64px 0px 0px 0px", threshold: 0 }
     );
 
-    observer.observe(about);
+    observer.observe(introName);
     return () => observer.disconnect();
   }, [pathname]);
 

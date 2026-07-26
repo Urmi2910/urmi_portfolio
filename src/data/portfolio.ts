@@ -64,7 +64,7 @@ export const profile = {
   ],
 
   about: {
-    roleLabel: "Content Designer • AI Content Engineer",
+    roleLabel: "Content Designer & AI Content Engineer",
     introParagraphs: [
       {
         text: "I've always enjoyed making complex things easier to understand. As a kid, it was board game rulebooks. Today, it's digital products.",
