@@ -43,7 +43,7 @@ export const profile = {
   phone: "(+91) 9426804388",
   linkedin: "https://www.linkedin.com/in/urmi-shah/",
   resumeUrl: "/Urmi-Shah-Resume.pdf",
-  resumeDownloadUrl: "/Urmi-Shah-Resume.pdf",
+  resumeDownloadUrl: "/resume/download",
   resumeFilename: "Urmi-Shah-Resume.pdf",
   workSamples: "",
 

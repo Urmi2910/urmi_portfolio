@@ -15,11 +15,7 @@ export function ResumeToolbar() {
           <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
           Back to site
         </Link>
-        <a
-          href={profile.resumeDownloadUrl}
-          download={profile.resumeFilename}
-          className="btn-primary px-4 text-sm"
-        >
+        <a href={profile.resumeDownloadUrl} className="btn-primary px-4 text-sm">
           <Download className="h-4 w-4" strokeWidth={2.5} />
           Download resume
         </a>
