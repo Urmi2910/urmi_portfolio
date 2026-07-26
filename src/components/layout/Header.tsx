@@ -4,6 +4,7 @@ import { profile } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const navLinks = [
@@ -16,17 +17,41 @@ const navLinks = [
 const headerHeight = "calc(3rem + env(safe-area-inset-top, 0px))";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [aboutVisible, setAboutVisible] = useState(pathname === "/");
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const showName = pathname !== "/" || !aboutVisible;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setAboutVisible(false);
+      return;
+    }
+
+    const about = document.getElementById("about");
+    if (!about) {
+      setAboutVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setAboutVisible(entry.isIntersecting),
+      { rootMargin: "-64px 0px 0px 0px", threshold: 0 }
+    );
+
+    observer.observe(about);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -105,7 +130,12 @@ export function Header() {
         <Link
           href="/"
           onClick={closeMenu}
-          className="min-w-0 flex-1 truncate font-heading text-sm font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full py-1 pr-2 sm:text-[0.9375rem] md:text-lg"
+          aria-hidden={!showName}
+          tabIndex={showName ? 0 : -1}
+          className={cn(
+            "min-w-0 flex-1 truncate font-heading text-sm font-bold tracking-tight text-foreground transition-md hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full py-1 pr-2 sm:text-[0.9375rem] md:text-lg",
+            !showName && "pointer-events-none opacity-0"
+          )}
         >
           {profile.name}
         </Link>
