@@ -371,7 +371,7 @@ export const learningItems: LearningItem[] = [
     institution: "UX Content Collective",
     year: "2026",
     learned:
-      "Content as product strategy, product content systems, and content engineering and context engineering",
+      "Content as product strategy, product content systems, content engineering, and context engineering",
   },
   {
     id: "uxcc-fundamentals-ux-writing",
