@@ -87,9 +87,9 @@ export const profile = {
       role: "Content Engineer & Content Designer - III",
       period: "October 2025 to Present",
       description:
-        "End-to-end product content for DreamStreet's finance app—onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
+        "End-to-end product content for DreamStreet's finance app, including onboarding, payments, FAQs, support, Help Center, and AI-powered conversational experiences.",
       learnings: [
-        "Designed product content for a new finance app, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2–4 users",
+        "Designed product content for a new finance app, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
         "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
         "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
         "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
@@ -118,7 +118,7 @@ export const profile = {
       role: "Technical writer & UX Writer",
       period: "January 2023 to August 2024",
       description:
-        "Product content for CleverTap's B2B marketing automation platform—dashboards, notifications, and complex workflows—plus mentoring, hiring, and content design system work.",
+        "Product content for CleverTap's B2B marketing automation platform, including dashboards, notifications, and complex workflows, plus mentoring, hiring, and content design system work.",
       learnings: [
         "Designed product content for a B2B marketing automation platform, including dashboards, notifications, and complex product workflows",
         "Partnered with Product and Design to simplify technical features and improve usability for enterprise users",
@@ -135,7 +135,7 @@ export const profile = {
       role: "Sr. Content writer & Copy writer",
       period: "Jun 2021 to Oct 2022",
       description:
-        "Cross-channel content for Appitsimple's mobile and web software products—product UI, websites, blogs, and marketing—tailored to user intent and measured for performance.",
+        "Cross-channel content for Appitsimple's mobile and web software products across product UI, websites, blogs, and marketing, tailored to user intent and measured for performance.",
       learnings: [
         "Wrote across channels for product, website, blogs, and marketing, tailoring content to user intent",
         "Improved content performance by analysing clicks, feedback, and metrics, then iterating for results",
@@ -183,7 +183,7 @@ export const caseStudies: CaseStudy[] = [
       "Pair final copy with the reasoning so reviewers can evaluate the thinking",
     ],
     outcome:
-      "A repeatable format for presenting UX writing work that shows challenge, reasoning, and outcome—not just polished final copy.",
+      "A repeatable format for presenting UX writing work that shows challenge, reasoning, and outcome, not just polished final copy.",
   },
   {
     slug: "content-systems",
@@ -250,7 +250,7 @@ export const caseStudies: CaseStudy[] = [
     accentColor: "tertiary",
     metrics: [],
     challenge:
-      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-app copy—but with different formats and audiences.",
+      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-app copy, but with different formats and audiences.",
     approach: [
       "Publish technical writing and articles that explain complex topics in accessible language",
       "Facilitate workshops that help teams improve how they write and think about content",
