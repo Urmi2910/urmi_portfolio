@@ -12,7 +12,6 @@ import {
   StoryList,
   StoryProse,
   StorySection,
-  CollaborationNote,
 } from "@/components/case-studies/shared/StoryComponents";
 import { cn } from "@/lib/utils";
 import { FirstRunExperienceIterations } from "./FirstRunExperienceMockup";
@@ -80,12 +79,7 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
           ) : example.research.length > 0 && (example.findings || example.researchLead) ? (
             <StoryList items={example.research} />
           ) : null}
-          {example.collaboration ? (
-            <CollaborationNote
-              partners={example.collaboration.partners}
-              quote={example.collaboration.quote}
-            />
-          ) : null}
+          {example.collaboration ? <StoryProse>{example.collaboration}</StoryProse> : null}
           {example.constraints.length > 0 ? (
             <StorySection label="Constraints">
               <StoryList items={example.constraints} />

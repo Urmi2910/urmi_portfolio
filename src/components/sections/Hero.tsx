@@ -1,31 +1,7 @@
 import { AboutHeroDecor } from "@/components/ui/AboutHeroDecor";
+import { HighlightText } from "@/components/ui/HighlightText";
 import { profile } from "@/data/portfolio";
 import Image from "next/image";
-import { Fragment } from "react";
-
-function HighlightText({ text, highlights = [] }: { text: string; highlights?: string[] }) {
-  if (!highlights.length) {
-    return <>{text}</>;
-  }
-
-  const pattern = new RegExp(`(${highlights.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
-  const parts = text.split(pattern);
-
-  return (
-    <>
-      {parts.map((part, index) => {
-        const isHighlight = highlights.some((h) => h.toLowerCase() === part.toLowerCase());
-        return isHighlight ? (
-          <strong key={`${part}-${index}`} className="font-semibold text-primary">
-            {part}
-          </strong>
-        ) : (
-          <Fragment key={`${part}-${index}`}>{part}</Fragment>
-        );
-      })}
-    </>
-  );
-}
 
 export function Hero() {
   const firstName = profile.name.split(" ")[0];

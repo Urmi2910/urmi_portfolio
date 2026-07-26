@@ -82,7 +82,7 @@ export interface WritingExample {
   optionsComparisonTable?: WritingExampleOptionRow[];
   dialogExplorations?: WritingExampleDialogCopy[];
   dialogExplorationPair?: WritingExampleDialogCopy[];
-  collaboration?: { partners: string; quote: string };
+  collaboration?: string;
   contentDecisions: string[];
   comparison: WritingExampleComparison;
   finalSolution: string;
@@ -374,11 +374,8 @@ export const writingExamples: WritingExample[] = [
       "Are we unintentionally encouraging users to save?",
       "What information do users need before making a decision?",
     ],
-    collaboration: {
-      partners: "Product Manager",
-      quote:
-        "I spoke with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
-    },
+    collaboration:
+      "I spoke with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
     optionsExplored: [],
     explorationIntro:
       "Each option focused on the system's state rather than the user's action. The more I explored, the more I realised the dialog wasn't asking users to save or discard. It was simply confirming that they wanted to leave the page.",

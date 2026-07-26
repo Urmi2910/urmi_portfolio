@@ -248,28 +248,28 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ux-writing-practice",
-    title: "Building a UX Writing Practice",
+    title: "Writing beyond products",
     subtitle: "",
     excerpt:
-      "Creating and delivering a structured onboarding program to help teams build shared UX writing principles, reusable resources, and collaboration workflows.",
-    company: "CleverTap",
-    role: "Content Designer",
-    year: "2023–2024",
-    duration: "Multi-part program",
-    tags: ["Workshop", "Leadership", "Content Design"],
+      "Technical writing, published articles, workshops, and AI experiments that reflect how I think, learn, and share knowledge.",
+    company: "Portfolio",
+    role: "Content Engineer & Content Designer",
+    year: "2024",
+    duration: "Ongoing",
+    tags: ["Technical Writing", "Thought Leadership"],
     featured: true,
     accentColor: "tertiary",
     metrics: [],
     challenge:
-      "As teams grow, content quality depends on shared principles—not just individual writers. New designers, PMs, and writers need a consistent foundation for UX writing, microcopy, and cross-functional collaboration.",
+      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-product copy.",
     approach: [
-      "Design a multi-part onboarding workshop covering principles, UI components, and collaboration workflows",
-      "Create reusable deck content and practical guides teams could apply immediately",
-      "Document end-to-end content design process from PRD to release",
-      "Curate a resource library for continued learning beyond the session",
+      "Publish thought leadership on UX writing process and feedback",
+      "Design and deliver onboarding workshops for cross-functional teams",
+      "Create reusable deck content and practical guides teams can apply immediately",
+      "Curate resource libraries for continued learning beyond sessions",
     ],
     outcome:
-      "A repeatable onboarding program that reduced the learning curve for new team members and established shared vocabulary and guidelines across writers, designers, and product managers.",
+      "A body of work that shows how I think, learn, and share knowledge beyond product screens—through writing, workshops, and team enablement.",
   },
 ];
 
