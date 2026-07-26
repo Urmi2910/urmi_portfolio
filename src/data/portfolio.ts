@@ -264,12 +264,10 @@ export const caseStudies: CaseStudy[] = [
       "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-product copy.",
     approach: [
       "Publish thought leadership on UX writing process and feedback",
-      "Design and deliver onboarding workshops for cross-functional teams",
-      "Create reusable deck content and practical guides teams can apply immediately",
-      "Curate resource libraries for continued learning beyond sessions",
+      "Share practical frameworks for evaluating and acting on design feedback",
     ],
     outcome:
-      "A body of work that shows how I think, learn, and share knowledge beyond product screens—through writing, workshops, and team enablement.",
+      "Published writing that shows how I think about UX content beyond product screens—and helps other writers move copy forward with clarity.",
   },
 ];
 

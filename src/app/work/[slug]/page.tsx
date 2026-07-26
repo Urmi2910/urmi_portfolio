@@ -21,7 +21,9 @@ const accentBorder: Record<CaseStudy["accentColor"], string> = {
 
 export async function generateStaticParams() {
   const { caseStudies } = await import("@/data/portfolio");
-  return caseStudies.map((cs) => ({ slug: cs.slug }));
+  return caseStudies
+    .filter((cs) => cs.slug !== "ux-writing-practice")
+    .map((cs) => ({ slug: cs.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

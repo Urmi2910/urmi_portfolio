@@ -2,7 +2,7 @@ export const uxWritingPracticeHub = {
   slug: "ux-writing-practice",
   title: "Writing beyond products",
   overview:
-    "Technical writing, published articles, workshops, and AI experiments that reflect how I think, learn, and share knowledge.",
+    "Thought leadership and published writing on UX content, design feedback, and building clarity at scale.",
   blog: {
     title: "Using design feedback to strengthen UX content",
     summary:
