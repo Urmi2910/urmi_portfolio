@@ -1040,4 +1040,225 @@
       text-decoration: none !important;
     }
   }
+
+  /* Product Content Design — editorial case study layout */
+  .writing-case-study-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .writing-case-study-grid {
+      grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: start;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .writing-case-study-grid {
+      grid-template-columns: minmax(11rem, 13rem) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+
+  .writing-case-study-aside {
+    order: 2;
+  }
+
+  .writing-case-study-article {
+    order: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .writing-case-study-aside {
+      order: 1;
+    }
+
+    .writing-case-study-article {
+      order: 2;
+    }
+  }
+
+  .writing-hub-hero,
+  .writing-case-study-hero {
+    max-width: 42rem;
+  }
+
+  .writing-case-study-hero {
+    padding-bottom: 0.5rem;
+  }
+
+  .writing-section-body {
+    max-width: 40rem;
+  }
+
+  .writing-section--collapsible summary {
+    user-select: none;
+  }
+
+  .writing-section--collapsible[open] .writing-section-body {
+    animation: writing-reveal 240ms var(--ease-md);
+  }
+
+  @keyframes writing-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .writing-section--collapsible[open] .writing-section-body {
+      animation: none;
+    }
+  }
+
+  .writing-example-card {
+    animation: writing-card-enter 480ms var(--ease-md) both;
+  }
+
+  @keyframes writing-card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .writing-example-card {
+      animation: none;
+    }
+  }
+
+  .writing-lightbox {
+    animation: writing-lightbox-in 220ms var(--ease-md);
+  }
+
+  @keyframes writing-lightbox-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .writing-lightbox {
+      animation: none;
+    }
+  }
+
+  .writing-case-study-sections > .writing-section:nth-child(n + 3) {
+    padding-top: 0.25rem;
+  }
+
+  .writing-pull-quote {
+    max-width: 34rem;
+  }
+
+  .writing-section-nav {
+    scrollbar-width: thin;
+  }
+
+  .writing-before-after {
+    max-width: 42rem;
+  }
+
+  /* Content Systems — design-system style layouts */
+  .system-section-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .system-list {
+    border-left: 2px solid color-mix(in srgb, var(--color-primary) 15%, transparent);
+    padding-left: 1.25rem;
+  }
+
+  .system-study-card {
+    animation: writing-card-enter 480ms var(--ease-md) both;
+  }
+
+  .system-layout--framework .system-section + .system-section,
+  .system-layout--language .system-section + .system-section,
+  .system-layout--voice .system-section + .system-section {
+    padding-top: 0.25rem;
+  }
+
+  .system-table tbody tr:hover {
+    background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+  }
+
+  .system-pattern-card {
+    transition: transform 200ms var(--ease-md), box-shadow 200ms var(--ease-md);
+  }
+
+  .system-pattern-card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .system-pattern-card:hover {
+      transform: none;
+    }
+  }
+
+  /* AI Trust — flagship case study */
+  .ai-trust-section-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .ai-trust-hero {
+    max-width: 44rem;
+  }
+
+  @media (min-width: 1024px) {
+    .ai-trust-nav-mobile {
+      display: none !important;
+    }
+  }
+
+  .ai-trust-list {
+    max-width: 40rem;
+  }
+
+  .story-chapter + .story-chapter {
+    padding-top: 0.25rem;
+  }
+
+  .story-deep-dive summary {
+    user-select: none;
+  }
+
+  .case-study-footer-offset {
+    margin-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: 0;
+  }
+
+  .case-study-main-with-nav {
+    padding-bottom: 0;
+  }
 }

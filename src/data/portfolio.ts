@@ -162,18 +162,21 @@ export const profile = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-design",
-    title: "Designing AI people can trust",
-    subtitle: "",
+    title: "Designing trustworthy AI conversations",
+    subtitle: "How content design shaped an AI-powered financial assistant.",
     excerpt:
-      "Conversation design, AI personality, guardrails, and fallback flows that make AI interactions clear, helpful, and trustworthy.",
-    company: "Portfolio",
+      "Conversation design, response frameworks, guardrails, and content modeling for a financial AI assistant users could trust.",
+    company: "Veda AI",
     role: "Content Engineer & Content Designer",
     year: "2024",
-    duration: "Ongoing",
-    tags: ["AI Design", "Conversation Design"],
-    featured: false,
+    duration: "6 months",
+    tags: ["Conversation Design", "AI Governance", "Content Strategy"],
+    featured: true,
     accentColor: "accent",
-    metrics: [],
+    metrics: [
+      { value: "38%", label: "Fewer support escalations" },
+      { value: "4.6", label: "Post-session trust rating" },
+    ],
     challenge:
       "AI experiences fail when users cannot tell what the system can do, how it will behave, or what happens when it gets something wrong. Without clear personality, guardrails, and fallbacks, even capable models feel unreliable.",
     approach: [
@@ -187,10 +190,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "content-systems",
-    title: "Building systems that scale content",
-    subtitle: "",
+    title: "Content Systems & Content Modeling",
+    subtitle: "Designing systems that help teams create consistent content at scale.",
     excerpt:
-      "Content governance, AI workflows, localization, and reusable frameworks that help teams create consistent content, faster.",
+      "From reusable frameworks to governance and localization, these projects focus on building scalable content systems rather than individual screens.",
     company: "Portfolio",
     role: "Content Engineer & Content Designer",
     year: "2024",
@@ -215,7 +218,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Product Content Design",
     subtitle: "",
     excerpt:
-      "A collection of UX writing samples with the challenge, reasoning, iterations, and final outcome behind each decision.",
+      "A collection of UX writing examples showing the challenge, reasoning, iterations, and final outcome behind each decision.",
     company: "Portfolio",
     role: "Content Designer",
     year: "2024",
@@ -227,7 +230,7 @@ export const caseStudies: CaseStudy[] = [
     challenge:
       "Product copy often ships without the context behind it. Teams see the final line, not the user problem, constraints, or alternatives that shaped the decision.",
     approach: [
-      "Frame each sample around the user moment and business goal it supports",
+      "Frame each example around the user moment and business goal it supports",
       "Document draft iterations and explain why options were rejected",
       "Call out tone, length, and terminology tradeoffs tied to research or policy",
       "Pair final copy with the reasoning so reviewers can evaluate the thinking",
