@@ -4,11 +4,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/Urmi_Content Designer.pdf",
+        source: "/Urmi shah_Content Designer.pdf",
         headers: [
           {
             key: "Content-Disposition",
-            value: 'attachment; filename="Urmi_Content Designer.pdf"',
+            value: 'attachment; filename="Urmi shah_Content Designer.pdf"',
           },
         ],
       },

@@ -1,11 +1,14 @@
-import { copyFileSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const source = join(root, "Urmi_Content Designer.pdf");
-const target = join(root, "public", "Urmi_Content Designer.pdf");
-const legacyDownloadDir = join(root, "src", "app", "resume", "download");
+const source = join(root, "Urmi shah_Content Designer.pdf");
+const target = join(root, "public", "Urmi shah_Content Designer.pdf");
+const legacyFiles = [
+  join(root, "Urmi_Content Designer.pdf"),
+  join(root, "public", "Urmi_Content Designer.pdf"),
+];
 
 if (!existsSync(source)) {
   if (existsSync(target)) {
@@ -13,15 +16,17 @@ if (!existsSync(source)) {
     process.exit(0);
   }
 
-  console.error("Missing Urmi_Content Designer.pdf — add your resume PDF to the project root.");
+  console.error("Missing Urmi shah_Content Designer.pdf — add your resume PDF to the project root.");
   process.exit(1);
 }
 
 mkdirSync(dirname(target), { recursive: true });
 copyFileSync(source, target);
 
-if (existsSync(legacyDownloadDir)) {
-  rmSync(legacyDownloadDir, { recursive: true, force: true });
+for (const legacyFile of legacyFiles) {
+  if (existsSync(legacyFile)) {
+    unlinkSync(legacyFile);
+  }
 }
 
-console.log("Synced Urmi_Content Designer.pdf → public/");
+console.log("Synced Urmi shah_Content Designer.pdf → public/");

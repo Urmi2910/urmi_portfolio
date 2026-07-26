@@ -42,9 +42,9 @@ export const profile = {
   email: "shah.urmi2910@gmail.com",
   phone: "(+91) 9426804388",
   linkedin: "https://www.linkedin.com/in/urmi-shah/",
-  resumeUrl: "/Urmi_Content Designer.pdf",
-  resumeDownloadUrl: "/Urmi_Content Designer.pdf",
-  resumeFilename: "Urmi_Content Designer.pdf",
+  resumeUrl: "/Urmi shah_Content Designer.pdf",
+  resumeDownloadUrl: "/Urmi shah_Content Designer.pdf",
+  resumeFilename: "Urmi shah_Content Designer.pdf",
   workSamples: "",
 
   skills: [
