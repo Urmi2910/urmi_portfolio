@@ -1,24 +1,15 @@
-import { copyFileSync, existsSync, mkdirSync, unlinkSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const source = join(root, "Urmi_Content Designer.pdf");
-const targets = [
-  join(root, "public", "Urmi_Content Designer.pdf"),
-  join(root, "src", "app", "resume", "download", "resume.pdf"),
-];
-
-const legacyFiles = [
-  join(root, "Urmi-Shah-Resume.pdf"),
-  join(root, "public", "Urmi-Shah-Resume.pdf"),
-  join(root, "public", "resume.pdf"),
-  join(root, "src", "app", "resume", "download", "Urmi-Shah-Resume.pdf"),
-];
+const target = join(root, "public", "Urmi_Content Designer.pdf");
+const legacyDownloadDir = join(root, "src", "app", "resume", "download");
 
 if (!existsSync(source)) {
-  if (targets.some((target) => existsSync(target))) {
-    console.log("Using existing synced resume PDF");
+  if (existsSync(target)) {
+    console.log("Using existing public resume PDF");
     process.exit(0);
   }
 
@@ -26,15 +17,11 @@ if (!existsSync(source)) {
   process.exit(1);
 }
 
-for (const target of targets) {
-  mkdirSync(dirname(target), { recursive: true });
-  copyFileSync(source, target);
+mkdirSync(dirname(target), { recursive: true });
+copyFileSync(source, target);
+
+if (existsSync(legacyDownloadDir)) {
+  rmSync(legacyDownloadDir, { recursive: true, force: true });
 }
 
-for (const legacyFile of legacyFiles) {
-  if (existsSync(legacyFile)) {
-    unlinkSync(legacyFile);
-  }
-}
-
-console.log("Synced Urmi_Content Designer.pdf to public/ and resume/download/");
+console.log("Synced Urmi_Content Designer.pdf → public/");
