@@ -10,10 +10,4 @@ export const uxWritingPracticeHub = {
     href: "https://uxcontent.com/ux-content-feedback/",
     publisher: "UX Content Collective",
   },
-  presentation: {
-    title: "Building a UX Writing Practice",
-    company: "CleverTap",
-    summary:
-      "As one of the content designers at CleverTap, I created and delivered a structured onboarding program to help designers, product managers, and new UX writers build a shared understanding of UX writing principles, microcopy, and collaboration. The program combined practical examples, reusable resources, and hands-on guidance to improve content quality across teams.",
-  },
 };
