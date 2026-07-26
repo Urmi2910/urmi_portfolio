@@ -35,9 +35,9 @@ export interface Experience {
 
 export const profile = {
   name: "Urmi Shah",
-  subtitle: "Designing clarity at scale.",
+  subtitle: "I design clarity at scale.",
   title: "Content Engineer & Content Designer",
-  tagline: "Designing clarity at scale.",
+  tagline: "I design clarity at scale.",
   intro:
     "I've always enjoyed making complex things easier to understand. As a kid, it was board game rulebooks. Today, it's digital products.",
   email: "shah.urmi2910@gmail.com",
@@ -86,45 +86,53 @@ export const profile = {
       logoSrc: "/logos/dreamstreet.png",
       logoFit: "cover",
       role: "Content Engineer & Content Designer - III",
-      period: "October 2025 to Present",
+      period: "Oct 2025 to Present",
       companyAbout:
         "DreamStreet is a personal finance app for managing money, investments, and everyday payments.",
       summary:
         "I lead product content and AI conversation design across onboarding, payments, support, and Help Center.",
       learnings: [
-        "Designed Veda AI — personality, conversation flows, guardrails, and fallbacks",
-        "Built AI content workflows with prompt libraries and templates for faster drafts",
-        "Created voice, tone, and localization guidelines for consistent content across teams",
+        "Designed product content for DreamStreet, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
+        "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
+        "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
+        "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
+        "Used UX research and content testing to improve clarity, solve user problems, and refine the product experience",
       ],
     },
     {
       company: "Dream11",
       logoSrc: "/logos/dream11.png",
       role: "Content Designer - III",
-      period: "September 2024 to October 2025",
+      period: "Sep 2024 to Oct 2025",
       companyAbout:
         "Dream11 is India's largest fantasy sports platform, serving 260M+ users.",
       summary:
         "I led UX writing and built the Dream11 Content Design System so teams could ship clearer content at scale.",
       learnings: [
-        "Partnered with Product and Design from discovery through launch",
-        "Organized taxonomies, labels, and localization standards across products",
-        "Ran workshops and reusable patterns to help teams write content-first",
+        "Led clear, accessible, and user-first content across Dream11 products, improving usability and building customer confidence for 260M+ users",
+        "Partnered with Product and Design from discovery to launch, using content to shape user journeys and product decisions",
+        "Built the Dream11 Content Design System, using systems design that surfaced guidelines, content patterns, past copy, and best practices to help teams create content faster and more consistently",
+        "Helped teams think content-first through workshops, reusable patterns, templates, and writing guidelines",
+        "Organized content with taxonomies, labels, and localization standards to improve consistency and comprehension across products",
+        "Applied accessibility, user research, and data to improve content, reduce friction, and build user trust",
       ],
     },
     {
       company: "CleverTap",
       logoSrc: "/logos/clevertap.png",
       role: "Technical writer & UX Writer",
-      period: "January 2023 to August 2024",
+      period: "Jan 2023 to Aug 2024",
       companyAbout:
         "CleverTap is a B2B marketing automation platform for enterprise customer engagement.",
       summary:
         "I wrote UX content for dashboards, notifications, and complex workflows, and contributed to the content design system.",
       learnings: [
-        "Simplified technical features for enterprise users with Product and Design",
-        "Documented writing guidelines and reusable patterns in the CDS",
-        "Mentored new writers and built interview assessments for hiring",
+        "Designed product content for a B2B marketing automation platform, including dashboards, notifications, and complex product workflows",
+        "Partnered with Product and Design to simplify technical features and improve usability for enterprise users",
+        "Maintained a consistent voice and tone across the product while balancing user needs and business goals",
+        "Contributed to the Content Design System by documenting writing guidelines, reusable patterns, and best practices",
+        "Tested and refined content with Product, Design, and Research using user feedback",
+        "Onboarded and mentored new team members, created interview assessments, and interviewed candidates",
       ],
     },
     {
@@ -138,9 +146,10 @@ export const profile = {
       summary:
         "I wrote product UI, website, blog, and marketing content tailored to user intent and performance.",
       learnings: [
-        "Improved content using clicks, feedback, and metrics",
-        "Created templates and style guide contributions for cross-team consistency",
-        "Briefed and reviewed freelance writers on blog content",
+        "Wrote across channels for product, website, blogs, and marketing, tailoring content to user intent",
+        "Improved content performance by analysing clicks, feedback, and metrics, then iterating for results",
+        "Created reusable templates, contributed to the style guide, and aligned tone across teams",
+        "Guided freelance writers with briefs and reviews to keep blogs clear and consistent",
       ],
     },
     {
@@ -153,8 +162,9 @@ export const profile = {
       summary:
         "I wrote blogs and product content that simplified complex technical ideas for broader audiences.",
       learnings: [
-        "Applied AP style, SEO, and user-intent writing for clarity and discoverability",
-        "Built early foundations in user-friendly writing and brand messaging",
+        "Wrote blogs and product content for multiple technical products, simplifying complex ideas for wider audiences",
+        "Applied AP style guide, SEO, and user-intent writing to make content clear and discoverable",
+        "Built a foundation in user-friendly writing and consistent brand messaging",
       ],
     },
   ] satisfies Experience[],

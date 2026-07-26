@@ -835,17 +835,17 @@
     display: block;
     margin: 0;
     font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 4vw, 2.125rem);
-    line-height: 1.18;
+    font-size: clamp(1.875rem, 5vw, 2.75rem);
+    line-height: 1.14;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--color-foreground);
     text-wrap: balance;
   }
 
   .about-hero-name-lead {
     font-weight: 600;
-    color: color-mix(in srgb, var(--color-foreground) 82%, transparent);
+    color: color-mix(in srgb, var(--color-foreground) 88%, transparent);
   }
 
   .about-hero-name-main {
@@ -853,13 +853,13 @@
   }
 
   .about-hero-role {
-    margin: 0.625rem 0 0;
+    margin: 0.5rem 0 0;
     font-family: var(--font-body);
-    font-size: 0.8125rem;
+    font-size: clamp(0.9375rem, 2.2vw, 1.0625rem);
     line-height: 1.45;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: color-mix(in srgb, var(--color-muted-foreground) 92%, transparent);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--color-muted-foreground) 90%, transparent);
   }
 
   .about-hero-role-sep {
@@ -869,14 +869,14 @@
 
   @media (min-width: 640px) {
     .about-hero-role {
-      margin-top: 0.6875rem;
-      font-size: 0.875rem;
+      margin-top: 0.5625rem;
+      font-size: 1.0625rem;
     }
   }
 
   @media (min-width: 1024px) {
     .about-hero-role {
-      margin-top: 0.75rem;
+      margin-top: 0.625rem;
     }
   }
 
@@ -944,29 +944,29 @@
   }
 
   .about-hero-tagline {
-    margin: 0.5rem 0 0;
+    margin: 0.625rem 0 0;
     font-family: var(--font-heading);
-    font-size: clamp(1.625rem, 4.2vw, 2.375rem);
-    line-height: 1.14;
-    font-weight: 700;
-    letter-spacing: -0.022em;
+    font-size: clamp(1.125rem, 2.8vw, 1.5rem);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.012em;
     color: var(--color-primary);
     text-wrap: balance;
   }
 
   @media (min-width: 768px) {
     .about-hero-tagline {
-      margin-top: 0.5625rem;
-      font-size: clamp(1.75rem, 3.8vw, 2.5rem);
-      line-height: 1.12;
+      margin-top: 0.6875rem;
+      font-size: clamp(1.1875rem, 2.4vw, 1.625rem);
+      line-height: 1.28;
     }
   }
 
   @media (min-width: 1024px) {
     .about-hero-tagline {
-      margin-top: 0.625rem;
-      font-size: 2.5rem;
-      line-height: 1.14;
+      margin-top: 0.75rem;
+      font-size: 1.625rem;
+      line-height: 1.3;
     }
   }
 

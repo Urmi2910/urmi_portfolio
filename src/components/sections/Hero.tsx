@@ -43,11 +43,11 @@ export function Hero() {
             <div className="about-hero-main">
               <div className="about-hero-intro">
                 <h1 className="about-hero-name">
-                  <span className="about-hero-name-lead">I&apos;m</span>{" "}
+                  <span className="about-hero-name-lead">Hi, I&apos;m</span>{" "}
                   <span className="about-hero-name-main">{firstName}</span>
                 </h1>
-                <p className="about-hero-tagline">{profile.tagline}</p>
                 <p className="about-hero-role">
+                  A{" "}
                   {profile.about.roleLabel.split(" • ").map((part, index) => (
                     <Fragment key={part}>
                       {index > 0 && (
@@ -60,6 +60,7 @@ export function Hero() {
                     </Fragment>
                   ))}
                 </p>
+                <p className="about-hero-tagline">{profile.tagline}</p>
               </div>
 
               <div className="about-hero-body">

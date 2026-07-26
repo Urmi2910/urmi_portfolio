@@ -107,11 +107,8 @@ export function ExperienceSection() {
                     </div>
 
                     <div className="experience-card-body min-w-0">
-                      <p className="max-w-3xl text-[0.9375rem] leading-[1.7] text-foreground/90 sm:text-base">
-                        {job.companyAbout}
-                      </p>
-                      <p className="mt-2 max-w-3xl text-[0.9375rem] leading-[1.7] text-muted-foreground sm:text-base">
-                        {job.summary}
+                      <p className="max-w-3xl text-[0.9375rem] leading-[1.7] text-muted-foreground sm:text-base">
+                        {job.companyAbout} {job.summary}
                       </p>
 
                       <button
@@ -169,11 +166,11 @@ export function ExperienceSection() {
                         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/75 md:sr-only">
                           Key responsibilities
                         </p>
-                        <ul className="space-y-2.5 pl-0 md:space-y-3 md:border-l-2 md:border-primary/25 md:pl-5">
+                        <ul className="space-y-3 pl-0 md:space-y-3.5 md:border-l-2 md:border-primary/25 md:pl-5">
                           {job.learnings.map((learning, j) => (
                             <li
                               key={j}
-                              className="flex gap-3 text-[0.9375rem] leading-[1.65] text-muted-foreground sm:text-base"
+                              className="flex gap-3 text-[0.9375rem] leading-[1.7] text-muted-foreground sm:text-base md:text-[1.0625rem] md:leading-[1.75]"
                             >
                               <span
                                 className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40"
