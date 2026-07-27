@@ -22,7 +22,12 @@ const accentBorder: Record<CaseStudy["accentColor"], string> = {
 export async function generateStaticParams() {
   const { caseStudies } = await import("@/data/portfolio");
   return caseStudies
-    .filter((cs) => cs.slug !== "ux-writing-practice")
+    .filter(
+      (cs) =>
+        cs.slug !== "product-content-design" &&
+        cs.slug !== "ai-design" &&
+        cs.slug !== "writing-beyond-products"
+    )
     .map((cs) => ({ slug: cs.slug }));
 }
 

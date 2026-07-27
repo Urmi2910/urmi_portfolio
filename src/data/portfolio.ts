@@ -173,15 +173,15 @@ export const profile = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-design",
-    title: "Designing trustworthy AI conversations",
+    title: "Designing AI people can trust",
     subtitle: "",
     excerpt:
-      "Conversation design, response frameworks, guardrails, and content modeling for a financial AI assistant users could trust.",
-    company: "Veda AI",
+      "Conversation design, AI personality, guardrails, and fallback flows that make AI interactions clear, helpful, and trustworthy.",
+    company: "Portfolio",
     role: "Content Engineer & Content Designer",
     year: "2024",
-    duration: "6 months",
-    tags: ["Conversation Design", "Content Strategy"],
+    duration: "Ongoing",
+    tags: ["AI Design", "Conversation Design"],
     featured: true,
     accentColor: "accent",
     metrics: [],
@@ -198,35 +198,35 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "content-systems",
-    title: "System Design for Error Copy",
+    title: "Building systems that scale content",
     subtitle: "",
     excerpt:
-      "A reusable content pattern for writing every error, warning, and validation message in the product, including AI feature failures.",
+      "Content governance, AI workflows, localization, and reusable frameworks that help teams create consistent content, faster.",
     company: "Portfolio",
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["Error UX", "Content Systems", "AI Failures"],
+    tags: ["System Design", "AI", "Governance"],
     featured: true,
     accentColor: "warm",
     metrics: [],
     challenge:
-      "Error copy was written fresh on every screen. Ten different ways to say \"something went wrong,\" none of which told users what to do next.",
+      "As products and teams grow, content quality drifts. Without shared governance, AI tooling, and reusable frameworks, every team reinvents voice, terminology, and review workflows from scratch.",
     approach: [
-      "Built a severity-first taxonomy with four interruption categories and fixed sentence patterns",
-      "Created an approved dictionary of ~50 pre-written messages with structured metadata for engineering",
-      "Designed interactive tooling for classifying scenarios and matching dictionary entries",
-      "Documented AI-specific failure modes so guardrail refusals don't collapse into generic errors",
+      "Define governance models for voice, terminology, and review across product teams",
+      "Build AI-assisted workflows that improve first drafts without bypassing human judgment",
+      "Design localization standards and content patterns teams can reuse at scale",
+      "Document frameworks so content decisions stay consistent as products evolve",
     ],
     outcome:
-      "A working content system teams can classify against, reuse from, and ship with, separating engineering signals from content problems.",
+      "Scalable content infrastructure that helps cross-functional teams ship clearer, more consistent product content with less rework.",
   },
   {
     slug: "product-content-design",
     title: "Product Content Design",
     subtitle: "",
     excerpt:
-      "A collection of UX writing examples showing the challenge, reasoning, iterations, and final outcome behind each decision.",
+      "A collection of UX writing samples with the challenge, reasoning, iterations, and final outcome behind each decision.",
     company: "Portfolio",
     role: "Content Designer",
     year: "2024",
@@ -238,7 +238,7 @@ export const caseStudies: CaseStudy[] = [
     challenge:
       "Product copy often ships without the context behind it. Teams see the final line, not the user problem, constraints, or alternatives that shaped the decision.",
     approach: [
-      "Frame each example around the user moment and business goal it supports",
+      "Frame each sample around the user moment and business goal it supports",
       "Document draft iterations and explain why options were rejected",
       "Call out tone, length, and terminology tradeoffs tied to research or policy",
       "Pair final copy with the reasoning so reviewers can evaluate the thinking",
@@ -247,7 +247,7 @@ export const caseStudies: CaseStudy[] = [
       "A repeatable format for presenting UX writing work that shows challenge, reasoning, and outcome, not just polished final copy.",
   },
   {
-    slug: "ux-writing-practice",
+    slug: "writing-beyond-products",
     title: "Writing beyond products",
     subtitle: "",
     excerpt:
@@ -256,18 +256,20 @@ export const caseStudies: CaseStudy[] = [
     role: "Content Engineer & Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["Technical Writing", "Thought Leadership"],
+    tags: ["Technical Writing", "Workshop", "AI Experiments"],
     featured: true,
     accentColor: "tertiary",
     metrics: [],
     challenge:
-      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-product copy.",
+      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-app copy, but with different formats and audiences.",
     approach: [
-      "Publish thought leadership on UX writing process and feedback",
-      "Share practical frameworks for evaluating and acting on design feedback",
+      "Publish technical writing and articles that explain complex topics in accessible language",
+      "Facilitate workshops that help teams improve how they write and think about content",
+      "Run AI experiments to test new ways of creating, evaluating, and scaling content",
+      "Share learning openly so others can reuse frameworks, not just final outputs",
     ],
     outcome:
-      "Published writing that shows how I think about UX content beyond product screens and helps other writers move copy forward with clarity.",
+      "A body of work beyond shipped products that shows how I think, learn, and help others grow as content practitioners.",
   },
 ];
 

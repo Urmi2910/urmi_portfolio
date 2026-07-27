@@ -21,7 +21,7 @@ const studyIcons: Record<string, LucideIcon> = {
   "product-content-design": PenLine,
   "content-systems": Layers,
   "ai-design": Bot,
-  "ux-writing-practice": BookOpen,
+  "writing-beyond-products": BookOpen,
 };
 
 export function PortfolioCard({

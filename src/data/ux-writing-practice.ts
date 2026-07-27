@@ -1,5 +1,5 @@
 export const uxWritingPracticeHub = {
-  slug: "ux-writing-practice",
+  slug: "writing-beyond-products",
   title: "Writing beyond products",
   overview:
     "Thought leadership and published writing on UX content, design feedback, and building clarity at scale.",

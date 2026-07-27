@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: uxWritingPracticeHub.overview,
 };
 
-export default function UxWritingPracticePage() {
+export default function WritingBeyondProductsPage() {
   return (
     <>
       <Header />

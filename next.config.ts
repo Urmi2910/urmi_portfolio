@@ -19,8 +19,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/work/writing-beyond-products",
-        destination: "/work/ux-writing-practice",
+        source: "/work/ux-writing-practice",
+        destination: "/work/writing-beyond-products",
         permanent: true,
       },
     ];
