@@ -26,12 +26,12 @@ export function SmallScreenGate() {
             width={640}
             height={640}
             priority
-            className="h-auto w-full max-w-[min(100vw-1.5rem,20rem)] object-contain"
+            className="h-auto w-full max-w-[min(100vw-2rem,17rem)] object-contain"
           />
 
           <h1
             id="small-screen-title"
-            className="-mt-4 font-heading text-[clamp(1.25rem,4.5vw,1.625rem)] font-bold leading-snug tracking-tight text-foreground text-balance"
+            className="mt-7 font-heading text-[clamp(1.25rem,4.5vw,1.625rem)] font-bold leading-snug tracking-tight text-foreground text-balance"
           >
             Best viewed on a larger screen
           </h1>
