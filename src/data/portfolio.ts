@@ -371,7 +371,7 @@ export const writingItems: WritingItem[] = [
 ];
 
 export const learningIntro =
-  "Most of what I know comes from curiosity, building, and learning by doing. These certifications are just one part of that journey.";
+  "These certifications are just one part of that journey. Most of what I know comes from curiosity, building, and learning by doing.";
 
 export const learningItems: LearningItem[] = [
   {
