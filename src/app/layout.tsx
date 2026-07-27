@@ -1,3 +1,4 @@
+import { SmallScreenGate } from "@/components/layout/SmallScreenGate";
 import { profile } from "@/data/portfolio";
 import type { Metadata, Viewport } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
@@ -36,7 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} ${jakarta.variable}`}>
-      <body className="flex min-h-screen min-h-[100dvh] flex-col">{children}</body>
+      <body className="flex min-h-screen min-h-[100dvh] flex-col">
+        <SmallScreenGate />
+        <div className="hidden min-h-screen min-h-[100dvh] flex-col md:flex">{children}</div>
+      </body>
     </html>
   );
 }
