@@ -36,20 +36,22 @@ function ComparisonPanel({
       </figcaption>
       <div
         className={cn(
-          "overflow-hidden rounded-[var(--radius-lg)] border border-outline/15",
+          "rounded-[var(--radius-lg)] border border-outline/15",
           isPrerequisites && stacked
-            ? "flex aspect-[16/7] min-h-[10rem] w-full items-center justify-center bg-[#faf8f5] p-5 sm:p-6"
-            : isPhone
-              ? "aspect-[9/19] max-h-[640px]"
-              : isDialog || isPrerequisites
-                ? "bg-[#faf8f5] p-5 sm:p-6"
-                : "aspect-[16/10]"
+            ? "w-full bg-[#faf8f5] p-4 sm:p-6"
+            : "overflow-hidden",
+          isPhone && "aspect-[9/19] max-h-[640px]",
+          !isPrerequisites && !isPhone && (isDialog ? "bg-[#faf8f5] p-5 sm:p-6" : "aspect-[16/10]")
         )}
       >
         {isConfirmationDialogMockup(mockup) ? (
           <ConfirmationDialogMockup variant={mockup} bare />
         ) : isPrerequisites ? (
-          <PrerequisitesMockupById mockupId={mockup} side={variant} className="mx-auto w-full max-w-4xl" />
+          <PrerequisitesMockupById
+            mockupId={mockup}
+            side={variant}
+            className="mx-auto w-full max-w-none"
+          />
         ) : imageSrc ? (
           <div className="relative h-full w-full bg-background">
             <Image
@@ -96,6 +98,7 @@ export function BeforeAfterSlider({
     <div
       className={cn(
         "writing-before-after",
+        isStacked && "writing-before-after--stacked",
         isStacked
           ? "flex w-full max-w-none flex-col gap-6 sm:gap-8"
           : "grid gap-5 sm:grid-cols-2 sm:gap-6",

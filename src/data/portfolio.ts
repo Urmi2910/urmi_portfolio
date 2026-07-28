@@ -70,7 +70,7 @@ export const profile = {
         text: "I've always enjoyed making complex things easier to understand. As a kid, it was board game rulebooks. Today, it's digital products.",
       },
       {
-        text: "Over the last 7+ years, I've grown from writing product content to designing content systems, AI experiences, and governance frameworks that help both users and teams.",
+        text: "Over 7 years, I've grown from writing product content to designing content systems, AI experiences, and governance frameworks that scale across products and teams.",
         highlights: ["content systems", "AI experiences", "governance frameworks"],
       },
     ],
@@ -86,16 +86,15 @@ export const profile = {
       logoSrc: "/logos/dreamstreet.png",
       logoFit: "cover",
       role: "Content Engineer & Content Designer - III",
-      period: "Oct 2025 to Present",
-      companyAbout:
-        "DreamStreet is a personal finance app for managing money, investments, and everyday payments.",
+      period: "October 2025 to Present",
+      companyAbout: "Building AI-powered financial experiences for first-time investors.",
       summary:
-        "I lead product content and AI conversation design across onboarding, payments, support, and Help Center.",
+        "I lead product content, AI experiences, and content systems that make investing, payments, and support easier to understand.",
       learnings: [
-        "Designed product content for DreamStreet, including onboarding, payments, FAQs, support emails, and Help Center experiences for Tier 2-4 users",
-        "Built AI content workflows, including prompt libraries and content templates, helping teams create better first drafts and work faster",
-        "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust and improve the user experience",
-        "Created content guidelines, including voice and tone, terminology, localization, and review processes to keep content clear and consistent across teams",
+        "Led product content across onboarding, payments, support, and AI experiences for a new finance app, creating simpler, more trustworthy experiences for Tier 2–4 users",
+        "Built AI content workflows, including prompt libraries and reusable templates, improving content quality and helping teams create faster, more consistent first drafts",
+        "Designed Veda AI, defining its personality, conversation flows, guardrails, and fallback responses to build trust, improve response quality, and create a more reliable AI experience",
+        "Built scalable content systems covering voice, terminology, localization, AI guidelines, and governance to improve consistency across products and teams",
         "Used UX research and content testing to improve clarity, solve user problems, and refine the product experience",
       ],
     },
@@ -103,16 +102,15 @@ export const profile = {
       company: "Dream11",
       logoSrc: "/logos/dream11.png",
       role: "Content Designer - III",
-      period: "Sep 2024 to Oct 2025",
-      companyAbout:
-        "Dream11 is India's largest fantasy sports platform, serving 260M+ users.",
+      period: "September 2024 to October 2025",
+      companyAbout: "India's largest fantasy sports platform with 260M+ users.",
       summary:
-        "I led UX writing and built the Dream11 Content Design System so teams could ship clearer content at scale.",
+        "I led content design across multiple products and built the Content Design System that helped teams create consistent content at scale.",
       learnings: [
         "Led clear, accessible, and user-first content across Dream11 products, improving usability and building customer confidence for 260M+ users",
-        "Partnered with Product and Design from discovery to launch, using content to shape user journeys and product decisions",
-        "Built the Dream11 Content Design System, using systems design that surfaced guidelines, content patterns, past copy, and best practices to help teams create content faster and more consistently",
-        "Helped teams think content-first through workshops, reusable patterns, templates, and writing guidelines",
+        "Partnered with Product, Design, Research, and Engineering from discovery to launch, using content to influence product decisions and shape end-to-end user journeys",
+        "Built the Dream11 Content Design System, creating reusable patterns, governance, writing guidelines, and searchable content libraries",
+        "Enabled product teams through workshops, reusable templates, and writing guidelines, helping teams create more consistent content at scale",
         "Organized content with taxonomies, labels, and localization standards to improve consistency and comprehension across products",
         "Applied accessibility, user research, and data to improve content, reduce friction, and build user trust",
       ],
@@ -120,19 +118,18 @@ export const profile = {
     {
       company: "CleverTap",
       logoSrc: "/logos/clevertap.png",
-      role: "Technical writer & UX Writer",
-      period: "Jan 2023 to Aug 2024",
-      companyAbout:
-        "CleverTap is a B2B marketing automation platform for enterprise customer engagement.",
+      role: "UX Writer",
+      period: "January 2023 to August 2024",
+      companyAbout: "An enterprise customer engagement platform used by global brands.",
       summary:
-        "I wrote UX content for dashboards, notifications, and complex workflows, and contributed to the content design system.",
+        "I owned UX content across multiple product areas, simplified complex enterprise workflows, and contributed to the Content Design System.",
       learnings: [
-        "Designed product content for a B2B marketing automation platform, including dashboards, notifications, and complex product workflows",
-        "Partnered with Product and Design to simplify technical features and improve usability for enterprise users",
-        "Maintained a consistent voice and tone across the product while balancing user needs and business goals",
-        "Contributed to the Content Design System by documenting writing guidelines, reusable patterns, and best practices",
-        "Tested and refined content with Product, Design, and Research using user feedback",
-        "Onboarded and mentored new team members, created interview assessments, and interviewed candidates",
+        "Owned content across multiple product pods within CleverTap's B2B marketing platform, designing dashboards, onboarding, notifications, and complex product workflows",
+        "Partnered with Product, Design, Engineering, and Documentation to simplify technical features and improve usability for enterprise users",
+        "Maintained consistent product language across multiple product areas while balancing user needs, technical complexity, and business goals",
+        "Expanded the Content Design System through reusable writing patterns, documentation, governance, and best practices",
+        "Validated content through research, usability testing, stakeholder reviews, and iterative improvements",
+        "Mentored new writers, created hiring assessments, and interviewed candidates to help grow the content design team",
       ],
     },
     {
@@ -141,10 +138,9 @@ export const profile = {
       logoSrcSet: "/logos/appitsimple-96.png 2x, /logos/appitsimple.png 1x",
       role: "Sr. Content writer & Copy writer",
       period: "Jun 2021 to Oct 2022",
-      companyAbout:
-        "Appitsimple builds mobile and web software products across multiple industries.",
+      companyAbout: "A SaaS company building web and mobile products.",
       summary:
-        "I wrote product UI, website, blog, and marketing content tailored to user intent and performance.",
+        "I wrote product, web, and marketing content while learning how content shapes the end-to-end product experience.",
       learnings: [
         "Wrote across channels for product, website, blogs, and marketing, tailoring content to user intent",
         "Improved content performance by analysing clicks, feedback, and metrics, then iterating for results",
@@ -157,10 +153,9 @@ export const profile = {
       logoSrc: "/logos/gateway.png",
       role: "Sr. Content writer",
       period: "Mar 2020 to Mar 2021",
-      companyAbout:
-        "Gateway Group develops technical software products for business and consumer markets.",
+      companyAbout: "A technology company building enterprise software solutions.",
       summary:
-        "I wrote blogs and product content that simplified complex technical ideas for broader audiences.",
+        "I translated complex technical concepts into blogs, product content, and marketing copy that customers could easily understand.",
       learnings: [
         "Wrote blogs and product content for multiple technical products, simplifying complex ideas for wider audiences",
         "Applied AP style guide, SEO, and user-intent writing to make content clear and discoverable",

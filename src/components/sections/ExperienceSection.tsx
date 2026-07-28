@@ -110,7 +110,6 @@ export function ExperienceSection() {
                       <p className="max-w-3xl text-[0.9375rem] leading-[1.7] text-muted-foreground sm:text-base">
                         {job.companyAbout} {job.summary}
                       </p>
-
                       <button
                         type="button"
                         id={`${panelId}-toggle`}

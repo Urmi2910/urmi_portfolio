@@ -72,7 +72,7 @@ const profile = {
     {
       company: "CleverTap",
       logo: "clevertap.png",
-      role: "Technical writer & UX Writer",
+      role: "UX Writer",
       period: "January 2023 to August 2024",
       bullets: [
         "Wrote clear copy for dashboards, notifications, and product flows",
