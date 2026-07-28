@@ -1,8 +1,8 @@
 "use client";
 
-import { profile } from "@/data/portfolio";
+import { ResumeDownloadLink } from "@/components/ui/ResumeDownloadLink";
 import Link from "next/link";
-import { ArrowLeft, Download } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export function ResumeToolbar() {
   return (
@@ -15,10 +15,9 @@ export function ResumeToolbar() {
           <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
           Back to site
         </Link>
-        <a href={profile.resumeDownloadUrl} className="btn-primary px-4 text-sm">
-          <Download className="h-4 w-4" strokeWidth={2.5} />
+        <ResumeDownloadLink showIcon className="btn-primary gap-1.5 px-4 text-sm">
           Download resume
-        </a>
+        </ResumeDownloadLink>
       </div>
     </div>
   );

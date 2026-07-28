@@ -4,12 +4,13 @@ import { GraduationCap } from "lucide-react";
 
 export function LearningSection() {
   return (
-    <section id="learning" className="section-learning scroll-section py-12 sm:py-16 md:py-20">
+    <section id="learning" className="section-learning scroll-section section-spacing">
       <div className="container-page learning-section-content">
         <SectionHeading
           icon={GraduationCap}
           title="Continuous learning"
           description={learningIntro}
+          tone="surface"
           stickyScope="title"
         />
 

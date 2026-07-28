@@ -59,9 +59,9 @@ export function ExperienceSection() {
   }, [openIndex]);
 
   return (
-    <section id="experience" className="section-experience scroll-section py-12 sm:py-20 md:py-24">
+    <section id="experience" className="section-experience scroll-section section-spacing">
       <div className="container-page">
-        <SectionHeading icon={Briefcase} title="Experience" tone="surface" />
+        <SectionHeading icon={Briefcase} title="Experience" tone="background" />
 
         <ol className="experience-list mt-8 flex flex-col gap-5 sm:mt-12 sm:gap-6">
           {profile.experience.map((job, i) => {

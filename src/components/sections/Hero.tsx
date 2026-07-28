@@ -1,4 +1,5 @@
 import { AboutHeroDecor } from "@/components/ui/AboutHeroDecor";
+import { GeometricDecor } from "@/components/ui/GeometricDecor";
 import { HighlightText } from "@/components/ui/HighlightText";
 import { profile } from "@/data/portfolio";
 import Image from "next/image";
@@ -9,9 +10,10 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="section-flow-child scroll-section pb-2 pt-[calc(3.25rem+env(safe-area-inset-top,0px))] sm:pb-4 sm:pt-[calc(4.5rem+env(safe-area-inset-top,0px))] md:pt-24"
+      className="section-about scroll-section section-spacing section-spacing-about-top"
     >
-      <div className="container-page py-3 sm:py-4">
+      <GeometricDecor variant="hero" />
+      <div className="container-page">
         <div className="about-hero-card">
           <AboutHeroDecor />
 

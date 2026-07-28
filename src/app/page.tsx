@@ -1,6 +1,5 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { GeometricDecor } from "@/components/ui/GeometricDecor";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { Hero } from "@/components/sections/Hero";
@@ -11,11 +10,8 @@ export default function HomePage() {
     <>
       <Header />
       <main className="flex-1">
-        <div className="about-portfolio-flow">
-          <GeometricDecor variant="hero" />
-          <Hero />
-          <CaseStudiesSection />
-        </div>
+        <Hero />
+        <CaseStudiesSection />
         <ExperienceSection />
         <LearningSection />
       </main>

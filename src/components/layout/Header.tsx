@@ -1,6 +1,7 @@
 "use client";
 
 import { profile } from "@/data/portfolio";
+import { ResumeDownloadLink } from "@/components/ui/ResumeDownloadLink";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -149,12 +150,9 @@ export function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
-          <a
-            href={profile.resumeDownloadUrl}
-            className="btn-primary hidden shrink-0 gap-1 md:inline-flex md:min-h-9 md:px-3 md:py-2 md:text-xs lg:min-h-[44px] lg:gap-1.5 lg:px-5 lg:py-2.5 lg:text-sm"
-          >
+          <ResumeDownloadLink className="btn-primary hidden shrink-0 gap-1 md:inline-flex md:min-h-9 md:px-3 md:py-2 md:text-xs lg:min-h-[44px] lg:gap-1.5 lg:px-5 lg:py-2.5 lg:text-sm">
             Download resume
-          </a>
+          </ResumeDownloadLink>
 
           <button
             ref={menuButtonRef}
