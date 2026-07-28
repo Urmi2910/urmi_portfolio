@@ -1,7 +1,7 @@
 export const contentSystemsCaseStudy = {
   slug: "content-systems",
   title: "AI Content Context Engine",
-  subtitle: "Helping AI write better UI copy by giving it the right information first.",
+  subtitle: "An AI prototype that helps generate consistent UI copy using writing guidelines, approved terminology, and product context.",
   projectType: "Prototype",
   tags: ["Content Systems", "AI", "UI Copy"],
   overview: {

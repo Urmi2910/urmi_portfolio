@@ -12,12 +12,12 @@ const legacyFiles = [
   join(root, "public", "Urmi_Content Designer.pdf"),
 ];
 
-if (!existsSync(source)) {
-  if (existsSync(target)) {
-    console.log("Using existing public resume PDF");
-    process.exit(0);
-  }
+if (existsSync(target)) {
+  console.log("Resume PDF already present in public/");
+  process.exit(0);
+}
 
+if (!existsSync(source)) {
   console.error("Missing Urmi shah_Senior Content Designer.pdf - add your resume PDF to the project root.");
   process.exit(1);
 }

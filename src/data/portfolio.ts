@@ -168,57 +168,6 @@ export const profile = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "ai-design",
-    title: "Designing AI people can trust",
-    subtitle: "",
-    excerpt:
-      "Conversation design, AI personality, guardrails, and fallback flows that make AI interactions clear, helpful, and trustworthy.",
-    company: "Portfolio",
-    role: "Content Engineer & Content Designer",
-    year: "2024",
-    duration: "Ongoing",
-    tags: ["AI Design", "Conversation Design"],
-    featured: true,
-    accentColor: "accent",
-    metrics: [],
-    challenge:
-      "AI experiences fail when users cannot tell what the system can do, how it will behave, or what happens when it gets something wrong. Without clear personality, guardrails, and fallbacks, even capable models feel unreliable.",
-    approach: [
-      "Define AI personality, tone, and boundaries aligned with product trust goals",
-      "Design conversation flows that set expectations and recover gracefully from errors",
-      "Build guardrails and fallback patterns for edge cases, compliance, and unclear intent",
-      "Test AI interactions for clarity, helpfulness, and consistency across user scenarios",
-    ],
-    outcome:
-      "AI experiences that communicate capability honestly, guide users with confidence, and maintain trust when the system cannot deliver a perfect answer.",
-  },
-  {
-    slug: "content-systems",
-    title: "AI Content Context Engine",
-    subtitle: "",
-    excerpt:
-      "A prototype that helps AI write better UI copy by gathering writing rules, approved words, and examples first, shown through password validation.",
-    href: "/work/content-systems",
-    company: "Prototype",
-    role: "Content Engineer & Content Designer",
-    year: "2025",
-    duration: "Prototype",
-    tags: ["Content Systems", "AI", "UI Copy"],
-    featured: true,
-    accentColor: "warm",
-    metrics: [],
-    challenge:
-      "Most AI copy workflows ask AI to write from one prompt, even though teams already have writing rules, approved words, message styles, and examples.",
-    approach: [
-      "Organised writing content as reusable pieces instead of one long prompt",
-      "Built a system that collects the right information for each situation",
-      "Combined that information into clear instructions for AI",
-      "Generated and checked UI copy against the same writing rules",
-    ],
-    outcome:
-      "Showed that giving AI the right information first produces more consistent UI copy than asking it to write from one long prompt.",
-  },
-  {
     slug: "trigger-order-vs-gtt",
     title: "Simplifying Advanced Trading",
     subtitle: "",
@@ -242,6 +191,57 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome:
       "Users understood advanced features with little or no explanation, making advanced trading feel more approachable without reducing functionality.",
+  },
+  {
+    slug: "content-systems",
+    title: "AI Content Context Engine",
+    subtitle: "",
+    excerpt:
+      "An AI prototype that helps generate consistent UI copy using writing guidelines, approved terminology, and product context.",
+    href: "/work/content-systems",
+    company: "Prototype",
+    role: "Content Engineer & Content Designer",
+    year: "2025",
+    duration: "Prototype",
+    tags: ["Content Systems", "AI", "UI Copy"],
+    featured: true,
+    accentColor: "warm",
+    metrics: [],
+    challenge:
+      "Most AI copy workflows ask AI to write from one prompt, even though teams already have writing rules, approved words, message styles, and examples.",
+    approach: [
+      "Organised writing content as reusable pieces instead of one long prompt",
+      "Built a system that collects the right information for each situation",
+      "Combined that information into clear instructions for AI",
+      "Generated and checked UI copy against the same writing rules",
+    ],
+    outcome:
+      "Showed that giving AI the right information first produces more consistent UI copy than asking it to write from one long prompt.",
+  },
+  {
+    slug: "guidelines",
+    title: "UX Writing Guidelines",
+    subtitle: "",
+    excerpt:
+      "A reusable guide for writing clear, consistent product copy — from letter case and form fields to empty states, confirmations, and errors.",
+    href: "/work/guidelines",
+    company: "CleverTap",
+    role: "Content Designer",
+    year: "2023",
+    duration: "Ongoing",
+    tags: ["UX Writing", "Content Systems", "Guidelines"],
+    featured: true,
+    accentColor: "accent",
+    metrics: [],
+    challenge:
+      "Product teams wrote UI copy inconsistently because there was no shared reference for headings, labels, errors, and form field patterns.",
+    approach: [
+      "Documented letter case, numerals, and percent usage with do/don't examples",
+      "Defined guidelines for text fields, content types, and error message patterns",
+      "Created a searchable PDF teams could reference while writing and reviewing copy",
+    ],
+    outcome:
+      "Teams had a single source of truth for product copy, reducing rework and keeping language consistent across features.",
   },
   {
     slug: "product-content-design",

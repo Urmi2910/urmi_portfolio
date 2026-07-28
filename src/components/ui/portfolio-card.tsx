@@ -2,7 +2,7 @@ import type { CaseStudy } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import {
   ArrowUpRight,
-  Bot,
+  BookOpen,
   CandlestickChart,
   Layers,
   PenLine,
@@ -21,7 +21,7 @@ const studyIcons: Record<string, LucideIcon> = {
   "product-content-design": PenLine,
   "trigger-order-vs-gtt": CandlestickChart,
   "content-systems": Layers,
-  "ai-design": Bot,
+  guidelines: BookOpen,
 };
 
 export function PortfolioCard({
