@@ -61,7 +61,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="section-experience scroll-section section-spacing">
       <div className="container-page">
-        <SectionHeading icon={Briefcase} title="Experience" tone="background" />
+        <SectionHeading icon={Briefcase} title="Experience" tone="surface" />
 
         <ol className="experience-list mt-8 flex flex-col gap-5 sm:mt-12 sm:gap-6">
           {profile.experience.map((job, i) => {

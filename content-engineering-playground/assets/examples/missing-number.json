@@ -1,0 +1,8 @@
+{
+  "id": "missing-number",
+  "scenario": "missing-number",
+  "message": "Add a number.",
+  "pattern": "action-first",
+  "writingRules": ["active-voice", "one-issue"],
+  "why": "Starts with a direct action and uses the preferred term number."
+}

@@ -1,0 +1,8 @@
+{
+  "id": "missing-lowercase",
+  "scenario": "missing-lowercase",
+  "message": "Add a lowercase letter.",
+  "pattern": "action-first",
+  "writingRules": ["active-voice", "one-issue"],
+  "why": "Starts with a direct action and uses the preferred term lowercase letter."
+}

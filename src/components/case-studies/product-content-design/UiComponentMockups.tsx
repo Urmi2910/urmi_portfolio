@@ -253,12 +253,18 @@ function UiComponentPair({
 export function SnackbarsPairedMockup({
   beforeLabel = "Before",
   afterLabel = "After",
+  className,
 }: {
   beforeLabel?: string;
   afterLabel?: string;
+  className?: string;
 }) {
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-5 sm:gap-6" role="img" aria-label="Snackbar copy comparisons">
+    <div
+      className={cn("mx-auto flex w-full max-w-4xl flex-col gap-5 sm:gap-6", className)}
+      role="img"
+      aria-label="Snackbar copy comparisons"
+    >
       {snackbarPairs.map((pair, index) => (
         <UiComponentPair
           key={index}

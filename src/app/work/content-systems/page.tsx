@@ -1,0 +1,29 @@
+import { ContentSystemsCaseStudy } from "@/components/case-studies/content-systems/ContentSystemsCaseStudy";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { GeometricDecor } from "@/components/ui/GeometricDecor";
+import { contentSystemsCaseStudy } from "@/data/content-systems-case-study";
+import { profile } from "@/data/portfolio";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `${contentSystemsCaseStudy.title} | ${profile.name}`,
+  description: contentSystemsCaseStudy.subtitle,
+};
+
+export default function ContentSystemsCaseStudyPage() {
+  return (
+    <>
+      <Header />
+      <main className="content-systems-page flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+        <section className="relative border-b border-border/50 bg-[#fffcf8] pb-12 sm:pb-16 md:pb-20">
+          <GeometricDecor variant="section" />
+          <div className="relative mx-auto w-full max-w-7xl px-[clamp(1rem,4vw,2rem)] py-8 md:py-12">
+            <ContentSystemsCaseStudy />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

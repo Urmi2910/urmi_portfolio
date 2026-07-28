@@ -1,0 +1,122 @@
+[
+  {
+    "id": "password-too-short",
+    "title": "Password Too Short",
+    "description": "The password contains fewer than 8 characters.",
+    "component": "inline-error",
+    "userGoal": "Create a valid password.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["active-voice", "one-issue", "plain-language", "sentence-case"],
+    "terminology": ["password"],
+    "example": "password-too-short"
+  },
+  {
+    "id": "missing-uppercase",
+    "title": "Missing Uppercase Letter",
+    "description": "The password doesn't contain an uppercase letter.",
+    "component": "inline-error",
+    "userGoal": "Meet password requirements.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["active-voice", "one-issue", "plain-language"],
+    "terminology": ["uppercase-letter"],
+    "example": "missing-uppercase"
+  },
+  {
+    "id": "missing-lowercase",
+    "title": "Missing Lowercase Letter",
+    "description": "The password doesn't contain a lowercase letter.",
+    "component": "inline-error",
+    "userGoal": "Meet password requirements.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["active-voice", "one-issue"],
+    "terminology": ["lowercase-letter"],
+    "example": "missing-lowercase"
+  },
+  {
+    "id": "missing-number",
+    "title": "Missing Number",
+    "description": "The password doesn't contain a number.",
+    "component": "inline-error",
+    "userGoal": "Meet password requirements.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["active-voice", "one-issue"],
+    "terminology": ["number"],
+    "example": "missing-number"
+  },
+  {
+    "id": "missing-special-character",
+    "title": "Missing Special Character",
+    "description": "The password doesn't contain a special character.",
+    "component": "inline-error",
+    "userGoal": "Meet password requirements.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["active-voice", "one-issue"],
+    "terminology": ["special-character"],
+    "example": "missing-special-character"
+  },
+  {
+    "id": "passwords-dont-match",
+    "title": "Passwords Don't Match",
+    "description": "The confirmation password doesn't match.",
+    "component": "inline-error",
+    "userGoal": "Confirm the password correctly.",
+    "messageType": "recoverable-error",
+    "pattern": "problem-solution",
+    "writingRules": ["plain-language", "avoid-blame"],
+    "terminology": ["password"],
+    "example": "passwords-dont-match"
+  },
+  {
+    "id": "password-reused",
+    "title": "Password Reused",
+    "description": "The user entered a previously used password.",
+    "component": "inline-error",
+    "userGoal": "Choose a different password.",
+    "messageType": "blocking-error",
+    "pattern": "problem-solution",
+    "writingRules": ["plain-language", "avoid-blame"],
+    "terminology": ["password"],
+    "example": "password-reused"
+  },
+  {
+    "id": "password-too-weak",
+    "title": "Weak Password",
+    "description": "The password doesn't meet the required strength.",
+    "component": "inline-error",
+    "userGoal": "Create a stronger password.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["plain-language", "active-voice"],
+    "terminology": ["password"],
+    "example": "password-too-weak"
+  },
+  {
+    "id": "password-contains-spaces",
+    "title": "Password Contains Spaces",
+    "description": "Spaces aren't allowed in passwords.",
+    "component": "inline-error",
+    "userGoal": "Remove spaces.",
+    "messageType": "recoverable-error",
+    "pattern": "action-first",
+    "writingRules": ["one-issue", "active-voice"],
+    "terminology": ["password"],
+    "example": "password-contains-spaces"
+  },
+  {
+    "id": "password-updated",
+    "title": "Password Updated",
+    "description": "The password was successfully changed.",
+    "component": "toast",
+    "userGoal": "Know the action was successful.",
+    "messageType": "success",
+    "pattern": "confirmation",
+    "writingRules": ["sentence-case"],
+    "terminology": ["password"],
+    "example": "password-updated"
+  }
+]

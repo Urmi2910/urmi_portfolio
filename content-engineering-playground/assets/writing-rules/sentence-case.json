@@ -1,0 +1,8 @@
+{
+  "id": "sentence-case",
+  "name": "Sentence Case",
+  "description": "Capitalize only the first word and proper nouns.",
+  "reason": "Sentence case reads naturally in UI and avoids shouty title case.",
+  "goodExamples": ["Add an uppercase letter.", "Passwords don't match."],
+  "badExamples": ["Add An Uppercase Letter.", "Passwords Don't Match."]
+}

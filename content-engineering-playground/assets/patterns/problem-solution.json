@@ -1,0 +1,8 @@
+{
+  "id": "problem-solution",
+  "name": "Problem → Solution",
+  "description": "State the problem, then tell the user how to fix it.",
+  "structure": "Problem → Solution",
+  "goodExample": "Passwords don't match. Try again.",
+  "avoid": "Error 302."
+}

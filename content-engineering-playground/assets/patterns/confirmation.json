@@ -1,0 +1,8 @@
+{
+  "id": "confirmation",
+  "name": "Confirmation",
+  "description": "Confirm that the action was completed.",
+  "structure": "Confirmation",
+  "goodExample": "Password updated.",
+  "avoid": "Operation successful."
+}

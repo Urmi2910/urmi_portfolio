@@ -1,0 +1,10 @@
+{
+  "id": "concise",
+  "name": "Concise",
+  "description": "Use the fewest words needed to be clear.",
+  "reason": "Short messages are faster to read, especially in inline errors.",
+  "goodExamples": ["Add a special character.", "Use at least 8 characters."],
+  "badExamples": [
+    "Your password must include at least one special character to meet security requirements."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "active-voice",
+  "name": "Active Voice",
+  "description": "Write direct instructions where the user is the actor.",
+  "reason": "Active voice is easier to scan and act on.",
+  "goodExamples": ["Add an uppercase letter.", "Choose a different password."],
+  "badExamples": ["An uppercase letter must be added.", "A different password should be chosen."]
+}

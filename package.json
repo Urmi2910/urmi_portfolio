@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/sync-resume-pdf.mjs",
+    "prebuild": "node scripts/sync-resume-pdf.mjs && node scripts/build-playground.mjs",
+    "build:playground": "node scripts/build-playground.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

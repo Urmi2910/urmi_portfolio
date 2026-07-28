@@ -1,0 +1,7 @@
+{
+  "id": "recoverable-error",
+  "name": "Recoverable Error",
+  "purpose": "Help the user fix an issue they can immediately resolve.",
+  "tone": "Clear, supportive and direct.",
+  "userOutcome": "The user understands exactly what action to take."
+}

@@ -1,0 +1,6 @@
+{
+  "id": "lowercase-letter",
+  "preferred": "lowercase letter",
+  "avoid": ["small letter"],
+  "definition": "Letters a–z."
+}

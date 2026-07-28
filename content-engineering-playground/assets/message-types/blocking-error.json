@@ -1,0 +1,7 @@
+{
+  "id": "blocking-error",
+  "name": "Blocking Error",
+  "purpose": "Explain why the user cannot continue and what needs to change.",
+  "tone": "Calm and informative.",
+  "userOutcome": "The user understands why the flow is blocked."
+}

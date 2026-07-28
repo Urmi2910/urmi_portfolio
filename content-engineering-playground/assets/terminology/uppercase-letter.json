@@ -1,0 +1,6 @@
+{
+  "id": "uppercase-letter",
+  "preferred": "uppercase letter",
+  "avoid": ["capital letter", "capital character"],
+  "definition": "Letters A–Z."
+}

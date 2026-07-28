@@ -1,0 +1,6 @@
+{
+  "id": "number",
+  "preferred": "number",
+  "avoid": ["digit"],
+  "definition": "Numbers 0–9."
+}

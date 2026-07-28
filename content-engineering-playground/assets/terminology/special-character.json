@@ -1,0 +1,6 @@
+{
+  "id": "special-character",
+  "preferred": "special character",
+  "avoid": ["symbol"],
+  "definition": "Characters such as ! @ # $ %."
+}

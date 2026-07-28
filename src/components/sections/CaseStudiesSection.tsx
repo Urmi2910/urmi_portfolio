@@ -10,7 +10,7 @@ export function CaseStudiesSection() {
       className="section-portfolio scroll-section section-spacing"
     >
       <div className="container-page">
-        <SectionHeading icon={LayoutGrid} title="Portfolio" tone="surface" />
+        <SectionHeading icon={LayoutGrid} title="Portfolio" tone="background" />
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 md:grid-cols-2 md:gap-5 lg:gap-6">
           {caseStudies.map((study, index) => (

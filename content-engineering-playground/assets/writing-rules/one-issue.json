@@ -1,0 +1,8 @@
+{
+  "id": "one-issue",
+  "name": "One Issue",
+  "description": "Each message should communicate only one problem.",
+  "reason": "Multiple issues overwhelm users and reduce fix rates.",
+  "goodExamples": ["Add an uppercase letter."],
+  "badExamples": ["Add an uppercase letter and a number."]
+}

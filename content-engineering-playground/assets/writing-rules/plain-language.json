@@ -1,0 +1,11 @@
+{
+  "id": "plain-language",
+  "name": "Plain Language",
+  "description": "Use everyday words instead of technical or internal jargon.",
+  "reason": "Plain language helps all users understand requirements quickly.",
+  "goodExamples": ["Add a special character.", "Use a stronger password."],
+  "badExamples": [
+    "Password must contain a non-alphanumeric metacharacter.",
+    "Entropy threshold not met."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "missing-uppercase",
+  "scenario": "missing-uppercase",
+  "message": "Add an uppercase letter.",
+  "pattern": "action-first",
+  "writingRules": ["active-voice", "one-issue", "plain-language"],
+  "why": "Starts with a direct action and uses the preferred term uppercase letter."
+}

@@ -1,0 +1,8 @@
+{
+  "id": "avoid-blame",
+  "name": "Avoid Blame",
+  "description": "Focus on the fix, not what the user did wrong.",
+  "reason": "Neutral language reduces frustration and keeps users engaged.",
+  "goodExamples": ["Add a number.", "Passwords don't match. Try again."],
+  "badExamples": ["You forgot to add a number.", "You entered two different passwords."]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "action-first",
+  "name": "Action First",
+  "description": "Begin with the action the user should take.",
+  "structure": "Action → Context",
+  "goodExample": "Add an uppercase letter.",
+  "avoid": "Your password is invalid because..."
+}

@@ -1,0 +1,7 @@
+{
+  "id": "success",
+  "name": "Success",
+  "purpose": "Confirm that the action completed successfully.",
+  "tone": "Positive and concise.",
+  "userOutcome": "The user feels confident that their action was completed."
+}

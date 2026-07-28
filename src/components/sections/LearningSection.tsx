@@ -10,7 +10,7 @@ export function LearningSection() {
           icon={GraduationCap}
           title="Continuous learning"
           description={learningIntro}
-          tone="surface"
+          tone="background"
           stickyScope="title"
         />
 
