@@ -7,7 +7,8 @@ import Link from "next/link";
 export function WritingExampleIndex() {
   return (
     <div className="writing-example-index">
-      <ul className="divide-y divide-outline/10">
+      <h2 className="font-heading text-lg font-semibold text-foreground sm:text-xl">Examples</h2>
+      <ul className="mt-4 divide-y divide-outline/10 sm:mt-5">
         <li>
           <Link
             href={`/work/product-content-design/${uiComponentsGallery.slug}`}

@@ -1,9 +1,8 @@
 export const productContentDesignHub = {
   slug: "product-content-design",
-  title: "Product Content Design",
-  context: "Examples from B2B Martech and Fintech",
+  title: "UX Writing Showcase",
   description:
-    "A collection of UX writing examples showing the challenge, reasoning, iterations, and final outcome behind each decision.",
+    "A collection of UX writing examples, product content, and a published blog across fintech and B2B products.",
   role: "Content Designer",
   year: "2023–2024",
 };
@@ -102,8 +101,13 @@ export interface WritingExample {
   findingsBullets?: string[];
   findingsClosing?: string;
   researchLead?: string;
+  researchSectionLabel?: string;
+  explorationTableLabel?: string;
+  showExplorationInFindings?: boolean;
   approachParagraphs?: string[];
+  approachHighlight?: string;
   solutionParagraphs?: string[];
+  solutionParagraphHighlights?: string[][];
   iterationImages?: WritingExampleIterationImage[];
   additionalComparisons?: WritingExampleComparisonBlock[];
 }
@@ -143,7 +147,8 @@ export function getWritingExampleSections(example: WritingExample): WritingExamp
     example.findingsIntro ||
     (example.findingsBullets &&
       example.findingsBullets.length > 0 &&
-      !example.approachParagraphs?.length)
+      !example.approachParagraphs?.length) ||
+    example.showExplorationInFindings
   ) {
     sections.push({
       id: "findings",
@@ -175,100 +180,31 @@ export function getWritingExampleSections(example: WritingExample): WritingExamp
   return sections;
 }
 
-function example(
-  slug: string,
-  title: string,
-  teaser: string,
-  focus: string,
-  problemDetail: string,
-  before: string,
-  after: string
-): WritingExample {
-  return {
-    slug,
-    title,
-    teaser,
-    overview: `${focus} In a B2B SaaS workflow used by enterprise teams, small copy changes shaped whether users understood risk, moved forward, or abandoned a task.`,
-    problem: problemDetail,
-    myRole: "Owned UX writing from discovery through delivery. Partnered with product and design to define user goals, draft alternatives, test comprehension, and document patterns for reuse.",
-    constraints: [
-      "Enterprise admins needed precision; casual copy eroded trust",
-      "Legal and compliance review required for high-risk actions",
-      "Strings had strict character limits in compact UI surfaces",
-      "Product supported multiple locales and had to stay translation-friendly",
-    ],
-    research: [
-      "Reviewed support tickets and session replays for hesitation points",
-      "Ran lightweight comprehension checks with internal CS and sales teams",
-      "Mapped the task flow with PM and design to find decision moments",
-      "Benchmarked patterns from adjacent B2B products for clarity, not novelty",
-    ],
-    optionsExplored: [
-      {
-        label: "Minimal copy",
-        description: "Short labels with detail deferred to tooltips.",
-        rejected: true,
-      },
-      {
-        label: "Explicit copy",
-        description: "Surface consequences directly in the primary UI.",
-      },
-      {
-        label: "Progressive disclosure",
-        description: "Primary action stays clean; secondary panel adds context.",
-      },
-    ],
-    contentDecisions: [
-      "Led with the user outcome, not system language",
-      "Named the object and action in plain terms",
-      "Separated reversible vs irreversible actions in tone and structure",
-      "Matched severity to visual hierarchy and button emphasis",
-    ],
-    comparison: { before, after, beforeLabel: "Before", afterLabel: "After" },
-    finalSolution: `Shipped copy that reduced ambiguity at the decision point, aligned with design system patterns, and gave CS a consistent narrative when users asked for help.`,
-    impact: [
-      "Fewer support questions about this step in the flow",
-      "Higher completion rate on the primary task in usability testing",
-      "Pattern adopted in adjacent flows across the product",
-    ],
-    keyLearnings: [
-      "Clarity beats brevity when money, data, or access is at stake",
-      "The best UX writing makes the next step feel obvious, not clever",
-      "Documenting rationale helps teams reuse decisions under new constraints",
-    ],
-    pullQuote: "Good product copy does not explain the interface. It helps someone decide with confidence.",
-    gallery: [
-      { id: "flow", caption: "Task flow with decision point highlighted", alt: "User flow diagram" },
-      { id: "wire", caption: "Early wireframe with copy annotations", alt: "Wireframe screenshot" },
-      { id: "final", caption: "Final UI in context", alt: "Final interface screenshot" },
-    ],
-  };
-}
-
 export const writingExamples: WritingExample[] = [
   {
     slug: "first-run-experience",
     title: "First Run Experience",
     teaser:
-      "Improving the first experience of creating an NPS campaign by simplifying copy and moving channel choice into the action.",
+      "Improving the first experience of creating an NPS campaign by simplifying the content and reducing unnecessary decisions.",
     chapterTitles: {
       moment: "Overview",
-      approach: "Thought process",
-      solution: "Explorations",
+      approach: "Thought Process",
+      solution: "Final Version",
     },
     overview:
-      "This project focused on improving the first experience of creating an NPS campaign. The existing screen felt negative and overloaded users with information before they could even get started.",
+      "This project focused on improving the first step of creating an NPS campaign. Instead of adding more guidance, I simplified the experience by removing unnecessary content and moving channel selection into the action itself.",
     problem: "",
     myRole: "",
     constraints: [],
     research: [],
     optionsExplored: [],
     approachParagraphs: [
-      "The original design tried to explain everything upfront. It introduced campaign channels, explained what users needed to do, and relied heavily on instructional copy.",
-      "Instead of asking how I could rewrite the content, I asked whether users needed this information at all.",
-      "The button already communicated the next step, so the body copy felt repetitive. Explaining different campaign channels before users had taken any action also added unnecessary complexity.",
-      "Rather than writing more content, I explored whether the interaction itself could reduce the need for explanation.",
+      "The original screen tried to explain everything before users could get started. It introduced campaign channels, relied on instructional copy, and added information before users needed it.",
+      "Instead of rewriting the content, I asked a different question:",
+      "The primary button already communicated the next step, making much of the supporting copy repetitive. Explaining every channel upfront also increased cognitive load.",
+      "Rather than adding more content, I explored whether a simpler interaction could remove the need for those explanations.",
     ],
+    approachHighlight: "Does this information need to be shown here at all?",
     contentDecisions: [],
     comparison: {
       before: "Existing",
@@ -276,11 +212,12 @@ export const writingExamples: WritingExample[] = [
       showSlider: false,
     },
     finalSolution:
-      "I rewrote the heading to feel more welcoming and simplified the supporting copy. More importantly, I suggested adding a dropdown to the Create Campaign button so users could choose a channel directly from the action. This removed the need to explain every option upfront and made the flow easier to understand.",
+      "I rewrote the heading to feel more welcoming and removed supporting copy that users didn't need before getting started. I also moved channel selection into the Create Campaign action, allowing users to choose a channel only when they were ready. This reduced upfront information and made the flow easier to understand.",
     solutionParagraphs: [
-      "I rewrote the heading to feel more welcoming and simplified the supporting copy.",
-      "More importantly, I suggested adding a dropdown to the Create Campaign button so users could choose a channel directly from the action. This removed the need to explain every option upfront and made the flow easier to understand.",
+      "I rewrote the heading to feel more welcoming and removed supporting copy that users didn't need before getting started.",
+      "I also moved channel selection into the Create Campaign action, allowing users to choose a channel only when they were ready. This reduced upfront information and made the flow easier to understand.",
     ],
+    solutionParagraphHighlights: [[], ["Create Campaign"]],
     impact: [],
     keyLearnings: [
       "Content design isn't always about writing better copy",
@@ -293,31 +230,31 @@ export const writingExamples: WritingExample[] = [
     slug: "one-time-vs-lumpsum",
     title: "One-time vs Lumpsum",
     teaser:
-      "Choosing familiar language for a mutual fund investment journey built for Tier 2–4 users.",
+      "Choosing familiar language for a mutual fund investment journey designed for Tier 2–4 users.",
     chapterTitles: {
       moment: "Overview",
       approach: "My approach",
-      findings: "What I found",
+      findings: "Findings",
       solution: "Final decision",
       outcome: "Key learning",
     },
     overview:
-      "While designing the mutual fund investment journey for a fintech app built for Tier 2–4 users, we had to decide whether to call the investment option One-time or Lumpsum.",
+      "While designing the mutual fund investment journey, we needed to choose between One-time and Lumpsum for a one-time investment.",
     problem:
-      "Instead of relying on assumptions or industry terminology, I researched how people understood both terms before making a recommendation.",
-    myRole: "To make an informed decision, I:",
+      "Instead of relying on industry terminology, I researched how people understood both terms before making a recommendation.",
+    myRole: "To validate the decision, I:",
     constraints: [],
     research: [
-      "Reviewed financial blogs and articles",
-      "Compared how other investment apps named the same investment type",
-      "Discussed the options with my team",
-      "Ran a quick hallway test with our help staff, who had no investing background",
+      "Reviewed financial blogs and industry terminology",
+      "Compared naming across investment apps",
+      "Discussed the options with the product team",
+      "Ran a hallway test with colleagues who had no investing background",
     ],
     optionsExplored: [],
     findings: [
       "Most investment apps used One-time instead of Lumpsum.",
-      "During hallway testing, people understood One-time immediately. Lumpsum often needed an explanation, even though both meant the same thing.",
-      "This showed that familiar language helped people understand the option faster.",
+      "During hallway testing, people understood One-time immediately, while Lumpsum often needed additional explanation.",
+      "The research consistently showed that familiar language made the option easier to understand.",
     ],
     contentDecisions: [],
     comparison: {
@@ -329,79 +266,77 @@ export const writingExamples: WritingExample[] = [
       afterImage: "/work/product-content-design/one-time-vs-lumpsum-after.png",
     },
     finalSolution:
-      "We chose One-time for the investment journey. It used language that people already understood and made the experience easier without changing the financial meaning.",
+      "We chose One-time because it was more familiar, easier to understand, and communicated the same financial concept without adding complexity.",
     impact: [
-      "This project reinforced that familiar language is often more effective than industry terminology. A small content decision can reduce confusion and help users make decisions with more confidence.",
+      "Industry terms aren't always the clearest choice. Using familiar language can reduce confusion and help users make decisions with greater confidence.",
     ],
     keyLearnings: [
-      "Familiar language is often more effective than industry terminology",
-      "A small content decision can reduce confusion and help users make decisions with more confidence",
+      "Industry terms aren't always the clearest choice",
+      "Using familiar language can reduce confusion and help users make decisions with greater confidence",
     ],
     pullQuote:
-      "Familiar language is often more effective than industry terminology.",
+      "Using familiar language can reduce confusion and help users make decisions with greater confidence.",
     gallery: [],
   },
-  example(
-    "trigger-order-vs-gtt",
-    "Trigger Order vs GTT",
-    "Translating trading-adjacent concepts into task-oriented language.",
-    "Rewrote labels explaining trigger order and good-till-triggered behavior for a workflow panel.",
-    "Expert users wanted precision; newer operators needed guardrails. Existing labels assumed market terminology everyone did not share.",
-    "Trigger order | GTT",
-    "Start when price is hit | Stay active until triggered or cancelled"
-  ),
   {
     slug: "confirmation-dialog",
     title: "Confirmation Dialog",
     teaser:
-      "Rewriting confirmation dialogs to confirm user intent when leaving without saving.",
+      "Rewriting a confirmation dialog to confirm user intent instead of encouraging users to save.",
     chapterTitles: {
       moment: "Overview",
       approach: "How I approached it",
-      solution: "What we shipped",
+      findings: "What I explored",
+      solution: "Final decision",
       outcome: "What changed",
     },
     overview:
-      "While designing a campaign creation flow, I needed to rewrite the confirmation dialog shown when users tried to leave without saving.",
+      "While designing a campaign creation flow, I rewrote the confirmation dialog shown when users tried to leave without saving.",
     problem:
-      "The goal was to help users understand the consequence of their action without influencing their decision.",
+      "The goal was to clearly communicate the consequence of leaving while keeping the decision neutral.",
     myRole:
-      "Before writing the copy, I wanted to understand the user's intent rather than the system's action.",
+      "Before writing the copy, I focused on understanding the user's intent rather than the system's state.",
     constraints: [],
     research: [
       "What is the user trying to do?",
-      "Should we confirm leaving the page or saving their work?",
+      "What action should the dialog confirm?",
       "Are we unintentionally encouraging users to save?",
-      "What information do users need before making a decision?",
+      "What information do users need before deciding?",
     ],
+    researchSectionLabel: "Questions I explored",
     collaboration:
-      "I spoke with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
+      "I also worked with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
     optionsExplored: [],
-    explorationIntro:
-      "Each option focused on the system's state rather than the user's action. The more I explored, the more I realised the dialog wasn't asking users to save or discard. It was simply confirming that they wanted to leave the page.",
+    showExplorationInFindings: true,
+    findingsIntro:
+      "Most versions focused on the system's state—saving or discarding changes—rather than the user's actual action.",
+    findings: [
+      "As I explored different directions, it became clear that the dialog wasn't asking users to save their work. It was simply confirming that they wanted to leave the page.",
+    ],
     optionsComparisonTable: [
       {
         label: "Save progress",
-        rationale: "\"Progress\" can mean different things.",
+        rationale: "\"Progress\" is vague and open to interpretation.",
       },
       {
         label: "Save changes",
-        rationale: "Focuses on the system, not the user's action.",
+        rationale: "Focuses on the system instead of the user's action.",
       },
       {
         label: "Save edits",
-        rationale: "Frames the choice around the system's state, not leaving the page.",
+        rationale: "Still frames the decision around saving rather than leaving.",
       },
       {
         label: "Discard changes",
-        rationale: "Assumes the user wants to discard.",
+        rationale: "Assumes users want to discard their work.",
       },
       {
         label: "Leave page",
-        rationale: "Confirms exactly what the user is trying to do.",
+        rationale: "Clearly confirms what the user is trying to do.",
         selected: true,
       },
     ],
+    explorationTableLabel: 'Why we chose "Leave page"',
     dialogExplorations: [
       {
         title: "Save changes?",
@@ -465,11 +400,14 @@ export const writingExamples: WritingExample[] = [
       showSlider: false,
     },
     finalSolution:
-      "I changed the title to Leave page and used Leave anyway as the primary action. This kept the dialog neutral, confirmed the user's intention, and clearly communicated that unsaved changes would be lost without pushing them towards either option.",
+      "The final dialog confirmed the user's intention, clearly explained the consequence of leaving, and stayed neutral without encouraging either choice.",
+    solutionParagraphs: [
+      "The final dialog confirmed the user's intention, clearly explained the consequence of leaving, and stayed neutral without encouraging either choice.",
+    ],
     impact: [
-      "The dialog confirmed what the user was trying to do, not what the system wanted them to do",
-      "Copy stayed neutral instead of nudging users toward saving",
-      "Users could understand the consequence of leaving without extra explanation",
+      "Confirmed the user's action instead of the system's state.",
+      "Kept the copy neutral without nudging users toward saving.",
+      "Made the consequence of leaving clear before users made a decision.",
     ],
     keyLearnings: [
       "Confirmation dialogs should confirm the user's action, not influence their decision",

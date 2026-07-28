@@ -23,9 +23,9 @@ export const confirmationDialogVariants: Record<ConfirmationDialogVariant, Confi
   },
   "leave-page": {
     title: "Leave page?",
-    body: "You will lose unsaved changes on leaving the page.",
-    primary: "Leave Anyway",
-    secondary: "Stay on Page",
+    body: "You will lose unsaved changes if you leave this page.",
+    primary: "Leave anyway",
+    secondary: "Stay on page",
     showActions: true,
   },
   "sample-before": {

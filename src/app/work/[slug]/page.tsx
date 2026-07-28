@@ -26,6 +26,7 @@ export async function generateStaticParams() {
       (cs) =>
         cs.slug !== "product-content-design" &&
         cs.slug !== "ai-design" &&
+        cs.slug !== "trigger-order-vs-gtt" &&
         cs.slug !== "writing-beyond-products"
     )
     .map((cs) => ({ slug: cs.slug }));

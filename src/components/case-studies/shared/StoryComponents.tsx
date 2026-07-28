@@ -41,15 +41,19 @@ export function StorySection({
   );
 }
 
-export function StoryProse({ children }: { children: React.ReactNode }) {
-  return <p className="max-w-prose text-base leading-[1.75] text-muted-foreground">{children}</p>;
+export function StoryProse({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p className={cn("story-prose max-w-prose text-base leading-[1.6] text-muted-foreground", className)}>
+      {children}
+    </p>
+  );
 }
 
-export function StoryList({ items }: { items: string[] }) {
+export function StoryList({ items, className }: { items: string[]; className?: string }) {
   return (
-    <ul className="max-w-prose space-y-2.5 border-l-2 border-primary/15 pl-5">
+    <ul className={cn("story-list max-w-prose space-y-1.5 border-l-2 border-primary/20 pl-4", className)}>
       {items.map((item) => (
-        <li key={item} className="text-base leading-[1.7] text-muted-foreground">
+        <li key={item} className="text-base leading-[1.6] text-muted-foreground">
           {item}
         </li>
       ))}

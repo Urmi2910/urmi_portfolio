@@ -2,8 +2,8 @@ import type { CaseStudy } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import {
   ArrowUpRight,
-  BookOpen,
   Bot,
+  CandlestickChart,
   Layers,
   PenLine,
   type LucideIcon,
@@ -19,9 +19,9 @@ const accentIcon: Record<CaseStudy["accentColor"], string> = {
 
 const studyIcons: Record<string, LucideIcon> = {
   "product-content-design": PenLine,
+  "trigger-order-vs-gtt": CandlestickChart,
   "content-systems": Layers,
   "ai-design": Bot,
-  "writing-beyond-products": BookOpen,
 };
 
 export function PortfolioCard({
@@ -35,7 +35,7 @@ export function PortfolioCard({
 
   return (
     <Link
-      href={`/work/${study.slug}`}
+      href={study.href ?? `/work/${study.slug}`}
       aria-label={`Read case study: ${study.title}`}
       style={{ animationDelay: `${index * 80}ms` }}
       className="portfolio-card-enter group flex h-full min-h-[15.5rem] touch-manipulation md:min-h-[17rem]"

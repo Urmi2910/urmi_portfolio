@@ -3,6 +3,7 @@ export interface CaseStudy {
   title: string;
   subtitle: string;
   excerpt: string;
+  href?: string;
   company: string;
   role: string;
   year: string;
@@ -217,54 +218,53 @@ export const caseStudies: CaseStudy[] = [
       "Scalable content infrastructure that helps cross-functional teams ship clearer, more consistent product content with less rework.",
   },
   {
-    slug: "product-content-design",
-    title: "Product Content Design",
+    slug: "trigger-order-vs-gtt",
+    title: "Simplifying Advanced Trading",
     subtitle: "",
     excerpt:
-      "A collection of UX writing samples with the challenge, reasoning, iterations, and final outcome behind each decision.",
+      "A content-led approach to improving discoverability, comprehension, and adoption of advanced trading features.",
+    href: "/work/product-content-design/trigger-order-vs-gtt",
+    company: "DreamStreet",
+    role: "Content Designer",
+    year: "2024",
+    duration: "2 weeks",
+    tags: ["Content Design", "Information Architecture", "UX Research"],
+    featured: true,
+    accentColor: "primary",
+    metrics: [],
+    challenge:
+      "Users struggled to discover and understand advanced trading features like Trigger Orders and exit orders because the language felt technical.",
+    approach: [
+      "Interviewed experienced and new investors to understand where they got stuck",
+      "Explored simpler names, placement, and outcome-based copy",
+      "Validated comprehension through usability testing",
+    ],
+    outcome:
+      "Users understood advanced features with little or no explanation, making advanced trading feel more approachable without reducing functionality.",
+  },
+  {
+    slug: "product-content-design",
+    title: "UX Writing Showcase",
+    subtitle: "",
+    excerpt:
+      "A collection of UX writing examples, product content, and a published blog across fintech and B2B products.",
     company: "Portfolio",
     role: "Content Designer",
     year: "2024",
     duration: "Ongoing",
-    tags: ["UX Writing", "Content Design"],
+    tags: ["UX Writing", "Microcopy", "Published Writing"],
     featured: true,
-    accentColor: "primary",
+    accentColor: "tertiary",
     metrics: [],
     challenge:
       "Product copy often ships without the context behind it. Teams see the final line, not the user problem, constraints, or alternatives that shaped the decision.",
     approach: [
       "Frame each sample around the user moment and business goal it supports",
       "Document draft iterations and explain why options were rejected",
-      "Call out tone, length, and terminology tradeoffs tied to research or policy",
-      "Pair final copy with the reasoning so reviewers can evaluate the thinking",
+      "Share published writing on how content design thinking extends beyond shipped UI",
     ],
     outcome:
-      "A repeatable format for presenting UX writing work that shows challenge, reasoning, and outcome, not just polished final copy.",
-  },
-  {
-    slug: "writing-beyond-products",
-    title: "Writing beyond products",
-    subtitle: "",
-    excerpt:
-      "Technical writing, published articles, workshops, and AI experiments that reflect how I think, learn, and share knowledge.",
-    company: "Portfolio",
-    role: "Content Engineer & Content Designer",
-    year: "2024",
-    duration: "Ongoing",
-    tags: ["Technical Writing", "Workshop", "AI Experiments"],
-    featured: true,
-    accentColor: "tertiary",
-    metrics: [],
-    challenge:
-      "Not all content design work lives inside a product flow. Articles, workshops, and experiments need the same clarity, structure, and intent as in-app copy, but with different formats and audiences.",
-    approach: [
-      "Publish technical writing and articles that explain complex topics in accessible language",
-      "Facilitate workshops that help teams improve how they write and think about content",
-      "Run AI experiments to test new ways of creating, evaluating, and scaling content",
-      "Share learning openly so others can reuse frameworks, not just final outputs",
-    ],
-    outcome:
-      "A body of work beyond shipped products that shows how I think, learn, and help others grow as content practitioners.",
+      "A library of microcopy work and articles that show how I write, decide, and explain content choices.",
   },
 ];
 

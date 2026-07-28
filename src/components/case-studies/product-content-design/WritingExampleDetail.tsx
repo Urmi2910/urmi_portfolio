@@ -14,6 +14,7 @@ import {
   StorySection,
 } from "@/components/case-studies/shared/StoryComponents";
 import { cn } from "@/lib/utils";
+import { HighlightText } from "@/components/ui/HighlightText";
 import { FirstRunExperienceIterations } from "./FirstRunExperienceMockup";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { ConfirmationDialogExplorations } from "./ConfirmationDialogExplorations";
@@ -57,8 +58,15 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
         {example.approachParagraphs && example.approachParagraphs.length > 0 ? (
           <StoryChapter id="approach" title={example.chapterTitles?.approach ?? "How I approached it"}>
             <div className="space-y-4">
-              {example.approachParagraphs.map((paragraph) => (
-                <StoryProse key={paragraph}>{paragraph}</StoryProse>
+              {example.approachParagraphs.map((paragraph, index) => (
+                <div key={paragraph}>
+                  <StoryProse>{paragraph}</StoryProse>
+                  {example.approachHighlight && index === 1 ? (
+                    <p className="mt-4 max-w-prose font-heading text-base font-semibold leading-[1.75] text-foreground sm:text-lg">
+                      {example.approachHighlight}
+                    </p>
+                  ) : null}
+                </div>
               ))}
               {example.findingsBullets && example.findingsBullets.length > 0 ? (
                 <StoryList items={example.findingsBullets} />
@@ -72,12 +80,14 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
           lead={example.myRole || undefined}
         >
           {example.researchLead ? <StoryProse>{example.researchLead}</StoryProse> : null}
-          {example.research.length > 0 && example.optionsComparisonTable ? (
-            <StorySection label="Questions I asked">
+          {example.research.length > 0 && example.optionsComparisonTable && !example.showExplorationInFindings ? (
+            <StorySection label={example.researchSectionLabel ?? "Questions I asked"}>
               <StoryList items={example.research} />
             </StorySection>
-          ) : example.research.length > 0 && (example.findings || example.researchLead) ? (
-            <StoryList items={example.research} />
+          ) : example.research.length > 0 ? (
+            <StorySection label={example.researchSectionLabel ?? "Questions I explored"}>
+              <StoryList items={example.research} />
+            </StorySection>
           ) : null}
           {example.collaboration ? <StoryProse>{example.collaboration}</StoryProse> : null}
           {example.constraints.length > 0 ? (
@@ -90,7 +100,7 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
               <StoryList items={example.contentDecisions} />
             </StorySection>
           ) : null}
-          {example.optionsComparisonTable ? (
+          {example.optionsComparisonTable && !example.showExplorationInFindings ? (
             <StorySection label="What I explored">
               {example.explorationIntro ? <StoryProse>{example.explorationIntro}</StoryProse> : null}
               {example.dialogExplorations && example.dialogExplorations.length > 0 ? (
@@ -136,7 +146,8 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
 
         {(example.findings && example.findings.length > 0) ||
         example.findingsIntro ||
-        (example.findingsBullets && example.findingsBullets.length > 0 && !example.approachParagraphs?.length) ? (
+        (example.findingsBullets && example.findingsBullets.length > 0 && !example.approachParagraphs?.length) ||
+        example.showExplorationInFindings ? (
           <StoryChapter id="findings" title={example.chapterTitles?.findings ?? "What I found"}>
             <div className="space-y-4">
               {example.findingsIntro ? <StoryProse>{example.findingsIntro}</StoryProse> : null}
@@ -147,17 +158,23 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
               {example.findings?.map((paragraph) => (
                 <StoryProse key={paragraph}>{paragraph}</StoryProse>
               ))}
+              {example.showExplorationInFindings && example.dialogExplorations?.length ? (
+                <ConfirmationDialogExplorations
+                  explorations={example.dialogExplorations}
+                  pair={example.dialogExplorationPair}
+                />
+              ) : null}
+              {example.showExplorationInFindings && example.optionsComparisonTable ? (
+                <StorySection label={example.explorationTableLabel ?? "Why we chose this direction"}>
+                  <ExplorationComparisonTable rows={example.optionsComparisonTable} />
+                </StorySection>
+              ) : null}
             </div>
           </StoryChapter>
         ) : null}
 
         <StoryChapter id="solution" title={example.chapterTitles?.solution ?? "What we shipped"}>
-          {example.slug === "first-run-experience" ? (
-            <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)]">
-              <FirstRunExperienceIterations />
-            </div>
-          ) : null}
-          {example.comparison.beforeMockup && example.comparison.afterMockup ? (
+          {example.slug !== "first-run-experience" && example.comparison.beforeMockup && example.comparison.afterMockup ? (
             <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)]">
               <BeforeAfterSlider
                 before={example.comparison.before}
@@ -192,12 +209,26 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
           ) : null}
           {example.solutionParagraphs && example.solutionParagraphs.length > 0 ? (
             <div className="space-y-4">
-              {example.solutionParagraphs.map((paragraph) => (
-                <StoryProse key={paragraph}>{paragraph}</StoryProse>
+              {example.solutionParagraphs.map((paragraph, index) => (
+                <StoryProse key={paragraph}>
+                  {example.solutionParagraphHighlights?.[index]?.length ? (
+                    <HighlightText
+                      text={paragraph}
+                      highlights={example.solutionParagraphHighlights[index]}
+                    />
+                  ) : (
+                    paragraph
+                  )}
+                </StoryProse>
               ))}
             </div>
           ) : example.finalSolution ? (
             <StoryProse>{example.finalSolution}</StoryProse>
+          ) : null}
+          {example.slug === "first-run-experience" ? (
+            <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] mt-8 w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)] sm:mt-10">
+              <FirstRunExperienceIterations />
+            </div>
           ) : null}
           {example.additionalComparisons?.map((block) => (
             <div

@@ -5,22 +5,37 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/work/product-content-design/dropdown-labels",
-        destination: "/work/product-content-design/ui-components#dropdown-labels",
+        destination: "/work/product-content-design/microcopy-examples#dropdown-labels",
         permanent: true,
       },
       {
         source: "/work/product-content-design/snackbars",
-        destination: "/work/product-content-design/ui-components#snackbars",
+        destination: "/work/product-content-design/microcopy-examples#snackbars",
         permanent: true,
       },
       {
         source: "/work/product-content-design/call-to-action",
-        destination: "/work/product-content-design/ui-components#call-to-action",
+        destination: "/work/product-content-design/microcopy-examples#call-to-action",
+        permanent: true,
+      },
+      {
+        source: "/work/product-content-design/ui-components",
+        destination: "/work/product-content-design/microcopy-examples",
+        permanent: true,
+      },
+      {
+        source: "/work/product-content-design/ui-components/:path*",
+        destination: "/work/product-content-design/microcopy-examples/:path*",
         permanent: true,
       },
       {
         source: "/work/ux-writing-practice",
-        destination: "/work/writing-beyond-products",
+        destination: "/work/product-content-design#writing",
+        permanent: true,
+      },
+      {
+        source: "/work/writing-beyond-products",
+        destination: "/work/product-content-design#writing",
         permanent: true,
       },
     ];

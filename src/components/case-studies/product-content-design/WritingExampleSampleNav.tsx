@@ -1,4 +1,5 @@
 import type { ProductContentExampleNavItem } from "@/data/product-content-design-nav";
+import { AllExamplesLink } from "@/components/case-studies/product-content-design/AllExamplesLink";
 import { CaseStudyBottomNav } from "@/components/case-studies/shared/CaseStudyBottomNav";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -34,17 +35,13 @@ export function WritingExampleSampleNav({
             <span className="min-w-0 truncate font-medium">{prev.title}</span>
           </Link>
         ) : (
-          <Link
-            href="/work/product-content-design"
+          <AllExamplesLink
+            direction="back"
             className={cn(
-              "flex min-h-[44px] min-w-0 flex-1 items-center gap-2 rounded-[var(--radius-md)] px-3 py-2",
-              "text-xs text-muted-foreground transition-md hover:bg-surface hover:text-foreground",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              "flex min-w-0 flex-1 rounded-[var(--radius-md)] px-3 py-2",
+              "text-xs text-muted-foreground transition-md hover:bg-surface hover:text-foreground"
             )}
-          >
-            <ArrowLeft className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden />
-            <span>All Examples</span>
-          </Link>
+          />
         )}
 
         <p className="hidden shrink-0 items-center px-1 text-xs tabular-nums text-muted-foreground sm:flex">
@@ -65,17 +62,13 @@ export function WritingExampleSampleNav({
             <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden />
           </Link>
         ) : (
-          <Link
-            href="/work/product-content-design"
+          <AllExamplesLink
+            direction="forward"
             className={cn(
-              "flex min-h-[44px] min-w-0 flex-1 items-center justify-end gap-2 rounded-[var(--radius-md)] px-3 py-2",
-              "text-xs text-primary transition-md hover:bg-primary/10",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              "flex min-w-0 flex-1 justify-end rounded-[var(--radius-md)] px-3 py-2",
+              "text-xs text-primary transition-md hover:bg-primary/10"
             )}
-          >
-            <span>All Examples</span>
-            <ArrowRight className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden />
-          </Link>
+          />
         )}
       </div>
       <p className="sr-only">Currently reading: {current.title}</p>

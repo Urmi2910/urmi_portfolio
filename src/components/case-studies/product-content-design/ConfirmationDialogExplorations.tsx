@@ -12,7 +12,9 @@ export function ConfirmationDialogExplorations({
 }) {
   return (
     <div className="rounded-[var(--radius-lg)] border border-outline/15 bg-[#faf8f5] p-4 sm:p-5">
-      <p className="mb-5 text-sm leading-relaxed text-muted-foreground">Six directions explored during copy iteration.</p>
+      <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+        Six copy directions explored during iteration.
+      </p>
       <ConfirmationDialogExplorationGrid explorations={explorations} pair={pair} />
     </div>
   );

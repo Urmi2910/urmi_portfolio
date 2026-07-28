@@ -1,5 +1,6 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { PublishedWritingHighlight } from "@/components/case-studies/product-content-design/PublishedWritingHighlight";
 import { WritingExampleIndex } from "@/components/case-studies/product-content-design/WritingExampleIndex";
 import { GeometricDecor } from "@/components/ui/GeometricDecor";
 import { productContentDesignHub } from "@/data/product-content-design";
@@ -31,8 +32,7 @@ export default function ProductContentDesignPage() {
             </Link>
 
             <header className="writing-hub-hero mt-8 md:mt-10">
-              <p className="text-sm font-medium text-primary">{productContentDesignHub.context}</p>
-              <h1 className="mt-3 text-[clamp(2rem,6vw,3.5rem)] font-heading font-bold leading-[1.08] tracking-tight text-foreground text-balance">
+              <h1 className="text-[clamp(2rem,6vw,3.5rem)] font-heading font-bold leading-[1.08] tracking-tight text-foreground text-balance">
                 {productContentDesignHub.title}
               </h1>
               <p className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -42,6 +42,7 @@ export default function ProductContentDesignPage() {
 
             <div className="mt-12 sm:mt-14">
               <WritingExampleIndex />
+              <PublishedWritingHighlight />
             </div>
           </div>
         </section>

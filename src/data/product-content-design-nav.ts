@@ -1,6 +1,8 @@
 import { uiComponentsGallery } from "@/data/ui-components";
 import { writingExamples } from "@/data/product-content-design";
 
+export const productContentDesignHubPath = "/work/product-content-design";
+
 export interface ProductContentExampleNavItem {
   slug: string;
   title: string;

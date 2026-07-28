@@ -8,34 +8,34 @@ export interface UiComponentExample {
 }
 
 export const uiComponentsGallery = {
-  slug: "ui-components",
-  title: "UI Components",
+  slug: "microcopy-examples",
+  title: "Microcopy examples",
   description:
-    "Short-form copy improvements across common UI patterns. Each comparison shows the before and after; the text explains the thinking behind the change.",
+    "Small copy changes that make products easier to understand, use, and trust. Each example compares the original with the improved version and explains the thinking behind the change.",
   items: [
     {
       id: "dropdown-labels",
       title: "Dropdown Labels",
       description:
-        "The original dropdowns used technical terms like Ascending and Descending, which required users to interpret how the system sorted information. I replaced them with familiar labels like A to Z, Z to A, Most Recent, and Oldest, making the options easier to understand and scan.",
+        "Replaced technical sorting labels with familiar language like A to Z, Z to A, Most Recent, and Oldest, making the options easier to understand at a glance.",
     },
     {
       id: "snackbars",
       title: "Snackbars",
       description:
-        "Snackbars are designed to communicate feedback in just a few seconds. I rewrote the messages to focus on the outcome of the user's action, removing unnecessary words and making each notification concise, consistent, and easy to scan.",
+        "Simplified snackbar messages to focus on the outcome of the user's action, making feedback shorter, clearer, and easier to scan.",
     },
     {
       id: "call-to-action",
       title: "Call to Action",
       description:
-        "I refined CTAs across different workflows to make the next step immediately clear. By using specific, action-oriented language and maintaining consistency across similar screens, the buttons became easier to understand and encouraged confident action.",
+        "Rewrote CTAs to clearly communicate the next step. Using specific, action-oriented language made actions easier to understand and more consistent across the product.",
     },
     {
       id: "whatsapp-sample",
-      title: "WhatsApp Sample",
+      title: "Confirmation Dialog",
       description:
-        "The existing text didn't fit as a confirmation dialogue. It gave instructions instead of asking for confirmation. I revised it to ask a clear question, explain why adding a sample helps, and make the primary button reinforce that question.",
+        "Reframed the dialog from instructions to a confirmation. The updated copy explains why adding a sample matters and makes the primary action clear.",
     },
   ] satisfies UiComponentExample[],
 };
