@@ -1,4 +1,3 @@
 {
-  "installCommand": "npm ci && npm ci --prefix content-engineering-playground",
   "buildCommand": "npm run build"
 }

@@ -6,6 +6,12 @@ import { fileURLToPath } from "node:url";
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 const playgroundDir = join(root, "content-engineering-playground");
 const outputDir = join(root, "public", "playground");
+const committedBuild = join(outputDir, "index.html");
+
+if (process.env.VERCEL === "1" && existsSync(committedBuild)) {
+  console.log("Using committed playground build on Vercel.");
+  process.exit(0);
+}
 
 if (!existsSync(join(playgroundDir, "package.json"))) {
   console.error("content-engineering-playground not found.");
@@ -31,7 +37,7 @@ function installPlaygroundDeps() {
 }
 
 const playgroundModules = join(playgroundDir, "node_modules", "vite");
-if (process.env.VERCEL === "1" || !existsSync(playgroundModules)) {
+if (!existsSync(playgroundModules)) {
   installPlaygroundDeps();
 }
 
