@@ -14,6 +14,15 @@ if (!existsSync(join(playgroundDir, "package.json"))) {
 
 console.log("Building content-engineering-playground for /playground/ …");
 
+const playgroundModules = join(playgroundDir, "node_modules", "vite");
+if (process.env.VERCEL === "1" || !existsSync(playgroundModules)) {
+  console.log("Installing content-engineering-playground dependencies…");
+  execSync("npm ci", {
+    cwd: playgroundDir,
+    stdio: "inherit",
+  });
+}
+
 execSync("npm run build", {
   cwd: playgroundDir,
   env: {

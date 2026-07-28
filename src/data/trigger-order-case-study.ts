@@ -21,23 +21,6 @@ const phone = (src: string, alt: string, filename: string, setLabel: ImageSetLab
   height: 920,
 });
 
-const wide = (
-  src: string,
-  alt: string,
-  filename: string,
-  setLabel: ImageSetLabel,
-  width = 1024,
-  height = 784,
-): TriggerOrderImage => ({
-  src,
-  alt,
-  filename,
-  setLabel,
-  layout: "wide",
-  width,
-  height,
-});
-
 export const triggerOrderCaseStudy = {
   slug: "trigger-order-vs-gtt",
   title: "Simplifying Advanced Trading",
