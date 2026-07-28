@@ -2,6 +2,9 @@
   "name": "content-design-portfolio",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "npm run build:playground && next dev",
     "prebuild": "node scripts/sync-resume-pdf.mjs && node scripts/build-playground.mjs",

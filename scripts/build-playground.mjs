@@ -12,15 +12,27 @@ if (!existsSync(join(playgroundDir, "package.json"))) {
   process.exit(1);
 }
 
-console.log("Building content-engineering-playground for /playground/ …");
+console.log(`Building content-engineering-playground for /playground/ (Node ${process.version}) …`);
+
+function installPlaygroundDeps() {
+  console.log("Installing content-engineering-playground dependencies…");
+  try {
+    execSync("npm ci", {
+      cwd: playgroundDir,
+      stdio: "inherit",
+    });
+  } catch {
+    console.warn("npm ci failed in content-engineering-playground, retrying with npm install…");
+    execSync("npm install", {
+      cwd: playgroundDir,
+      stdio: "inherit",
+    });
+  }
+}
 
 const playgroundModules = join(playgroundDir, "node_modules", "vite");
 if (process.env.VERCEL === "1" || !existsSync(playgroundModules)) {
-  console.log("Installing content-engineering-playground dependencies…");
-  execSync("npm ci", {
-    cwd: playgroundDir,
-    stdio: "inherit",
-  });
+  installPlaygroundDeps();
 }
 
 execSync("npm run build", {
