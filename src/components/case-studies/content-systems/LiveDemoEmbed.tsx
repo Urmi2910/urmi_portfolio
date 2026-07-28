@@ -6,8 +6,8 @@ export function LiveDemoEmbed() {
     <div className="content-systems-live-demo">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Try the full walkthrough below. Work through steps 1 to 3 to see what happens behind
-          the scenes. Your finished message appears at the bottom in step 4.
+          Pick a situation, collect the writing rules and examples, then generate UI copy. Steps 1
+          to 3 show what happens behind the scenes. Your finished message appears in step 4.
         </p>
         <Link
           href="/playground/"
@@ -23,7 +23,7 @@ export function LiveDemoEmbed() {
       <div className="mt-5 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
         <iframe
           src="/playground/"
-          title="AI Content Context Engine live demo"
+          title="AI Content Context Engine demo"
           className="block w-full bg-white"
           style={{ minHeight: "920px" }}
           loading="lazy"

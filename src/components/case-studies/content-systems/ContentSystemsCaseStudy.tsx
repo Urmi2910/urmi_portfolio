@@ -1,19 +1,18 @@
 import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
 import {
-  BulletGrid,
-  ContentTypesTable,
-  EditorialTree,
-  KnowledgeTypesList,
-  WalkthroughStep,
-  WorkflowBoard,
+  CollectFlowchart,
+  ContentApproachesTable,
+  InstructionBuilderFlow,
+  KnowledgeShiftDiagram,
+  PromptMaintenanceProblems,
+  PromptOnlyFlow,
+  ScalingScopeDiagram,
+  ScenarioJsonBlock,
+  TodayTomorrowProcessDiagram,
 } from "@/components/case-studies/content-systems/ContentSystemsVisuals";
 import {
-  ComparisonTable,
-  ContextFormulaBoard,
   PrototypeGeneratedPanel,
-  PrototypeHero,
   PrototypePromptPanel,
-  PrototypeRetrievedGrid,
   PrototypeRetrievedStack,
   PrototypeScenarioSelector,
   PrototypeValidationPanel,
@@ -36,7 +35,6 @@ export function ContentSystemsCaseStudy() {
     id: section.id,
     label: section.label,
   }));
-  const walk = cs.walkthrough;
 
   return (
     <div className="content-systems-case-study">
@@ -79,76 +77,63 @@ export function ContentSystemsCaseStudy() {
           <div className="content-systems-sections">
             <StoryChapter id="overview" title="Overview">
               <blockquote className="content-systems-card rounded-[var(--radius-lg)] border border-[#ea580c]/15 bg-[#fff7ed] px-5 py-4 sm:px-6 sm:py-5">
-                <StoryProse className="text-base font-medium leading-relaxed text-foreground">
-                  {cs.lead}
-                </StoryProse>
+                <div className="content-systems-prose-group">
+                  {cs.overview.paragraphs.map((paragraph) => (
+                    <StoryProse key={paragraph} className="text-base font-medium leading-relaxed text-foreground">
+                      {paragraph}
+                    </StoryProse>
+                  ))}
+                </div>
               </blockquote>
-              <PrototypeHero />
-              <StoryProse>{cs.overview[0]}</StoryProse>
+              <TodayTomorrowProcessDiagram
+                today={cs.overview.todayFlow}
+                tomorrow={cs.overview.tomorrowFlow}
+              />
             </StoryChapter>
 
-            <StoryChapter id="challenge" title={cs.challenge.title} lead={cs.challenge.intro}>
-              <KnowledgeTypesList items={cs.challenge.knowledgeTypes} />
-              <StoryProse>{cs.challenge.body}</StoryProse>
-            </StoryChapter>
-
-            <StoryChapter id="approach" title={cs.approach.title} lead={cs.approach.intro}>
-              <EditorialTree root="Editorial Knowledge" items={cs.approach.tree} />
-              <StoryProse className="content-systems-body-copy">{cs.approach.closing}</StoryProse>
-            </StoryChapter>
-
-            <StoryChapter id="content-model" title={cs.contentModel.title} lead={cs.contentModel.intro}>
-              <ContentTypesTable rows={cs.contentModel.rows} />
-              <PrototypeRetrievedGrid />
-            </StoryChapter>
-
-            <StoryChapter id="workflow" title={cs.workflow.title} lead={cs.workflow.intro}>
-              <WorkflowBoard steps={cs.workflow.steps} />
-
-              <div className="content-systems-steps mt-10 space-y-10">
-                <WalkthroughStep title={walk.scenario.title} intro={walk.scenario.intro}>
-                  <PrototypeScenarioSelector />
-                </WalkthroughStep>
-
-                <WalkthroughStep title={walk.retrieve.title} intro={walk.retrieve.intro}>
-                  <PrototypeRetrievedStack />
-                  <div className="mt-6">
-                    <PrototypeRetrievedGrid />
-                  </div>
-                </WalkthroughStep>
-
-                <WalkthroughStep title={walk.context.title} intro={walk.context.intro}>
-                  <ContextFormulaBoard items={walk.context.formula} />
-                  <div className="mt-6">
-                    <PrototypePromptPanel />
-                  </div>
-                </WalkthroughStep>
-
-                <WalkthroughStep title={walk.generate.title} intro={walk.generate.intro}>
-                  <PrototypeGeneratedPanel />
-                </WalkthroughStep>
-
-                <WalkthroughStep title={walk.validate.title} intro={walk.validate.intro}>
-                  <PrototypeValidationPanel />
-                </WalkthroughStep>
-              </div>
-            </StoryChapter>
-
-            <StoryChapter
-              id="live-demo"
-              title="Try the live demo"
-              lead="The walkthrough above shows the concept. This is the working prototype you can interact with on the site."
-            >
+            <StoryChapter id="try-it" title={cs.tryIt.title} lead={cs.tryIt.lead}>
               <LiveDemoEmbed />
+              <StoryProse className="content-systems-body-copy">{cs.tryIt.followUp}</StoryProse>
             </StoryChapter>
 
-            <StoryChapter id="learning" title={cs.learning.title}>
-              <BulletGrid items={cs.learning.items} />
+            <StoryChapter id="prompts-alone" title="Why prompts alone don't scale">
+              <PromptOnlyFlow task={cs.promptsAlone.task} />
+              <PromptMaintenanceProblems problems={cs.promptsAlone.problems} />
+              <StoryProse className="content-systems-body-copy">{cs.promptsAlone.closing}</StoryProse>
             </StoryChapter>
 
-            <StoryChapter id="takeaway" title={cs.takeaway.title}>
-              <StoryProse className="content-systems-body-copy">{cs.takeaway.body}</StoryProse>
-              <ComparisonTable {...cs.takeaway.comparison} />
+            <StoryChapter id="content-library" title={cs.contentLibrary.title} lead={cs.contentLibrary.lead}>
+              <KnowledgeShiftDiagram />
+              <ScenarioJsonBlock data={cs.contentLibrary.scenarioJson} />
+              <StoryProse className="content-systems-body-copy">{cs.contentLibrary.body}</StoryProse>
+            </StoryChapter>
+
+            <StoryChapter id="collect" title={cs.collect.title} lead={cs.collect.intro}>
+              <CollectFlowchart steps={cs.collect.steps} />
+              <PrototypeScenarioSelector />
+              <PrototypeRetrievedStack />
+            </StoryChapter>
+
+            <StoryChapter id="build-instructions" title={cs.buildInstructions.title} lead={cs.buildInstructions.intro}>
+              <InstructionBuilderFlow steps={cs.buildInstructions.steps} />
+              <PrototypePromptPanel />
+            </StoryChapter>
+
+            <StoryChapter id="generate" title={cs.generate.title} lead={cs.generate.intro}>
+              <PrototypeGeneratedPanel />
+            </StoryChapter>
+
+            <StoryChapter id="validate" title={cs.validate.title} lead={cs.validate.intro}>
+              <PrototypeValidationPanel />
+            </StoryChapter>
+
+            <StoryChapter id="scaling" title={cs.scaling.title} lead={cs.scaling.intro}>
+              <ScalingScopeDiagram today={cs.scaling.today} tomorrow={cs.scaling.tomorrow} />
+              <StoryProse className="content-systems-body-copy">{cs.scaling.principle}</StoryProse>
+            </StoryChapter>
+
+            <StoryChapter id="shift" title={cs.shift.title}>
+              <ContentApproachesTable headers={cs.shift.headers} rows={cs.shift.rows} />
             </StoryChapter>
           </div>
         </article>

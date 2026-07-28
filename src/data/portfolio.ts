@@ -194,29 +194,29 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "content-systems",
-    title: "Designing an AI Content Context Engine",
+    title: "AI Content Context Engine",
     subtitle: "",
     excerpt:
-      "A prototype that retrieves structured editorial knowledge before generating consistent UI copy, demonstrated through password validation scenarios.",
+      "A prototype that helps AI write better UI copy by gathering writing rules, approved words, and examples first, shown through password validation.",
     href: "/work/content-systems",
     company: "Prototype",
     role: "Content Engineer & Content Designer",
     year: "2025",
     duration: "Prototype",
-    tags: ["Content Systems", "AI", "Retrieval"],
+    tags: ["Content Systems", "AI", "UI Copy"],
     featured: true,
     accentColor: "warm",
     metrics: [],
     challenge:
-      "Most AI copy workflows rely on prompts alone, even though teams already have writing rules, terminology, patterns, and approved examples.",
+      "Most AI copy workflows ask AI to write from one prompt, even though teams already have writing rules, approved words, message styles, and examples.",
     approach: [
-      "Separated editorial knowledge into six reusable content models",
-      "Built a retrieval layer that loads assets by scenario",
-      "Assembled structured context before sending instructions to the model",
-      "Generated and validated UI copy against editorial rules",
+      "Organised writing content as reusable pieces instead of one long prompt",
+      "Built a system that collects the right information for each situation",
+      "Combined that information into clear instructions for AI",
+      "Generated and checked UI copy against the same writing rules",
     ],
     outcome:
-      "Showed that retrieval-first context produces more consistent copy than prompt-only generation, using password validation as the demonstration domain.",
+      "Showed that giving AI the right information first produces more consistent UI copy than asking it to write from one long prompt.",
   },
   {
     slug: "trigger-order-vs-gtt",

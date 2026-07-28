@@ -48,8 +48,8 @@ export function PrototypeHero() {
           AI Content Context Engine
         </p>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5c6370]">
-          Generate consistent UI copy by retrieving structured editorial knowledge before sending
-          context to the language model.
+          Help AI write consistent UI copy by gathering writing rules, approved words, message style,
+          and examples before it starts writing.
         </p>
       </div>
       <div className="space-y-4 p-5 sm:p-6">
@@ -78,7 +78,7 @@ export function PrototypeScenarioSelector({ compact = false }: { compact?: boole
           className="rounded-md bg-[#3b5bdb] px-4 py-2.5 text-sm font-medium text-white"
           tabIndex={-1}
         >
-          Retrieve Context
+          Collect information
         </button>
       </div>
       <p className="mt-3 text-sm text-[#5c6370]">{demo.scenarioDescription}</p>
@@ -87,11 +87,19 @@ export function PrototypeScenarioSelector({ compact = false }: { compact?: boole
 }
 
 export function PrototypeRetrievedStack({ compact = false }: { compact?: boolean }) {
-  const demo = contentSystemsCaseStudy.walkthrough.retrieve.stack;
+  const p = contentSystemsCaseStudy.prototype;
+  const demo = [
+    { label: "Situation", value: p.scenarioTitle },
+    { label: "Message style", value: p.messageType.name },
+    { label: "How to write it", value: p.pattern.name },
+    { label: "Writing rules", value: p.writingRules.join(", ") },
+    { label: "Approved words", value: p.terminology.preferred },
+    { label: "Example message", value: p.approvedExample.message },
+  ];
 
   return (
     <div className="rounded-[var(--radius-md)] border border-[#dfe3e8] bg-white p-4 sm:p-5">
-      {!compact ? <PanelTitle step={2} title="Retrieved Editorial Knowledge" /> : null}
+      {!compact ? <PanelTitle step={2} title="Information collected for this situation" /> : null}
       <div className="mt-4 space-y-2">
         {demo.map((item, index) => (
           <div key={item.label}>
@@ -183,7 +191,7 @@ export function PrototypePromptPanel() {
   return (
     <PrototypeFrame>
       <div className="border-b border-[#dfe3e8] bg-white px-4 py-3">
-        <PanelTitle step={3} title="AI Context Sent to the Model" />
+        <PanelTitle step={3} title="Instructions sent to AI" />
       </div>
       <div className="p-4 sm:p-5">
         <pre className="content-systems-mono max-h-80 overflow-auto whitespace-pre-wrap rounded-md border border-[#dfe3e8] bg-white p-4 text-xs leading-relaxed text-[#1a1a1a] sm:text-sm">
@@ -227,7 +235,7 @@ export function PrototypeValidationPanel() {
   return (
     <div className="rounded-[var(--radius-md)] border border-[#dfe3e8] bg-white p-4 sm:p-5">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-semibold text-[#1a1a1a]">Editorial Validation</p>
+        <p className="text-sm font-semibold text-[#1a1a1a]">Message check</p>
         <p className="text-xs font-medium text-[#16a34a]">All checks passed</p>
       </div>
       <div className="mt-4 flex flex-wrap gap-2">

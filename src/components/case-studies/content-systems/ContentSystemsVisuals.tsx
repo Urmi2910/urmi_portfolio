@@ -1,6 +1,5 @@
 "use client";
 
-import type { contentSystemsCaseStudy } from "@/data/content-systems-case-study";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 
@@ -9,7 +8,7 @@ export function DocTable({
   rows,
   className,
 }: {
-  headers: [string, string];
+  headers: readonly [string, string];
   rows: { col1: string; col2: string }[];
   className?: string;
 }) {
@@ -116,5 +115,347 @@ export function WalkthroughStep({
       <p className="content-systems-step-intro mt-3 text-base text-muted-foreground">{intro}</p>
       <div className="mt-6">{children}</div>
     </article>
+  );
+}
+
+function FlowDiagram({
+  lines,
+  variant = "light",
+  className,
+}: {
+  lines: string[];
+  variant?: "light" | "dark";
+  className?: string;
+}) {
+  return (
+    <pre
+      className={cn(
+        "content-systems-mono whitespace-pre-wrap rounded-[var(--radius-md)] border px-4 py-4 text-sm leading-relaxed sm:px-5",
+        variant === "dark"
+          ? "border-outline/12 bg-[#1c1b1f] text-[#f5f5f4]"
+          : "border-[#dfe3e8] bg-white text-[#1a1a1a]",
+        className,
+      )}
+    >
+      {lines.join("\n")}
+    </pre>
+  );
+}
+
+export function PromptOnlyFlow({ task }: { task: string }) {
+  return (
+    <FlowDiagram
+      lines={["Prompt", "", "↓", "", task, "", "↓", "", "🤖 AI"]}
+      variant="dark"
+    />
+  );
+}
+
+export function PromptMaintenanceProblems({ problems }: { problems: string[] }) {
+  return (
+    <FlowDiagram
+      lines={[
+        "Every new requirement means changing the prompt.",
+        "",
+        ...problems.map((item) => `❌ ${item}`),
+      ]}
+      variant="dark"
+    />
+  );
+}
+
+export function KnowledgeShiftDiagram() {
+  return (
+    <div className="content-systems-shift-grid grid gap-6 md:grid-cols-2">
+      <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Instead of this
+        </p>
+        <FlowDiagram
+          lines={[
+            "Prompt",
+            "",
+            "+ Writing Rules",
+            "+ Approved words",
+            "+ Examples",
+            "+ Message style",
+            "+ Tone",
+            "+ Message types",
+          ]}
+        />
+      </div>
+      <div>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          Do this
+        </p>
+        <FlowDiagram lines={["Prompt", "", "↓", "", "Gather the right information", "", "↓", "", "Generate UI copy"]} />
+      </div>
+    </div>
+  );
+}
+
+export function ScenarioJsonBlock({
+  data,
+}: {
+  data: Record<string, string | string[]>;
+}) {
+  const formatted = JSON.stringify(data, null, 2);
+
+  return (
+    <pre className="content-systems-mono overflow-x-auto rounded-[var(--radius-md)] border border-outline/12 bg-[#1c1b1f] px-4 py-4 text-sm leading-relaxed text-[#f5f5f4] sm:px-5">
+      {formatted}
+    </pre>
+  );
+}
+
+export function CollectFlowchart({ steps }: { steps: string[] }) {
+  return <WorkflowBoard steps={steps} />;
+}
+
+export function InstructionBuilderFlow({ steps }: { steps: string[] }) {
+  return <WorkflowBoard steps={steps} />;
+}
+
+export function TodayTomorrowProcessDiagram({
+  today,
+  tomorrow,
+}: {
+  today: {
+    label: string;
+    productArea: string;
+    inputs: string[];
+    output: string;
+  };
+  tomorrow: {
+    label: string;
+    productAreas: string[];
+    bridge: string;
+    output: string;
+  };
+}) {
+  return (
+    <div className="content-systems-shift-grid grid gap-6 md:grid-cols-2">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          {today.label}
+        </p>
+        <div className="flex flex-col items-center gap-2">
+          <FlowBlock>{today.productArea}</FlowBlock>
+          <FlowArrow />
+          {today.inputs.map((item) => (
+            <FlowBlock key={item} muted>
+              {item}
+            </FlowBlock>
+          ))}
+          <FlowArrow />
+          <FlowBlock accent>AI</FlowBlock>
+          <FlowArrow />
+          <FlowBlock>{today.output}</FlowBlock>
+        </div>
+      </div>
+
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+          {tomorrow.label}
+        </p>
+        <div className="flex flex-col items-center gap-2">
+          <div className="grid w-full grid-cols-2 gap-2">
+            {tomorrow.productAreas.map((item) => (
+              <FlowBlock key={item} compact>
+                {item}
+              </FlowBlock>
+            ))}
+          </div>
+          <FlowArrow />
+          <FlowBlock accent>{tomorrow.bridge}</FlowBlock>
+          <FlowArrow />
+          <FlowBlock accent>AI</FlowBlock>
+          <FlowArrow />
+          <FlowBlock>{tomorrow.output}</FlowBlock>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FlowBlock({
+  children,
+  accent = false,
+  muted = false,
+  compact = false,
+}: {
+  children: React.ReactNode;
+  accent?: boolean;
+  muted?: boolean;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "w-full rounded-[var(--radius-md)] border px-4 text-center text-sm text-foreground",
+        compact ? "py-2 text-xs sm:text-sm" : "py-2.5",
+        accent
+          ? "border-[#3b5bdb]/25 bg-[#edf2ff] font-medium text-[#364fc7]"
+          : muted
+            ? "border-[#ea580c]/15 bg-white"
+            : "border-[#ea580c]/20 bg-white font-medium",
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+function FlowArrow() {
+  return (
+    <span className="text-muted-foreground/50" aria-hidden>
+      ↓
+    </span>
+  );
+}
+
+export function ContentApproachesTable({
+  headers,
+  rows,
+}: {
+  headers: readonly [string, string];
+  rows: { oneLongPrompt: string; organisedContent: string }[];
+}) {
+  return (
+    <DocTable
+      headers={headers}
+      rows={rows.map((row) => ({
+        col1: row.oneLongPrompt,
+        col2: row.organisedContent,
+      }))}
+    />
+  );
+}
+
+export function ScalingScopeDiagram({
+  today,
+  tomorrow,
+}: {
+  today: { label: string; steps: string[] };
+  tomorrow: { label: string; areas: string[] };
+}) {
+  return (
+    <div className="content-systems-shift-grid grid gap-6 md:grid-cols-2">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+        <p className="text-sm font-medium text-foreground">{today.label}</p>
+        <div className="mt-4 flex flex-col items-center gap-2">
+          {today.steps.map((step, index) => (
+            <div key={step} className="flex w-full flex-col items-center gap-2">
+              <div className="w-full rounded-[var(--radius-md)] border border-[#ea580c]/20 bg-white px-4 py-2.5 text-center text-sm text-foreground">
+                {step}
+              </div>
+              {index < today.steps.length - 1 ? (
+                <span className="text-muted-foreground/50" aria-hidden>
+                  ↓
+                </span>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+        <p className="text-sm font-medium text-foreground">{tomorrow.label}</p>
+        <div className="mt-4 flex flex-col gap-2">
+          {tomorrow.areas.map((area) => (
+            <div
+              key={area}
+              className="rounded-[var(--radius-md)] border border-[#ea580c]/15 bg-white px-4 py-2.5 text-sm text-foreground"
+            >
+              {area}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ScalingArchitectureDiagram({
+  today,
+  tomorrow,
+  shared,
+}: {
+  today: string[];
+  tomorrow: string[];
+  shared: string[];
+}) {
+  return (
+    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
+      <div className="mx-auto flex max-w-lg flex-col items-center gap-4">
+        <div className="w-full">
+          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Today
+          </p>
+          <div className="flex flex-col items-center gap-2">
+            {today.map((item) => (
+              <div
+                key={item}
+                className="w-full rounded-[var(--radius-md)] border border-[#ea580c]/20 bg-white px-4 py-2.5 text-center text-sm text-foreground"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <span className="text-muted-foreground/50" aria-hidden>
+          ↓
+        </span>
+
+        <div className="w-full">
+          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Tomorrow
+          </p>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {tomorrow.map((item) => (
+              <div
+                key={item}
+                className="rounded-[var(--radius-md)] border border-[#ea580c]/15 bg-white px-3 py-2 text-center text-xs text-foreground sm:text-sm"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <span className="text-muted-foreground/50" aria-hidden>
+          ↓
+        </span>
+
+        {shared.map((item, index) => (
+          <div key={item} className="flex w-full flex-col items-center gap-4">
+            <div className="w-full rounded-[var(--radius-md)] border border-[#3b5bdb]/25 bg-[#edf2ff] px-4 py-3 text-center text-sm font-medium text-[#364fc7]">
+              {item}
+            </div>
+            {index < shared.length - 1 ? (
+              <span className="text-muted-foreground/50" aria-hidden>
+                ↓
+              </span>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function PromptVsContentEngineeringTable({
+  rows,
+}: {
+  rows: { promptEngineering: string; contentEngineering: string }[];
+}) {
+  return (
+    <DocTable
+      headers={["One long prompt", "Organised content"]}
+      rows={rows.map((row) => ({
+        col1: row.promptEngineering,
+        col2: row.contentEngineering,
+      }))}
+    />
   );
 }
