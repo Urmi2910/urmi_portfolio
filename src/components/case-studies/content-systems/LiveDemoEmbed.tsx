@@ -1,7 +1,35 @@
+"use client";
+
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const MIN_HEIGHT = 200;
+const MAX_HEIGHT_RATIO = 0.72;
 
 export function LiveDemoEmbed() {
+  const [height, setHeight] = useState(MIN_HEIGHT);
+
+  useEffect(() => {
+    function handleMessage(event: MessageEvent) {
+      if (event.origin !== window.location.origin) {
+        return;
+      }
+
+      const data = event.data as { type?: string; height?: number };
+
+      if (data?.type !== "playground-resize" || typeof data.height !== "number") {
+        return;
+      }
+
+      const maxHeight = Math.floor(window.innerHeight * MAX_HEIGHT_RATIO);
+      setHeight(Math.min(Math.max(data.height, MIN_HEIGHT), maxHeight));
+    }
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
   return (
     <div className="content-systems-live-demo">
       <div className="flex justify-end">
@@ -21,6 +49,7 @@ export function LiveDemoEmbed() {
           src="/playground/?embed=1"
           title="AI Content Context Engine demo"
           className="content-systems-live-demo__iframe block w-full bg-white"
+          style={{ height: `${height}px` }}
           loading="lazy"
         />
       </div>

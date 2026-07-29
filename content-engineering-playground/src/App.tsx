@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useEmbedResize } from './hooks/useEmbedResize'
 import { GeneratedMessage } from './components/GeneratedMessage'
 import { PromptPanel } from './components/PromptPanel'
 import { RetrievedContext } from './components/RetrievedContext'
@@ -27,6 +28,8 @@ function App() {
   const [validation, setValidation] = useState<ValidationReport | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  useEmbedResize(isEmbed)
 
   function handleRetrieve() {
     try {

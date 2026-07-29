@@ -82,8 +82,8 @@
 }
 
 .app--embed .app-main {
-  padding: 1rem 1rem 1.5rem;
-  gap: 1.5rem;
+  padding: 0.875rem 1rem 1rem;
+  gap: 1.25rem;
 }
 
 .app--embed .flow-section {

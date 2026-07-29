@@ -433,14 +433,8 @@
   }
 
   .content-systems-case-study .content-systems-live-demo__iframe {
-    height: 26rem;
     border: 0;
-  }
-
-  @media (min-width: 768px) {
-    .content-systems-case-study .content-systems-live-demo__iframe {
-      height: 28rem;
-    }
+    transition: height 0.2s ease;
   }
 
   .guidelines-case-study .guidelines-sections {
