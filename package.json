@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run build:playground && next dev",
+    "dev:clean": "rm -rf .next && npm run dev",
     "prebuild": "node scripts/sync-resume-pdf.mjs && node scripts/build-playground.mjs",
     "build:playground": "node scripts/build-playground.mjs",
     "build": "next build",

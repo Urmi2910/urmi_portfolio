@@ -77,6 +77,11 @@
   gap: 3.5rem;
 }
 
+.app--embed .app-main {
+  padding: 1.25rem 1.25rem 2.5rem;
+  gap: 2rem;
+}
+
 .flow-section {
   display: flex;
   flex-direction: column;

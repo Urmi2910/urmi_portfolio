@@ -84,6 +84,10 @@ export function WorkflowBoard({ steps }: { steps: string[] }) {
   );
 }
 
+export function IdeaFlowDiagram({ steps }: { steps: readonly string[] }) {
+  return <WorkflowBoard steps={[...steps]} />;
+}
+
 export function BulletGrid({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-3">

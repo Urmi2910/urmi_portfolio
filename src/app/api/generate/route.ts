@@ -21,7 +21,9 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Live AI generation is not configured. Add OPENAI_API_KEY in your Vercel project environment variables.",
+          process.env.NODE_ENV === "development"
+            ? "Live AI generation is not configured. Add OPENAI_API_KEY to .env.local in the project root, then restart the dev server (npm run dev)."
+            : "Live AI generation is not configured. Add OPENAI_API_KEY in your Vercel project environment variables.",
       },
       { status: 503 },
     );

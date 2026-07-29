@@ -1,27 +1,11 @@
 import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
 import {
-  CollectFlowchart,
-  ContentApproachesTable,
-  InstructionBuilderFlow,
-  KnowledgeShiftDiagram,
-  PromptMaintenanceProblems,
-  PromptOnlyFlow,
-  ScalingScopeDiagram,
+  BulletGrid,
+  IdeaFlowDiagram,
   ScenarioJsonBlock,
-  TodayTomorrowProcessDiagram,
 } from "@/components/case-studies/content-systems/ContentSystemsVisuals";
-import {
-  ErrorPatternCallout,
-  RealWorldArtifacts,
-} from "@/components/case-studies/content-systems/RealWorldContext";
-import {
-  PrototypeGeneratedPanel,
-  PrototypePromptPanel,
-  PrototypeRetrievedStack,
-  PrototypeScenarioSelector,
-  PrototypeValidationPanel,
-} from "@/components/case-studies/content-systems/PrototypeShowcase";
 import { LiveDemoEmbed } from "@/components/case-studies/content-systems/LiveDemoEmbed";
+import { RealWorldArtifacts } from "@/components/case-studies/content-systems/RealWorldContext";
 import {
   StoryChapter,
   StoryProse,
@@ -32,6 +16,18 @@ import {
 } from "@/data/content-systems-case-study";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+
+function ProseGroup({ paragraphs }: { paragraphs: readonly string[] }) {
+  return (
+    <div className="content-systems-prose-group max-w-3xl">
+      {paragraphs.map((paragraph) => (
+        <StoryProse key={paragraph} className="content-systems-body-copy">
+          {paragraph}
+        </StoryProse>
+      ))}
+    </div>
+  );
+}
 
 export function ContentSystemsCaseStudy() {
   const cs = contentSystemsCaseStudy;
@@ -81,73 +77,43 @@ export function ContentSystemsCaseStudy() {
           <div className="content-systems-sections">
             <StoryChapter id="overview" title="Overview">
               <blockquote className="content-systems-card rounded-[var(--radius-lg)] border border-[#ea580c]/15 bg-[#fff7ed] px-5 py-4 sm:px-6 sm:py-5">
-                <div className="content-systems-prose-group">
-                  {cs.overview.paragraphs.map((paragraph) => (
-                    <StoryProse key={paragraph} className="text-base font-medium leading-relaxed text-foreground">
-                      {paragraph}
-                    </StoryProse>
-                  ))}
-                </div>
+                <p className="text-base font-medium leading-relaxed text-foreground sm:text-lg">
+                  {cs.thesis}
+                </p>
               </blockquote>
-              <TodayTomorrowProcessDiagram
-                today={cs.overview.todayFlow}
-                tomorrow={cs.overview.tomorrowFlow}
-              />
+              <ProseGroup paragraphs={cs.overview.paragraphs} />
             </StoryChapter>
 
-            <StoryChapter id="real-world" title={cs.realWorld.title} lead={cs.realWorld.intro}>
-              <ErrorPatternCallout
-                label={cs.realWorld.errorPattern.label}
-                template={cs.realWorld.errorPattern.template}
-                description={cs.realWorld.errorPattern.description}
-                examples={cs.realWorld.errorPattern.examples}
-              />
-              <RealWorldArtifacts artifacts={cs.realWorld.artifacts} />
+            <StoryChapter id="where-it-started" title={cs.whereItStarted.title}>
+              <ProseGroup paragraphs={cs.whereItStarted.paragraphs} />
+              <RealWorldArtifacts artifacts={cs.whereItStarted.artifacts} />
             </StoryChapter>
 
-            <StoryChapter id="try-it" title={cs.tryIt.title} lead={cs.tryIt.lead}>
+            <StoryChapter id="idea" title={cs.idea.title}>
+              <ProseGroup paragraphs={cs.idea.paragraphs} />
+              <IdeaFlowDiagram steps={cs.idea.flow} />
+            </StoryChapter>
+
+            <StoryChapter id="organising-content" title={cs.organisingContent.title}>
+              <ProseGroup paragraphs={cs.organisingContent.paragraphs} />
+              <ScenarioJsonBlock data={cs.organisingContent.scenarioJson} />
+              <BulletGrid items={cs.organisingContent.includes} />
+              <StoryProse className="content-systems-body-copy max-w-3xl">
+                {cs.organisingContent.closing}
+              </StoryProse>
+            </StoryChapter>
+
+            <StoryChapter id="try-it" title={cs.tryIt.title}>
               <LiveDemoEmbed />
-              <StoryProse className="content-systems-body-copy">{cs.tryIt.followUp}</StoryProse>
             </StoryChapter>
 
-            <StoryChapter id="prompts-alone" title="Why prompts alone don't scale">
-              <PromptOnlyFlow task={cs.promptsAlone.task} />
-              <PromptMaintenanceProblems problems={cs.promptsAlone.problems} />
-              <StoryProse className="content-systems-body-copy">{cs.promptsAlone.closing}</StoryProse>
+            <StoryChapter id="scaling" title={cs.scaling.title}>
+              <ProseGroup paragraphs={cs.scaling.paragraphs} />
+              <BulletGrid items={cs.scaling.examples} />
             </StoryChapter>
 
-            <StoryChapter id="content-library" title={cs.contentLibrary.title} lead={cs.contentLibrary.lead}>
-              <KnowledgeShiftDiagram />
-              <ScenarioJsonBlock data={cs.contentLibrary.scenarioJson} />
-              <StoryProse className="content-systems-body-copy">{cs.contentLibrary.body}</StoryProse>
-            </StoryChapter>
-
-            <StoryChapter id="collect" title={cs.collect.title} lead={cs.collect.intro}>
-              <CollectFlowchart steps={cs.collect.steps} />
-              <PrototypeScenarioSelector />
-              <PrototypeRetrievedStack />
-            </StoryChapter>
-
-            <StoryChapter id="build-instructions" title={cs.buildInstructions.title} lead={cs.buildInstructions.intro}>
-              <InstructionBuilderFlow steps={cs.buildInstructions.steps} />
-              <PrototypePromptPanel />
-            </StoryChapter>
-
-            <StoryChapter id="generate" title={cs.generate.title} lead={cs.generate.intro}>
-              <PrototypeGeneratedPanel />
-            </StoryChapter>
-
-            <StoryChapter id="validate" title={cs.validate.title} lead={cs.validate.intro}>
-              <PrototypeValidationPanel />
-            </StoryChapter>
-
-            <StoryChapter id="scaling" title={cs.scaling.title} lead={cs.scaling.intro}>
-              <ScalingScopeDiagram today={cs.scaling.today} tomorrow={cs.scaling.tomorrow} />
-              <StoryProse className="content-systems-body-copy">{cs.scaling.principle}</StoryProse>
-            </StoryChapter>
-
-            <StoryChapter id="shift" title={cs.shift.title}>
-              <ContentApproachesTable headers={cs.shift.headers} rows={cs.shift.rows} />
+            <StoryChapter id="learning" title={cs.learning.title}>
+              <ProseGroup paragraphs={cs.learning.paragraphs} />
             </StoryChapter>
           </div>
         </article>

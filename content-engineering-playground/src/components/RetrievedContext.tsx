@@ -4,9 +4,10 @@ import { ContextField } from './ContextCard'
 
 interface RetrievedContextProps {
   content: ContentContext
+  compact?: boolean
 }
 
-export function RetrievedContext({ content }: RetrievedContextProps) {
+export function RetrievedContext({ content, compact = false }: RetrievedContextProps) {
   const { scenario, messageType, patterns, writingRules, terminology, examples } = content
   const example = examples[0]
   const pattern = patterns[0]
@@ -22,11 +23,13 @@ export function RetrievedContext({ content }: RetrievedContextProps) {
         </span>
         <div>
           <h2>The writing rules for this situation</h2>
-          <p className="flow-section__lead">
-            Before the AI writes anything, it needs rules to follow. These cover the tone,
-            word choices, message structure, and a trusted example. Your finished message
-            still comes at the bottom in step 4.
-          </p>
+          {!compact && (
+            <p className="flow-section__lead">
+              Before the AI writes anything, it needs rules to follow. These cover the tone,
+              word choices, message structure, and a trusted example. Your finished message
+              still comes at the bottom in step 4.
+            </p>
+          )}
         </div>
       </header>
 

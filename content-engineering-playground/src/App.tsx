@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { GeneratedMessage } from './components/GeneratedMessage'
 import { PromptPanel } from './components/PromptPanel'
 import { RetrievedContext } from './components/RetrievedContext'
@@ -11,7 +11,15 @@ import './App.css'
 
 const scenarios = getScenarios()
 
+function useEmbedMode() {
+  return useMemo(
+    () => new URLSearchParams(window.location.search).get('embed') === '1',
+    [],
+  )
+}
+
 function App() {
+  const isEmbed = useEmbedMode()
   const [selectedId, setSelectedId] = useState(scenarios[0]?.id ?? '')
   const [content, setContent] = useState<ContentContext | null>(null)
   const [prompt, setPrompt] = useState<string | null>(null)
@@ -56,7 +64,9 @@ function App() {
         setGeneratedMessage(exampleMessage)
         setValidation(validateMessage(exampleMessage, content))
         setError(
-          'Live AI generation is not configured on this site yet. Showing the approved example for this situation.',
+          import.meta.env.DEV
+            ? 'Live AI is not configured. Add OPENAI_API_KEY to .env.local, restart npm run dev, then try again. Showing the approved example for now.'
+            : 'Live AI generation is not configured on this site yet. Showing the approved example for this situation.',
         )
         return
       }
@@ -70,24 +80,26 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>AI Content Context Engine</h1>
-        <p className="app-header__subtitle">
-          This walkthrough shows how good writing rules help AI write clear, helpful error
-          messages. Password problems are just the example.
-        </p>
-        <p className="app-header__note">
-          Work through steps 1 to 3 to see what happens behind the scenes. Your finished
-          message appears at the bottom in step 4.
-        </p>
-        <ol className="workflow-steps">
-          <li>Pick a situation</li>
-          <li>See the writing rules</li>
-          <li>See what the AI reads</li>
-          <li>Get your message</li>
-        </ol>
-      </header>
+    <div className={`app${isEmbed ? ' app--embed' : ''}`}>
+      {!isEmbed && (
+        <header className="app-header">
+          <h1>AI Content Context Engine</h1>
+          <p className="app-header__subtitle">
+            This walkthrough shows how good writing rules help AI write clear, helpful error
+            messages. Password problems are just the example.
+          </p>
+          <p className="app-header__note">
+            Work through steps 1 to 3 to see what happens behind the scenes. Your finished
+            message appears at the bottom in step 4.
+          </p>
+          <ol className="workflow-steps">
+            <li>Pick a situation</li>
+            <li>See the writing rules</li>
+            <li>See what the AI reads</li>
+            <li>Get your message</li>
+          </ol>
+        </header>
+      )}
 
       <main className="app-main">
         <ScenarioSelector
@@ -95,19 +107,21 @@ function App() {
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRetrieve={handleRetrieve}
+          compact={isEmbed}
         />
 
         {error && <p className="error-banner">{error}</p>}
 
         {content && prompt && (
           <>
-            <RetrievedContext content={content} />
-            <PromptPanel prompt={prompt} />
+            <RetrievedContext content={content} compact={isEmbed} />
+            <PromptPanel prompt={prompt} compact={isEmbed} />
             <GeneratedMessage
               message={generatedMessage}
               validation={validation}
               loading={isGenerating}
               onGenerate={handleGenerate}
+              compact={isEmbed}
             />
           </>
         )}

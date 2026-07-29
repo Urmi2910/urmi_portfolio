@@ -5,6 +5,7 @@ interface ScenarioSelectorProps {
   selectedId: string
   onSelect: (id: string) => void
   onRetrieve: () => void
+  compact?: boolean
 }
 
 export function ScenarioSelector({
@@ -12,6 +13,7 @@ export function ScenarioSelector({
   selectedId,
   onSelect,
   onRetrieve,
+  compact = false,
 }: ScenarioSelectorProps) {
   const selected = scenarios.find((scenario) => scenario.id === selectedId)
 
@@ -23,10 +25,12 @@ export function ScenarioSelector({
         </span>
         <div>
           <h2>Pick a situation</h2>
-          <p className="flow-section__lead">
-            Choose a password problem a user might run into. Each one has its own writing
-            rules: how to say it, which words to use, and an example of good copy.
-          </p>
+          {!compact && (
+            <p className="flow-section__lead">
+              Choose a password problem a user might run into. Each one has its own writing
+              rules: how to say it, which words to use, and an example of good copy.
+            </p>
+          )}
         </div>
       </header>
 
@@ -55,10 +59,12 @@ export function ScenarioSelector({
             <strong>In plain terms:</strong> {selected.description}
           </p>
         )}
-        <p className="helper-text">
-          The next steps show you the writing rules and what the AI reads. The actual message
-          you can use appears at the bottom in step 4.
-        </p>
+        {!compact && (
+          <p className="helper-text">
+            The next steps show you the writing rules and what the AI reads. The actual message
+            you can use appears at the bottom in step 4.
+          </p>
+        )}
       </div>
     </section>
   )

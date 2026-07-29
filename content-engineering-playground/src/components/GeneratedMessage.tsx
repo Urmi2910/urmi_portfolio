@@ -6,6 +6,7 @@ interface GeneratedMessageProps {
   validation: ValidationReport | null
   loading: boolean
   onGenerate: () => void
+  compact?: boolean
 }
 
 export function GeneratedMessage({
@@ -13,6 +14,7 @@ export function GeneratedMessage({
   validation,
   loading,
   onGenerate,
+  compact = false,
 }: GeneratedMessageProps) {
   return (
     <section className="flow-section flow-section--final">
@@ -22,10 +24,12 @@ export function GeneratedMessage({
         </span>
         <div>
           <h2>Your finished message</h2>
-          <p className="flow-section__lead">
-            This is the result. Click the button and the AI writes a short message for your
-            situation, using the writing rules from the steps above.
-          </p>
+          {!compact && (
+            <p className="flow-section__lead">
+              This is the result. Click the button and the AI writes a short message for your
+              situation, using the writing rules from the steps above.
+            </p>
+          )}
         </div>
       </header>
 
@@ -44,13 +48,16 @@ export function GeneratedMessage({
           <p className="product-message-card__text">{message}</p>
         ) : (
           <p className="product-message-card__placeholder">
-            Your finished message will show up here. Click Write the message above to generate
-            it.
+            {compact
+              ? 'Click Write the message to generate copy.'
+              : 'Your finished message will show up here. Click Write the message above to generate it.'}
           </p>
         )}
-        <p className="product-message-card__footnote">
-          This is the final output for the situation you picked in step 1.
-        </p>
+        {!compact && (
+          <p className="product-message-card__footnote">
+            This is the final output for the situation you picked in step 1.
+          </p>
+        )}
       </div>
 
       {validation && <ValidationResults report={validation} />}

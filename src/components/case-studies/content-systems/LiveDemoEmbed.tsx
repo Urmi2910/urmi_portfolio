@@ -4,11 +4,7 @@ import { ExternalLink } from "lucide-react";
 export function LiveDemoEmbed() {
   return (
     <div className="content-systems-live-demo">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Pick a situation, collect the writing rules and examples, then generate UI copy. Steps 1
-          to 3 show what happens behind the scenes. Your finished message appears in step 4.
-        </p>
+      <div className="flex justify-end">
         <Link
           href="/playground/"
           target="_blank"
@@ -20,12 +16,12 @@ export function LiveDemoEmbed() {
         </Link>
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
+      <div className="mt-3 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
         <iframe
-          src="/playground/"
+          src="/playground/?embed=1"
           title="AI Content Context Engine demo"
           className="block w-full bg-white"
-          style={{ minHeight: "920px" }}
+          style={{ minHeight: "780px" }}
           loading="lazy"
         />
       </div>
