@@ -25,11 +25,11 @@ export function ContentSystemsImage({
 
   return (
     <>
-      <figure className={cn("content-systems-figure w-full", className)}>
+      <figure className={cn("content-systems-figure", className)}>
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group block w-full cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ea580c] focus-visible:ring-offset-2"
+          className="block w-full cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ea580c] focus-visible:ring-offset-2"
           aria-label={`Expand ${image.alt}`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -39,8 +39,9 @@ export function ContentSystemsImage({
             width={image.width}
             height={image.height}
             loading={priority ? "eager" : "lazy"}
-            decoding="async"
-            className="block h-auto w-full rounded-[var(--radius-md)] border border-outline/10 bg-white"
+            decoding="sync"
+            fetchPriority={priority ? "high" : undefined}
+            className="content-systems-figure__img"
           />
           <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
             <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
@@ -48,13 +49,13 @@ export function ContentSystemsImage({
           </span>
         </button>
         {image.caption ? (
-          <figcaption className="mt-1 text-sm leading-relaxed text-muted-foreground">{image.caption}</figcaption>
+          <figcaption className="content-systems-figure__caption">{image.caption}</figcaption>
         ) : null}
       </figure>
 
       {open ? (
         <div
-          className="fixed inset-0 z-[500] flex items-start justify-center overflow-auto bg-foreground/85 p-4 sm:p-8"
+          className="fixed inset-0 z-[500] flex items-center justify-center overflow-auto bg-foreground/90 p-4 sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={image.alt}
@@ -64,7 +65,9 @@ export function ContentSystemsImage({
           <img
             src={image.src}
             alt={image.alt}
-            className="mx-auto h-auto w-full max-w-[min(1200px,calc(100vw-2rem))] rounded-[var(--radius-md)]"
+            width={image.width}
+            height={image.height}
+            className="h-auto max-h-[calc(100vh-4rem)] w-auto max-w-[min(100%,1200px)]"
             onClick={(event) => event.stopPropagation()}
           />
         </div>

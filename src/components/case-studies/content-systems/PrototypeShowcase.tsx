@@ -45,7 +45,7 @@ export function PrototypeHero() {
     <PrototypeFrame>
       <div className="border-b border-[#dfe3e8] bg-white px-5 py-5 sm:px-6">
         <p className="text-lg font-semibold tracking-tight text-[#1a1a1a] sm:text-xl">
-          AI Content Context Engine
+          Content Modeling for AI
         </p>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5c6370]">
           Help AI write consistent UI copy by gathering writing rules, approved words, message style,
@@ -98,7 +98,7 @@ export function PrototypeRetrievedStack({ compact = false }: { compact?: boolean
   ];
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-[#dfe3e8] bg-white p-4 sm:p-5">
+    <div className="h-fit self-start rounded-[var(--radius-md)] border border-[#dfe3e8] bg-white p-4 sm:p-5">
       {!compact ? <PanelTitle step={2} title="Information collected for this situation" /> : null}
       <div className="mt-4 space-y-2">
         {demo.map((item, index) => (
@@ -189,12 +189,12 @@ export function PrototypePromptPanel() {
   const prompt = contentSystemsCaseStudy.prototype.promptExcerpt;
 
   return (
-    <PrototypeFrame>
+    <PrototypeFrame className="h-fit self-start">
       <div className="border-b border-[#dfe3e8] bg-white px-4 py-3">
         <PanelTitle step={3} title="Instructions sent to AI" />
       </div>
       <div className="p-4 sm:p-5">
-        <pre className="content-systems-mono max-h-80 overflow-auto whitespace-pre-wrap rounded-md border border-[#dfe3e8] bg-white p-4 text-xs leading-relaxed text-[#1a1a1a] sm:text-sm">
+        <pre className="content-systems-mono whitespace-pre-wrap rounded-md border border-[#dfe3e8] bg-white p-4 text-xs leading-relaxed text-[#1a1a1a] sm:text-sm">
           {prompt}
         </pre>
       </div>

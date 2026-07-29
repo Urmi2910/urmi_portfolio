@@ -341,12 +341,58 @@
   .content-systems-case-study .story-chapter-body {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 1.25rem !important;
+    gap: 2.5rem;
+    margin-top: 1.75rem !important;
+  }
+
+  .content-systems-case-study .story-chapter-body:has(> .content-systems-subsection) {
+    gap: 0;
   }
 
   .content-systems-case-study .story-chapter-body > * {
     margin-top: 0 !important;
+  }
+
+  .content-systems-case-study .content-systems-subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .content-systems-case-study .content-systems-subsection--divided {
+    margin-top: 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+  }
+
+  .content-systems-case-study .content-systems-artifact-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .content-systems-case-study .content-systems-figure {
+    width: 100%;
+    max-width: 56rem;
+    margin: 0;
+  }
+
+  .content-systems-case-study .content-systems-figure__img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .content-systems-case-study .content-systems-figure__caption {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-muted-foreground);
   }
 
   .content-systems-case-study .story-prose {
@@ -430,6 +476,15 @@
 
   .content-systems-case-study .content-systems-card {
     box-shadow: var(--shadow-sm);
+  }
+
+  .content-systems-case-study .content-systems-model-steps > .content-systems-model-step + .content-systems-model-step {
+    padding-top: 2.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+  }
+
+  .content-systems-case-study .content-systems-prototype-panels > * {
+    min-width: 0;
   }
 
   .content-systems-case-study .content-systems-live-demo__iframe {

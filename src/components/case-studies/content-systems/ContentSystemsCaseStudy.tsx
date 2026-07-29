@@ -1,10 +1,10 @@
 import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
+import { ContentModelSection } from "@/components/case-studies/content-systems/ContentModelSection";
 import {
-  BulletGrid,
-  IdeaFlowDiagram,
-  ScenarioJsonBlock,
+  MessageTypeList,
 } from "@/components/case-studies/content-systems/ContentSystemsVisuals";
 import { LiveDemoEmbed } from "@/components/case-studies/content-systems/LiveDemoEmbed";
+import { ContentSystemsImage } from "@/components/case-studies/content-systems/ContentSystemsImage";
 import { RealWorldArtifacts } from "@/components/case-studies/content-systems/RealWorldContext";
 import {
   StoryChapter,
@@ -80,31 +80,35 @@ export function ContentSystemsCaseStudy() {
             </StoryChapter>
 
             <StoryChapter id="where-it-started" title={cs.whereItStarted.title}>
-              <ProseGroup paragraphs={cs.whereItStarted.paragraphs} />
-              <RealWorldArtifacts artifacts={cs.whereItStarted.artifacts} />
+              <div className="content-systems-subsection">
+                <ProseGroup paragraphs={cs.whereItStarted.audit.paragraphs} />
+                <ContentSystemsImage image={cs.whereItStarted.audit.artifact} priority />
+              </div>
+
+              <div className="content-systems-subsection content-systems-subsection--divided">
+                <ProseGroup paragraphs={cs.whereItStarted.guidelines.intro} />
+                <StoryProse className="content-systems-body-copy max-w-3xl">For example:</StoryProse>
+                <MessageTypeList items={cs.whereItStarted.guidelines.messageTypes} />
+                <StoryProse className="content-systems-body-copy max-w-3xl">
+                  {cs.whereItStarted.guidelines.closing}
+                </StoryProse>
+                <RealWorldArtifacts artifacts={cs.whereItStarted.guidelines.artifacts} />
+              </div>
             </StoryChapter>
 
-            <StoryChapter id="idea" title={cs.idea.title}>
-              <ProseGroup paragraphs={cs.idea.paragraphs} />
-              <IdeaFlowDiagram steps={cs.idea.flow} />
-            </StoryChapter>
-
-            <StoryChapter id="organising-content" title={cs.organisingContent.title}>
-              <ProseGroup paragraphs={cs.organisingContent.paragraphs} />
-              <ScenarioJsonBlock data={cs.organisingContent.scenarioJson} />
-              <BulletGrid items={cs.organisingContent.includes} />
-              <StoryProse className="content-systems-body-copy max-w-3xl">
-                {cs.organisingContent.closing}
-              </StoryProse>
+            <StoryChapter id="content-model" title={cs.contentModel.title}>
+              <ContentModelSection />
             </StoryChapter>
 
             <StoryChapter id="try-it" title={cs.tryIt.title}>
+              <StoryProse className="content-systems-body-copy max-w-3xl">
+                {cs.tryIt.intro}
+              </StoryProse>
               <LiveDemoEmbed />
             </StoryChapter>
 
-            <StoryChapter id="scaling" title={cs.scaling.title}>
-              <ProseGroup paragraphs={cs.scaling.paragraphs} />
-              <BulletGrid items={cs.scaling.examples} />
+            <StoryChapter id="why-it-matters" title={cs.whyItMatters.title}>
+              <ProseGroup paragraphs={cs.whyItMatters.paragraphs} />
             </StoryChapter>
 
             <StoryChapter id="learning" title={cs.learning.title}>

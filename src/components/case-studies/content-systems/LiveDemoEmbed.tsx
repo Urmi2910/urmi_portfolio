@@ -47,7 +47,7 @@ export function LiveDemoEmbed() {
       <div className="content-systems-live-demo__frame mt-3 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
         <iframe
           src="/playground/?embed=1"
-          title="AI Content Context Engine demo"
+          title="Content Modeling for AI demo"
           className="content-systems-live-demo__iframe block w-full bg-white"
           style={{ height: `${height}px` }}
           loading="lazy"

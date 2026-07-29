@@ -1,112 +1,223 @@
 export const contentSystemsCaseStudy = {
   slug: "content-systems",
-  title: "AI Content Context Engine",
+  title: "Content Modeling for AI",
   subtitle:
-    "A prototype that helps AI generate consistent UI copy using writing guidelines, approved terminology, and product context.",
+    "A prototype exploring whether structured content can help AI generate consistent UI copy at scale.",
   projectType: "Prototype",
   tags: ["Content Systems", "AI", "UI Copy"],
   overview: {
     paragraphs: [
-      "Every product has its own audience, terminology, writing style, and quality standards.",
-      "There are plenty of writing guidelines online, but they are often too generic. What sounds human or clear is different for every product.",
-      "While building content systems at DreamStreet, I wanted to explore whether the same guidelines that help people write consistently could also help AI.",
-      "Instead of relying on one long prompt, this prototype gives AI the right context before it starts writing.",
+      "AI made writing UI copy much faster, but it also made consistency harder.",
+      "As more people started generating copy, prompts alone weren't enough to maintain the product's writing standards. The same request could produce different terminology, structure, and tone.",
+      "We had already created reusable patterns for messages through our content guidelines. I wanted to see if those same guidelines could become structured context that helped AI generate copy consistent with our product.",
     ],
   },
   whereItStarted: {
     title: "Where it started",
-    paragraphs: [
-      "This idea came from real content system work.",
-      "I audited existing UI copy across the product, identified recurring patterns, and created reusable writing guidelines.",
-      "Each guideline was based on research, product decisions, and validation.",
-      "Instead of subjective advice like write naturally, the guidelines defined clear rules with examples.",
-      "This gave both people and AI enough context to write consistently.",
-    ],
-    artifacts: [
-      {
+    audit: {
+      paragraphs: [
+        "Before thinking about AI, I looked at how we were writing messages today.",
+        "I audited existing error messages across the product and found the same problems again and again. Similar situations were written differently, terminology wasn't consistent, and message patterns changed from one feature to another.",
+        "Instead of fixing messages one by one, I documented reusable patterns that everyone could follow.",
+      ],
+      artifact: {
         src: "/work/content-systems/toast-audit-screenshot.png",
         alt: "Toast audit showing existing error messages from the product.",
         caption: "Toast audit",
         width: 1024,
         height: 803,
       },
-      {
-        src: "/work/content-systems/toast-ux-guidelines-reference.png",
-        alt: "Toast guidelines documenting when and how to use toast messages.",
-        caption: "Toast guidelines",
-        width: 931,
-        height: 1024,
-      },
-      {
-        src: "/work/content-systems/toast-anatomy.png",
-        alt: "Toast anatomy showing success, error, and information patterns.",
-        caption: "Toast anatomy",
-        width: 1024,
-        height: 512,
-      },
-    ],
+    },
+    guidelines: {
+      intro: [
+        "The guidelines went beyond writing tips. They defined how different message types should work.",
+      ],
+      messageTypes: [
+        { name: "Success", description: "tells the user what happened." },
+        { name: "Error", description: "explains the problem and how to fix it." },
+        { name: "Information", description: "shares an important update." },
+      ],
+      closing:
+        "Along with writing rules, approved terminology, and examples, these patterns became a reusable content system.",
+      artifacts: [
+        {
+          src: "/work/content-systems/toast-ux-guidelines-reference.png",
+          alt: "Toast guidelines documenting when and how to use toast messages.",
+          caption: "Toast guidelines",
+          width: 931,
+          height: 1024,
+        },
+        {
+          src: "/work/content-systems/toast-patterns-anatomy.jpg",
+          alt: "Toast anatomy showing success, error, and information patterns.",
+          caption: "Toast anatomy",
+          width: 1024,
+          height: 512,
+        },
+      ],
+    },
   },
-  idea: {
-    title: "The idea",
-    paragraphs: [
-      "Instead of putting every rule inside one prompt, store the writing guidance separately.",
-      "Then let AI gather only the information it needs for that situation.",
+  contentModel: {
+    title: "From guidelines to a content model",
+    intro: [
+      "The guidelines were still written as documents. That worked for people, but AI needed information in a format it could retrieve consistently.",
+      "So instead of storing everything in one long document, I started breaking the knowledge into reusable pieces.",
     ],
-    flow: [
-      "Situation",
-      "Gather context",
-      "Writing rules · Approved terminology · Examples",
-      "AI",
-      "UI Copy",
-    ],
+    step1: {
+      title: "Find the reusable parts",
+      paragraphs: [
+        "I reviewed all the guidelines and asked:",
+      ],
+      question: "What information does AI need every time it writes an error message?",
+      buildingBlocks: [
+        { example: "Recoverable error", label: "What type of message is this?" },
+        { example: "What happened → Next step", label: "How should it be structured?" },
+        { example: "Plain language, active voice", label: "What writing rules apply?" },
+        { example: "Password", label: "Which words should be used?" },
+        { example: "Passcode", label: "Which words should be avoided?" },
+        { example: "Use at least 8 characters.", label: "What examples can AI learn from?" },
+      ],
+      closing: "These became the building blocks of the content model.",
+    },
+    step2: {
+      title: "Create reusable collections",
+      paragraphs: [
+        "Instead of repeating the same rules for every message, I stored each type of information separately.",
+        "For example:",
+      ],
+      collections: [
+        {
+          name: "Writing Rules",
+          content: "Plain language\nActive voice\nOne issue per message\nSentence case",
+        },
+        {
+          name: "Voice & Tone",
+          content: "Helpful\nDirect\nClear\nConfident",
+        },
+        {
+          name: "Dictionary",
+          content: "Password ✅\nPasscode ❌\n\nRewards ✅\nReward Points ❌",
+        },
+        {
+          name: "Message Patterns",
+          content:
+            "Recoverable Error\n\nWhat happened\n↓\n\nHow to fix it\n\n---\n\nSuccess\n\nWhat happened",
+        },
+      ],
+      closing: "Each collection could now be reused across hundreds of messages.",
+    },
+    step3: {
+      title: "Connect everything together",
+      paragraphs: [
+        "Now I needed a way to tell AI which pieces belonged to each situation.",
+        "Instead of copying all the rules into every prompt, I created a content model.",
+        "Each scenario acts like an index.",
+      ],
+      exampleIntro: "For example:",
+      contentModel: {
+        scenario: "Password too short",
+        inherits: "Recoverable Error",
+        usesPattern: "What happened → Next step",
+        voice: "Default Product Voice",
+        writingRules: ["Plain language", "One issue", "Active voice"],
+        dictionary: ["Password"],
+        examples: ["Use at least 8 characters."],
+      },
+      closing: [
+        "Notice that the model doesn't contain every rule.",
+        "It simply points to the right collections.",
+        "That keeps the content reusable and much easier to maintain.",
+      ],
+    },
+    step4: {
+      title: "Build the prompt",
+      paragraphs: [
+        "When someone asks AI to write a password error, the system doesn't send the request straight to AI.",
+        "It first looks up the content model.",
+      ],
+      lookupIntro: "Using the model above, it gathers:",
+      gathered: [
+        "Recoverable error pattern",
+        "Product voice",
+        "Writing rules",
+        "Approved terminology",
+        "Example messages",
+      ],
+      closing:
+        "Those pieces are combined into one prompt automatically. AI receives all the context it needs before writing.",
+    },
+    step5: {
+      title: "Add guardrails",
+      paragraphs: [
+        "Even after AI generates a message, the work isn't finished.",
+        "The message is checked against the same content model.",
+        "For example:",
+      ],
+      groups: [
+        {
+          title: "Terminology",
+          prompt: "Did AI say Password instead of Passcode?",
+        },
+        {
+          title: "Pattern",
+          detail: "Did it follow What happened → Next step, or did it invent a different structure?",
+        },
+        {
+          title: "Writing rules",
+          items: ["Is it active voice?", "Is it one issue?", "Is it concise?"],
+        },
+      ],
+      closing:
+        "If something doesn't match the guidelines, the system can regenerate the message or flag it for review.",
+    },
+    step6: {
+      title: "Add fallbacks",
+      paragraphs: ["AI won't always have every piece of information.", "So I designed fallback rules."],
+      fallbacks: [
+        {
+          condition: "If there isn't a password-specific example,",
+          action: "use the general recoverable error example.",
+        },
+        {
+          condition: "If a feature doesn't have its own voice,",
+          action: "use the default product voice.",
+        },
+        {
+          condition: "If a component doesn't define a pattern,",
+          action: "use the default pattern for that message type.",
+        },
+      ],
+      closing: "This keeps the system working even when new features are added.",
+    },
+    step7: {
+      title: "Scale the library",
+      paragraphs: [
+        "Now adding a new feature doesn't mean rewriting prompts.",
+        "For example, adding payment errors only requires:",
+      ],
+      requires: ["New examples", "New approved terminology", "Any feature-specific rules"],
+      closing: "Everything else is already shared through the content model. The workflow stays exactly the same.",
+    },
   },
   tryIt: {
     title: "Try it",
+    intro:
+      "Choose a scenario to see how AI gathers the right context before generating UI copy.",
   },
-  organisingContent: {
-    title: "Organising content",
+  whyItMatters: {
+    title: "Why this matters",
     paragraphs: [
-      "The writing guidance is stored in a structured content library.",
-      "Each situation contains everything AI needs before it starts writing.",
-    ],
-    includes: [
-      "Writing rules",
-      "Approved terminology",
-      "Message pattern",
-      "Example messages",
-    ],
-    closing:
-      "When new situations are added, only the content library grows. The workflow stays the same.",
-    scenarioJson: {
-      id: "password-too-short",
-      messageType: "recoverable-error",
-      pattern: "action-first",
-      writingRules: ["active-voice", "plain-language"],
-      terminology: ["password"],
-      example: "password-too-short",
-    },
-  },
-  scaling: {
-    title: "Why it scales",
-    paragraphs: [
-      "The prototype starts with password validation, but the same workflow can support any product area.",
-      "As new features are added, only the content library grows. The process stays the same.",
-    ],
-    examples: [
-      "Authentication",
-      "Payments",
-      "Notifications",
-      "Forms",
-      "Errors",
-      "Success messages",
-      "Empty states",
+      "Content modeling makes AI more predictable.",
+      "Instead of rewriting prompts for every new situation, teams add reusable content to the library.",
+      "This makes the output more consistent, easier to maintain, and better aligned with the product's writing standards.",
     ],
   },
   learning: {
     title: "Learning",
     paragraphs: [
-      "By turning writing principles into structured, reusable content, the same system can support both people and AI.",
-      "As the product grows, teams add new content to the library instead of rewriting prompts.",
+      "AI doesn't struggle because prompts are too short.",
+      "It struggles because it lacks context.",
+      "By treating writing guidelines as structured content instead of static documentation, the same knowledge can support both people and AI.",
     ],
   },
   prototype: {
@@ -176,9 +287,8 @@ Write one clear inline error message. Match the example messages in quality, not
 export const contentSystemsSections = [
   { id: "overview", label: "Overview" },
   { id: "where-it-started", label: "Where it started" },
-  { id: "idea", label: "The idea" },
-  { id: "organising-content", label: "Organising content" },
+  { id: "content-model", label: "Content model" },
   { id: "try-it", label: "Try it" },
-  { id: "scaling", label: "Why it scales" },
+  { id: "why-it-matters", label: "Why this matters" },
   { id: "learning", label: "Learning" },
 ] as const;

@@ -39,14 +39,9 @@ export function RealWorldArtifacts({
   artifacts: readonly ContentSystemsImageData[];
 }) {
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
-      {artifacts.map((artifact, index) => (
-        <div
-          key={artifact.src}
-          className={index === artifacts.length - 1 ? "lg:col-span-2 lg:max-w-3xl" : undefined}
-        >
-          <ContentSystemsImage image={artifact} />
-        </div>
+    <div className="content-systems-artifact-stack">
+      {artifacts.map((artifact) => (
+        <ContentSystemsImage key={artifact.src} image={artifact} />
       ))}
     </div>
   );

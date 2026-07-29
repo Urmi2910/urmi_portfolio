@@ -86,10 +86,10 @@ function App() {
     <div className={`app${isEmbed ? ' app--embed' : ''}`}>
       {!isEmbed && (
         <header className="app-header">
-          <h1>AI Content Context Engine</h1>
+          <h1>Content Modeling for AI</h1>
           <p className="app-header__subtitle">
-            This walkthrough shows how good writing rules help AI write clear, helpful error
-            messages. Password problems are just the example.
+            Choose a password scenario to see how structured content helps AI write
+            consistent error messages.
           </p>
           <p className="app-header__note">
             Work through steps 1 to 3 to see what happens behind the scenes. Your finished

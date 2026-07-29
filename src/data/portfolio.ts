@@ -194,10 +194,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "content-systems",
-    title: "AI Content Context Engine",
+    title: "Content Modeling for AI",
     subtitle: "",
     excerpt:
-      "An AI prototype that helps generate consistent UI copy using writing guidelines, approved terminology, and product context.",
+      "A prototype exploring whether structured content can help AI generate consistent UI copy at scale.",
     href: "/work/content-systems",
     company: "Prototype",
     role: "Content Engineer & Content Designer",
@@ -208,15 +208,14 @@ export const caseStudies: CaseStudy[] = [
     accentColor: "warm",
     metrics: [],
     challenge:
-      "Most AI copy workflows ask AI to write from one prompt, even though teams already have writing rules, approved words, message styles, and examples.",
+      "Teams use AI to write UI copy faster, but prompts alone produce inconsistent terminology, tone, and structure across hundreds of messages.",
     approach: [
-      "Organised writing content as reusable pieces instead of one long prompt",
-      "Built a system that collects the right information for each situation",
-      "Combined that information into clear instructions for AI",
-      "Generated and checked UI copy against the same writing rules",
+      "Audited existing copy and turned writing guidelines into reusable structured content",
+      "Linked each message type to rules, patterns, terminology, and examples in a content library",
+      "Built a prototype where AI gathers the right context before generating copy",
     ],
     outcome:
-      "Showed that giving AI the right information first produces more consistent UI copy than asking it to write from one long prompt.",
+      "Showed that content modeling makes AI output more predictable — teams add to the library instead of rewriting prompts for every new situation.",
   },
   {
     slug: "guidelines",

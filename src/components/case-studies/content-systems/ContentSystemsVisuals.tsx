@@ -88,6 +88,29 @@ export function IdeaFlowDiagram({ steps }: { steps: readonly string[] }) {
   return <WorkflowBoard steps={[...steps]} />;
 }
 
+export function BuildingBlockList({
+  items,
+}: {
+  items: readonly { example: string; label: string }[];
+}) {
+  return (
+    <ul className="grid max-w-3xl gap-3">
+      {items.map((item) => (
+        <li
+          key={item.label}
+          className="grid gap-3 rounded-[var(--radius-md)] border border-outline/10 bg-white px-4 py-3 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:items-center sm:gap-4"
+        >
+          <p className="text-sm font-medium text-[#ea580c]">{item.example}</p>
+          <div className="flex gap-2 text-sm text-muted-foreground">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ea580c]" strokeWidth={2.5} aria-hidden />
+            {item.label}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function BulletGrid({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-3">
@@ -98,6 +121,22 @@ export function BulletGrid({ items }: { items: string[] }) {
         >
           <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ea580c]" strokeWidth={2.5} aria-hidden />
           {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function MessageTypeList({
+  items,
+}: {
+  items: readonly { name: string; description: string }[];
+}) {
+  return (
+    <ul className="content-systems-message-types max-w-3xl space-y-2 pl-1">
+      {items.map((item) => (
+        <li key={item.name} className="content-systems-body-copy text-base leading-relaxed text-foreground">
+          <strong>{item.name}</strong> {item.description}
         </li>
       ))}
     </ul>
@@ -209,6 +248,135 @@ export function ScenarioJsonBlock({
     <pre className="content-systems-mono overflow-x-auto rounded-[var(--radius-md)] border border-outline/12 bg-[#1c1b1f] px-4 py-4 text-sm leading-relaxed text-[#f5f5f4] sm:px-5">
       {formatted}
     </pre>
+  );
+}
+
+export function ContentModelJsonBlock({
+  data,
+}: {
+  data: Record<string, string | string[]>;
+}) {
+  const formatted = JSON.stringify(data, null, 2);
+
+  return (
+    <div className="content-systems-content-model-json max-w-3xl rounded-[var(--radius-lg)] border border-[#ea580c]/15 bg-[#fff7ed] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[#ea580c]">
+        Content model
+      </p>
+      <pre className="content-systems-mono mt-4 overflow-x-auto whitespace-pre-wrap text-sm leading-relaxed text-[#1a1a1a] sm:text-[0.9375rem]">
+        {formatted}
+      </pre>
+    </div>
+  );
+}
+
+export function CollectionGrid({
+  collections,
+}: {
+  collections: readonly { name: string; content: string }[];
+}) {
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {collections.map((collection) => (
+        <div
+          key={collection.name}
+          className="content-systems-collection rounded-[var(--radius-lg)] border border-outline/12 bg-white p-4 sm:p-5"
+        >
+          <p className="text-sm font-semibold text-foreground">{collection.name}</p>
+          <pre className="content-systems-mono mt-3 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
+            {collection.content}
+          </pre>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function GatheredContextList({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="grid max-w-3xl gap-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="flex gap-2 rounded-[var(--radius-md)] border border-outline/10 bg-white px-4 py-3 text-sm text-foreground"
+        >
+          <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ea580c]" strokeWidth={2.5} aria-hidden />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function GuardrailChecks({
+  groups,
+}: {
+  groups: readonly {
+    title: string;
+    prompt?: string;
+    detail?: string;
+    items?: readonly string[];
+  }[];
+}) {
+  return (
+    <div className="grid max-w-3xl gap-4">
+      {groups.map((group) => (
+        <div
+          key={group.title}
+          className="rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] px-5 py-4 sm:px-6 sm:py-5"
+        >
+          <p className="text-sm font-semibold text-foreground">{group.title}</p>
+          {group.prompt ? (
+            <p className="content-systems-body-copy mt-2 text-base text-foreground">{group.prompt}</p>
+          ) : null}
+          {group.detail ? (
+            <p className="content-systems-body-copy mt-2 text-base italic text-muted-foreground">
+              {group.detail}
+            </p>
+          ) : null}
+          {group.items ? (
+            <ul className="mt-3 space-y-1.5">
+              {group.items.map((item) => (
+                <li key={item} className="text-sm text-muted-foreground">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function FallbackFlow({
+  items,
+}: {
+  items: readonly { condition: string; action: string }[];
+}) {
+  return (
+    <div className="content-systems-card max-w-3xl rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
+      <div className="mx-auto flex max-w-md flex-col items-center gap-2">
+        {items.map((item, index) => (
+          <div key={item.condition} className="flex w-full flex-col items-center gap-2">
+            <p className="w-full rounded-[var(--radius-md)] border border-outline/10 bg-white px-4 py-3 text-center text-sm text-foreground">
+              {item.condition}
+            </p>
+            <span className="text-muted-foreground/60" aria-hidden>
+              ↓
+            </span>
+            <p className="w-full rounded-[var(--radius-md)] border border-[#ea580c]/15 bg-[#fff7ed] px-4 py-3 text-center text-sm font-medium text-foreground">
+              {item.action}
+            </p>
+            {index < items.length - 1 ? (
+              <span className="my-1 text-muted-foreground/40" aria-hidden>
+                ···
+              </span>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
