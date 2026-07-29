@@ -6,7 +6,7 @@ export const contentSystemsCaseStudy = {
   tags: ["Content Systems", "AI", "UI Copy"],
   overview: {
     paragraphs: [
-      "This prototype uses password validation as a simple example to explain the idea. The goal is not to build a password tool. The goal is to show a way to help AI generate more consistent UI copy.",
+      "This prototype uses password validation as a simple example to explain an approach that started with real content system work — auditing inconsistent UI copy and defining reusable patterns.",
       "Instead of asking AI to write from a single prompt, the system first gathers the writing rules, approved words, message style, and examples for that situation. AI then uses that information to write the final message.",
       "As more product areas are added, only the content library grows. The process stays the same.",
     ],
@@ -29,6 +29,48 @@ export const contentSystemsCaseStudy = {
       bridge: "Same process",
       output: "UI Copy",
     },
+  },
+  realWorld: {
+    title: "Where this approach comes from",
+    intro:
+      "The demo uses password validation to keep things simple. In practice, this approach grew out of real content system work — auditing inconsistent UI copy, defining reusable patterns, and documenting how teams should write errors.",
+    errorPattern: {
+      label: "Error pattern",
+      template: "<What happened>. <How to fix it>.",
+      description:
+        "For recoverable errors, state the problem first, then tell the user what to do next. This is the kind of rule the content library stores and AI checks against.",
+      examples: [
+        "Reward isn't available for now. Check again later.",
+        "Email already registered in another region. Try using a different email id.",
+        "Something went wrong. Please try again.",
+      ],
+    },
+    artifacts: [
+      {
+        src: "/work/content-systems/toast-audit-screenshot.png",
+        alt: "Grid of existing toast error messages from the product, showing inconsistent copy before guidelines were applied.",
+        caption:
+          "Audited existing toast copy across the product. Many messages mixed rules, tone, and structure — with no shared pattern for errors.",
+        width: 1024,
+        height: 803,
+      },
+      {
+        src: "/work/content-systems/toast-ux-guidelines-reference.png",
+        alt: "UX guidelines for toast messages covering timing, placement, and when not to use toasts for errors.",
+        caption:
+          "Documented when toasts work, when they don't, and why errors need clearer, more persistent patterns than a disappearing snackbar.",
+        width: 931,
+        height: 1024,
+      },
+      {
+        src: "/work/content-systems/toast-anatomy.png",
+        alt: "Toast anatomy showing success, error, and information patterns with examples.",
+        caption:
+          "Defined reusable patterns for success, error, and information toasts — including the error structure the prototype later encodes as content.",
+        width: 1024,
+        height: 512,
+      },
+    ],
   },
   tryIt: {
     title: "Try it yourself",
@@ -191,6 +233,7 @@ Write one clear inline error message. Match the example messages in quality, not
 
 export const contentSystemsSections = [
   { id: "overview", label: "Overview" },
+  { id: "real-world", label: "Real work" },
   { id: "try-it", label: "Try it" },
   { id: "prompts-alone", label: "Prompts alone" },
   { id: "content-library", label: "Content library" },

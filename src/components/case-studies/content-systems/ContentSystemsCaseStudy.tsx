@@ -11,6 +11,10 @@ import {
   TodayTomorrowProcessDiagram,
 } from "@/components/case-studies/content-systems/ContentSystemsVisuals";
 import {
+  ErrorPatternCallout,
+  RealWorldArtifacts,
+} from "@/components/case-studies/content-systems/RealWorldContext";
+import {
   PrototypeGeneratedPanel,
   PrototypePromptPanel,
   PrototypeRetrievedStack,
@@ -89,6 +93,16 @@ export function ContentSystemsCaseStudy() {
                 today={cs.overview.todayFlow}
                 tomorrow={cs.overview.tomorrowFlow}
               />
+            </StoryChapter>
+
+            <StoryChapter id="real-world" title={cs.realWorld.title} lead={cs.realWorld.intro}>
+              <ErrorPatternCallout
+                label={cs.realWorld.errorPattern.label}
+                template={cs.realWorld.errorPattern.template}
+                description={cs.realWorld.errorPattern.description}
+                examples={cs.realWorld.errorPattern.examples}
+              />
+              <RealWorldArtifacts artifacts={cs.realWorld.artifacts} />
             </StoryChapter>
 
             <StoryChapter id="try-it" title={cs.tryIt.title} lead={cs.tryIt.lead}>
