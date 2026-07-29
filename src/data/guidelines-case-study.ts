@@ -6,8 +6,9 @@ export const guidelinesCaseStudy = {
   tags: ["UX Writing", "Content Systems", "Guidelines"],
   overview: {
     paragraphs: [
-      "Product teams ship faster when everyone writes from the same rules. These guidelines define how we write across headings, form fields, labels, empty states, confirmations, and errors.",
-      "They were built to reduce guesswork, improve readability, and keep copy consistent as the product grows.",
+      "There are countless writing guidelines online. But every product has a different audience, voice, and goals.",
+      "I created research-backed guidelines that turned subjective advice into clear, objective rules. Each guideline was tested, documented, and supported with examples, giving both writers and AI the context needed to produce consistent, high-quality content.",
+      "These guidelines define how we write across headings, form fields, labels, empty states, confirmations, and errors.",
     ],
   },
   document: {
