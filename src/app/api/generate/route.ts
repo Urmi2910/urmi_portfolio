@@ -19,7 +19,10 @@ export async function POST(request: Request) {
 
   if (!apiKey) {
     return NextResponse.json(
-      { error: "Message generation is not configured on this site yet." },
+      {
+        error:
+          "Live AI generation is not configured. Add OPENAI_API_KEY in your Vercel project environment variables.",
+      },
       { status: 503 },
     );
   }

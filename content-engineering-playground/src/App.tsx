@@ -4,7 +4,7 @@ import { PromptPanel } from './components/PromptPanel'
 import { RetrievedContext } from './components/RetrievedContext'
 import { ScenarioSelector } from './components/ScenarioSelector'
 import { buildPrompt } from './services/contextBuilder'
-import { generateMessage } from './services/generator'
+import { GenerateError, generateMessage } from './services/generator'
 import { getScenarios, retrieve, type ContentContext } from './services/retriever'
 import { validateMessage, type ValidationReport } from './services/validator'
 import './App.css'
@@ -50,6 +50,17 @@ function App() {
       setGeneratedMessage(message)
       setValidation(validateMessage(message, content))
     } catch (err) {
+      const exampleMessage = content.examples[0]?.message
+
+      if (exampleMessage && err instanceof GenerateError && err.status === 503) {
+        setGeneratedMessage(exampleMessage)
+        setValidation(validateMessage(exampleMessage, content))
+        setError(
+          'Live AI generation is not configured on this site yet. Showing the approved example for this situation.',
+        )
+        return
+      }
+
       setGeneratedMessage(null)
       setValidation(null)
       setError(err instanceof Error ? err.message : 'Something went wrong writing the message. Try again.')

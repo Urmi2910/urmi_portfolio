@@ -21,6 +21,16 @@ interface GenerateApiResponse {
   error?: string
 }
 
+export class GenerateError extends Error {
+  status?: number
+
+  constructor(message: string, status?: number) {
+    super(message)
+    this.name = 'GenerateError'
+    this.status = status
+  }
+}
+
 async function generateViaProxy(prompt: string): Promise<string> {
   const response = await fetch('/api/generate', {
     method: 'POST',
@@ -33,7 +43,7 @@ async function generateViaProxy(prompt: string): Promise<string> {
   const data = (await response.json()) as GenerateApiResponse
 
   if (!response.ok) {
-    throw new Error(data.error ?? `Request failed (${response.status})`)
+    throw new GenerateError(data.error ?? `Request failed (${response.status})`, response.status)
   }
 
   const message = data.message?.trim()
