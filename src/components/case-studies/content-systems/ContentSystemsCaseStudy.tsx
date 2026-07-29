@@ -76,11 +76,6 @@ export function ContentSystemsCaseStudy() {
 
           <div className="content-systems-sections">
             <StoryChapter id="overview" title="Overview">
-              <blockquote className="content-systems-card rounded-[var(--radius-lg)] border border-[#ea580c]/15 bg-[#fff7ed] px-5 py-4 sm:px-6 sm:py-5">
-                <p className="text-base font-medium leading-relaxed text-foreground sm:text-lg">
-                  {cs.thesis}
-                </p>
-              </blockquote>
               <ProseGroup paragraphs={cs.overview.paragraphs} />
             </StoryChapter>
 

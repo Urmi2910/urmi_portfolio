@@ -5,8 +5,6 @@ export const contentSystemsCaseStudy = {
     "A prototype that helps AI generate consistent UI copy using writing guidelines, approved terminology, and product context.",
   projectType: "Prototype",
   tags: ["Content Systems", "AI", "UI Copy"],
-  thesis:
-    "Good AI copy doesn't come from better prompts. It comes from better context.",
   overview: {
     paragraphs: [
       "Every product has its own audience, terminology, writing style, and quality standards.",
