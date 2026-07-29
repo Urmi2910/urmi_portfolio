@@ -432,6 +432,17 @@
     box-shadow: var(--shadow-sm);
   }
 
+  .content-systems-case-study .content-systems-live-demo__iframe {
+    height: 26rem;
+    border: 0;
+  }
+
+  @media (min-width: 768px) {
+    .content-systems-case-study .content-systems-live-demo__iframe {
+      height: 28rem;
+    }
+  }
+
   .guidelines-case-study .guidelines-sections {
     display: flex;
     flex-direction: column;

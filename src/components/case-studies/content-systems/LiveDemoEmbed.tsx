@@ -16,12 +16,11 @@ export function LiveDemoEmbed() {
         </Link>
       </div>
 
-      <div className="mt-3 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
+      <div className="content-systems-live-demo__frame mt-3 overflow-hidden rounded-[var(--radius-lg)] border border-[#dfe3e8] bg-[#f4f5f7] shadow-sm">
         <iframe
           src="/playground/?embed=1"
           title="AI Content Context Engine demo"
-          className="block w-full bg-white"
-          style={{ minHeight: "780px" }}
+          className="content-systems-live-demo__iframe block w-full bg-white"
           loading="lazy"
         />
       </div>
