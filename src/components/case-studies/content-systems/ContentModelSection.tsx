@@ -114,9 +114,6 @@ export function ContentModelSection() {
 
         <ModelStep number={7} title={model.step7.title}>
           <ProseGroup paragraphs={model.step7.paragraphs} />
-          <StoryProse className="content-systems-body-copy max-w-3xl">
-            {model.step7.exampleIntro}
-          </StoryProse>
           <BulletGrid items={model.step7.requires} />
           <StoryProse className="content-systems-body-copy max-w-3xl">
             {model.step7.closing}
