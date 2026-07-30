@@ -15,7 +15,7 @@ export default function ContentSystemsCaseStudyPage() {
   return (
     <>
       <Header />
-      <main className="content-systems-page case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+      <main className="content-systems-page flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <ContentSystemsCaseStudy />
       </main>
       <PortfolioCaseStudyNav slug="content-systems" />

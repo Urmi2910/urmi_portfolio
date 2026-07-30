@@ -15,7 +15,7 @@ export default function GuidelinesCaseStudyPage() {
   return (
     <>
       <Header />
-      <main className="guidelines-page case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+      <main className="guidelines-page flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <GuidelinesCaseStudy />
       </main>
       <PortfolioCaseStudyNav slug="guidelines" />

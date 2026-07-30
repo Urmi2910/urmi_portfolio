@@ -15,7 +15,7 @@ export default function TriggerOrderCaseStudyPage() {
   return (
     <>
       <Header />
-      <main className="writing-case-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+      <main className="writing-case-study flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <TriggerOrderCaseStudy />
       </main>
       <PortfolioCaseStudyNav slug="trigger-order-vs-gtt" />
