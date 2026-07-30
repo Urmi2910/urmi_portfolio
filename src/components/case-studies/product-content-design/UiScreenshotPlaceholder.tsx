@@ -30,7 +30,7 @@ export function UiScreenshotPlaceholder({
         <span className="h-2 w-2 rounded-full bg-pop-yellow/70" aria-hidden />
         <span className="h-2 w-2 rounded-full bg-pop-mint/70" aria-hidden />
         <span className="ml-2 truncate text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-          {variant === "before" ? "Before" : variant === "after" ? "After" : "Preview"}
+          Preview
         </span>
       </div>
       <div className="space-y-3 p-4 sm:p-5">

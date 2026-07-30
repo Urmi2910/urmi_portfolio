@@ -1,10 +1,8 @@
 import {
-  getWritingExampleSections,
   productContentDesignHub,
   toWritingExampleSectionId,
   type WritingExample,
 } from "@/data/product-content-design";
-import { CaseStudySectionNav } from "./CaseStudySectionNav";
 import { AllExamplesLink } from "./AllExamplesLink";
 import {
   DeepDive,
@@ -15,7 +13,7 @@ import {
 } from "@/components/case-studies/shared/StoryComponents";
 import { cn } from "@/lib/utils";
 import { HighlightText } from "@/components/ui/HighlightText";
-import { FirstRunExperienceIterations } from "./FirstRunExperienceMockup";
+import { FirstRunExperienceExploration, FirstRunExperienceFinal } from "./FirstRunExperienceMockup";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { ConfirmationDialogExplorations } from "./ConfirmationDialogExplorations";
 import { ConfirmationDialogMockup } from "./ConfirmationDialogMockup";
@@ -48,33 +46,22 @@ export function WritingExampleDetail({
   example: WritingExample;
   embedded?: boolean;
 }) {
-  const sections = getWritingExampleSections(example);
-
   return (
     <div className={cn("writing-example-detail", embedded ? "pb-2" : "pb-6")}>
       {!embedded ? <AllExamplesLink /> : null}
 
       {!embedded ? (
-        <header className="mt-6 max-w-prose">
+        <header className="writing-case-study-hero mt-6 md:mt-8">
           <p className="text-sm font-medium text-primary">{productContentDesignHub.title}</p>
-          <h1 className="mt-2 text-[clamp(1.75rem,5vw,2.5rem)] font-heading font-bold leading-[1.12] tracking-tight text-foreground text-balance">
+          <h1 className="case-study-hero-title mt-2 text-balance">
             {example.title}
           </h1>
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{example.teaser}</p>
+          <p className="case-study-hero-subtitle mt-2">{example.teaser}</p>
         </header>
       ) : null}
 
-      <div className={cn(embedded ? "mt-0" : "writing-example-layout mt-8 lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] lg:gap-x-10 xl:gap-x-14")}>
-        {!embedded ? (
-          <aside className="hidden md:block">
-            <CaseStudySectionNav sections={sections} variant="desktop" />
-          </aside>
-        ) : null}
-
-        <div className="min-w-0">
-          {!embedded ? <CaseStudySectionNav sections={sections} variant="mobile" /> : null}
-
-          <div className={cn(embedded ? "space-y-8 sm:space-y-9" : "space-y-10 sm:space-y-11")}>
+      <div className={cn(!embedded && "mt-12 sm:mt-14")}>
+          <div className="case-study-sections">
         <ExampleChapter
           id="moment"
           title={example.chapterTitles?.moment ?? "The user moment"}
@@ -98,6 +85,9 @@ export function WritingExampleDetail({
               ))}
               {example.findingsBullets && example.findingsBullets.length > 0 ? (
                 <StoryList items={example.findingsBullets} />
+              ) : null}
+              {example.slug === "first-run-experience" ? (
+                <FirstRunExperienceExploration />
               ) : null}
             </div>
           </ExampleChapter>
@@ -217,18 +207,16 @@ export function WritingExampleDetail({
             </div>
           ) : example.comparison.showSlider !== false ? (
             <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)]">
-              <StorySection label="Before & after">
-                <BeforeAfterSlider
-                  before={example.comparison.before}
-                  after={example.comparison.after}
-                  beforeLabel={example.comparison.beforeLabel}
-                  afterLabel={example.comparison.afterLabel}
-                  beforeImage={example.comparison.beforeImage}
-                  afterImage={example.comparison.afterImage}
-                  beforeMockup={example.comparison.beforeMockup}
-                  afterMockup={example.comparison.afterMockup}
-                />
-              </StorySection>
+              <BeforeAfterSlider
+                before={example.comparison.before}
+                after={example.comparison.after}
+                beforeLabel={example.comparison.beforeLabel}
+                afterLabel={example.comparison.afterLabel}
+                beforeImage={example.comparison.beforeImage}
+                afterImage={example.comparison.afterImage}
+                beforeMockup={example.comparison.beforeMockup}
+                afterMockup={example.comparison.afterMockup}
+              />
             </div>
           ) : isConfirmationDialogVariant(example.comparison.afterMockup) ? (
             <StorySection label="Final design">
@@ -254,9 +242,7 @@ export function WritingExampleDetail({
             <StoryProse>{example.finalSolution}</StoryProse>
           ) : null}
           {example.slug === "first-run-experience" ? (
-            <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] mt-8 w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)] sm:mt-10">
-              <FirstRunExperienceIterations />
-            </div>
+            <FirstRunExperienceFinal />
           ) : null}
           {example.additionalComparisons?.map((block) => (
             <div
@@ -299,7 +285,6 @@ export function WritingExampleDetail({
         </ExampleChapter>
         ) : null}
           </div>
-        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
 import {
   DoDontExamples,
   GuidelinesDocumentLink,
@@ -11,17 +10,12 @@ import {
 } from "@/components/case-studies/shared/StoryComponents";
 import {
   guidelinesCaseStudy,
-  guidelinesSections,
 } from "@/data/guidelines-case-study";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export function GuidelinesCaseStudy() {
   const cs = guidelinesCaseStudy;
-  const navSections = guidelinesSections.map((section) => ({
-    id: section.id,
-    label: section.label,
-  }));
 
   return (
     <div className="guidelines-case-study">
@@ -35,12 +29,8 @@ export function GuidelinesCaseStudy() {
 
       <header className="guidelines-hero mt-6 md:mt-8">
         <p className="text-sm font-medium text-primary">{cs.projectType}</p>
-        <h1 className="mt-2 max-w-5xl text-[clamp(1.875rem,5vw,2.75rem)] font-heading font-bold leading-[1.1] tracking-tight text-foreground">
-          {cs.title}
-        </h1>
-        <p className="mt-4 max-w-3xl text-base font-medium leading-relaxed text-foreground sm:text-lg">
-          {cs.subtitle}
-        </p>
+        <h1 className="case-study-hero-title mt-2 max-w-5xl">{cs.title}</h1>
+        <p className="case-study-hero-subtitle mt-3 max-w-3xl">{cs.subtitle}</p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {cs.tags.map((tag) => (
             <li
@@ -53,15 +43,7 @@ export function GuidelinesCaseStudy() {
         </ul>
       </header>
 
-      <div className="guidelines-layout mt-10 lg:mt-12 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
-        <aside className="hidden md:block">
-          <CaseStudySectionNav sections={navSections} variant="desktop" />
-        </aside>
-
-        <article className="min-w-0">
-          <CaseStudySectionNav sections={navSections} variant="mobile" />
-
-          <div className="guidelines-sections">
+      <div className="guidelines-sections case-study-sections mt-12 sm:mt-14">
             <StoryChapter id="overview" title="Overview">
               <div className="guidelines-prose-group">
                 {cs.overview.paragraphs.map((paragraph) => (
@@ -129,8 +111,6 @@ export function GuidelinesCaseStudy() {
               </div>
             </StoryChapter>
           </div>
-        </article>
-      </div>
     </div>
   );
 }

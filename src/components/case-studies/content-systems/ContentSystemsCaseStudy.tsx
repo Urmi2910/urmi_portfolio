@@ -1,4 +1,3 @@
-import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
 import { ContentModelSection } from "@/components/case-studies/content-systems/ContentModelSection";
 import {
   MessageTypeList,
@@ -12,7 +11,6 @@ import {
 } from "@/components/case-studies/shared/StoryComponents";
 import {
   contentSystemsCaseStudy,
-  contentSystemsSections,
 } from "@/data/content-systems-case-study";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -31,10 +29,6 @@ function ProseGroup({ paragraphs }: { paragraphs: readonly string[] }) {
 
 export function ContentSystemsCaseStudy() {
   const cs = contentSystemsCaseStudy;
-  const navSections = contentSystemsSections.map((section) => ({
-    id: section.id,
-    label: section.label,
-  }));
 
   return (
     <div className="content-systems-case-study">
@@ -48,10 +42,10 @@ export function ContentSystemsCaseStudy() {
 
       <header className="content-systems-hero mt-6 md:mt-8">
         <p className="text-sm font-medium text-[#ea580c]">{cs.projectType}</p>
-        <h1 className="mt-2 max-w-5xl text-[clamp(1.875rem,5vw,2.75rem)] font-heading font-bold leading-[1.1] tracking-tight text-foreground">
+        <h1 className="case-study-hero-title mt-2 max-w-5xl">
           {cs.title}
         </h1>
-        <p className="mt-4 max-w-3xl text-base font-medium leading-relaxed text-foreground sm:text-lg">
+        <p className="case-study-hero-subtitle mt-3 max-w-3xl">
           {cs.subtitle}
         </p>
         <ul className="mt-4 flex flex-wrap gap-2">
@@ -66,15 +60,7 @@ export function ContentSystemsCaseStudy() {
         </ul>
       </header>
 
-      <div className="content-systems-layout mt-10 lg:mt-12 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
-        <aside className="hidden md:block">
-          <CaseStudySectionNav sections={navSections} variant="desktop" />
-        </aside>
-
-        <article className="min-w-0">
-          <CaseStudySectionNav sections={navSections} variant="mobile" />
-
-          <div className="content-systems-sections">
+      <div className="content-systems-sections case-study-sections mt-12 sm:mt-14">
             <StoryChapter id="overview" title="Overview">
               <ProseGroup paragraphs={cs.overview.paragraphs} />
             </StoryChapter>
@@ -121,8 +107,6 @@ export function ContentSystemsCaseStudy() {
               <ProseGroup paragraphs={cs.learning.paragraphs} />
             </StoryChapter>
           </div>
-        </article>
-      </div>
     </div>
   );
 }

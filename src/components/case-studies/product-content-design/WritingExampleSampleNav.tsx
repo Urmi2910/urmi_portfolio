@@ -20,7 +20,7 @@ export function WritingExampleSampleNav({
 }) {
   return (
     <CaseStudyBottomNav aria-label="Example navigation" className="writing-sample-nav">
-      <div className="mx-auto flex max-w-2xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
+      <div className="mx-auto flex max-w-5xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
         {prev ? (
           <Link
             href={prev.href}

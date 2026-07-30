@@ -16,12 +16,10 @@ export function StoryChapter({
   return (
     <section id={id} className={cn("story-chapter scroll-mt-28", className)}>
       <div className="story-chapter-header max-w-prose">
-        <h2 className="font-heading text-[clamp(1.375rem,3.5vw,1.875rem)] font-bold leading-snug tracking-tight text-foreground text-balance">
-          {title}
-        </h2>
-        {lead ? <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{lead}</p> : null}
+        <h2 className="case-study-chapter-title">{title}</h2>
+        {lead ? <p className="case-study-chapter-lead mt-2">{lead}</p> : null}
       </div>
-      <div className="story-chapter-body mt-5 space-y-6">{children}</div>
+      <div className="story-chapter-body mt-6 space-y-6 sm:mt-7">{children}</div>
     </section>
   );
 }

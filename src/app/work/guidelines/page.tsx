@@ -18,7 +18,7 @@ export default function GuidelinesCaseStudyPage() {
       <main className="guidelines-page flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="relative border-b border-border/50 pb-12 sm:pb-16 md:pb-20">
           <GeometricDecor variant="section" />
-          <div className="relative mx-auto w-full max-w-7xl px-[clamp(1rem,4vw,2rem)] py-8 md:py-12">
+          <div className="relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] py-8 md:max-w-5xl md:py-10">
             <GuidelinesCaseStudy />
           </div>
         </section>

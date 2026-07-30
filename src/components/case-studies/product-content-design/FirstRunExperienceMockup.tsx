@@ -88,6 +88,9 @@ export function FirstRunExperienceMockup({
 
   return (
     <figure className={cn("w-full", className)}>
+      <figcaption className="mb-1.5 text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {copy.label}
+      </figcaption>
       <div
         className={cn(
           "flex w-full items-center justify-center overflow-hidden rounded-[var(--radius-lg)] border border-outline/15 bg-white",
@@ -98,9 +101,24 @@ export function FirstRunExperienceMockup({
       >
         <EmptyStateCard variant={variant} />
       </div>
-      <figcaption className="mt-3 text-center text-base font-medium text-foreground">{copy.label}</figcaption>
     </figure>
   );
+}
+
+const explorationOrder: FirstRunExperienceVariant[] = ["existing", "revised"];
+
+export function FirstRunExperienceExploration({ className }: { className?: string }) {
+  return (
+    <div className={cn("flex flex-col gap-6 sm:gap-8", className)}>
+      {explorationOrder.map((variant) => (
+        <FirstRunExperienceMockup key={variant} variant={variant} />
+      ))}
+    </div>
+  );
+}
+
+export function FirstRunExperienceFinal({ className }: { className?: string }) {
+  return <FirstRunExperienceMockup variant="final" className={className} />;
 }
 
 export function FirstRunExperienceIterations({ className }: { className?: string }) {

@@ -82,10 +82,10 @@ function UiComponentPanel({
   }
 
   return (
-    <article id={item.id} className="ui-component-panel scroll-mt-28 pb-2">
-      <h2 className="font-heading text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{item.title}</h2>
-      <p className="mt-2 max-w-prose text-base leading-[1.65] text-muted-foreground">{item.description}</p>
-      <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] mt-5 w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)] sm:mt-6">
+    <article id={item.id} className="ui-component-panel story-chapter scroll-mt-28 pb-2">
+      <h2 className="case-study-chapter-title">{item.title}</h2>
+      <p className="case-study-chapter-lead mt-2">{item.description}</p>
+      <div className="mt-5 w-full sm:mt-6">
         <UiComponentBeforeAfter mockup={item.id} />
       </div>
     </article>
@@ -120,7 +120,7 @@ export function UiComponentsGallery({
   }
 
   return (
-    <div className="ui-components-gallery space-y-10 sm:space-y-12">
+    <div className="ui-components-gallery case-study-sections">
       {items.map((item) => (
         <UiComponentPanel key={item.id} item={item} />
       ))}

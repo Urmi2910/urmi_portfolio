@@ -8,33 +8,21 @@ import {
   type UiComponentMockupId,
 } from "./UiComponentMockups";
 
-function ComparisonPanel({
+export function ComparisonColumn({
   label,
   children,
-  mockup,
+  className,
 }: {
   label: string;
   children: React.ReactNode;
-  mockup: UiComponentMockupId;
+  className?: string;
 }) {
-  const isDropdown = mockup === "dropdown-labels";
-  const isDialog = mockup === "whatsapp-sample";
-
   return (
-    <figure className="w-full">
-      <figcaption className="mb-2.5 text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
+    <figure className={cn("min-w-0", className)}>
+      <figcaption className="mb-1.5 text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
         {label}
       </figcaption>
-      <div
-        className={cn(
-          "flex w-full rounded-[var(--radius-lg)] border border-outline/15 bg-[#faf8f5] p-6 sm:p-8",
-          isDropdown || isDialog
-            ? "min-h-[11rem] items-center justify-center"
-            : "aspect-[16/9] min-h-[12rem] items-center justify-center"
-        )}
-      >
-        <div className="w-full max-w-full">{children}</div>
-      </div>
+      {children}
     </figure>
   );
 }
@@ -51,7 +39,6 @@ export function UiComponentBeforeAfter({
   afterLabel?: string;
 }) {
   const isPairedLayout = mockup === "snackbars" || mockup === "call-to-action";
-  const isStackedLayout = mockup === "dropdown-labels" || mockup === "whatsapp-sample";
 
   if (isPairedLayout) {
     return (
@@ -68,19 +55,16 @@ export function UiComponentBeforeAfter({
   return (
     <div
       className={cn(
-        "ui-component-before-after",
-        isStackedLayout
-          ? "flex flex-col gap-6 sm:gap-8"
-          : "grid gap-5 sm:grid-cols-2 sm:gap-6",
-        className
+        "ui-component-before-after grid gap-5 sm:grid-cols-2 sm:gap-8",
+        className,
       )}
     >
-      <ComparisonPanel label={beforeLabel} mockup={mockup}>
+      <ComparisonColumn label={beforeLabel}>
         <UiComponentMockupPanel mockup={mockup} variant="before" />
-      </ComparisonPanel>
-      <ComparisonPanel label={afterLabel} mockup={mockup}>
+      </ComparisonColumn>
+      <ComparisonColumn label={afterLabel}>
         <UiComponentMockupPanel mockup={mockup} variant="after" />
-      </ComparisonPanel>
+      </ComparisonColumn>
     </div>
   );
 }

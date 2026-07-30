@@ -37,7 +37,7 @@ function ModelStep({
 }) {
   return (
     <section className="content-systems-model-step scroll-mt-28">
-      <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+      <h3 className="case-study-step-title">
         Step {number}. {title}
       </h3>
       <div className="content-systems-model-step__body mt-3 space-y-4">{children}</div>

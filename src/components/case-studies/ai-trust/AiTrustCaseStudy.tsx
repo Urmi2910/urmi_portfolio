@@ -16,7 +16,6 @@ import {
 } from "@/components/case-studies/shared/StoryComponents";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { AiTrustSectionNav } from "./AiTrustSectionNav";
 import { BeforeAfterPair, PromptExample } from "./AiTrustInteractive";
 import {
   ContentModelVisual,
@@ -46,34 +45,22 @@ export function AiTrustCaseStudy() {
         <p className="text-sm font-medium text-primary">
           {aiTrustCaseStudy.product} · {aiTrustCaseStudy.company}
         </p>
-        <h1 className="mt-3 text-[clamp(2rem,6vw,3.75rem)] font-heading font-bold leading-[1.06] tracking-tight text-foreground text-balance">
-          {aiTrustCaseStudy.title}
-        </h1>
-        <p className="mt-4 text-base font-medium leading-snug text-foreground/90 sm:text-xl">
-          {aiTrustCaseStudy.subtitle}
-        </p>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">{aiTrustContent.overview}</p>
+        <h1 className="case-study-hero-title mt-3 text-balance">{aiTrustCaseStudy.title}</h1>
+        <p className="case-study-hero-subtitle mt-3">{aiTrustCaseStudy.subtitle}</p>
+        <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted-foreground sm:text-base">{aiTrustContent.overview}</p>
 
         <dl className="mt-8 grid grid-cols-1 gap-4 border-y border-border/60 py-6 sm:grid-cols-3">
           {aiTrustCaseStudy.metrics.map((metric) => (
             <div key={metric.label}>
               <dt className="sr-only">{metric.label}</dt>
-              <dd className="font-heading text-2xl font-bold text-primary sm:text-3xl">{metric.value}</dd>
+              <dd className="font-heading text-xl font-semibold text-primary sm:text-2xl">{metric.value}</dd>
               <p className="mt-1 text-sm leading-snug text-muted-foreground">{metric.label}</p>
             </div>
           ))}
         </dl>
       </header>
 
-      <div className="ai-trust-grid mt-10 lg:mt-14 lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
-        <aside className="hidden lg:block">
-          <AiTrustSectionNav variant="desktop" />
-        </aside>
-
-        <article className="min-w-0">
-          <AiTrustSectionNav variant="mobile" />
-
-          <div className="space-y-10 sm:space-y-11">
+      <div className="case-study-sections ai-trust-sections mt-12 sm:mt-14">
             <StoryChapter
               id="context"
               title="Trust was breaking before the model was"
@@ -197,17 +184,15 @@ export function AiTrustCaseStudy() {
             </StoryChapter>
           </div>
 
-          <footer className="mt-10 border-t border-border/60 pt-6">
-            <Link
-              href="/#case-studies"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-primary transition-md hover:text-primary/80"
-            >
-              <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
-              All case studies
-            </Link>
-          </footer>
-        </article>
-      </div>
+      <footer className="mt-10 border-t border-border/60 pt-6">
+        <Link
+          href="/#case-studies"
+          className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-primary transition-md hover:text-primary/80"
+        >
+          <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
+          All case studies
+        </Link>
+      </footer>
     </div>
   );
 }

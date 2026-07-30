@@ -1,4 +1,3 @@
-import { CaseStudySectionNav } from "@/components/case-studies/product-content-design/CaseStudySectionNav";
 import {
   LabeledImageSet,
   PairedLabeledImages,
@@ -15,7 +14,6 @@ import {
 } from "@/components/case-studies/shared/StoryComponents";
 import {
   triggerOrderCaseStudy,
-  triggerOrderSections,
 } from "@/data/trigger-order-case-study";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -37,7 +35,6 @@ function QuoteList({ quotes }: { quotes: readonly string[] }) {
 
 export function TriggerOrderCaseStudy() {
   const cs = triggerOrderCaseStudy;
-  const navSections = triggerOrderSections.map((s) => ({ id: s.id, label: s.label }));
 
   return (
     <div className="trigger-order-case-study">
@@ -51,10 +48,8 @@ export function TriggerOrderCaseStudy() {
 
       <header className="writing-case-study-hero mt-6 max-w-prose md:mt-8">
         <p className="text-sm font-medium text-primary">DreamStreet</p>
-        <h1 className="mt-2 text-[clamp(1.875rem,5vw,2.75rem)] font-heading font-bold leading-[1.12] tracking-tight text-foreground">
-          {cs.title}
-        </h1>
-        <p className="mt-3 text-base font-medium leading-snug text-foreground sm:text-lg">{cs.subtitle}</p>
+        <h1 className="case-study-hero-title mt-2">{cs.title}</h1>
+        <p className="case-study-hero-subtitle mt-3">{cs.subtitle}</p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {cs.tags.map((tag) => (
             <li
@@ -67,15 +62,7 @@ export function TriggerOrderCaseStudy() {
         </ul>
       </header>
 
-      <div className="writing-example-layout mt-10 lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] lg:gap-x-10 xl:gap-x-14">
-        <aside className="hidden md:block">
-          <CaseStudySectionNav sections={navSections} variant="desktop" />
-        </aside>
-
-        <article className="min-w-0">
-          <CaseStudySectionNav sections={navSections} variant="mobile" />
-
-          <div className="trigger-order-sections">
+      <div className="trigger-order-sections case-study-sections mt-12 sm:mt-14">
             <StoryChapter id="overview" title="Overview">
               <div className="story-text-group">
                 {cs.overview.map((paragraph) => (
@@ -161,7 +148,7 @@ export function TriggerOrderCaseStudy() {
             <StoryChapter id="impact" title={cs.impact.title} lead={cs.impact.lead}>
               <StoryProse>{cs.impact.intro}</StoryProse>
               <div className="trigger-order-impact-stat">
-                <p className="font-heading text-[clamp(1.75rem,4vw,2.25rem)] font-bold leading-none text-primary">
+                <p className="font-heading text-[clamp(1.375rem,3vw,1.75rem)] font-semibold leading-none text-primary">
                   {cs.impact.highlight.value}
                 </p>
                 <StoryProse className="max-w-none">{cs.impact.highlight.detail}</StoryProse>
@@ -173,8 +160,6 @@ export function TriggerOrderCaseStudy() {
               <StoryProse>{cs.learning.body}</StoryProse>
             </StoryChapter>
           </div>
-        </article>
-      </div>
     </div>
   );
 }
