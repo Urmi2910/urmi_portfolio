@@ -74,20 +74,20 @@ export const triggerOrderCaseStudy = {
       "I want to buy when the price reaches this price.",
       "I don't know what GTT means.",
     ],
-    explorationBoard: {
-      src: "/work/product-content-design/trigger-order-exploration-board.png",
-      alt: "Research board comparing GTT order flow with proposed Trigger Order changes",
-      setLabel: "GTT" as const,
-      filename: "trigger-order-exploration-board.png",
-      layout: "wide" as const,
-      width: 1024,
-      height: 784,
-    },
   },
   exploration: {
     title: "Exploration",
     lead: "Looking for simpler ways to explain advanced trading",
     intro: "We explored different ways to reduce jargon without removing functionality.",
+    explorationBoard: {
+      src: "/work/product-content-design/trigger-order-exploration-board.png",
+      alt: "Research board comparing GTT order flow with proposed Trigger Order changes",
+      caption: "Research board comparing GTT order flow with proposed Trigger Order changes",
+      filename: "trigger-order-exploration-board.png",
+      layout: "wide" as const,
+      width: 1024,
+      height: 784,
+    },
     triggerOrders: {
       title: "Trigger Orders",
       items: [

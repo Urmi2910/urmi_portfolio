@@ -53,7 +53,7 @@ export function GuidelinesCaseStudy() {
         </ul>
       </header>
 
-      <div className="guidelines-layout mt-12 lg:mt-14 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
+      <div className="guidelines-layout mt-10 lg:mt-12 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
         <aside className="hidden md:block">
           <CaseStudySectionNav sections={navSections} variant="desktop" />
         </aside>

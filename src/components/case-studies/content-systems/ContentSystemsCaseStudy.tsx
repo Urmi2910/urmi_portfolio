@@ -4,8 +4,8 @@ import {
   MessageTypeList,
 } from "@/components/case-studies/content-systems/ContentSystemsVisuals";
 import { LiveDemoEmbed } from "@/components/case-studies/content-systems/LiveDemoEmbed";
-import { ContentSystemsImage } from "@/components/case-studies/content-systems/ContentSystemsImage";
 import { RealWorldArtifacts } from "@/components/case-studies/content-systems/RealWorldContext";
+import { ToastAnatomySection } from "@/components/case-studies/content-systems/ToastAnatomyDiagram";
 import {
   StoryChapter,
   StoryProse,
@@ -66,7 +66,7 @@ export function ContentSystemsCaseStudy() {
         </ul>
       </header>
 
-      <div className="content-systems-layout mt-12 lg:mt-14 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
+      <div className="content-systems-layout mt-10 lg:mt-12 lg:grid lg:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-16">
         <aside className="hidden md:block">
           <CaseStudySectionNav sections={navSections} variant="desktop" />
         </aside>
@@ -82,17 +82,23 @@ export function ContentSystemsCaseStudy() {
             <StoryChapter id="where-it-started" title={cs.whereItStarted.title}>
               <div className="content-systems-subsection">
                 <ProseGroup paragraphs={cs.whereItStarted.audit.paragraphs} />
-                <ContentSystemsImage image={cs.whereItStarted.audit.artifact} priority />
+                <RealWorldArtifacts
+                  priority
+                  artifacts={[
+                    cs.whereItStarted.audit.artifact,
+                    ...cs.whereItStarted.guidelines.artifacts,
+                  ]}
+                />
               </div>
 
               <div className="content-systems-subsection content-systems-subsection--divided">
                 <ProseGroup paragraphs={cs.whereItStarted.guidelines.intro} />
                 <StoryProse className="content-systems-body-copy max-w-3xl">For example:</StoryProse>
                 <MessageTypeList items={cs.whereItStarted.guidelines.messageTypes} />
+                <ToastAnatomySection />
                 <StoryProse className="content-systems-body-copy max-w-3xl">
                   {cs.whereItStarted.guidelines.closing}
                 </StoryProse>
-                <RealWorldArtifacts artifacts={cs.whereItStarted.guidelines.artifacts} />
               </div>
             </StoryChapter>
 

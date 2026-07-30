@@ -23,40 +23,68 @@ import { isConfirmationDialogVariant } from "./confirmation-dialog-content";
 import { ExplorationComparisonTable } from "./ExplorationComparisonTable";
 import { ImageGallery } from "./ImageGallery";
 
-export function WritingExampleDetail({ example }: { example: WritingExample }) {
+function ExampleChapter({
+  id,
+  title,
+  lead,
+  children,
+}: {
+  id: string;
+  title: string;
+  lead?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <StoryChapter id={id} title={title} lead={lead}>
+      {children}
+    </StoryChapter>
+  );
+}
+
+export function WritingExampleDetail({
+  example,
+  embedded = false,
+}: {
+  example: WritingExample;
+  embedded?: boolean;
+}) {
   const sections = getWritingExampleSections(example);
 
   return (
-    <div className="writing-example-detail pb-6">
-      <AllExamplesLink />
+    <div className={cn("writing-example-detail", embedded ? "pb-2" : "pb-6")}>
+      {!embedded ? <AllExamplesLink /> : null}
 
-      <header className="mt-6 max-w-prose">
-        <p className="text-sm font-medium text-primary">{productContentDesignHub.title}</p>
-        <h1 className="mt-2 text-[clamp(1.75rem,5vw,2.5rem)] font-heading font-bold leading-[1.12] tracking-tight text-foreground text-balance">
-          {example.title}
-        </h1>
-        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{example.teaser}</p>
-      </header>
+      {!embedded ? (
+        <header className="mt-6 max-w-prose">
+          <p className="text-sm font-medium text-primary">{productContentDesignHub.title}</p>
+          <h1 className="mt-2 text-[clamp(1.75rem,5vw,2.5rem)] font-heading font-bold leading-[1.12] tracking-tight text-foreground text-balance">
+            {example.title}
+          </h1>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{example.teaser}</p>
+        </header>
+      ) : null}
 
-      <div className="writing-example-layout mt-10 lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] lg:gap-x-10 xl:gap-x-14">
-        <aside className="hidden md:block">
-          <CaseStudySectionNav sections={sections} variant="desktop" />
-        </aside>
+      <div className={cn(embedded ? "mt-0" : "writing-example-layout mt-8 lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] lg:gap-x-10 xl:gap-x-14")}>
+        {!embedded ? (
+          <aside className="hidden md:block">
+            <CaseStudySectionNav sections={sections} variant="desktop" />
+          </aside>
+        ) : null}
 
         <div className="min-w-0">
-          <CaseStudySectionNav sections={sections} variant="mobile" />
+          {!embedded ? <CaseStudySectionNav sections={sections} variant="mobile" /> : null}
 
-          <div className="space-y-14 sm:space-y-16">
-        <StoryChapter
+          <div className={cn(embedded ? "space-y-8 sm:space-y-9" : "space-y-10 sm:space-y-11")}>
+        <ExampleChapter
           id="moment"
           title={example.chapterTitles?.moment ?? "The user moment"}
           lead={example.overview}
         >
           {example.problem ? <StoryProse>{example.problem}</StoryProse> : null}
-        </StoryChapter>
+        </ExampleChapter>
 
         {example.approachParagraphs && example.approachParagraphs.length > 0 ? (
-          <StoryChapter id="approach" title={example.chapterTitles?.approach ?? "How I approached it"}>
+          <ExampleChapter id="approach" title={example.chapterTitles?.approach ?? "How I approached it"}>
             <div className="space-y-4">
               {example.approachParagraphs.map((paragraph, index) => (
                 <div key={paragraph}>
@@ -72,9 +100,9 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
                 <StoryList items={example.findingsBullets} />
               ) : null}
             </div>
-          </StoryChapter>
+          </ExampleChapter>
         ) : (
-        <StoryChapter
+        <ExampleChapter
           id="approach"
           title={example.chapterTitles?.approach ?? "How I approached it"}
           lead={example.myRole || undefined}
@@ -141,14 +169,14 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
               </div>
             </DeepDive>
           ) : null}
-        </StoryChapter>
+        </ExampleChapter>
         )}
 
         {(example.findings && example.findings.length > 0) ||
         example.findingsIntro ||
         (example.findingsBullets && example.findingsBullets.length > 0 && !example.approachParagraphs?.length) ||
         example.showExplorationInFindings ? (
-          <StoryChapter id="findings" title={example.chapterTitles?.findings ?? "What I found"}>
+          <ExampleChapter id="findings" title={example.chapterTitles?.findings ?? "What I found"}>
             <div className="space-y-4">
               {example.findingsIntro ? <StoryProse>{example.findingsIntro}</StoryProse> : null}
               {example.findingsBullets && example.findingsBullets.length > 0 ? (
@@ -170,10 +198,10 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
                 </StorySection>
               ) : null}
             </div>
-          </StoryChapter>
+          </ExampleChapter>
         ) : null}
 
-        <StoryChapter id="solution" title={example.chapterTitles?.solution ?? "What we shipped"}>
+        <ExampleChapter id="solution" title={example.chapterTitles?.solution ?? "What we shipped"}>
           {example.slug !== "first-run-experience" && example.comparison.beforeMockup && example.comparison.afterMockup ? (
             <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)]">
               <BeforeAfterSlider
@@ -259,16 +287,16 @@ export function WritingExampleDetail({ example }: { example: WritingExample }) {
           {example.gallery.length > 1 ? (
             <ImageGallery items={example.gallery} title="In context" />
           ) : null}
-        </StoryChapter>
+        </ExampleChapter>
 
         {(example.chapterTitles?.outcome || example.impact.length > 0) ? (
-        <StoryChapter id="outcome" title={example.chapterTitles?.outcome ?? "What changed"}>
+        <ExampleChapter id="outcome" title={example.chapterTitles?.outcome ?? "What changed"}>
           {example.impact.length === 1 ? (
             <StoryProse>{example.impact[0]}</StoryProse>
           ) : example.impact.length > 1 ? (
             <StoryList items={example.impact} />
           ) : null}
-        </StoryChapter>
+        </ExampleChapter>
         ) : null}
           </div>
         </div>

@@ -21,7 +21,7 @@ export function StoryChapter({
         </h2>
         {lead ? <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{lead}</p> : null}
       </div>
-      <div className="story-chapter-body mt-8 space-y-10">{children}</div>
+      <div className="story-chapter-body mt-5 space-y-6">{children}</div>
     </section>
   );
 }

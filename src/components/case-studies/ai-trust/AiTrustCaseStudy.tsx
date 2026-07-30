@@ -73,7 +73,7 @@ export function AiTrustCaseStudy() {
         <article className="min-w-0">
           <AiTrustSectionNav variant="mobile" />
 
-          <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+          <div className="space-y-10 sm:space-y-11">
             <StoryChapter
               id="context"
               title="Trust was breaking before the model was"
@@ -197,7 +197,7 @@ export function AiTrustCaseStudy() {
             </StoryChapter>
           </div>
 
-          <footer className="mt-16 border-t border-border/60 pt-8">
+          <footer className="mt-10 border-t border-border/60 pt-6">
             <Link
               href="/#case-studies"
               className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-primary transition-md hover:text-primary/80"

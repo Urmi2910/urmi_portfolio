@@ -35,13 +35,20 @@ export function ErrorPatternCallout({
 
 export function RealWorldArtifacts({
   artifacts,
+  priority = false,
 }: {
   artifacts: readonly ContentSystemsImageData[];
+  priority?: boolean;
 }) {
   return (
-    <div className="content-systems-artifact-stack">
-      {artifacts.map((artifact) => (
-        <ContentSystemsImage key={artifact.src} image={artifact} />
+    <div className="content-systems-artifact-thumbnails grid gap-6 sm:grid-cols-2">
+      {artifacts.map((artifact, index) => (
+        <ContentSystemsImage
+          key={artifact.src}
+          image={artifact}
+          size="thumbnail"
+          priority={priority && index === 0}
+        />
       ))}
     </div>
   );

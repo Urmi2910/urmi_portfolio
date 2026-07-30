@@ -23,27 +23,32 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/work/product-content-design/dropdown-labels",
-        destination: "/work/product-content-design/microcopy-examples#dropdown-labels",
+        destination: "/work/product-content-design?open=microcopy-examples&item=dropdown-labels",
         permanent: true,
       },
       {
         source: "/work/product-content-design/snackbars",
-        destination: "/work/product-content-design/microcopy-examples#snackbars",
+        destination: "/work/product-content-design?open=microcopy-examples&item=snackbars",
         permanent: true,
       },
       {
         source: "/work/product-content-design/call-to-action",
-        destination: "/work/product-content-design/microcopy-examples#call-to-action",
+        destination: "/work/product-content-design?open=microcopy-examples&item=call-to-action",
         permanent: true,
       },
       {
         source: "/work/product-content-design/ui-components",
-        destination: "/work/product-content-design/microcopy-examples",
+        destination: "/work/product-content-design?open=microcopy-examples",
         permanent: true,
       },
       {
         source: "/work/product-content-design/ui-components/:path*",
-        destination: "/work/product-content-design/microcopy-examples/:path*",
+        destination: "/work/product-content-design?open=microcopy-examples",
+        permanent: true,
+      },
+      {
+        source: "/work/product-content-design/microcopy-examples",
+        destination: "/work/product-content-design?open=microcopy-examples",
         permanent: true,
       },
       {

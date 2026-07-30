@@ -7,9 +7,9 @@ export const contentSystemsCaseStudy = {
   tags: ["Content Systems", "AI", "UI Copy"],
   overview: {
     paragraphs: [
-      "AI made writing UI copy much faster, but it also made consistency harder.",
-      "As more people started generating copy, prompts alone weren't enough to maintain the product's writing standards. The same request could produce different terminology, structure, and tone.",
-      "We had already created reusable patterns for messages through our content guidelines. I wanted to see if those same guidelines could become structured context that helped AI generate copy consistent with our product.",
+      "AI made writing UI copy much faster. More designers, PMs, and developers could now generate copy in seconds.",
+      "But speed created a new challenge. Everyone could generate copy, but not everyone wrote it the same way. Even with the same prompt, AI could produce different terminology, structure, and tone.",
+      "We already had writing guidelines that helped people stay consistent. I wanted to explore whether those same guidelines could become structured context that helped AI write consistently too.",
     ],
   },
   whereItStarted: {
@@ -47,13 +47,6 @@ export const contentSystemsCaseStudy = {
           width: 931,
           height: 1024,
         },
-        {
-          src: "/work/content-systems/toast-patterns-anatomy.jpg",
-          alt: "Toast anatomy showing success, error, and information patterns.",
-          caption: "Toast anatomy",
-          width: 1024,
-          height: 512,
-        },
       ],
     },
   },
@@ -65,19 +58,64 @@ export const contentSystemsCaseStudy = {
     ],
     step1: {
       title: "Find the reusable parts",
-      paragraphs: [
-        "I reviewed all the guidelines and asked:",
-      ],
+      intro:
+        "Before building the content model, I reviewed the writing guidelines and looked for patterns that repeated across hundreds of messages.",
       question: "What information does AI need every time it writes an error message?",
-      buildingBlocks: [
-        { example: "Recoverable error", label: "What type of message is this?" },
-        { example: "What happened → Next step", label: "How should it be structured?" },
-        { example: "Plain language, active voice", label: "What writing rules apply?" },
-        { example: "Password", label: "Which words should be used?" },
-        { example: "Passcode", label: "Which words should be avoided?" },
-        { example: "Use at least 8 characters.", label: "What examples can AI learn from?" },
+      approach:
+        "If the same piece of information was needed again and again, it became part of the content model.",
+      blocks: [
+        {
+          title: "What type of message is this?",
+          summary: "AI first needs to know what it's writing so it can pick the right pattern.",
+          examples: ["Recoverable error", "Validation error", "Success", "Information", "Warning"],
+        },
+        {
+          title: "How should it be structured?",
+          summary: "Messages of the same type usually follow the same structure.",
+          patterns: [
+            { label: "Recoverable error", pattern: "What happened → How to fix it" },
+            { label: "Success", pattern: "What happened" },
+            { label: "Validation error", pattern: "Action → Requirement" },
+          ],
+        },
+        {
+          title: "What writing rules apply?",
+          summary: "Principles reused across every message — stored once, not repeated in every prompt.",
+          examples: ["Plain language", "Active voice", "One issue", "Concise", "Sentence case"],
+        },
+        {
+          title: "Which words should be used?",
+          summary: "Approved product vocabulary keeps copy consistent.",
+          examples: ["Password", "Rewards", "Captain"],
+          examplesVariant: "approved" as const,
+        },
+        {
+          title: "Which words should be avoided?",
+          summary: "Document what not to say so AI doesn't drift from product language.",
+          examples: ["Passcode", "Reward Points", "C/VC"],
+          examplesVariant: "avoided" as const,
+        },
+        {
+          title: "What examples can AI learn from?",
+          summary: "Rules explain principles; examples show how they're applied.",
+          examples: [
+            "Use at least 8 characters.",
+            "Team saved.",
+            "Enter a valid email address.",
+          ],
+          examplesVariant: "quote" as const,
+        },
       ],
-      closing: "These became the building blocks of the content model.",
+      decisionFramework: {
+        title: "How did I decide what became reusable?",
+        questions: [
+          "Will this be used across multiple messages?",
+          "Will different writers need this guidance?",
+          "Will AI produce inconsistent results without it?",
+        ],
+        closing:
+          "If yes → part of the content model. If no → stays in the documentation.",
+      },
     },
     step2: {
       title: "Create reusable collections",

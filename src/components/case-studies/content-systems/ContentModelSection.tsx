@@ -1,5 +1,5 @@
+import { ContentModelStep1 } from "@/components/case-studies/content-systems/ContentModelStep1";
 import {
-  BuildingBlockList,
   BulletGrid,
   CollectionGrid,
   ContentModelJsonBlock,
@@ -36,12 +36,12 @@ function ModelStep({
   children: React.ReactNode;
 }) {
   return (
-    <article className="content-systems-model-step scroll-mt-28">
+    <section className="content-systems-model-step scroll-mt-28">
       <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground sm:text-xl">
         Step {number}. {title}
       </h3>
-      <div className="content-systems-model-step__body mt-5 space-y-6">{children}</div>
-    </article>
+      <div className="content-systems-model-step__body mt-3 space-y-4">{children}</div>
+    </section>
   );
 }
 
@@ -52,16 +52,9 @@ export function ContentModelSection() {
     <>
       <ProseGroup paragraphs={model.intro} />
 
-      <div className="content-systems-model-steps mt-10 space-y-12">
+      <div className="content-systems-model-steps mt-6 space-y-8 sm:space-y-10">
         <ModelStep number={1} title={model.step1.title}>
-          <ProseGroup paragraphs={model.step1.paragraphs} />
-          <StoryProse className="content-systems-body-copy max-w-3xl font-semibold text-foreground">
-            {model.step1.question}
-          </StoryProse>
-          <BuildingBlockList items={model.step1.buildingBlocks} />
-          <StoryProse className="content-systems-body-copy max-w-3xl">
-            {model.step1.closing}
-          </StoryProse>
+          <ContentModelStep1 />
         </ModelStep>
 
         <ModelStep number={2} title={model.step2.title}>

@@ -22,7 +22,7 @@ export default function ProductContentDesignPage() {
         <section className="relative overflow-hidden border-b border-border/50 pb-12 sm:pb-16 md:pb-20">
           <GeometricDecor variant="section" />
 
-          <div className="relative mx-auto w-full max-w-3xl px-[clamp(1rem,4vw,1.5rem)]">
+          <div className="relative mx-auto w-full max-w-5xl px-[clamp(1rem,4vw,1.5rem)]">
             <Link
               href="/#case-studies"
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full px-3 py-2 text-sm text-muted-foreground transition-md hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"

@@ -96,9 +96,6 @@ export function ExpandableScreenshot({
           mockup={mockup}
           className="transition-md group-hover:-translate-y-0.5 group-hover:shadow-md motion-reduce:group-hover:translate-y-0"
         />
-        <p className="mt-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-          Tap to expand
-        </p>
       </button>
 
       {open ? (

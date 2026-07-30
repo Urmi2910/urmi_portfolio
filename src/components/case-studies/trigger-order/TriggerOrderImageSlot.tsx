@@ -213,12 +213,6 @@ export function TriggerOrderImageSlot({
             ) : (
               <CaseStudyImage image={{ ...image, src: image.src }} priority={priority} />
             )}
-            {!inRow ? (
-              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
-                Tap to zoom
-              </span>
-            ) : null}
           </button>
           {showSetLabel && image.setLabel ? (
             <figcaption className="mt-2 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
@@ -281,9 +275,6 @@ export function LabeledImageSet({
           />
         ))}
       </div>
-      <p className="text-center text-xs font-medium text-muted-foreground">
-        Tap any screen to zoom · tap outside to close
-      </p>
     </div>
   );
 }
@@ -312,9 +303,6 @@ export function PairedLabeledImages({
           />
         ))}
       </div>
-      <p className="text-center text-xs font-medium text-muted-foreground">
-        Tap any screen to zoom · tap outside to close
-      </p>
     </div>
   );
 }

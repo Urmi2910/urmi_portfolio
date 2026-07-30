@@ -13,7 +13,7 @@ export const productContentExampleNav: ProductContentExampleNavItem[] = [
   {
     slug: uiComponentsGallery.slug,
     title: uiComponentsGallery.title,
-    href: `/work/product-content-design/${uiComponentsGallery.slug}`,
+    href: `${productContentDesignHubPath}?open=microcopy-examples`,
   },
   ...writingExamples.map((example) => ({
     slug: example.slug,

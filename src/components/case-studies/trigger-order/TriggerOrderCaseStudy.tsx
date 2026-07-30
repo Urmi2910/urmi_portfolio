@@ -103,11 +103,11 @@ export function TriggerOrderCaseStudy() {
                 <StoryList items={cs.research.findings} />
                 <QuoteList quotes={cs.research.quotes} />
               </div>
-              <TriggerOrderImageSlot image={cs.research.explorationBoard} />
             </StoryChapter>
 
             <StoryChapter id="exploration" title={cs.exploration.title} lead={cs.exploration.lead}>
               <StoryProse>{cs.exploration.intro}</StoryProse>
+              <TriggerOrderImageSlot image={cs.exploration.explorationBoard} priority />
               <PairedGttSlLists
                 gttItems={cs.exploration.triggerOrders.items}
                 stopLossItems={cs.exploration.exitOrders.items}

@@ -105,16 +105,28 @@
     flex-direction: column;
   }
 
-  .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter {
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
+  .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter,
+  .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter-collapsible,
+  .trigger-order-case-study .trigger-order-sections > .story-chapter-collapsible + .story-chapter,
+  .trigger-order-case-study .trigger-order-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 2rem;
+    padding-top: 2rem;
     border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
   }
 
+  .trigger-order-case-study .trigger-order-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 0.25rem;
+    padding-top: 0;
+    border-top: none;
+  }
+
   @media (min-width: 640px) {
-    .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter {
-      margin-top: 3rem;
-      padding-top: 3rem;
+    .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter,
+    .trigger-order-case-study .trigger-order-sections > .story-chapter + .story-chapter-collapsible,
+    .trigger-order-case-study .trigger-order-sections > .story-chapter-collapsible + .story-chapter,
+    .trigger-order-case-study .trigger-order-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+      margin-top: 2.25rem;
+      padding-top: 2.25rem;
     }
   }
 
@@ -320,10 +332,42 @@
     flex-direction: column;
   }
 
-  .content-systems-case-study .content-systems-sections > .story-chapter + .story-chapter {
-    margin-top: 4rem;
-    padding-top: 4rem;
+  .content-systems-case-study .content-systems-sections > .story-chapter + .story-chapter,
+  .content-systems-case-study .content-systems-sections > .story-chapter + .story-chapter-collapsible,
+  .content-systems-case-study .content-systems-sections > .story-chapter-collapsible + .story-chapter,
+  .content-systems-case-study .content-systems-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 2rem;
+    padding-top: 2rem;
     border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  }
+
+  .content-systems-case-study .content-systems-sections > .story-chapter-collapsible:not(.story-chapter-collapsible + .story-chapter-collapsible) {
+    margin-top: 0;
+  }
+
+  .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 0.25rem;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .story-chapter-collapsible__summary {
+    padding: 0.125rem 0;
+  }
+
+  .story-chapter-collapsible[open] .story-chapter-collapsible__summary {
+    padding-bottom: 0.25rem;
+  }
+
+  .content-systems-case-study .content-systems-model-steps > .content-systems-model-step--collapsible + .content-systems-model-step--collapsible {
+    padding-top: 0.75rem;
+    margin-top: 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 45%, transparent);
+  }
+
+  .content-systems-case-study .content-systems-model-steps > .content-systems-model-step + .content-systems-model-step {
+    padding-top: 1.75rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
   }
 
   .content-systems-case-study .story-chapter-header {
@@ -341,8 +385,8 @@
   .content-systems-case-study .story-chapter-body {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 1.75rem !important;
+    gap: 1.5rem;
+    margin-top: 1.25rem !important;
   }
 
   .content-systems-case-study .story-chapter-body:has(> .content-systems-subsection) {
@@ -356,12 +400,12 @@
   .content-systems-case-study .content-systems-subsection {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.25rem;
   }
 
   .content-systems-case-study .content-systems-subsection--divided {
     margin-top: 0;
-    padding-top: 2.5rem;
+    padding-top: 1.75rem;
     border-top: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
   }
 
@@ -375,6 +419,26 @@
     width: 100%;
     max-width: 56rem;
     margin: 0;
+  }
+
+  .content-systems-case-study .content-systems-figure--thumbnail {
+    width: 100%;
+    max-width: none;
+  }
+
+  .content-systems-case-study .content-systems-figure--thumbnail .content-systems-figure__img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .content-systems-case-study .content-systems-artifact-thumbnails {
+    margin-top: 0.25rem;
+    max-width: 56rem;
+  }
+
+  .content-systems-case-study .content-systems-toast-anatomy {
+    margin-top: 0.5rem;
   }
 
   .content-systems-case-study .content-systems-figure__img {
@@ -407,7 +471,7 @@
   .content-systems-case-study .content-systems-prose-group {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0.875rem;
   }
 
   .content-systems-case-study .content-systems-body-copy {
@@ -478,11 +542,6 @@
     box-shadow: var(--shadow-sm);
   }
 
-  .content-systems-case-study .content-systems-model-steps > .content-systems-model-step + .content-systems-model-step {
-    padding-top: 2.5rem;
-    border-top: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
-  }
-
   .content-systems-case-study .content-systems-prototype-panels > * {
     min-width: 0;
   }
@@ -497,10 +556,19 @@
     flex-direction: column;
   }
 
-  .guidelines-case-study .guidelines-sections > .story-chapter + .story-chapter {
-    margin-top: 4rem;
-    padding-top: 4rem;
+  .guidelines-case-study .guidelines-sections > .story-chapter + .story-chapter,
+  .guidelines-case-study .guidelines-sections > .story-chapter + .story-chapter-collapsible,
+  .guidelines-case-study .guidelines-sections > .story-chapter-collapsible + .story-chapter,
+  .guidelines-case-study .guidelines-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 2rem;
+    padding-top: 2rem;
     border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  }
+
+  .guidelines-case-study .guidelines-sections > .story-chapter-collapsible + .story-chapter-collapsible {
+    margin-top: 0.25rem;
+    padding-top: 0;
+    border-top: none;
   }
 
   .guidelines-case-study .story-chapter-header {
@@ -518,8 +586,8 @@
   .guidelines-case-study .story-chapter-body {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 1.25rem !important;
+    gap: 1.25rem;
+    margin-top: 1rem !important;
   }
 
   .guidelines-case-study .story-chapter-body > * {
