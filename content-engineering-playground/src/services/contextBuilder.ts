@@ -8,7 +8,7 @@ function formatComponent(component: string): string {
 
 function formatPatternGuidance(pattern: Pattern): string {
   return [
-    `${pattern.name} — ${pattern.description}`,
+    `${pattern.name}: ${pattern.description}`,
     `Structure the message as: ${pattern.structure}.`,
     `Strong example: "${pattern.goodExample}".`,
     `Do not write: "${pattern.avoid}".`,
@@ -26,7 +26,7 @@ function formatTerminologyGuidance(term: Terminology): string {
 }
 
 function formatApprovedExample(message: string, why: string): string {
-  return `"${message}" — ${why}`
+  return `"${message}". ${why}`
 }
 
 function joinSection(title: string, body: string): string {
@@ -67,7 +67,7 @@ export function buildPrompt(content: ContentContext): string {
     '',
     joinSection(
       'Component',
-      `${componentLabel} — this message appears in the product interface at the point of failure.`,
+      `${componentLabel}: this message appears in the product interface at the point of failure.`,
     ),
     '',
     joinSection('Message Type', messageType.name),

@@ -1,155 +1,342 @@
+export type DoDontPair = { do: string; dont: string };
+
+export type PrincipleItem = {
+  title: string;
+  description: string;
+  examples?: readonly string[];
+};
+
+export type IncludedItem = string | PrincipleItem;
+
+export type GuidelinePage = {
+  id: string;
+  heading: string;
+  paragraphs: readonly string[];
+  featured?: boolean;
+};
+
 export const guidelinesCaseStudy = {
   slug: "guidelines",
-  title: "UX Writing Guidelines",
-  subtitle: "A reusable guide for writing clear, consistent product copy across UI components and content types.",
+  title: "Building a Content Design System",
+  subtitle:
+    "Creating reusable writing standards that help teams make consistent product decisions.",
   projectType: "CleverTap",
-  tags: ["UX Writing", "Content Systems", "Guidelines"],
+  role: "Content Designer",
+  timeline: "Ongoing",
+  tags: ["Content Systems", "UX Writing", "Design Systems"],
   overview: {
     paragraphs: [
-      "There are countless writing guidelines online. But every product has a different audience, voice, and goals.",
-      "I created research-backed guidelines that turned subjective advice into clear, objective rules. Each guideline was tested, documented, and supported with examples, giving both writers and AI the context needed to produce consistent, high-quality content.",
-      "These guidelines define how we write across headings, form fields, labels, empty states, confirmations, and errors.",
+      "As products grow, more people contribute to UX copy. Without shared guidelines, writing becomes inconsistent and the experience starts to feel fragmented.",
+      "To solve this, I helped build a Content Design System that organized recurring writing decisions into six reusable guideline categories. The goal was to help teams write consistently and make content decisions faster.",
     ],
+    categories: [
+      {
+        icon: "🗂️",
+        title: "Getting Started",
+        sectionId: "getting-started",
+        description:
+          "Where every contributor starts: purpose, structure, and navigation across the system.",
+      },
+      {
+        icon: "🧭",
+        title: "Writing Goals & Principles",
+        sectionId: "principles",
+        description: "The foundation for every writing decision.",
+      },
+      {
+        icon: "🎙️",
+        title: "Voice & Tone",
+        sectionId: "voice-and-tone",
+        description: "Consistent voice across different user situations.",
+      },
+      {
+        icon: "✍️",
+        title: "Grammar & Punctuation",
+        sectionId: "grammar",
+        description: "Rules for recurring writing patterns.",
+      },
+      {
+        icon: "📖",
+        title: "Product Dictionary",
+        sectionId: "product-dictionary",
+        description: "Shared terminology and naming conventions.",
+      },
+      {
+        icon: "🧩",
+        title: "Writing for UI Components",
+        sectionId: "ui-components",
+        description: "Guidance for common UI patterns and interactions.",
+      },
+    ],
+  },
+  gettingStarted: {
+    heading: "Getting Started",
+    paragraphs: [
+      "Every contributor needed a clear place to start. This page introduced the Content Design System, explained how it was organized, and showed where to find the right guidance for different writing decisions. It also documented how the system could be updated over time and the resources it was built on.",
+    ],
+    included: [
+      "Purpose and structure of the system",
+      "Navigation to all guideline categories",
+      "Process for proposing and reviewing updates",
+      "References and industry best practices",
+      "Writing tools and supporting resources",
+    ],
+    reference: {
+      href: "/work/guidelines/ux-writing-guidelines.pdf",
+      label: "View the doc",
+    },
+  },
+  principles: {
+    heading: "Writing goals & principles",
+    paragraphs: [
+      "Every guideline in the system builds on the same writing principles.",
+      "Rather than documenting isolated rules, I started by defining the qualities every piece of UI copy should have and the questions writers should ask before they begin.",
+    ],
+    items: [
+      {
+        title: "Writing goals",
+        description:
+          "Empower users, respect their time, educate when needed, and avoid unnecessary fluff.",
+      },
+      {
+        title: "Before you write",
+        description:
+          'Questions like "Why am I writing this?", "What is the user\'s goal?", and "What should they do next?"',
+      },
+      {
+        title: "Write like a human",
+        description:
+          "Replace jargon with everyday language, keep sentences short, and write in the present tense.",
+      },
+      {
+        title: "Focus on the user",
+        description:
+          "Explain the benefit first, use consistent terminology, and guide users toward their goal.",
+      },
+      {
+        title: "Make content easy to scan",
+        description:
+          "Write descriptive headings, break up long text, and organize information logically.",
+      },
+      {
+        title: "Edit with purpose",
+        description:
+          "Read copy out loud, remove extra words, and reveal information only when users need it.",
+      },
+    ] satisfies readonly PrincipleItem[],
+    reference: {
+      href: "/work/guidelines/writing-goals-and-principles.pdf",
+      label: "View the doc",
+    },
+  },
+  voiceAndTone: {
+    heading: "Voice & Tone",
+    paragraphs: [
+      "This section defined the personality of the product and how it should adapt across different user situations.",
+      "It helped contributors maintain a consistent voice while adjusting the tone based on the user's context and emotions.",
+    ],
+    included: [
+      {
+        title: "Voice vs. Tone",
+        description:
+          "Understand the difference between a consistent voice and a tone that changes with context.",
+        examples: ["Voice is who you are: it stays the same always, but your tone changes."],
+      },
+      {
+        title: "Brand voice",
+        description:
+          "Define the product's personality through three core traits: Fresh, Thoughtful, and Transparent.",
+      },
+      {
+        title: "Tone guidelines",
+        description: "Learn how to adapt tone to context while staying on brand.",
+        examples: [
+          "Positive and bold (not a 'bro')",
+          "Warm (but not over-friendly)",
+          "Informative (not stiff)",
+          "Straight-talking (not blunt)",
+          "Honest (not over-explanatory)",
+        ],
+      },
+      {
+        title: "Do & Don't examples",
+        description: "Practical writing examples that demonstrate the preferred tone.",
+        examples: [
+          '"Your campaign report is ready." instead of "Check out your campaign report here."',
+        ],
+      },
+      {
+        title: "Writing style",
+        description:
+          "Use active voice over passive voice, write in a conversational style, and choose the appropriate point of view based on the context.",
+        examples: [
+          '"Marti logged into the account." instead of "The account was logged into by Marti."',
+        ],
+      },
+    ] satisfies readonly PrincipleItem[],
+    reference: {
+      href: "/work/guidelines/voice-and-tone.pdf",
+      label: "View the doc",
+    },
+  },
+  productDictionary: {
+    heading: "Product Dictionary",
+    paragraphs: [
+      "As the product grew, different teams often described the same feature in different ways. To create consistency, the UX team maintained a Product Dictionary, a shared vocabulary that standardized naming across the product and beyond.",
+      "While owned by UX, it became the single source of truth for customer support, technical writing, sales, marketing, and other teams creating customer-facing content.",
+    ],
+    included: [
+      "Approved feature names used consistently across the product.",
+      "Standard naming conventions for features, settings, and workflows.",
+      "Preferred terminology to replace inconsistent or ambiguous language.",
+      "Shared vocabulary for product, help center, support, sales, and marketing content.",
+      "A living glossary that evolved alongside the product.",
+    ],
+  },
+  grammar: {
+    heading: "Grammar & Punctuation",
+    paragraphs: [
+      "This section standardized everyday writing decisions that appear across the product.",
+      "It helped contributors apply the same grammar, punctuation, and formatting rules, making the experience feel polished and consistent.",
+    ],
+    included: [
+      {
+        title: "Punctuation standards",
+        description:
+          "When to use commas, periods, colons, question marks, quotation marks, and exclamation marks.",
+        examples: [
+          "Use the Oxford comma.",
+          "Don't use exclamation marks unless it's a success message.",
+        ],
+      },
+      {
+        title: "Grammar & formatting rules",
+        description:
+          "Guidelines for abbreviations, acronyms, ampersands, hyphens, dashes, and parentheses.",
+        examples: [
+          "Avoid using an ampersand in full sentences.",
+          "Spell out an acronym the first time it's used.",
+        ],
+      },
+      {
+        title: "Writing for UI",
+        description:
+          "Rules for punctuation across headings, body copy, lists, buttons, toasts, and input fields.",
+        examples: [
+          "Don't use periods in headlines.",
+          "Use periods in descriptions and hint text.",
+        ],
+      },
+      {
+        title: "Consistency guidelines",
+        description: "Standards for keeping writing clear and predictable across the product.",
+        examples: [
+          "Use active voice.",
+          'Use double quotation marks (" ").',
+          "Use one space after a period.",
+        ],
+      },
+      {
+        title: "Do & Don't examples",
+        description: "Real examples showing the correct way to apply each guideline.",
+        examples: [
+          "Save your file to a hard drive, an external drive, or the cloud.",
+          "All done! You've successfully created a project.",
+        ],
+      },
+    ] satisfies readonly PrincipleItem[],
+    reference: {
+      href: "/work/guidelines/grammar-and-punctuation.pdf",
+      label: "View the doc",
+    },
+  },
+  uiComponents: {
+    heading: "Writing for UI Components",
+    paragraphs: [
+      "This section provided reusable writing patterns for common UI components.",
+      "Instead of treating every screen as a new writing exercise, it gave contributors practical guidance for writing clear, consistent, and task-focused product experiences.",
+    ],
+    included: [
+      {
+        title: "Buttons & Interactive Text",
+        description: "Use action-first labels, task-specific language, and concise CTAs.",
+        examples: [
+          '"Delete" instead of "Yes"',
+          '"Download update" instead of "Click here for details."',
+        ],
+      },
+      {
+        title: "Text Fields & Text Areas",
+        description: "Write helpful labels, placeholder text, and hint text.",
+        examples: [
+          '"Enter a description"',
+          '"Give your campaign a name"',
+          '"Once saved, the business event name cannot be changed."',
+        ],
+      },
+      {
+        title: "Modals & Alerts",
+        description:
+          "Structure dialogs with a clear title, concise explanation, and action-oriented CTAs.",
+        examples: [
+          '"Delete geofence?" followed by "All associated details will be removed. This action cannot be undone."',
+        ],
+      },
+      {
+        title: "Snackbars",
+        description:
+          "Write short success, error, and warning messages that confirm what happened and guide users when needed.",
+        examples: [
+          '"Campaign saved"',
+          '"Geofence deleted"',
+          '"An unexpected error occurred… Try again later."',
+        ],
+      },
+      {
+        title: "Selection Controls, Tabs & Dropdowns",
+        description:
+          "Keep labels concise, use sentence case, and make actions easy to understand.",
+        examples: ['"Delete," "Clone," and "View DRP settings."'],
+      },
+      {
+        title: "Tooltips & Nag Bars",
+        description:
+          "Add supporting information only when needed and guide users toward the next step.",
+        examples: [
+          '"The card set as your primary payment method has expired. To continue accessing CleverTap, update payment details."',
+        ],
+      },
+    ] satisfies readonly PrincipleItem[],
+    reference: {
+      href: "/work/guidelines/ui-components.pdf",
+      label: "View the doc",
+    },
   },
   document: {
     title: "Full guidelines document",
-    description: "View or download the complete UX Writing Guidelines PDF.",
+    description: "View or download the complete content design system documentation.",
     href: "/work/guidelines/ux-writing-guidelines.pdf",
     downloadFilename: "UX-writing-guidelines.pdf",
   },
-  letterCase: {
-    title: "Letter case",
-    purpose: "Create a visual hierarchy that improves readability and navigation.",
+  impactAndLearnings: {
+    heading: "Impact & Learnings",
     intro:
-      "Two letter case styles are used for product microcopy: title case and sentence case.",
-    styles: [
-      {
-        name: "Title case",
-        description: "Capitalize the first letter of every word.",
-        example: "Campaigns - Engage Your Audiences",
-      },
-      {
-        name: "Sentence case",
-        description: "Capitalize the first letter of the first word and proper nouns.",
-        example: "Campaigns - engage your audiences",
-      },
-    ],
-    rules: [
-      "Use title case for headings, titles, and main captions. Use sentence case for descriptive text, subtitles, options, and nested choices.",
-      "When titles are nested, keep title case and use typography (size, weight, color) to show hierarchy.",
-      "In title case, don't capitalize articles (a, an, the), conjunctions, short words (fewer than 4 letters), or prepositions — unless they start the sentence.",
-      "Capitalize nouns, verbs, adverbs, adjectives, and pronouns in title case. Apply discretion for visual balance.",
-      "Use title case for proper nouns, product names, feature names, and button labels. Don't use quotation marks around them.",
-    ],
-    examples: [
-      { do: "Journeys - Reach Wider Audiences at Scale", dont: "Journeys - Reach Wider Audiences At Scale" },
-      { do: "Click Continue to proceed.", dont: 'Click "Continue" to proceed.' },
-      { do: "Okay, Got It", dont: "Okay, Got it" },
-    ],
-  },
-  textFields: {
-    title: "Text input fields and text areas",
-    purpose: "Help people enter accurate information while reducing cognitive load and errors.",
-    intro:
-      "Text fields use labels, hints, and placeholder text. Avoid overloading self-explanatory fields with extra nudges. Include qualifying information only when format or restrictions matter.",
-    rules: [
-      "Avoid placeholder text when the label already describes the action. Use action-oriented labels instead.",
-      "Place qualifying or restrictive information under the field — character limits, date format, etc. For complex rules like passwords, show them in a persistent pop-up while the user types.",
-      "Use placeholder text only when the input isn't intuitive or the label is missing.",
-      "Pre-fill fields when values can be auto-fetched — country, city, time zone, country code.",
-    ],
-    examples: [
-      { do: "Upload Image URL\n(no placeholder text)", dont: "Image URL\nEnter image URL" },
-    ],
-  },
-  numerals: {
-    title: "Numerals vs words",
-    rules: [
-      "Spell out zero through nine. Use numerals for 10 or greater for days, weeks, and other time units.",
-      "Use numerals in snack bars, validation errors, headers, labels, and space-constrained UI.",
-      "If one item in a list needs a numeral, use numerals for all items of that type.",
-      "When two numbers refer to different things, spell out one and use a numeral for the other.",
-      "Hyphenate compound numbers when spelled out — twenty-five fonts, the twenty-first day.",
-      "Use from and through for number ranges — from 9 through 17. Use an en dash in tables and UI — 2016–2020. Use to for time ranges — 10:00 AM to 2:00 PM.",
-    ],
-    examples: [
-      { do: "You're in the top 5", dont: "You're in the top five" },
-      { do: "This folder has 16 images, 7 templates, and 3 videos.", dont: "This folder has sixteen images, seven templates, and three videos." },
-    ],
-  },
-  percent: {
-    title: "Percent and percentage",
-    rules: [
-      "Percent means per hundred and is tied to a specific number. Use the % symbol with numerals — no space before the symbol.",
-      "Percentage refers to a general relationship, not a specific measure.",
-      "Don't use % to refer to the symbol itself — say percent sign.",
-      "Don't start a sentence with the percent sign.",
-      "Don't use % to mean percentage.",
-    ],
-    examples: [
-      { do: "Only 20 percent of the votes counted.", dont: "Only 20% of the votes counted at the start of a sentence." },
-      { do: "A large percentage of people voted.", dont: "A large % of people voted." },
-    ],
-  },
-  contentTypes: {
-    title: "Content types",
-    intro: "Guidelines for UI content beyond individual components.",
-    types: [
-      {
-        name: "Titles",
-        purpose: "Provide immediate clarity of context and the action to take.",
-        note: "Titles sit at the top of the information hierarchy. Often they're the only text a user reads — provide context.",
-      },
-      {
-        name: "Descriptions",
-        purpose: "Help people move forward knowing what to expect, establish the brand, and reduce liability.",
-        note: "Descriptions are often skipped as a wall of text. When needed, keep them clear and concise.",
-      },
-      {
-        name: "Empty states",
-        purpose: "Set expectations and build excitement while showing the space is intentional.",
-        note: 'Use "To do X, do Y" to emphasize the function (X) and the action (Y). Types: first use, user cleared, no results/no data.',
-      },
-      {
-        name: "Labels",
-        purpose: "Minimize the effort required to understand the experience.",
-        note: "Labels name or describe things — sections, categories, status, quantity, progress. Use specific terms, avoid jargon. Stats labels use title case.",
-      },
-      {
-        name: "Transitional text",
-        purpose: "Reassure users that a delay is expected while an action processes.",
-        note: 'Use present continuous tense — "is uploading", "are sending". Add an ellipsis for brief delays.',
-      },
-      {
-        name: "Confirmation messages",
-        purpose: "Reassure users that expected progress or results are complete.",
-        note: "Especially useful when an action is delayed. Set expectations in the description first.",
-      },
-      {
-        name: "Errors",
-        purpose: "Help people move forward when something blocks their path.",
-        note: "Stay focused on what the user was trying to do. Use verb-first, brief instructions. Never assign blame. Categories: inline errors, detour errors, blocking errors.",
-      },
-    ],
-  },
-  errorPatterns: {
-    title: "Error message patterns",
-    intro: "When writing errors, tell the user what went wrong, why (if helpful), and how to fix it. Use a positive tone — lead with the action, not the failure.",
-    patterns: [
-      { template: "Enter a/an (the thing)", example: "Enter a company name" },
-      { template: "Enter a/an (the thing)", example: "Enter a campaign name" },
-      { template: "This (thing) is (status). (Action to take)", example: "This name is taken. Try another." },
-    ],
+      "The Content Design System became the team's single source of truth for UX writing. It replaced subjective writing decisions with shared principles, reusable patterns, and practical examples, making content more consistent and easier to scale.",
+    keyLearning:
+      "The biggest lesson I took away was that content systems aren't about documenting rules. They're about documenting decisions.",
+    keyLearningFollowUp:
+      "Once recurring decisions are captured in a reusable way, teams can write faster, collaborate better, and create a more consistent product experience.",
+    closing:
+      "This thinking became the foundation for my next project, where I explored how structured content could support AI-assisted writing.",
   },
 } as const;
 
 export const guidelinesSections = [
-  { id: "overview", label: "Overview" },
-  { id: "document", label: "Full document" },
-  { id: "letter-case", label: "Letter case" },
-  { id: "text-fields", label: "Text fields" },
-  { id: "numerals", label: "Numerals" },
-  { id: "percent", label: "Percent" },
-  { id: "content-types", label: "Content types" },
-  { id: "error-patterns", label: "Error patterns" },
+  { id: "getting-started", label: "Getting started" },
+  { id: "principles", label: "Writing goals & principles" },
+  { id: "voice-and-tone", label: "Voice & tone" },
+  { id: "grammar", label: "Grammar & punctuation" },
+  { id: "product-dictionary", label: "Product dictionary" },
+  { id: "ui-components", label: "Writing for UI components" },
+  { id: "impact-and-learnings", label: "Impact & learnings" },
 ] as const;

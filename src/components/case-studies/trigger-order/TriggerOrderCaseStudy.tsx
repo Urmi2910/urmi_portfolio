@@ -94,14 +94,17 @@ export function TriggerOrderCaseStudy() {
 
             <StoryChapter id="exploration" title={cs.exploration.title} lead={cs.exploration.lead}>
               <StoryProse>{cs.exploration.intro}</StoryProse>
-              <TriggerOrderImageSlot image={cs.exploration.explorationBoard} priority />
               <PairedGttSlLists
                 gttItems={cs.exploration.triggerOrders.items}
                 stopLossItems={cs.exploration.exitOrders.items}
+                showLabels={false}
+                className="mb-6 sm:mb-8"
               />
+              <TriggerOrderImageSlot image={cs.exploration.explorationBoard} priority />
               <LabeledImageSet
                 label={cs.exploration.triggerOrders.setLabel}
                 images={cs.exploration.triggerOrders.screenshots}
+                showLabel={false}
               />
             </StoryChapter>
 

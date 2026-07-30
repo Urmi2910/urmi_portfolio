@@ -33,7 +33,7 @@ export function StorySection({
 }) {
   return (
     <div className="story-section">
-      <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">{label}</h3>
+      <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{label}</h3>
       <div className="mt-3 space-y-4">{children}</div>
     </div>
   );
@@ -68,7 +68,7 @@ export function InsightCallout({
 }) {
   return (
     <aside className="rounded-[var(--radius-lg)] border border-primary/15 bg-primary/5 p-5 sm:p-6">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">{label}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{label}</p>
       <div className="mt-2 text-base leading-relaxed text-foreground/90">{children}</div>
     </aside>
   );

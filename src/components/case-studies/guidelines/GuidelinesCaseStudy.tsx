@@ -1,16 +1,10 @@
 import {
-  DoDontExamples,
-  GuidelinesDocumentLink,
-  GuidelinesRulesList,
-  GuidelinesTypeCards,
+  GuidelinesIncludedCard,
+  GuidelinesProseGroup,
+  SystemCategoryCards,
 } from "@/components/case-studies/guidelines/GuidelinesVisuals";
-import {
-  StoryChapter,
-  StoryProse,
-} from "@/components/case-studies/shared/StoryComponents";
-import {
-  guidelinesCaseStudy,
-} from "@/data/guidelines-case-study";
+import { StoryChapter, StoryProse, StorySection } from "@/components/case-studies/shared/StoryComponents";
+import { guidelinesCaseStudy } from "@/data/guidelines-case-study";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -31,86 +25,80 @@ export function GuidelinesCaseStudy() {
         <p className="text-sm font-medium text-primary">{cs.projectType}</p>
         <h1 className="case-study-hero-title mt-2 max-w-5xl">{cs.title}</h1>
         <p className="case-study-hero-subtitle mt-3 max-w-3xl">{cs.subtitle}</p>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {cs.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
       </header>
 
       <div className="guidelines-sections case-study-sections mt-12 sm:mt-14">
-            <StoryChapter id="overview" title="Overview">
-              <div className="guidelines-prose-group">
-                {cs.overview.paragraphs.map((paragraph) => (
-                  <StoryProse key={paragraph} className="text-base leading-relaxed text-muted-foreground">
-                    {paragraph}
-                  </StoryProse>
-                ))}
-              </div>
-            </StoryChapter>
+        <StoryChapter id="overview" title="Overview">
+          <GuidelinesProseGroup paragraphs={cs.overview.paragraphs} />
+          <SystemCategoryCards categories={cs.overview.categories} />
+        </StoryChapter>
 
-            <StoryChapter id="document" title={cs.document.title} lead={cs.document.description}>
-              <GuidelinesDocumentLink
-                href={cs.document.href}
-                downloadFilename={cs.document.downloadFilename}
-              />
-            </StoryChapter>
+        <StoryChapter id="getting-started" title={cs.gettingStarted.heading}>
+          <GuidelinesProseGroup paragraphs={cs.gettingStarted.paragraphs} />
+          <StorySection label="Included">
+            <GuidelinesIncludedCard
+              items={cs.gettingStarted.included}
+              reference={cs.gettingStarted.reference}
+            />
+          </StorySection>
+        </StoryChapter>
 
-            <StoryChapter id="letter-case" title={cs.letterCase.title} lead={cs.letterCase.purpose}>
-              <StoryProse className="guidelines-body-copy">{cs.letterCase.intro}</StoryProse>
-              <GuidelinesTypeCards items={cs.letterCase.styles} />
-              <GuidelinesRulesList rules={cs.letterCase.rules} />
-              <DoDontExamples examples={cs.letterCase.examples} />
-            </StoryChapter>
+        <StoryChapter id="principles" title={cs.principles.heading}>
+          <GuidelinesProseGroup paragraphs={cs.principles.paragraphs} />
+          <GuidelinesIncludedCard
+            items={cs.principles.items}
+            reference={cs.principles.reference}
+          />
+        </StoryChapter>
 
-            <StoryChapter id="text-fields" title={cs.textFields.title} lead={cs.textFields.purpose}>
-              <StoryProse className="guidelines-body-copy">{cs.textFields.intro}</StoryProse>
-              <GuidelinesRulesList rules={cs.textFields.rules} />
-              <DoDontExamples examples={cs.textFields.examples} />
-            </StoryChapter>
+        <StoryChapter id="voice-and-tone" title={cs.voiceAndTone.heading}>
+          <GuidelinesProseGroup paragraphs={cs.voiceAndTone.paragraphs} />
+          <StorySection label="Included">
+            <GuidelinesIncludedCard
+              items={cs.voiceAndTone.included}
+              reference={cs.voiceAndTone.reference}
+            />
+          </StorySection>
+        </StoryChapter>
 
-            <StoryChapter id="numerals" title={cs.numerals.title}>
-              <GuidelinesRulesList rules={cs.numerals.rules} />
-              <DoDontExamples examples={cs.numerals.examples} />
-            </StoryChapter>
+        <StoryChapter id="grammar" title={cs.grammar.heading}>
+          <GuidelinesProseGroup paragraphs={cs.grammar.paragraphs} />
+          <StorySection label="Included">
+            <GuidelinesIncludedCard
+              items={cs.grammar.included}
+              reference={cs.grammar.reference}
+            />
+          </StorySection>
+        </StoryChapter>
 
-            <StoryChapter id="percent" title={cs.percent.title}>
-              <GuidelinesRulesList rules={cs.percent.rules} />
-              <DoDontExamples examples={cs.percent.examples} />
-            </StoryChapter>
+        <StoryChapter id="product-dictionary" title={cs.productDictionary.heading}>
+          <GuidelinesProseGroup paragraphs={cs.productDictionary.paragraphs} />
+          <StorySection label="Included">
+            <GuidelinesIncludedCard items={cs.productDictionary.included} />
+          </StorySection>
+        </StoryChapter>
 
-            <StoryChapter id="content-types" title={cs.contentTypes.title} lead={cs.contentTypes.intro}>
-              <GuidelinesTypeCards items={cs.contentTypes.types} />
-            </StoryChapter>
+        <StoryChapter id="ui-components" title={cs.uiComponents.heading}>
+          <GuidelinesProseGroup paragraphs={cs.uiComponents.paragraphs} />
+          <StorySection label="Included">
+            <GuidelinesIncludedCard
+              items={cs.uiComponents.included}
+              reference={cs.uiComponents.reference}
+            />
+          </StorySection>
+        </StoryChapter>
 
-            <StoryChapter id="error-patterns" title={cs.errorPatterns.title} lead={cs.errorPatterns.intro}>
-              <div className="guidelines-table-wrap overflow-x-auto">
-                <table className="guidelines-table w-full min-w-[20rem] text-left text-sm">
-                  <thead>
-                    <tr>
-                      <th className="w-[44%] px-4 py-3 font-semibold text-foreground">Pattern</th>
-                      <th className="px-4 py-3 font-semibold text-foreground">Example</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cs.errorPatterns.patterns.map((item) => (
-                      <tr key={`${item.template}-${item.example}`}>
-                        <td className="px-4 py-3 align-top font-mono text-xs text-muted-foreground sm:text-sm">
-                          {item.template}
-                        </td>
-                        <td className="px-4 py-3 align-top text-foreground">{item.example}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </StoryChapter>
+        <StoryChapter id="impact-and-learnings" title={cs.impactAndLearnings.heading}>
+          <div className="guidelines-prose-group">
+            <StoryProse className="guidelines-body-copy">{cs.impactAndLearnings.intro}</StoryProse>
+            <StoryProse className="guidelines-body-copy">
+              <strong className="font-semibold text-foreground">{cs.impactAndLearnings.keyLearning}</strong>{" "}
+              {cs.impactAndLearnings.keyLearningFollowUp}
+            </StoryProse>
+            <StoryProse className="guidelines-body-copy">{cs.impactAndLearnings.closing}</StoryProse>
           </div>
+        </StoryChapter>
+      </div>
     </div>
   );
 }

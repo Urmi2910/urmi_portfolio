@@ -1,6 +1,6 @@
 # Content Engineering Playground
 
-A portfolio project that demonstrates how structured editorial knowledge can power consistent, AI-assisted product copy — using password validation as a practical example domain.
+A portfolio project that demonstrates how structured editorial knowledge can power consistent, AI-assisted product copy, using password validation as a practical example domain.
 
 **Live demo:** _Add deployment URL here_  
 **Stack:** React · TypeScript · Vite · OpenAI · Local JSON knowledge base
@@ -11,7 +11,7 @@ A portfolio project that demonstrates how structured editorial knowledge can pow
 
 Most teams treat AI copy generation as a prompt-writing problem. This project treats it as a **content engineering** problem.
 
-Instead of asking a model to "write a good error message" and hoping for the best, the playground shows how product copy can be assembled from reusable editorial assets — message types, patterns, writing rules, terminology, and approved examples — then passed to an LLM as a structured brief.
+Instead of asking a model to "write a good error message" and hoping for the best, the playground shows how product copy can be assembled from reusable editorial assets (message types, patterns, writing rules, terminology, and approved examples), then passed to an LLM as a structured brief.
 
 The result is a transparent workflow: you can see exactly what knowledge was retrieved, what prompt was sent, and what the model returned. A lightweight validator then checks the output against editorial constraints.
 
@@ -21,12 +21,12 @@ This is not a production tool. It is an educational prototype designed to show h
 
 ## Problem
 
-Password validation UX is deceptively simple. A product might need dozens of inline error messages — missing uppercase, too short, already used — each with slightly different user intent, tone, and structure.
+Password validation UX is deceptively simple. A product might need dozens of inline error messages (missing uppercase, too short, already used), each with slightly different user intent, tone, and structure.
 
 Without a system, teams typically face one of two outcomes:
 
-1. **Inconsistent copy** — every message is written ad hoc, with different voice, terminology, and level of detail.
-2. **Fragile AI prompts** — a single mega-prompt tries to encode all rules at once, becomes unmaintainable, and produces unpredictable output.
+1. **Inconsistent copy**: every message is written ad hoc, with different voice, terminology, and level of detail.
+2. **Fragile AI prompts**: a single mega-prompt tries to encode all rules at once, becomes unmaintainable, and produces unpredictable output.
 
 Neither scales. As scenarios multiply, editorial debt compounds. Writers cannot audit what the AI was told. Engineers cannot trace why a message changed.
 
@@ -34,7 +34,7 @@ Neither scales. As scenarios multiply, editorial debt compounds. Writers cannot 
 
 ## Why Content Engineering
 
-**Content engineering** applies structured, reusable models to product copy — the same way we model data, components, or API contracts.
+**Content engineering** applies structured, reusable models to product copy, the same way we model data, components, or API contracts.
 
 The core idea is separation of concerns:
 
@@ -50,16 +50,16 @@ This mirrors how design systems work for UI: shared primitives, composed for spe
 
 For hiring managers and recruiters, this project demonstrates:
 
-- **Content design thinking** — voice, tone, terminology, and message architecture
-- **Systems thinking** — reusable assets, explicit relationships, no hidden magic
-- **AI literacy** — prompts as editorial briefs, not black-box incantations
-- **Frontend engineering** — TypeScript, React, clear service boundaries
+- **Content design thinking**: voice, tone, terminology, and message architecture
+- **Systems thinking**: reusable assets, explicit relationships, no hidden magic
+- **AI literacy**: prompts as editorial briefs, not black-box incantations
+- **Frontend engineering**: TypeScript, React, clear service boundaries
 
 ---
 
 ## Content Model
 
-The knowledge base is a graph of editorial assets connected by explicit IDs. The **scenario** is the entry point — it describes a user situation and references everything else.
+The knowledge base is a graph of editorial assets connected by explicit IDs. The **scenario** is the entry point: it describes a user situation and references everything else.
 
 ```
 Scenario
@@ -81,7 +81,7 @@ Scenario
 | **Terminology** | Specifies preferred language and words to avoid | "uppercase letter" not "capital letter" |
 | **Example** | Shows approved copy and explains why it works | "Add an uppercase letter." |
 
-Each asset is stored as a JSON file and typed in TypeScript. Scenarios **compose** shared assets rather than duplicating content — nine scenarios share the same message type, pattern, and writing rules; only terminology and examples change.
+Each asset is stored as a JSON file and typed in TypeScript. Scenarios **compose** shared assets rather than duplicating content; nine scenarios share the same message type, pattern, and writing rules; only terminology and examples change.
 
 ---
 
@@ -103,7 +103,7 @@ The application walks through four stages, each visible in the UI:
 
 **Retrieval** follows explicit relationships only. No text matching, no inference. If a scenario references `action-first`, the retriever loads that pattern by ID.
 
-**Prompt building** converts structured data into prose — a brief that reads like guidance from a senior content designer, not a JSON dump.
+**Prompt building** converts structured data into prose: a brief that reads like guidance from a senior content designer, not a JSON dump.
 
 **Generation** sends the brief to the OpenAI Chat Completions API and returns a single message string.
 
@@ -210,7 +210,7 @@ The password validation domain includes **10 scenarios** built from **shared edi
 - **Writing rules:** `active-voice`, `one-issue`, `sentence-case`, `avoid-blame`, `concise`, `plain-language`
 - **Terminology:** `password`, `uppercase-letter`, `lowercase-letter`, `number`, `special-character`
 
-Adding a new scenario means writing one JSON file that references existing assets — not rewriting the entire prompt.
+Adding a new scenario means writing one JSON file that references existing assets, not rewriting the entire prompt.
 
 ---
 
@@ -243,7 +243,7 @@ Message Type
 Recoverable Error
 
 Pattern
-Action First — Start with the action the user should take...
+Action First: Start with the action the user should take...
 
 Writing Rules
 - Write direct instructions where the user is the actor.
@@ -254,7 +254,7 @@ Terminology
 Use "uppercase letter" (a letter from A to Z). Do not use "capital letter"...
 
 Approved Examples
-"Add an uppercase letter." — Starts with a direct action...
+"Add an uppercase letter." Starts with a direct action...
 
 Task
 Write one clear inline error message.
@@ -262,7 +262,7 @@ Write one clear inline error message.
 
 **3. Generate & Validate**
 
-OpenAI returns a message such as *"Add an uppercase letter."* The demo validator checks terminology, voice, and length — surfacing pass/fail results in the UI.
+OpenAI returns a message such as *"Add an uppercase letter."* The demo validator checks terminology, voice, and length, surfacing pass/fail results in the UI.
 
 ---
 
@@ -270,13 +270,13 @@ OpenAI returns a message such as *"Add an uppercase letter."* The demo validator
 
 This prototype intentionally stays small. Natural next steps for a production-oriented version:
 
-- **Headless CMS integration** — manage editorial assets in Contentful, Sanity, or a git-based CMS instead of local JSON
-- **Server-side API route** — keep the OpenAI key off the client and add rate limiting
-- **Richer validation** — NLP-based checks, terminology linting, readability scoring
-- **Human-in-the-loop review** — approve, edit, or reject generated copy before publish
-- **Multi-domain support** — extend beyond password validation to onboarding, billing, or empty states
-- **Analytics** — track which rules fail most often to improve the knowledge base
-- **Success flows** — wire up the `success` message type and `confirmation` pattern for confirmation copy
+- **Headless CMS integration**: manage editorial assets in Contentful, Sanity, or a git-based CMS instead of local JSON
+- **Server-side API route**: keep the OpenAI key off the client and add rate limiting
+- **Richer validation**: NLP-based checks, terminology linting, readability scoring
+- **Human-in-the-loop review**: approve, edit, or reject generated copy before publish
+- **Multi-domain support**: extend beyond password validation to onboarding, billing, or empty states
+- **Analytics**: track which rules fail most often to improve the knowledge base
+- **Success flows**: wire up the `success` message type and `confirmation` pattern for confirmation copy
 
 ---
 

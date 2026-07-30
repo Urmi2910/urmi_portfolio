@@ -27,17 +27,3 @@ export const productContentExampleNav: ProductContentExampleNavItem[] = [
     standaloneHref: `/work/product-content-design/${example.slug}`,
   })),
 ];
-
-export function getProductContentExampleNav(slug: string) {
-  const index = productContentExampleNav.findIndex((item) => item.slug === slug);
-  if (index === -1) return undefined;
-
-  return {
-    index,
-    current: productContentExampleNav[index],
-    prev: index > 0 ? productContentExampleNav[index - 1] : undefined,
-    next:
-      index < productContentExampleNav.length - 1 ? productContentExampleNav[index + 1] : undefined,
-    total: productContentExampleNav.length,
-  };
-}

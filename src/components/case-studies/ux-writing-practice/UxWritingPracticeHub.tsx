@@ -16,7 +16,7 @@ export function UxWritingPracticeHub() {
       </Link>
 
       <header className="mt-8 max-w-3xl md:mt-10">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
           Published writing
         </p>
         <h1 className="mt-3 text-[clamp(2rem,6vw,3.25rem)] font-heading font-bold leading-[1.08] tracking-tight text-foreground text-balance">
@@ -33,7 +33,7 @@ export function UxWritingPracticeHub() {
             <BookOpen className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
           </span>
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               Blog · {blog.publisher}
             </p>
             <h2 className="mt-2 font-heading text-[clamp(1.375rem,3vw,1.875rem)] font-bold leading-snug text-foreground">

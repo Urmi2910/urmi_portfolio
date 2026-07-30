@@ -9,7 +9,6 @@ import { createPortal } from "react-dom";
 
 export type { ImageSetLabel, TriggerOrderImage };
 
-const PHONE_DISPLAY_WIDTH = 375;
 const PHONE_NATIVE_WIDTH = 412;
 const PHONE_NATIVE_HEIGHT = 920;
 
@@ -206,7 +205,9 @@ export function TriggerOrderImageSlot({
             {!isWide ? (
               <div
                 className="w-full"
-                style={{ aspectRatio: `${PHONE_DISPLAY_WIDTH} / 812` }}
+                style={{
+                  aspectRatio: `${image.width ?? PHONE_NATIVE_WIDTH} / ${image.height ?? PHONE_NATIVE_HEIGHT}`,
+                }}
               >
                 <CaseStudyImage image={{ ...image, src: image.src }} priority={priority} />
               </div>
@@ -215,7 +216,7 @@ export function TriggerOrderImageSlot({
             )}
           </button>
           {showSetLabel && image.setLabel ? (
-            <figcaption className="mt-2 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+            <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               {image.setLabel}
             </figcaption>
           ) : null}
@@ -247,11 +248,13 @@ export function LabeledImageSet({
   label,
   images,
   columns = 3,
+  showLabel = true,
   className,
 }: {
   label: ImageSetLabel;
   images: readonly TriggerOrderImage[];
   columns?: 2 | 3;
+  showLabel?: boolean;
   className?: string;
 }) {
   if (images.length === 0) return null;
@@ -263,7 +266,9 @@ export function LabeledImageSet({
 
   return (
     <div className={cn("trigger-order-image-set space-y-3", className)}>
-      <h4 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">{label}</h4>
+      {showLabel ? (
+        <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{label}</h4>
+      ) : null}
       <div className={gridClass}>
         {images.map((image) => (
           <TriggerOrderImageSlot

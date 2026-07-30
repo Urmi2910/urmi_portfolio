@@ -215,32 +215,32 @@ export const caseStudies: CaseStudy[] = [
       "Built a prototype where AI gathers the right context before generating copy",
     ],
     outcome:
-      "Showed that content modeling makes AI output more predictable — teams add to the library instead of rewriting prompts for every new situation.",
+      "Showed that content modeling makes AI output more predictable: teams add to the library instead of rewriting prompts for every new situation.",
   },
   {
     slug: "guidelines",
-    title: "UX Writing Guidelines",
+    title: "Building a Content Design System",
     subtitle: "",
     excerpt:
-      "A reusable guide for writing clear, consistent product copy — from letter case and form fields to empty states, confirmations, and errors.",
+      "Creating reusable writing standards that help teams make consistent product decisions across principles, voice, terminology, grammar, and UI components.",
     href: "/work/guidelines",
     company: "CleverTap",
     role: "Content Designer",
     year: "2023",
     duration: "Ongoing",
-    tags: ["UX Writing", "Content Systems", "Guidelines"],
+    tags: ["Content Systems", "UX Writing", "Design Systems"],
     featured: true,
     accentColor: "accent",
     metrics: [],
     challenge:
-      "Product teams wrote UI copy inconsistently because there was no shared reference for headings, labels, errors, and form field patterns.",
+      "Product teams wrote UI copy inconsistently because there was no shared system for recurring writing decisions.",
     approach: [
-      "Documented letter case, numerals, and percent usage with do/don't examples",
-      "Defined guidelines for text fields, content types, and error message patterns",
-      "Created a searchable PDF teams could reference while writing and reviewing copy",
+      "Organized writing guidance into six reusable areas: principles, voice, dictionary, grammar, UI components, and usage",
+      "Structured every guideline with purpose, rules, examples, and references",
+      "Documented representative patterns for letter case, forms, empty states, errors, and confirmations",
     ],
     outcome:
-      "Teams had a single source of truth for product copy, reducing rework and keeping language consistent across features.",
+      "Teams had a decision-making system for product copy, creating a foundation for structured AI-assisted writing.",
   },
   {
     slug: "product-content-design",
@@ -248,6 +248,7 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "",
     excerpt:
       "A collection of UX writing examples, product content, and a published blog across fintech and B2B products.",
+    href: "/work/product-content-design",
     company: "Portfolio",
     role: "Content Designer",
     year: "2024",
@@ -270,6 +271,35 @@ export const caseStudies: CaseStudy[] = [
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((cs) => cs.slug === slug);
+}
+
+export interface CaseStudyNavItem {
+  slug: string;
+  title: string;
+  href: string;
+}
+
+export function getCaseStudyHref(study: CaseStudy): string {
+  return study.href ?? `/work/${study.slug}`;
+}
+
+export function getCaseStudyNav(slug: string) {
+  const items: CaseStudyNavItem[] = caseStudies.map((study) => ({
+    slug: study.slug,
+    title: study.title,
+    href: getCaseStudyHref(study),
+  }));
+
+  const index = items.findIndex((item) => item.slug === slug);
+  if (index === -1) return null;
+
+  return {
+    current: items[index],
+    prev: index > 0 ? items[index - 1] : undefined,
+    next: index < items.length - 1 ? items[index + 1] : undefined,
+    index,
+    total: items.length,
+  };
 }
 
 export type WritingCategory = "technical" | "blog" | "workshop";

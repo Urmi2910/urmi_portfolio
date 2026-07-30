@@ -121,7 +121,7 @@ function checkMessageLength(message: string): ValidationCheck {
 
 /**
  * Lightweight demonstration validator.
- * Uses simple heuristics — not suitable for production quality assurance.
+ * Uses simple heuristics, not suitable for production quality assurance.
  */
 export function validateMessage(message: string, context: ContentContext): ValidationReport {
   const trimmed = message.trim()

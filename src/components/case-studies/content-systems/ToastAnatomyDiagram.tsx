@@ -79,7 +79,7 @@ export function ToastAnatomySection() {
         </h3>
         <p className="content-systems-body-copy text-base leading-relaxed text-muted-foreground">
           Toasts are brief, subtle notifications. They confirm actions, flag errors, or share
-          neutral updates—without interrupting the flow.
+          neutral updates without interrupting the flow.
         </p>
         <p className="text-sm text-muted-foreground">Display duration: 3–5 seconds</p>
       </div>

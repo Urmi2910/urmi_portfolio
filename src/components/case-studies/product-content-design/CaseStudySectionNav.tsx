@@ -67,7 +67,7 @@ export function CaseStudySectionNav({
       aria-label="Case study sections"
       className="writing-section-nav hidden md:block md:sticky md:top-24 md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:overscroll-contain"
     >
-      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
         Index
       </p>
       <ol className="space-y-1 border-l border-outline/15 pl-3">
@@ -82,7 +82,7 @@ export function CaseStudySectionNav({
                   : "border-l-2 border-transparent text-muted-foreground hover:text-foreground"
               )}
             >
-              <span className="shrink-0 text-[11px] font-semibold tabular-nums tracking-wide opacity-60">
+              <span className="shrink-0 text-xs font-semibold tabular-nums tracking-wide opacity-60">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span>{section.label}</span>

@@ -162,7 +162,7 @@ export function ExperienceSection() {
                   >
                     <div className="experience-panel-inner max-md:overflow-visible md:min-h-0 md:overflow-hidden">
                       <div className="experience-panel-content rounded-[var(--radius-md)] border border-outline/10 bg-surface/70 p-4 md:border-0 md:bg-transparent md:p-0">
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/75 md:sr-only">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary/75 md:sr-only">
                           Key responsibilities
                         </p>
                         <ul className="space-y-3 pl-0 md:space-y-3.5 md:border-l-2 md:border-primary/25 md:pl-5">

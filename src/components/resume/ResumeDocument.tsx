@@ -10,7 +10,7 @@ export function ResumeDocument() {
   return (
     <article className="resume-document pb-16 pt-8 sm:pb-20 sm:pt-10">
       <div className="container-page max-w-4xl">
-        <header className="overflow-hidden rounded-[var(--radius-lg)] bg-surface shadow-sm ring-1 ring-outline/10 sm:rounded-[var(--radius-xl)]">
+        <header className="overflow-hidden rounded-[var(--radius-lg)] bg-surface shadow-sm ring-1 ring-border">
           <div className="px-6 py-8 sm:px-10 sm:py-10">
             <p className="text-label text-muted-foreground">{profile.title}</p>
             <h1 className="mt-2 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

@@ -80,7 +80,7 @@ export const contentSystemsCaseStudy = {
         },
         {
           title: "What writing rules apply?",
-          summary: "Principles reused across every message — stored once, not repeated in every prompt.",
+          summary: "Principles reused across every message, stored once, not repeated in every prompt.",
           examples: ["Plain language", "Active voice", "One issue", "Concise", "Sentence case"],
         },
         {
@@ -300,7 +300,7 @@ User goal
 Create a valid password.
 
 Message style
-Recoverable Error — help the user fix an issue they can resolve right away.
+Recoverable Error: help the user fix an issue they can resolve right away.
 
 How to write it
 Action First: begin with the action the user should take.
@@ -315,7 +315,7 @@ Approved words
 Use "password" (the user's account password). Do not use "passcode" or "credentials".
 
 Example messages
-"Use at least 8 characters." — leads with a clear action and states the length requirement in plain language.
+"Use at least 8 characters." leads with a clear action and states the length requirement in plain language.
 
 Task
 Write one clear inline error message. Match the example messages in quality, not necessarily in exact wording.`,

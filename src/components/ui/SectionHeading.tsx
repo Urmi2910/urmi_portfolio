@@ -29,7 +29,7 @@ export function SectionHeading({
   );
 
   const descriptionClass =
-    "max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg";
+    "max-w-prose text-base font-medium leading-relaxed text-muted-foreground sm:text-lg";
 
   if (stickyScope === "title" && description) {
     return (
@@ -38,10 +38,10 @@ export function SectionHeading({
           <IconBadge icon={icon} tone={tone} className="icon-align-headline shrink-0" />
           <div className="min-w-0 flex-1">
             <h2 className="text-headline font-heading leading-[1.2]">{title}</h2>
-            <div className="heading-rule mt-3" aria-hidden="true" />
+            <div className="heading-rule mt-4" aria-hidden="true" />
           </div>
         </div>
-        <p className={cn("mt-2", descriptionClass)}>{description}</p>
+        <p className={cn("mt-4", descriptionClass)}>{description}</p>
       </>
     );
   }
@@ -51,8 +51,8 @@ export function SectionHeading({
       <IconBadge icon={icon} tone={tone} className="icon-align-headline shrink-0" />
       <div className="min-w-0 flex-1">
         <h2 className="text-headline font-heading leading-[1.2]">{title}</h2>
-        {description && <p className={cn("mt-2", descriptionClass)}>{description}</p>}
-        <div className="heading-rule mt-3" aria-hidden="true" />
+        {description && <p className={cn("mt-4", descriptionClass)}>{description}</p>}
+        <div className="heading-rule mt-4" aria-hidden="true" />
       </div>
     </div>
   );

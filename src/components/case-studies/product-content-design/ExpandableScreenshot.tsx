@@ -107,7 +107,7 @@ export function ExpandableScreenshot({
           onClick={() => setOpen(false)}
         >
           <div
-            className="writing-lightbox relative w-full max-w-3xl overflow-hidden rounded-[var(--radius-xl)] bg-background shadow-lg"
+            className="writing-lightbox relative w-full max-w-3xl overflow-hidden rounded-[var(--radius-lg)] bg-background shadow-lg"
             onClick={(event) => event.stopPropagation()}
           >
             <button

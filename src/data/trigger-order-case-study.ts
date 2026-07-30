@@ -11,14 +11,23 @@ export type TriggerOrderImage = {
   height?: number;
 };
 
+const PHONE_NATIVE_DIMENSIONS: Record<string, { width: number; height: number }> = {
+  "trigger-order-gtt-buy-screen.png": { width: 922, height: 1856 },
+  "trigger-order-sl-problem.png": { width: 922, height: 1840 },
+  "trigger-order-gtt-exploration-1.png": { width: 966, height: 1840 },
+  "trigger-order-gtt-exploration-2.png": { width: 890, height: 1840 },
+  "trigger-order-gtt-exploration-3.png": { width: 896, height: 1840 },
+  "trigger-order-solution-trigger-buy.png": { width: 966, height: 1840 },
+  "trigger-order-options-stoploss-target.png": { width: 946, height: 2060 },
+};
+
 const phone = (src: string, alt: string, filename: string, setLabel: ImageSetLabel): TriggerOrderImage => ({
   src,
   alt,
   filename,
   setLabel,
   layout: "phone",
-  width: 412,
-  height: 920,
+  ...(PHONE_NATIVE_DIMENSIONS[filename] ?? { width: 412, height: 920 }),
 });
 
 export const triggerOrderCaseStudy = {
@@ -81,8 +90,7 @@ export const triggerOrderCaseStudy = {
     intro: "We explored different ways to reduce jargon without removing functionality.",
     explorationBoard: {
       src: "/work/product-content-design/trigger-order-exploration-board.png",
-      alt: "Research board comparing GTT order flow with proposed Trigger Order changes",
-      caption: "Research board comparing GTT order flow with proposed Trigger Order changes",
+      alt: "Exploration board",
       filename: "trigger-order-exploration-board.png",
       layout: "wide" as const,
       width: 1024,

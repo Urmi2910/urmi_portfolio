@@ -42,7 +42,7 @@ export function PortfolioCard({
     >
       <article
         className={cn(
-          "flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-xl)] bg-surface shadow-sm ring-1 ring-outline/10 transition-md",
+          "flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] bg-surface shadow-sm ring-1 ring-border transition-md",
           "hover:-translate-y-1 hover:shadow-md",
           "motion-reduce:hover:translate-y-0"
         )}
@@ -70,7 +70,7 @@ export function PortfolioCard({
               {study.subtitle}
             </p>
           ) : null}
-          <p className="mt-2.5 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-3.5 line-clamp-3 flex-1 text-sm font-medium leading-relaxed text-muted-foreground">
             {study.excerpt}
           </p>
           {study.metrics.length > 0 ? (
@@ -81,7 +81,7 @@ export function PortfolioCard({
               </span>
             </p>
           ) : (
-            <p className="mt-4 border-t border-outline/10 pt-4 text-xs font-medium tracking-wide text-muted-foreground">
+            <p className="mt-4 border-t border-border pt-4 text-xs font-normal tracking-wide text-muted-foreground">
               {study.tags.join(" • ")}
             </p>
           )}

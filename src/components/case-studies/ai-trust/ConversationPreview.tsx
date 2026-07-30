@@ -9,7 +9,7 @@ export function ConversationPreview() {
   const scenario = conversationScenarios.find((s) => s.id === activeId) ?? conversationScenarios[0];
 
   return (
-    <div className="ai-conversation-preview rounded-[var(--radius-xl)] border border-outline/15 bg-surface/40 p-4 sm:p-5">
+    <div className="ai-conversation-preview rounded-[var(--radius-lg)] border border-border bg-surface/40 p-4 sm:p-5">
       <div className="mb-4 flex flex-wrap gap-2">
         {conversationScenarios.map((item) => (
           <button

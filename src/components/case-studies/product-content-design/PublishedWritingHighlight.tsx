@@ -5,7 +5,7 @@ export function PublishedWritingHighlight() {
   const { blog } = uxWritingPracticeHub;
 
   return (
-    <section id="writing" className="scroll-mt-28 mt-16 border-t border-outline/10 pt-12 sm:mt-20 sm:pt-14">
+    <section id="writing" className="scroll-mt-28">
       <header className="max-w-prose">
         <h2 className="font-heading text-[clamp(1.5rem,4vw,2rem)] font-bold leading-snug text-foreground">
           Published Writing
@@ -19,7 +19,7 @@ export function PublishedWritingHighlight() {
             <BookOpen className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
           </span>
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               Blog · {blog.publisher}
             </p>
             <h3 className="mt-2 font-heading text-xl font-bold leading-snug text-foreground sm:text-2xl">

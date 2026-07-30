@@ -53,7 +53,7 @@ export function AiTrustSectionNav({ variant = "desktop" }: { variant?: "mobile" 
       aria-label="Case study chapters"
       className="hidden lg:block lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
     >
-      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Story</p>
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Story</p>
       <ol className="space-y-1 border-l border-outline/15 pl-3">
         {aiTrustChapters.map((chapter) => (
           <li key={chapter.id}>

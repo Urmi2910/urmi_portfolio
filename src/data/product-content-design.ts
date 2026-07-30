@@ -300,7 +300,7 @@ export const writingExamples: WritingExample[] = [
     optionsExplored: [],
     showExplorationInFindings: true,
     findingsIntro:
-      "Most versions focused on the system's state—saving or discarding changes—rather than the user's actual action.",
+      "Most versions focused on the system's state, saving or discarding changes, rather than the user's actual action.",
     findings: [
       "As I explored different directions, it became clear that the dialog wasn't asking users to save their work. It was simply confirming that they wanted to leave the page.",
     ],

@@ -63,15 +63,18 @@ export function PairedGttSlQuote({
 export function PairedGttSlLists({
   gttItems,
   stopLossItems,
+  showLabels = true,
   className,
 }: {
   gttItems: readonly string[];
   stopLossItems: readonly string[];
+  showLabels?: boolean;
   className?: string;
 }) {
   return (
     <PairedGttSlTracks
       className={className}
+      showLabels={showLabels}
       rows={[
         {
           gtt: <StoryList items={[...gttItems]} className="max-w-none" />,

@@ -111,7 +111,7 @@ export function Header() {
         ? "flex min-h-[36px] items-center rounded-[var(--radius-md)] px-3 text-[0.8125rem] font-medium transition-md hover:bg-primary/5 active:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary touch-manipulation"
         : "tap-link rounded-full px-3 py-2.5 text-label transition-md hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:px-4",
       activeSection === href || href.endsWith(activeSection)
-        ? "bg-primary/8 text-primary font-medium"
+        ? "bg-primary/8 text-primary font-semibold"
         : mobile
           ? "text-foreground"
           : "text-muted-foreground"
@@ -120,7 +120,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 w-full border-b transition-md safe-top",
+        "fixed top-0 z-50 w-full border-b transition-layout safe-top",
         "bg-background/70 backdrop-blur-lg backdrop-saturate-150 supports-[backdrop-filter]:bg-background/60",
         scrolled || menuOpen
           ? "border-border/30 shadow-sm bg-background/80"
