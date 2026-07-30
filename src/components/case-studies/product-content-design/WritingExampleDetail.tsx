@@ -1,11 +1,14 @@
+"use client";
+
 import {
+  getWritingExampleIntro,
   productContentDesignHub,
   toWritingExampleSectionId,
+  writingExampleChapterTitles,
   type WritingExample,
 } from "@/data/product-content-design";
 import { AllExamplesLink } from "./AllExamplesLink";
 import {
-  DeepDive,
   StoryChapter,
   StoryList,
   StoryProse,
@@ -42,10 +45,19 @@ function ExampleChapter({
 export function WritingExampleDetail({
   example,
   embedded = false,
+  idPrefix,
 }: {
   example: WritingExample;
   embedded?: boolean;
+  idPrefix?: string;
 }) {
+  const chapterId = (id: string) => (idPrefix ? `${idPrefix}-${id}` : id);
+  const intro = getWritingExampleIntro(example);
+  const approachTitle = example.chapterTitles?.approach ?? writingExampleChapterTitles.approach;
+  const findingsTitle = example.chapterTitles?.findings ?? writingExampleChapterTitles.findings;
+  const solutionTitle = example.chapterTitles?.solution ?? writingExampleChapterTitles.solution;
+  const outcomeTitle = example.chapterTitles?.outcome ?? writingExampleChapterTitles.outcome;
+
   return (
     <div className={cn("writing-example-detail", embedded ? "pb-2" : "pb-6")}>
       {!embedded ? <AllExamplesLink /> : null}
@@ -56,117 +68,81 @@ export function WritingExampleDetail({
           <h1 className="case-study-hero-title mt-2 text-balance">
             {example.title}
           </h1>
-          <p className="case-study-hero-subtitle mt-2">{example.teaser}</p>
+          <div className="case-study-hero-subtitle mt-2 space-y-3">
+            {intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </header>
       ) : null}
 
       <div className={cn(!embedded && "mt-12 sm:mt-14")}>
           <div className="case-study-sections">
-        <ExampleChapter
-          id="moment"
-          title={example.chapterTitles?.moment ?? "The user moment"}
-          lead={example.overview}
-        >
-          {example.problem ? <StoryProse>{example.problem}</StoryProse> : null}
-        </ExampleChapter>
-
-        {example.approachParagraphs && example.approachParagraphs.length > 0 ? (
-          <ExampleChapter id="approach" title={example.chapterTitles?.approach ?? "How I approached it"}>
-            <div className="space-y-4">
-              {example.approachParagraphs.map((paragraph, index) => (
-                <div key={paragraph}>
-                  <StoryProse>{paragraph}</StoryProse>
-                  {example.approachHighlight && index === 1 ? (
-                    <p className="mt-4 max-w-prose font-heading text-base font-semibold leading-[1.75] text-foreground sm:text-lg">
-                      {example.approachHighlight}
-                    </p>
-                  ) : null}
-                </div>
-              ))}
-              {example.findingsBullets && example.findingsBullets.length > 0 ? (
-                <StoryList items={example.findingsBullets} />
-              ) : null}
-              {example.slug === "first-run-experience" ? (
-                <FirstRunExperienceExploration />
-              ) : null}
-            </div>
-          </ExampleChapter>
-        ) : (
-        <ExampleChapter
-          id="approach"
-          title={example.chapterTitles?.approach ?? "How I approached it"}
-          lead={example.myRole || undefined}
-        >
-          {example.researchLead ? <StoryProse>{example.researchLead}</StoryProse> : null}
-          {example.research.length > 0 && example.optionsComparisonTable && !example.showExplorationInFindings ? (
-            <StorySection label={example.researchSectionLabel ?? "Questions I asked"}>
-              <StoryList items={example.research} />
-            </StorySection>
-          ) : example.research.length > 0 ? (
-            <StorySection label={example.researchSectionLabel ?? "Questions I explored"}>
-              <StoryList items={example.research} />
-            </StorySection>
-          ) : null}
-          {example.collaboration ? <StoryProse>{example.collaboration}</StoryProse> : null}
-          {example.constraints.length > 0 ? (
-            <StorySection label="Constraints">
-              <StoryList items={example.constraints} />
-            </StorySection>
-          ) : null}
-          {example.contentDecisions.length > 0 ? (
-            <StorySection label="Content decisions">
-              <StoryList items={example.contentDecisions} />
-            </StorySection>
-          ) : null}
-          {example.optionsComparisonTable && !example.showExplorationInFindings ? (
-            <StorySection label="What I explored">
-              {example.explorationIntro ? <StoryProse>{example.explorationIntro}</StoryProse> : null}
-              {example.dialogExplorations && example.dialogExplorations.length > 0 ? (
-                <ConfirmationDialogExplorations
-                  explorations={example.dialogExplorations}
-                  pair={example.dialogExplorationPair}
-                />
-              ) : null}
-              <ExplorationComparisonTable rows={example.optionsComparisonTable} />
-            </StorySection>
-          ) : null}
-          {example.optionsExplored.length > 0 ||
-          (example.research.length > 0 &&
-            !example.optionsComparisonTable &&
-            !example.findings &&
-            !example.researchLead) ? (
-            <DeepDive title="Research & options explored">
-              <div className="space-y-6">
-                {example.research.length > 0 && !example.optionsComparisonTable ? (
-                  <StoryList items={example.research} />
-                ) : null}
-                {example.optionsExplored.length > 0 ? (
-                  <ul className="space-y-3">
-                    {example.optionsExplored.map((option) => (
-                      <li
-                        key={option.label}
-                        className={cn(
-                          "rounded-[var(--radius-md)] border p-4",
-                          option.rejected ? "border-outline/10 bg-muted/20 opacity-75" : "border-primary/15 bg-primary/5"
-                        )}
-                      >
-                        <p className="font-heading text-sm font-semibold text-foreground">{option.label}</p>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{option.description}</p>
-                      </li>
-                    ))}
-                  </ul>
+        <ExampleChapter id={chapterId("approach")} title={approachTitle}>
+          <div className="space-y-4">
+            {example.approachParagraphs?.map((paragraph, index) => (
+              <div key={paragraph}>
+                <StoryProse>{paragraph}</StoryProse>
+                {example.approachHighlight && index === 1 ? (
+                  <p className="mt-4 max-w-prose font-heading text-base font-semibold leading-[1.75] text-foreground sm:text-lg">
+                    {example.approachHighlight}
+                  </p>
                 ) : null}
               </div>
-            </DeepDive>
-          ) : null}
+            ))}
+            {example.researchLead ? <StoryProse>{example.researchLead}</StoryProse> : null}
+            {example.research.length > 0 ? <StoryList items={example.research} /> : null}
+            {example.collaboration ? <StoryProse>{example.collaboration}</StoryProse> : null}
+            {example.constraints.length > 0 ? (
+              <StorySection label="Constraints">
+                <StoryList items={example.constraints} />
+              </StorySection>
+            ) : null}
+            {example.contentDecisions.length > 0 ? (
+              <StorySection label="Content decisions">
+                <StoryList items={example.contentDecisions} />
+              </StorySection>
+            ) : null}
+            {example.optionsComparisonTable && !example.showExplorationInFindings ? (
+              <StorySection label="What I explored">
+                {example.explorationIntro ? <StoryProse>{example.explorationIntro}</StoryProse> : null}
+                {example.dialogExplorations && example.dialogExplorations.length > 0 ? (
+                  <ConfirmationDialogExplorations
+                    explorations={example.dialogExplorations}
+                    pair={example.dialogExplorationPair}
+                  />
+                ) : null}
+                <ExplorationComparisonTable rows={example.optionsComparisonTable} />
+              </StorySection>
+            ) : null}
+            {example.optionsExplored.length > 0 ? (
+              <ul className="space-y-3">
+                {example.optionsExplored.map((option) => (
+                  <li
+                    key={option.label}
+                    className={cn(
+                      "rounded-[var(--radius-md)] border p-4",
+                      option.rejected ? "border-outline/10 bg-muted/20 opacity-75" : "border-primary/15 bg-primary/5",
+                    )}
+                  >
+                    <p className="font-heading text-sm font-semibold text-foreground">{option.label}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{option.description}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {example.findingsBullets && example.findingsBullets.length > 0 ? (
+              <StoryList items={example.findingsBullets} />
+            ) : null}
+            {example.slug === "first-run-experience" ? <FirstRunExperienceExploration /> : null}
+          </div>
         </ExampleChapter>
-        )}
 
         {(example.findings && example.findings.length > 0) ||
         example.findingsIntro ||
         (example.findingsBullets && example.findingsBullets.length > 0 && !example.approachParagraphs?.length) ||
         example.showExplorationInFindings ? (
-          <ExampleChapter id="findings" title={example.chapterTitles?.findings ?? "What I found"}>
+          <ExampleChapter id={chapterId("findings")} title={findingsTitle}>
             <div className="space-y-4">
               {example.findingsIntro ? <StoryProse>{example.findingsIntro}</StoryProse> : null}
               {example.findingsBullets && example.findingsBullets.length > 0 ? (
@@ -191,7 +167,7 @@ export function WritingExampleDetail({
           </ExampleChapter>
         ) : null}
 
-        <ExampleChapter id="solution" title={example.chapterTitles?.solution ?? "What we shipped"}>
+        <ExampleChapter id={chapterId("solution")} title={solutionTitle}>
           {example.slug !== "first-run-experience" && example.comparison.beforeMockup && example.comparison.afterMockup ? (
             <div className="writing-mockup-breakout -mx-[clamp(1rem,4vw,1.5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.5rem))] px-[clamp(1rem,4vw,1.5rem)]">
               <BeforeAfterSlider
@@ -247,7 +223,7 @@ export function WritingExampleDetail({
           {example.additionalComparisons?.map((block) => (
             <div
               key={block.label ?? `${block.before}-${block.after}`}
-              id={block.label ? toWritingExampleSectionId(block.label) : undefined}
+              id={block.label ? chapterId(toWritingExampleSectionId(block.label)) : undefined}
               className="scroll-mt-28 mt-10 space-y-5 sm:mt-12"
             >
               {block.label ? (
@@ -276,7 +252,7 @@ export function WritingExampleDetail({
         </ExampleChapter>
 
         {(example.chapterTitles?.outcome || example.impact.length > 0) ? (
-        <ExampleChapter id="outcome" title={example.chapterTitles?.outcome ?? "What changed"}>
+        <ExampleChapter id={chapterId("outcome")} title={outcomeTitle}>
           {example.impact.length === 1 ? (
             <StoryProse>{example.impact[0]}</StoryProse>
           ) : example.impact.length > 1 ? (

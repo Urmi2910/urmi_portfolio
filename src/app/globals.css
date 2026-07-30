@@ -1768,6 +1768,36 @@
     font-weight: 400;
   }
 
+  /* UX Writing anthology — larger sample headers and clearer section breaks */
+  .writing-anthology-entry__header.story-chapter-header {
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    border-left-width: 4px;
+  }
+
+  .writing-anthology-entry__title.case-study-chapter-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .writing-anthology-entry--active .writing-anthology-entry__header {
+    border-left-color: var(--color-primary);
+  }
+
+  .writing-anthology.case-study-sections > .writing-anthology-entry + .writing-anthology-entry {
+    margin-top: 3.5rem;
+    padding-top: 3.5rem;
+    border-top: 2px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  @media (min-width: 640px) {
+    .writing-anthology.case-study-sections > .writing-anthology-entry + .writing-anthology-entry {
+      margin-top: 4.5rem;
+      padding-top: 4.5rem;
+    }
+  }
+
   .story-deep-dive summary {
     user-select: none;
   }

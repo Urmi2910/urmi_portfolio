@@ -123,6 +123,17 @@ export interface WritingExampleComparisonBlock {
   afterMockup?: string;
 }
 
+export const writingExampleChapterTitles = {
+  approach: "Approach",
+  findings: "Findings",
+  solution: "Final version",
+  outcome: "Key learning",
+} as const;
+
+export function getWritingExampleIntro(example: WritingExample): string[] {
+  return [example.overview, example.problem].filter(Boolean);
+}
+
 export function toWritingExampleSectionId(label: string): string {
   return label
     .toLowerCase()
@@ -133,12 +144,8 @@ export function toWritingExampleSectionId(label: string): string {
 export function getWritingExampleSections(example: WritingExample): WritingExampleSection[] {
   const sections: WritingExampleSection[] = [
     {
-      id: "moment",
-      label: example.chapterTitles?.moment ?? "The user moment",
-    },
-    {
       id: "approach",
-      label: example.chapterTitles?.approach ?? "How I approached it",
+      label: example.chapterTitles?.approach ?? writingExampleChapterTitles.approach,
     },
   ];
 
@@ -152,13 +159,13 @@ export function getWritingExampleSections(example: WritingExample): WritingExamp
   ) {
     sections.push({
       id: "findings",
-      label: example.chapterTitles?.findings ?? "What I found",
+      label: example.chapterTitles?.findings ?? writingExampleChapterTitles.findings,
     });
   }
 
   sections.push({
     id: "solution",
-    label: example.chapterTitles?.solution ?? "What we shipped",
+    label: example.chapterTitles?.solution ?? writingExampleChapterTitles.solution,
   });
 
   example.additionalComparisons?.forEach((block) => {
@@ -173,7 +180,7 @@ export function getWritingExampleSections(example: WritingExample): WritingExamp
   if (example.chapterTitles?.outcome || example.impact.length > 0) {
     sections.push({
       id: "outcome",
-      label: example.chapterTitles?.outcome ?? "What changed",
+      label: example.chapterTitles?.outcome ?? writingExampleChapterTitles.outcome,
     });
   }
 
@@ -186,11 +193,6 @@ export const writingExamples: WritingExample[] = [
     title: "First Run Experience",
     teaser:
       "Improving the first experience of creating an NPS campaign by simplifying the content and reducing unnecessary decisions.",
-    chapterTitles: {
-      moment: "Overview",
-      approach: "Thought Process",
-      solution: "Final Version",
-    },
     overview:
       "This project focused on improving the first step of creating an NPS campaign. Instead of adding more guidance, I simplified the experience by removing unnecessary content and moving channel selection into the action itself.",
     problem: "",
@@ -231,18 +233,12 @@ export const writingExamples: WritingExample[] = [
     title: "One-time vs Lumpsum",
     teaser:
       "Choosing familiar language for a mutual fund investment journey designed for Tier 2–4 users.",
-    chapterTitles: {
-      moment: "Overview",
-      approach: "My approach",
-      findings: "Findings",
-      solution: "Final decision",
-      outcome: "Key learning",
-    },
     overview:
       "While designing the mutual fund investment journey, we needed to choose between One-time and Lumpsum for a one-time investment.",
     problem:
       "Instead of relying on industry terminology, I researched how people understood both terms before making a recommendation.",
-    myRole: "To validate the decision, I:",
+    myRole: "",
+    researchLead: "To validate the decision, I:",
     constraints: [],
     research: [
       "Reviewed financial blogs and industry terminology",
@@ -283,19 +279,15 @@ export const writingExamples: WritingExample[] = [
     title: "Confirmation Dialog",
     teaser:
       "Rewriting a confirmation dialog to confirm user intent instead of encouraging users to save.",
-    chapterTitles: {
-      moment: "Overview",
-      approach: "How I approached it",
-      findings: "What I explored",
-      solution: "Final decision",
-      outcome: "What changed",
-    },
     overview:
       "While designing a campaign creation flow, I rewrote the confirmation dialog shown when users tried to leave without saving.",
     problem:
       "The goal was to clearly communicate the consequence of leaving while keeping the decision neutral.",
-    myRole:
+    myRole: "",
+    approachParagraphs: [
       "Before writing the copy, I focused on understanding the user's intent rather than the system's state.",
+    ],
+    researchLead: "Questions I explored:",
     constraints: [],
     research: [
       "What is the user trying to do?",
@@ -303,7 +295,6 @@ export const writingExamples: WritingExample[] = [
       "Are we unintentionally encouraging users to save?",
       "What information do users need before deciding?",
     ],
-    researchSectionLabel: "Questions I explored",
     collaboration:
       "I also worked with the Product Manager to understand how users behaved in this flow and whether saving was actually their intention.",
     optionsExplored: [],
@@ -422,11 +413,6 @@ export const writingExamples: WritingExample[] = [
     title: "Prerequisites",
     teaser:
       "Revising WhatsApp onboarding prerequisites with front-loaded, simpler copy and more helpful CTAs.",
-    chapterTitles: {
-      moment: "Overview",
-      approach: "Thought process",
-      solution: "Before & after",
-    },
     overview:
       "I revised the prerequisites copy shown before WhatsApp onboarding to help users understand requirements before starting the flow.",
     problem: "",

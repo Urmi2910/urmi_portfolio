@@ -48,6 +48,7 @@ export default function MicrocopyExamplesPage() {
         next={nav.next}
         index={nav.index}
         total={nav.total}
+        useStandaloneLinks
       />
       <Footer />
     </>

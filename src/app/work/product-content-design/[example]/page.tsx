@@ -15,9 +15,9 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 const uiComponentRedirects: Record<string, string> = {
-  "dropdown-labels": "/work/product-content-design/microcopy-examples#dropdown-labels",
-  snackbars: "/work/product-content-design/microcopy-examples#snackbars",
-  "call-to-action": "/work/product-content-design/microcopy-examples#call-to-action",
+  "dropdown-labels": "/work/product-content-design#microcopy-examples",
+  snackbars: "/work/product-content-design#microcopy-examples",
+  "call-to-action": "/work/product-content-design#microcopy-examples",
 };
 
 interface PageProps {
@@ -71,6 +71,7 @@ export default async function WritingExamplePage({ params }: PageProps) {
           next={nav.next}
           index={nav.index}
           total={nav.total}
+          useStandaloneLinks
         />
       ) : null}
       <Footer />

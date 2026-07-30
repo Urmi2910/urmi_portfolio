@@ -11,19 +11,24 @@ export function WritingExampleSampleNav({
   next,
   index,
   total,
+  useStandaloneLinks = false,
 }: {
   current: ProductContentExampleNavItem;
   prev?: ProductContentExampleNavItem;
   next?: ProductContentExampleNavItem;
   index: number;
   total: number;
+  useStandaloneLinks?: boolean;
 }) {
+  const linkFor = (item: ProductContentExampleNavItem) =>
+    useStandaloneLinks ? item.standaloneHref : item.href;
+
   return (
     <CaseStudyBottomNav aria-label="Example navigation" className="writing-sample-nav">
       <div className="mx-auto flex max-w-5xl items-stretch gap-2 px-[clamp(1rem,4vw,1.5rem)] py-3">
         {prev ? (
           <Link
-            href={prev.href}
+            href={linkFor(prev)}
             scroll
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center gap-2 rounded-[var(--radius-md)] px-3 py-2",
@@ -50,7 +55,7 @@ export function WritingExampleSampleNav({
 
         {next ? (
           <Link
-            href={next.href}
+            href={linkFor(next)}
             scroll
             className={cn(
               "flex min-h-[44px] min-w-0 flex-1 items-center justify-end gap-2 rounded-[var(--radius-md)] px-3 py-2",
