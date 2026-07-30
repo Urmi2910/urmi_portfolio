@@ -83,7 +83,7 @@ export const guidelinesCaseStudy = {
     ],
     reference: {
       href: "/work/guidelines/ux-writing-guidelines.pdf",
-      label: "View the doc",
+      label: "View Getting Started guide",
     },
   },
   principles: {
@@ -126,7 +126,7 @@ export const guidelinesCaseStudy = {
     ] satisfies readonly PrincipleItem[],
     reference: {
       href: "/work/guidelines/writing-goals-and-principles.pdf",
-      label: "View the doc",
+      label: "View Writing Principles",
     },
   },
   voiceAndTone: {
@@ -176,7 +176,7 @@ export const guidelinesCaseStudy = {
     ] satisfies readonly PrincipleItem[],
     reference: {
       href: "/work/guidelines/voice-and-tone.pdf",
-      label: "View the doc",
+      label: "View Voice & Tone guideline",
     },
   },
   productDictionary: {
@@ -247,7 +247,7 @@ export const guidelinesCaseStudy = {
     ] satisfies readonly PrincipleItem[],
     reference: {
       href: "/work/guidelines/grammar-and-punctuation.pdf",
-      label: "View the doc",
+      label: "View Grammar & Punctuation guideline",
     },
   },
   uiComponents: {
@@ -309,7 +309,7 @@ export const guidelinesCaseStudy = {
     ] satisfies readonly PrincipleItem[],
     reference: {
       href: "/work/guidelines/ui-components.pdf",
-      label: "View the doc",
+      label: "View UI Components guideline",
     },
   },
   document: {

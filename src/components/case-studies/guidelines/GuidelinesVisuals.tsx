@@ -175,7 +175,7 @@ export function SystemCategoryCards({
         <a
           key={category.title}
           href={`#${category.sectionId}`}
-          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-4 transition-md hover:border-primary/25 hover:bg-white hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
+          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-4 transition-md hover:border-primary/25 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
         >
           <p className="text-xl" aria-hidden="true">
             {category.icon}

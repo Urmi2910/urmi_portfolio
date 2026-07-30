@@ -6,20 +6,41 @@ export function StoryChapter({
   lead,
   children,
   className,
+  tone,
+  last = false,
 }: {
   id: string;
   title: string;
   lead?: string;
   children: React.ReactNode;
   className?: string;
+  /** Alternates the chapter's full-bleed background, matching the homepage's band pattern. */
+  tone?: "surface" | "background";
+  /** The final chapter fades to a flat color instead of blending into the next band. */
+  last?: boolean;
 }) {
+  const toneClass = tone
+    ? last
+      ? tone === "surface"
+        ? "case-study-band--flat-surface"
+        : "case-study-band--flat-background"
+      : tone === "surface"
+        ? "case-study-band--surface"
+        : "case-study-band--background"
+    : null;
+
   return (
-    <section id={id} className={cn("story-chapter scroll-mt-28", className)}>
-      <div className="story-chapter-header max-w-prose">
-        <h2 className="case-study-chapter-title">{title}</h2>
-        {lead ? <p className="case-study-chapter-lead mt-2">{lead}</p> : null}
+    <section
+      id={id}
+      className={cn("story-chapter scroll-mt-28", tone && "case-study-band", toneClass, className)}
+    >
+      <div className={tone ? "case-study-band-inner" : undefined}>
+        <div className="story-chapter-header max-w-prose">
+          <h2 className="case-study-chapter-title">{title}</h2>
+          {lead ? <p className="case-study-chapter-lead mt-2">{lead}</p> : null}
+        </div>
+        <div className="story-chapter-body mt-6 space-y-6 sm:mt-7">{children}</div>
       </div>
-      <div className="story-chapter-body mt-6 space-y-6 sm:mt-7">{children}</div>
     </section>
   );
 }
@@ -67,7 +88,7 @@ export function InsightCallout({
   children: React.ReactNode;
 }) {
   return (
-    <aside className="rounded-[var(--radius-lg)] border border-primary/15 bg-primary/5 p-5 sm:p-6">
+    <aside className="rounded-[var(--radius-lg)] border border-primary/15 bg-surface p-5 sm:p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">{label}</p>
       <div className="mt-2 text-base leading-relaxed text-foreground/90">{children}</div>
     </aside>

@@ -125,11 +125,11 @@ export function FlowchartVisual() {
 
 export function ResponseTemplateVisual() {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-outline/15 bg-background p-4 sm:p-5">
+    <div className="rounded-[var(--radius-lg)] border border-outline/15 bg-surface p-4 sm:p-5">
       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Template slots</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {responseTemplate.slots.map((slot) => (
-          <span key={slot} className="rounded-full bg-surface px-2.5 py-1 text-xs text-foreground ring-1 ring-outline/10">
+          <span key={slot} className="rounded-full bg-background px-2.5 py-1 text-xs text-foreground ring-1 ring-outline/10">
             {slot}
           </span>
         ))}
