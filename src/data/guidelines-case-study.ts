@@ -26,8 +26,8 @@ export const guidelinesCaseStudy = {
   tags: ["Content Systems", "UX Writing", "Design Systems"],
   overview: {
     paragraphs: [
-      "As products grow, more people contribute to UX copy. Without shared guidelines, writing becomes inconsistent and the experience starts to feel fragmented.",
-      "To solve this, I helped build a Content Design System that organized recurring writing decisions into six reusable guideline categories. The goal was to help teams write consistently and make content decisions faster.",
+      "As products grow, more people contribute to UX copy. Without clear writing guidelines, similar messages were written in different ways, making the experience feel inconsistent.",
+      "To solve this, I helped build a Content Design System that organized recurring writing decisions into six categories. Instead of searching through one large document, people could go directly to the type of writing problem they were solving, find relevant guidelines and examples, and reuse existing patterns.",
     ],
     categories: [
       {
@@ -72,7 +72,7 @@ export const guidelinesCaseStudy = {
   gettingStarted: {
     heading: "Getting Started",
     paragraphs: [
-      "Every contributor needed a clear place to start. This page introduced the Content Design System, explained how it was organized, and showed where to find the right guidance for different writing decisions. It also documented how the system could be updated over time and the resources it was built on.",
+      "Everyone working on the product needed a clear place to start. This page introduced the Content Design System, explained how it was organized, and guided people to the right documentation for different writing decisions. It also outlined how the system could evolve over time and documented the resources it was built on.",
     ],
     included: [
       "Purpose and structure of the system",

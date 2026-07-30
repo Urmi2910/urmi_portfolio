@@ -193,31 +193,6 @@ export const caseStudies: CaseStudy[] = [
       "Users understood advanced features with little or no explanation, making advanced trading feel more approachable without reducing functionality.",
   },
   {
-    slug: "content-systems",
-    title: "Content Modeling for AI",
-    subtitle: "",
-    excerpt:
-      "A prototype exploring whether structured content can help AI generate consistent UI copy at scale.",
-    href: "/work/content-systems",
-    company: "Prototype",
-    role: "Content Engineer & Content Designer",
-    year: "2025",
-    duration: "Prototype",
-    tags: ["Content Systems", "AI", "UI Copy"],
-    featured: true,
-    accentColor: "warm",
-    metrics: [],
-    challenge:
-      "Teams use AI to write UI copy faster, but prompts alone produce inconsistent terminology, tone, and structure across hundreds of messages.",
-    approach: [
-      "Audited existing copy and turned writing guidelines into reusable structured content",
-      "Linked each message type to rules, patterns, terminology, and examples in a content library",
-      "Built a prototype where AI gathers the right context before generating copy",
-    ],
-    outcome:
-      "Showed that content modeling makes AI output more predictable: teams add to the library instead of rewriting prompts for every new situation.",
-  },
-  {
     slug: "guidelines",
     title: "Building a Content Design System",
     subtitle: "",
@@ -241,6 +216,31 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome:
       "Teams had a decision-making system for product copy, creating a foundation for structured AI-assisted writing.",
+  },
+  {
+    slug: "content-systems",
+    title: "Content Modeling for AI",
+    subtitle: "",
+    excerpt:
+      "A prototype exploring whether structured content can help AI generate consistent UI copy at scale.",
+    href: "/work/content-systems",
+    company: "Prototype",
+    role: "Content Engineer & Content Designer",
+    year: "2025",
+    duration: "Prototype",
+    tags: ["Content Systems", "AI", "UI Copy"],
+    featured: true,
+    accentColor: "warm",
+    metrics: [],
+    challenge:
+      "Teams use AI to write UI copy faster, but prompts alone produce inconsistent terminology, tone, and structure across hundreds of messages.",
+    approach: [
+      "Audited existing copy and turned writing guidelines into reusable structured content",
+      "Linked each message type to rules, patterns, terminology, and examples in a content library",
+      "Built a prototype where AI gathers the right context before generating copy",
+    ],
+    outcome:
+      "Showed that content modeling makes AI output more predictable: teams add to the library instead of rewriting prompts for every new situation.",
   },
   {
     slug: "product-content-design",
