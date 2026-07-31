@@ -21,7 +21,7 @@ export function GuidelinesDocumentLink({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-2 text-sm font-medium text-primary transition-md hover:bg-primary/5"
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm transition-md hover:bg-primary/5 hover:shadow-md active:scale-[0.97]"
           >
             View PDF
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -29,7 +29,7 @@ export function GuidelinesDocumentLink({
           <a
             href={href}
             download={downloadFilename}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-md hover:bg-white/80 hover:text-foreground"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-md hover:bg-white/80 hover:text-foreground active:scale-[0.97]"
           >
             Download
           </a>
@@ -44,7 +44,7 @@ const guidelinesSectionCardClass =
 const guidelinesSectionLabelClass =
   "text-xs font-semibold uppercase tracking-[0.14em] text-primary";
 const guidelinesSectionTileClass =
-  "rounded-[var(--radius-md)] border border-primary/10 bg-white px-4 py-3.5";
+  "rounded-[var(--radius-md)] border border-primary/10 bg-white px-4 py-3.5 shadow-sm";
 const guidelinesSectionTileSimpleClass =
   "flex items-start gap-2.5 " + guidelinesSectionTileClass;
 const guidelinesSectionTileRichClass = guidelinesSectionTileClass + " p-4 sm:p-5";
@@ -175,7 +175,7 @@ export function SystemCategoryCards({
         <a
           key={category.title}
           href={`#${category.sectionId}`}
-          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-4 transition-md hover:border-primary/25 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
+          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-4 transition-md hover:-translate-y-0.5 hover:border-primary/25 hover:bg-white hover:shadow-md active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
         >
           <p className="text-xl" aria-hidden="true">
             {category.icon}

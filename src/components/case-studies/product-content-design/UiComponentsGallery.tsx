@@ -61,7 +61,10 @@ function UiComponentPanel({
 }) {
   if (embedded) {
     return (
-      <article id={item.id} className="ui-component-panel scroll-mt-28 border-t border-outline/10 first:border-t-0">
+      <article
+        id={item.id}
+        className="ui-component-panel scroll-mt-28 rounded-[var(--radius-md)] border-t border-outline/10 px-3 -mx-3 transition-md first:border-t-0 hover:bg-surface/60"
+      >
         <ItemToggle
           title={item.title}
           description={item.description}
@@ -82,7 +85,10 @@ function UiComponentPanel({
   }
 
   return (
-    <article id={item.id} className="ui-component-panel story-chapter scroll-mt-28 pb-2">
+    <article
+      id={item.id}
+      className="ui-component-panel scroll-mt-28 rounded-[var(--radius-lg)] bg-surface p-5 shadow-sm ring-1 ring-outline/10 transition-md hover:shadow-md sm:p-6"
+    >
       <h2 className="case-study-chapter-title">{item.title}</h2>
       <p className="case-study-chapter-lead mt-2">{item.description}</p>
       <div className="mt-5 w-full sm:mt-6">
@@ -120,7 +126,7 @@ export function UiComponentsGallery({
   }
 
   return (
-    <div className="ui-components-gallery case-study-sections">
+    <div className="ui-components-gallery flex flex-col gap-6 sm:gap-8">
       {items.map((item) => (
         <UiComponentPanel key={item.id} item={item} />
       ))}

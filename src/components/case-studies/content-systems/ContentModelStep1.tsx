@@ -76,7 +76,7 @@ export function ContentModelStep1() {
             key={block.title}
             className="content-model-step1-row grid items-start gap-3 sm:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] sm:gap-4"
           >
-            <div className="content-model-step1-question rounded-[var(--radius-md)] border border-outline/12 bg-surface px-4 py-3.5">
+            <div className="content-model-step1-question rounded-[var(--radius-md)] border border-outline/12 bg-[#faf8f5] px-4 py-3.5">
               <h4 className="text-base font-semibold leading-snug text-foreground">{block.title}</h4>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{block.summary}</p>
             </div>

@@ -28,10 +28,10 @@ export function ImageGallery({
             type="button"
             onClick={() => setActiveId(item.id)}
             className={cn(
-              "rounded-[var(--radius-md)] border px-3 py-2 text-left text-sm transition-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              "rounded-[var(--radius-md)] px-3.5 py-2.5 text-left text-sm transition-md active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               activeId === item.id
-                ? "border-primary/30 bg-primary/5 text-foreground"
-                : "border-outline/10 bg-surface/50 text-muted-foreground hover:border-outline/20"
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "bg-surface text-muted-foreground ring-1 ring-outline/10 hover:bg-primary/5 hover:text-foreground hover:shadow-sm"
             )}
           >
             <span className="font-medium">{String(index + 1).padStart(2, "0")}</span>

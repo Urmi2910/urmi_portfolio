@@ -117,7 +117,7 @@ export function BulletGrid({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="flex gap-2 rounded-[var(--radius-md)] border border-outline/10 bg-surface px-4 py-3 text-sm text-muted-foreground"
+          className="flex gap-2 rounded-[var(--radius-md)] border border-outline/10 bg-white px-4 py-3 text-sm text-muted-foreground"
         >
           <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ea580c]" strokeWidth={2.5} aria-hidden />
           {item}
@@ -280,7 +280,7 @@ export function CollectionGrid({
       {collections.map((collection) => (
         <div
           key={collection.name}
-          className="content-systems-collection rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-4 sm:p-5"
+          className="content-systems-collection rounded-[var(--radius-lg)] border border-outline/12 bg-white p-4 sm:p-5"
         >
           <p className="text-sm font-semibold text-foreground">{collection.name}</p>
           <pre className="content-systems-mono mt-3 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
@@ -298,7 +298,7 @@ export function GatheredContextList({ items }: { items: readonly string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="flex gap-2 rounded-[var(--radius-md)] border border-outline/10 bg-surface px-4 py-3 text-sm text-foreground"
+          className="flex gap-2 rounded-[var(--radius-md)] border border-outline/10 bg-white px-4 py-3 text-sm text-foreground"
         >
           <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ea580c]" strokeWidth={2.5} aria-hidden />
           {item}
@@ -323,7 +323,7 @@ export function GuardrailChecks({
       {groups.map((group) => (
         <div
           key={group.title}
-          className="rounded-[var(--radius-lg)] border border-outline/12 bg-surface px-5 py-4 sm:px-6 sm:py-5"
+          className="rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] px-5 py-4 sm:px-6 sm:py-5"
         >
           <p className="text-sm font-semibold text-foreground">{group.title}</p>
           {group.prompt ? (
@@ -355,7 +355,7 @@ export function FallbackFlow({
   items: readonly { condition: string; action: string }[];
 }) {
   return (
-    <div className="content-systems-card max-w-3xl rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-8">
+    <div className="content-systems-card max-w-3xl rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
       <div className="mx-auto flex max-w-md flex-col items-center gap-2">
         {items.map((item, index) => (
           <div key={item.condition} className="flex w-full flex-col items-center gap-2">

@@ -13,7 +13,7 @@ export function PublishedWritingHighlight() {
         <p className="mt-3 text-base leading-relaxed text-muted-foreground">{uxWritingPracticeHub.overview}</p>
       </header>
 
-      <article className="mt-8 rounded-[var(--radius-lg)] bg-surface p-6 ring-1 ring-outline/10 sm:p-8">
+      <article className="mt-8 rounded-[var(--radius-lg)] bg-surface p-6 shadow-sm ring-1 ring-outline/10 transition-md hover:shadow-md sm:p-8">
         <div className="flex items-start gap-4">
           <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-primary/10 text-primary ring-1 ring-primary/15">
             <BookOpen className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
@@ -34,7 +34,7 @@ export function PublishedWritingHighlight() {
           href={blog.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-md hover:bg-primary/90"
+          className="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-md hover:bg-primary/90 hover:shadow-md active:scale-[0.97]"
         >
           Read on UX Content Collective
           <ArrowUpRight className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden="true" />

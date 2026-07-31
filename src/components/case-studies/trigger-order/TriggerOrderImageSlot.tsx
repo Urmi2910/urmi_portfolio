@@ -202,18 +202,20 @@ export function TriggerOrderImageSlot({
             className="group block w-full cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             aria-label={`Expand ${image.alt}`}
           >
-            {!isWide ? (
-              <div
-                className="w-full"
-                style={{
-                  aspectRatio: `${image.width ?? PHONE_NATIVE_WIDTH} / ${image.height ?? PHONE_NATIVE_HEIGHT}`,
-                }}
-              >
+            <div className="overflow-hidden rounded-[var(--radius-lg)] shadow-sm transition-md group-hover:-translate-y-0.5 group-hover:shadow-md motion-reduce:group-hover:translate-y-0">
+              {!isWide ? (
+                <div
+                  className="w-full"
+                  style={{
+                    aspectRatio: `${image.width ?? PHONE_NATIVE_WIDTH} / ${image.height ?? PHONE_NATIVE_HEIGHT}`,
+                  }}
+                >
+                  <CaseStudyImage image={{ ...image, src: image.src }} priority={priority} />
+                </div>
+              ) : (
                 <CaseStudyImage image={{ ...image, src: image.src }} priority={priority} />
-              </div>
-            ) : (
-              <CaseStudyImage image={{ ...image, src: image.src }} priority={priority} />
-            )}
+              )}
+            </div>
           </button>
           {showSetLabel && image.setLabel ? (
             <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.14em] text-primary">

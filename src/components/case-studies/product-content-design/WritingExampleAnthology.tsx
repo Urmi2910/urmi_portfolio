@@ -23,23 +23,35 @@ function writingHubBandTone(bandIndex: number) {
 
 function AnthologyTagList({
   items,
+  activeSlug,
   onSelect,
 }: {
   items: readonly { slug: string; title: string }[];
+  activeSlug?: string;
   onSelect: (slug: string) => void;
 }) {
   return (
     <div className="writing-anthology-tags flex flex-wrap gap-2" aria-label="Samples in this collection">
-      {items.map((item) => (
-        <button
-          key={item.slug}
-          type="button"
-          onClick={() => onSelect(item.slug)}
-          className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-md hover:bg-primary/10"
-        >
-          {item.title}
-        </button>
-      ))}
+      {items.map((item) => {
+        const isActive = item.slug === activeSlug;
+        return (
+          <button
+            key={item.slug}
+            type="button"
+            aria-current={isActive || undefined}
+            onClick={() => onSelect(item.slug)}
+            className={cn(
+              "rounded-full px-3.5 py-1.5 text-xs font-medium transition-md active:scale-95",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+              isActive
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "bg-primary/5 text-primary hover:bg-primary/10 hover:shadow-sm",
+            )}
+          >
+            {item.title}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -94,7 +106,11 @@ export function WritingExampleAnthology() {
     <>
       <div className="writing-hub-band writing-hub-band--hero">
         <div className="writing-hub-inner pb-3 pt-1 sm:pb-4">
-          <AnthologyTagList items={entries} onSelect={(slug) => scrollToEntry(slug)} />
+          <AnthologyTagList
+            items={entries}
+            activeSlug={entries[activeIndex]?.slug}
+            onSelect={(slug) => scrollToEntry(slug)}
+          />
         </div>
       </div>
 

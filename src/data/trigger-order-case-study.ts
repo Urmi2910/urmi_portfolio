@@ -72,29 +72,16 @@ export const triggerOrderCaseStudy = {
   research: {
     title: "Research",
     lead: "How do users think?",
-    intro:
-      "We wanted to understand how people approached advanced stock orders before deciding what to change. To do this, we interviewed 16 investors across two cohorts:",
-    cohorts: [
-      "8 new investors, who were unfamiliar with advanced trading features.",
-      "8 experienced investors, who regularly used tools like GTT, Stop Loss, and Target.",
-    ],
-    methodologyClosing:
-      "This helped us compare how each group understood the same concepts and where their mental models differed.",
-    findingsHeading: "What we learned",
+    intro: "To understand where users were getting stuck, we spoke with both new and experienced investors.",
+    findingsIntro: "We found three things:",
     findings: [
-      {
-        text: "New investors thought in goals, not trading terms.",
-        quote: "I want to buy when the price reaches this price.",
-      },
-      {
-        text: "Technical labels created confusion for beginners.",
-        quote: "I don't know what GTT means.",
-      },
-      {
-        text: "Experienced investors relied on familiar market terminology.",
-        detail:
-          "They expected terms like GTT, Stop Loss, and Target because these matched the language they already knew.",
-      },
+      "Users thought in goals, not trading terms.",
+      "Technical labels created confusion for new investors.",
+      "Experienced investors still relied on familiar trading terms.",
+    ],
+    quotes: [
+      "I want to buy when the price reaches this price.",
+      "I don't know what GTT means.",
     ],
   },
   exploration: {

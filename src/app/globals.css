@@ -542,6 +542,15 @@
     box-shadow: var(--shadow-sm);
   }
 
+  .content-systems-case-study .content-systems-collection {
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--duration-hover, 200ms) var(--ease-md);
+  }
+
+  .content-systems-case-study .content-systems-collection:hover {
+    box-shadow: var(--shadow-md);
+  }
+
   .content-systems-case-study .content-systems-prototype-panels > * {
     min-width: 0;
   }
@@ -618,7 +627,8 @@
     border-bottom: none;
   }
 
-  .guidelines-case-study .guidelines-card {
+  .guidelines-case-study .guidelines-card,
+  .guidelines-case-study .guidelines-section-card {
     box-shadow: var(--shadow-sm);
   }
 
@@ -1745,57 +1755,6 @@
     padding-top: 0;
   }
 
-  /* Full-bleed alternating section backgrounds, matching the flat,
-     hard-edged band style used in the UX Writing Showcase. */
-  .case-study-band {
-    position: relative;
-    overflow-x: clip;
-    padding-block: 2.75rem;
-  }
-
-  .case-study-band > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .case-study-band-inner {
-    @apply relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] md:max-w-5xl;
-  }
-
-  @media (min-width: 640px) {
-    .case-study-band {
-      padding-block: 3.5rem;
-    }
-  }
-
-  .story-chapter.case-study-band + .story-chapter.case-study-band {
-    padding-top: 2.75rem;
-  }
-
-  @media (min-width: 640px) {
-    .story-chapter.case-study-band + .story-chapter.case-study-band {
-      padding-top: 3.5rem;
-    }
-  }
-
-  .case-study-band--surface,
-  .case-study-band--flat-surface {
-    background-color: var(--color-surface);
-  }
-
-  .case-study-band--background,
-  .case-study-band--flat-background {
-    background-color: var(--color-background);
-  }
-
-  /* Boxes/cards shared across both tones need to flip to purple whenever
-     they land on a white (background-tone) band, mirroring the homepage's
-     purple portfolio cards on a white section. */
-  .case-study-band--background .guidelines-included-content li,
-  .case-study-band--background .story-deep-dive {
-    background-color: var(--color-surface);
-  }
-
   /* Shared rhythm: clear breaks between case study chapters */
   .case-study-sections {
     display: flex;
@@ -1900,12 +1859,30 @@
     position: relative;
   }
 
+  /* Sections fade into the next tone at their bottom edge instead of
+     cutting sharply, matching the homepage section treatment. */
   .writing-hub-band--base {
-    background-color: var(--color-background);
+    background: linear-gradient(
+      180deg,
+      var(--color-background) 0%,
+      var(--color-background) 70%,
+      color-mix(in srgb, var(--color-surface) 22%, var(--color-background)) 82%,
+      color-mix(in srgb, var(--color-surface) 52%, var(--color-background)) 91%,
+      color-mix(in srgb, var(--color-surface) 82%, var(--color-background)) 97%,
+      var(--color-surface) 100%
+    );
   }
 
   .writing-hub-band--alt {
-    background-color: var(--color-surface);
+    background: linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-surface) 70%,
+      color-mix(in srgb, var(--color-background) 22%, var(--color-surface)) 82%,
+      color-mix(in srgb, var(--color-background) 52%, var(--color-surface)) 91%,
+      color-mix(in srgb, var(--color-background) 82%, var(--color-surface)) 97%,
+      var(--color-background) 100%
+    );
   }
 
   .writing-hub-band--hero {
@@ -1933,4 +1910,16 @@
     user-select: none;
   }
 
+  .case-study-bottom-nav {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .case-study-footer-offset {
+    margin-bottom: calc(3.8125rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: 0;
+  }
+
+  .case-study-main-with-nav {
+    padding-bottom: calc(3.8125rem + env(safe-area-inset-bottom, 0px));
+  }
 }
