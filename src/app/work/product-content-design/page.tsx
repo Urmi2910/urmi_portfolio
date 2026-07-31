@@ -22,7 +22,7 @@ export default function ProductContentDesignPage() {
   return (
     <>
       <Header />
-      <main className="writing-case-study case-study-main-with-nav flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
+      <main className="writing-case-study flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
         <section className="writing-hub-band writing-hub-band--hero relative overflow-hidden pb-0">
           <GeometricDecor variant="section" />
 
