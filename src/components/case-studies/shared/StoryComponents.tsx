@@ -99,7 +99,7 @@ export function DeepDive({
   defaultOpen?: boolean;
 }) {
   return (
-    <details className="story-deep-dive group rounded-[var(--radius-lg)] border border-outline/10 bg-background" open={defaultOpen}>
+    <details className="story-deep-dive group rounded-[var(--radius-lg)] border border-outline/10 bg-surface" open={defaultOpen}>
       <summary className="cursor-pointer list-none px-4 py-3.5 sm:px-5 [&::-webkit-details-marker]:hidden">
         <span className="flex items-center justify-between gap-3">
           <span className="font-heading text-sm font-semibold text-foreground">{title}</span>

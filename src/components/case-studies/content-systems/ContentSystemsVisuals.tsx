@@ -65,7 +65,7 @@ export function EditorialTree({ root, items }: { root: string; items: string[] }
 
 export function WorkflowBoard({ steps }: { steps: string[] }) {
   return (
-    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
+    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-8">
       <div className="mx-auto flex max-w-md flex-col items-center gap-3">
         {steps.map((step, index) => (
           <div key={step} className="flex w-full flex-col items-center gap-3">
@@ -280,7 +280,7 @@ export function CollectionGrid({
       {collections.map((collection) => (
         <div
           key={collection.name}
-          className="content-systems-collection rounded-[var(--radius-lg)] border border-outline/12 bg-white p-4 sm:p-5"
+          className="content-systems-collection rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-4 sm:p-5"
         >
           <p className="text-sm font-semibold text-foreground">{collection.name}</p>
           <pre className="content-systems-mono mt-3 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
@@ -323,7 +323,7 @@ export function GuardrailChecks({
       {groups.map((group) => (
         <div
           key={group.title}
-          className="rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] px-5 py-4 sm:px-6 sm:py-5"
+          className="rounded-[var(--radius-lg)] border border-outline/12 bg-surface px-5 py-4 sm:px-6 sm:py-5"
         >
           <p className="text-sm font-semibold text-foreground">{group.title}</p>
           {group.prompt ? (
@@ -355,7 +355,7 @@ export function FallbackFlow({
   items: readonly { condition: string; action: string }[];
 }) {
   return (
-    <div className="content-systems-card max-w-3xl rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
+    <div className="content-systems-card max-w-3xl rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-8">
       <div className="mx-auto flex max-w-md flex-col items-center gap-2">
         {items.map((item, index) => (
           <div key={item.condition} className="flex w-full flex-col items-center gap-2">
@@ -407,7 +407,7 @@ export function TodayTomorrowProcessDiagram({
 }) {
   return (
     <div className="content-systems-shift-grid grid gap-6 md:grid-cols-2">
-      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-6">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
           {today.label}
         </p>
@@ -426,7 +426,7 @@ export function TodayTomorrowProcessDiagram({
         </div>
       </div>
 
-      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-6">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
           {tomorrow.label}
         </p>
@@ -513,7 +513,7 @@ export function ScalingScopeDiagram({
 }) {
   return (
     <div className="content-systems-shift-grid grid gap-6 md:grid-cols-2">
-      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-6">
         <p className="text-sm font-medium text-foreground">{today.label}</p>
         <div className="mt-4 flex flex-col items-center gap-2">
           {today.steps.map((step, index) => (
@@ -530,7 +530,7 @@ export function ScalingScopeDiagram({
           ))}
         </div>
       </div>
-      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+      <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-6">
         <p className="text-sm font-medium text-foreground">{tomorrow.label}</p>
         <div className="mt-4 flex flex-col gap-2">
           {tomorrow.areas.map((area) => (
@@ -557,7 +557,7 @@ export function ScalingArchitectureDiagram({
   shared: string[];
 }) {
   return (
-    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-8">
+    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-8">
       <div className="mx-auto flex max-w-lg flex-col items-center gap-4">
         <div className="w-full">
           <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">

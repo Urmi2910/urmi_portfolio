@@ -40,11 +40,12 @@ export function GuidelinesDocumentLink({
 }
 
 const guidelinesSectionCardClass =
-  "guidelines-section-card mt-6 rounded-[var(--radius-lg)] border border-primary/15 bg-[#faf8f5] p-5 sm:p-6";
+  "guidelines-section-card mt-6 rounded-[var(--radius-lg)] border border-primary/15 bg-surface p-5 sm:p-6";
 const guidelinesSectionLabelClass =
   "text-xs font-semibold uppercase tracking-[0.14em] text-primary";
-const guidelinesSectionTileClass =
-  "rounded-[var(--radius-md)] border border-primary/10 bg-white px-4 py-3.5 shadow-sm";
+const guidelinesSectionTileBaseClass =
+  "rounded-[var(--radius-md)] border border-primary/10 px-4 py-3.5 shadow-sm";
+const guidelinesSectionTileClass = guidelinesSectionTileBaseClass + " bg-surface";
 const guidelinesSectionTileSimpleClass =
   "flex items-start gap-2.5 " + guidelinesSectionTileClass;
 const guidelinesSectionTileRichClass = guidelinesSectionTileClass + " p-4 sm:p-5";
@@ -175,7 +176,7 @@ export function SystemCategoryCards({
         <a
           key={category.title}
           href={`#${category.sectionId}`}
-          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-4 transition-md hover:-translate-y-0.5 hover:border-primary/25 hover:bg-white hover:shadow-md active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
+          className="guidelines-card group block rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-4 transition-md hover:-translate-y-0.5 hover:border-primary/25 hover:bg-surface-low hover:shadow-md active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:p-5"
         >
           <p className="text-xl" aria-hidden="true">
             {category.icon}
@@ -195,14 +196,14 @@ export function DoDontExamples({ examples }: { examples: readonly DoDontPair[] }
     <div className="space-y-3">
       {examples.map((item) => (
         <div key={item.do} className="grid gap-2.5 sm:grid-cols-2">
-          <div className={cn(guidelinesSectionTileSimpleClass, "border-[#15803d]/20 bg-white")}>
+          <div className={cn("flex items-start gap-2.5", guidelinesSectionTileBaseClass, "border-[#15803d]/20 bg-white")}>
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#15803d]" strokeWidth={2.5} aria-hidden="true" />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#15803d]">Do</p>
               <p className="mt-1 whitespace-pre-line text-sm text-foreground">{item.do}</p>
             </div>
           </div>
-          <div className={cn(guidelinesSectionTileSimpleClass, "border-[#b91c1c]/20 bg-white")}>
+          <div className={cn("flex items-start gap-2.5", guidelinesSectionTileBaseClass, "border-[#b91c1c]/20 bg-white")}>
             <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-xs font-bold text-[#b91c1c]" aria-hidden="true">
               ×
             </span>
@@ -233,7 +234,7 @@ export function LetterCaseVisual({
             <div>
               <p className="text-sm font-medium text-foreground">{style.name}</p>
               <p className="mt-1 text-sm text-muted-foreground">{style.description}</p>
-              <p className="mt-2 rounded-[var(--radius-md)] border border-primary/10 bg-[#faf8f5] px-3 py-2 text-sm text-foreground">
+              <p className="mt-2 rounded-[var(--radius-md)] border border-primary/10 bg-surface px-3 py-2 text-sm text-foreground">
                 {style.example}
               </p>
             </div>

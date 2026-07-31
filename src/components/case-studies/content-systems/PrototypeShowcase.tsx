@@ -261,7 +261,7 @@ export function ContextFormulaBoard({
   const output = items[items.length - 1];
 
   return (
-    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-[#faf8f5] p-5 sm:p-6">
+    <div className="content-systems-card rounded-[var(--radius-lg)] border border-outline/12 bg-surface p-5 sm:p-6">
       <div className="mx-auto flex max-w-md flex-col items-center gap-2">
         {inputs.map((item) => (
           <div key={item} className="flex w-full flex-col items-center gap-2">

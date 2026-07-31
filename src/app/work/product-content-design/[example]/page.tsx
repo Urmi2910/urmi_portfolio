@@ -52,7 +52,7 @@ export default async function WritingExamplePage({ params }: PageProps) {
     <>
       <Header />
       <main className="writing-case-study flex-1 pt-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:pt-20">
-        <section className="relative border-b border-border/50 bg-surface pb-8 sm:pb-10">
+        <section className="relative border-b border-border/50 bg-background pb-8 sm:pb-10">
           <GeometricDecor variant="section" />
           <div className="relative mx-auto w-full max-w-2xl px-[clamp(1rem,4vw,1.5rem)] py-8 md:max-w-5xl md:py-10">
             <WritingExampleScrollReset slug={slug}>
